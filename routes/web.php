@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
-});
+// Route::get('/', function () {
+//     return view('admin.login');
+// });
+
+//ADMIN LOGGING
+
+Route::get('admin', 'AdminLoginController@login')->middleware('checkAdminLogout');
+Route::post('admin', 'AdminLoginController@checkLogin');
+Route::get('logout', 'AdminLoginController@logout');
+Route::get('admin/home', 'AdminHomeController@index')->name('admin/home')->middleware('checkAdminLogin');
