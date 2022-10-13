@@ -45,7 +45,7 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="/logout" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -177,7 +177,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset("assets/dist/img/AdminLTELogo.png")}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">BOX GAME</span>
     </a>
 
     <!-- Sidebar -->
@@ -1498,9 +1498,7 @@
 <script src="{{asset("assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset("assets/dist/js/adminlte.js")}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset("assets/dist/js/demo.js")}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
 <script src="{{asset("assets/dist/js/pages/dashboard.js")}}"></script>
 </body>
 </html>

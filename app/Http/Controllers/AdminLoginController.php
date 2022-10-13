@@ -24,7 +24,7 @@ class AdminLoginController extends Controller
         $user = DB::table('account_admin')->where(['name' => $userName])->first();
         if ($user != null && $user->password == $password) {
             $request->session()->push("user", $user);
-            return redirect()->route('admin/home');
+            return redirect()->route('home');
         } else {
             return view('admin.login')->with(['message' => 'Invalid ID and Password']);
         }

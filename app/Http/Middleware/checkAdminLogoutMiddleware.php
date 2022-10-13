@@ -17,7 +17,7 @@ class checkAdminLogoutMiddleware
     public function handle(Request $request, Closure $next)
     {
         if ($request->session()->has('user')) {
-            return redirect('admin/home');
+            return redirect()->route('home');
         }
         return $next($request);
     }

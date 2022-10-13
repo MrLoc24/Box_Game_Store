@@ -22,4 +22,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('admin', 'AdminLoginController@login')->middleware('checkAdminLogout');
 Route::post('admin', 'AdminLoginController@checkLogin');
 Route::get('logout', 'AdminLoginController@logout');
-Route::get('admin/home', 'AdminHomeController@index')->name('admin/home')->middleware('checkAdminLogin');
+Route::get('admin/home', 'AdminHomeController@index')->name('home')->middleware('checkAdminLogin');
+//name('home') for redirect()->route('home') in AdminLoginController, or can redirect directly by redirect('admin/home') but not recommend
