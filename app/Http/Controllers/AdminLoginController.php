@@ -21,6 +21,7 @@ class AdminLoginController extends Controller
     {
         $userName = $request->input('txtName');
         $password = $request->input('txtPassword');
+        $checkbox = $request->has('checkRemember');
         $user = DB::table('account_admin')->where(['name' => $userName])->first();
         if ($user != null && $user->password == $password) {
             $request->session()->push("user", $user);
