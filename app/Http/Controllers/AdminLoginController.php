@@ -8,6 +8,7 @@ use App\Statistical;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminLoginController extends Controller
 {
@@ -22,12 +23,12 @@ class AdminLoginController extends Controller
         $userName = $request->input('txtName');
         $password = $request->input('txtPassword');
         $checkbox = $request->has('checkRemember');
-        $user = DB::table('account_admin')->where(['name' => $userName])->first();
-        if ($user != null && $user->password == $password) {
-            $request->session()->push("user", $user);
+        $admin = DB::table('account_admin')->where(['name' => $userName])->first();
+        if ($admin != null && $admin->password == $password) {
+            $request->session()->push("admin", $userName);
             return redirect()->route('home');
         } else {
-            return view('admin.login')->with(['message' => 'Invalid ID and Password']);
+            return view('admin.login')->with(['message' => $password]);
         }
     }
 
