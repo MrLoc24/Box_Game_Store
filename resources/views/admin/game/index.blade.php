@@ -1,5 +1,5 @@
-@extends('layouts.dashboards');
-@yield('title', 'View Game');
+@extends('layouts.dashboards')
+@section('title', 'View Game')
 @section('header-specific')
  <!-- DataTables -->
   <link rel="stylesheet" href="{{asset("assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">

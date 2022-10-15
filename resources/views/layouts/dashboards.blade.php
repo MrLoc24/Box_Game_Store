@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{asset("assets/plugins/daterangepicker/daterangepicker.css")}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset("assets/plugins/summernote/summernote-bs4.min.css")}}">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -229,7 +230,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/game" class="nav-link">
+                <a href="/game/index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View All</p>
                 </a>
@@ -241,7 +242,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/e-commerce.html" class="nav-link">
+                <a href="/game/create" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Nem</p>
                 </a>
@@ -442,5 +443,6 @@
 
 <script src="{{asset("assets/dist/js/pages/dashboard.js")}}"></script>
 @yield('footer-script')
+
 </body>
 </html>

@@ -25,4 +25,11 @@ Route::get('logout', 'AdminLoginController@logout');
 Route::get('admin/home', 'AdminHomeController@index')->name('home')->middleware('checkAdminLogin');
 //name('home') for redirect()->route('home') in AdminLoginController, or can redirect directly by redirect('admin/home') but not recommend
 //ADMIN GAME MANAGEMENT
-Route::get('admin/game', 'AdminGameController@index')->middleware('checkAdminLogin');
+Route::prefix('game')->middleware('checkAdminLogin')->group(function () {
+    Route::get('index', 'AdminGameController@index');
+    Route::get('create', 'AdminGameController@create');
+    // Route::post('create', 'ProductController@store');
+    // Route::get('edit/{id}', 'ProductController@edit');
+    // Route::post('edit/{id}', 'ProductController@update');
+    // Route::get('delete/{id}', 'ProductController@destroy');
+});
