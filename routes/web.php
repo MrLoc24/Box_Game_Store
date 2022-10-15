@@ -24,3 +24,5 @@ Route::post('admin', 'AdminLoginController@checkLogin');
 Route::get('logout', 'AdminLoginController@logout');
 Route::get('admin/home', 'AdminHomeController@index')->name('home')->middleware('checkAdminLogin');
 //name('home') for redirect()->route('home') in AdminLoginController, or can redirect directly by redirect('admin/home') but not recommend
+//ADMIN GAME MANAGEMENT
+Route::get('admin/game', 'AdminGameController@index')->middleware('checkAdminLogin');

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
 
+  <!-- Theme style -->
+    @yield('header-specific')
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -218,7 +220,7 @@
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Detail
@@ -227,7 +229,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="/admin/game" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View All</p>
                 </a>
@@ -297,10 +299,8 @@
               </li>
             </ul>
           </li>
-
+            {{-- ORDER nav bar start --}}
           <li class="nav-header">ORDERS</li>
-
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cart-plus"></i>
@@ -331,12 +331,13 @@
 
             </ul>
           </li>
+          {{-- ORDER nav bar end --}}
         <li class="nav-header">ADMIN ACCOUNT</li>
 
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-database"></i>
               <p>
                 Detail
                 <i class="fas fa-angle-left right"></i>
@@ -440,5 +441,6 @@
 <script src="{{asset("assets/dist/js/adminlte.js")}}"></script>
 
 <script src="{{asset("assets/dist/js/pages/dashboard.js")}}"></script>
+@yield('footer-script')
 </body>
 </html>
