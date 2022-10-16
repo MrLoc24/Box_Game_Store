@@ -48,7 +48,7 @@
         <a href="/admin/home" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/logout" class="nav-link">Logout</a>
+        <a href="/admin/logout" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -188,7 +188,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset("assets/dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
+           @if (Session::get('adminImg'))
+            @foreach (Session::get('adminImg') as $image)
+                <img src="{{asset("$image")}}" class="img-circle elevation-2" alt="User Image">
+            @endforeach
+           @endif
         </div>
         <div class="info">
           <a href="/admin/home" class="d-block">
@@ -230,7 +234,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/game/index" class="nav-link">
+                <a href="/admin/game/index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View All</p>
                 </a>
@@ -242,7 +246,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/game/create" class="nav-link">
+                <a href="/admin/game/create" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Nem</p>
                 </a>

@@ -21,11 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('admin', 'AdminLoginController@login')->middleware('checkAdminLogout');
 Route::post('admin', 'AdminLoginController@checkLogin');
-Route::get('logout', 'AdminLoginController@logout');
+Route::get('admin/logout', 'AdminLoginController@logout');
 Route::get('admin/home', 'AdminHomeController@index')->name('home')->middleware('checkAdminLogin');
+Route::post('admin/home/{id}', 'AdminHomeController@update');
 //name('home') for redirect()->route('home') in AdminLoginController, or can redirect directly by redirect('admin/home') but not recommend
 //ADMIN GAME MANAGEMENT
-Route::prefix('game')->middleware('checkAdminLogin')->group(function () {
+Route::prefix('admin/game')->middleware('checkAdminLogin')->group(function () {
     Route::get('index', 'AdminGameController@index');
     Route::get('create', 'AdminGameController@create');
     // Route::post('create', 'ProductController@store');
