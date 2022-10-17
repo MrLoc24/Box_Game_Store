@@ -14,4 +14,7 @@ class AdminGameController extends Controller
     {
         return view('admin.game.create');
     }
+    public function store()
+    {
+    }
 }
