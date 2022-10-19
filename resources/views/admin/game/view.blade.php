@@ -71,6 +71,9 @@
                                     <i class="fas fa-c fa-2x text-blue"></i>
                                 </label>
                             </div>
+                            <hr>
+                            <h4>Developer</h4>
+                            <a href="{{ $game->developer_web }}">{{ $game->developer }}</a>
 
 
                             <div class="bg-gray py-2 px-3 mt-4">

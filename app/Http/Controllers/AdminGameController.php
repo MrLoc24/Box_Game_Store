@@ -85,9 +85,9 @@ class AdminGameController extends Controller
             }
             DB::table('system_requirement')->insert($data_system_requirement_win);
             DB::table('system_requirement')->insert($data_system_requirement_mac);
-            return redirect('admin/game/index')->with('success', "Add game successfully!");
+            return redirect('admin/game/index');
         } else {
-            return redirect('admin/game/create')->with('error', "Add game failed!");
+            return redirect('admin/game/create');
         }
     }
     public function delete($id)
