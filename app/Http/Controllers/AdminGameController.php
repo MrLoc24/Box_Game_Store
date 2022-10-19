@@ -21,7 +21,7 @@ class AdminGameController extends Controller
     public function view($id)
     {
         $system = DB::table('system_requirement')->where('gameId', $id)->first();
-        $category = DB::table('category')->where('gameId', $id)->first();
+        $category = DB::table('category')->where('gameId', $id)->get();
         $game = DB::table('game')->where('gameId', $id)->first();
         return view('admin.game.view', ['game' => $game, 'system' => $system, 'category' => $category]);
     }

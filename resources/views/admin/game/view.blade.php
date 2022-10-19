@@ -96,6 +96,13 @@
                                     Add to Wishlist
                                 </div>
                             </div>
+                            <div class="mt-4">
+                                <h2 class="mb-0">
+                                    @foreach ($category as $item => $cate)
+                                        <span class="badge badge-primary">{{ $cate->type }}</span>
+                                    @endforeach
+                                </h2>
+                            </div>
 
                             <div class="mt-4 product-share">
                                 <a href="#" class="text-gray">
