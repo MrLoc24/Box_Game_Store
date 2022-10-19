@@ -99,7 +99,6 @@
                             <div class="mt-4">
                                 <h2 class="mb-0">
                                     @foreach ($category as $item => $cate)
-                                    a
                                         <span class="badge badge-primary">{{ $cate->type }}</span>
                                     @endforeach
                                 </h2>
