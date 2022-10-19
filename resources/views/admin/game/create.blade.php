@@ -49,8 +49,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Description</label>
-                                        <input type="text" class="form-control" id="description" name="gameDescription"
-                                            placeholder="Description">
+                                        <textarea rows="5" type="text" class="form-control" id="description" name="gameDescription"
+                                            placeholder="Description"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Release Date</label>

@@ -204,6 +204,9 @@
                             @foreach (Session::get('adminImg') as $image)
                                 <img src="{{ asset("$image") }}" class="img-circle elevation-2" alt="User Image">
                             @endforeach
+                        @else
+                            <img src="{{ asset('img/admin/default.jpg') }}" class="img-circle elevation-2"
+                                alt="User Image">
                         @endif
                     </div>
                     <div class="info">

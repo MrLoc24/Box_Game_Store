@@ -51,8 +51,7 @@
                         </div>
                         <div class="col-12 col-sm-6">
                             <h3 class="my-3">{{ str_replace('_', ' ', $game->gameId) }}</h3>
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.
+                            <p>{{ $game->description }}</p>
                             </p>
 
                             <hr>
@@ -119,8 +118,8 @@
                                     href="#product-desc" role="tab" aria-controls="product-desc"
                                     aria-selected="true">Description</a>
                                 <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab"
-                                    href="#product-comments" role="tab" aria-controls="product-comments"
-                                    aria-selected="false">Comments</a>
+                                    href="#system-requirements" role="tab" aria-controls="product-comments"
+                                    aria-selected="false">System Requirements</a>
                                 <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab"
                                     href="#product-rating" role="tab" aria-controls="product-rating"
                                     aria-selected="false">Rating</a>
@@ -140,7 +139,7 @@
                                 ante. Quisque interdum efficitur nunc vitae consectetur. Suspendisse venenatis, tortor non
                                 convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a
                                 erat fringilla sollicitudin ultrices vel metus. </div>
-                            <div class="tab-pane fade" id="product-comments" role="tabpanel"
+                            <div class="tab-pane fade" id="system-requirements" role="tabpanel"
                                 aria-labelledby="product-comments-tab"> Vivamus rhoncus nisl sed venenatis luctus. Sed
                                 condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut
                                 commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla
@@ -177,8 +176,6 @@
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.product-image-thumb').on('click', function() {

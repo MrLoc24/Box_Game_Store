@@ -60,8 +60,6 @@
                                                 <td>
                                                     <a href="/admin/game/view/{{ $game->gameId }}"
                                                         class="btn btn-primary">View</a>
-                                                    <a href="/admin/game/edit/{{ $game->gameId }}"
-                                                        class="btn btn-warning">Edit</a>
                                                     <a href="/admin/game/delete/{{ $game->gameId }}"
                                                         class="btn btn-danger">Delete</a>
                                                 </td>
