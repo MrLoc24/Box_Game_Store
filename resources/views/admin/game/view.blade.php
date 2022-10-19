@@ -159,16 +159,15 @@
                                 sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel
                                 id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. </div>
                             <div class="tab-pane fade" id="product-rating" role="tabpanel"
-                                aria-labelledby="product-rating-tab"> Cras ut ipsum ornare, aliquam ipsum non, posuere
-                                elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus
-                                efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie,
-                                purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et
-                                erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur
-                                lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio,
-                                malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan
-                                urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at
-                                mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec
-                                varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+                                aria-labelledby="product-rating-tab">
+                                @if (!$rating == null)
+                                    @foreach ($rating as $rate)
+                                        {{ $rate->star }}
+                                    @endforeach
+                                @else
+                                    <h3>No rating yet!!! Cyka Blyat!!!!</h3>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
