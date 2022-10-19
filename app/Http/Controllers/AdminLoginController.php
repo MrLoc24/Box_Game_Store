@@ -8,7 +8,7 @@ use App\Statistical;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+
 
 class AdminLoginController extends Controller
 {
@@ -29,7 +29,7 @@ class AdminLoginController extends Controller
             $request->session()->push("adminImg", $admin->image);
             return redirect()->route('home');
         } else {
-            return view('admin.login')->with(['message' => $password]);
+            return view('admin.login')->with(['message' => 'Wrong username or password']);
         }
     }
 

@@ -22,7 +22,8 @@
 
         <!-- Main content -->
         <section class="content">
-            <form action="post" enctype="multipart/form-data">
+            <form action="/admin/game/create" enctype="multipart/form-data" method="POST">
+                @csrf
                 <div class="container-fluid">
                     <div class="row">
                         <!-- left column -->
@@ -42,32 +43,37 @@
                                             placeholder="Enter Name">
                                     </div>
                                     <div class="form-group">
+                                        <label for="exampleInputPassword1">Price</label>
+                                        <input type="number" class="form-control" id="price" name="gamePrice"
+                                            placeholder="Price">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputPassword1">Description</label>
                                         <input type="text" class="form-control" id="description" name="gameDescription"
                                             placeholder="Description">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Release Date</label>
-                                        <input type="datetime-local" class="form-control" id="date" name="gameDate"
+                                        <input type="date" class="form-control" id="date" name="gameDate"
                                             placeholder="Description">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Publisher</label>
-                                        <input type="text" class="form-control" id="publisher" placeholder="Publisher"
-                                            name="gamePublisher">
+                                        <label for="exampleInputPassword1">Developer</label>
+                                        <input type="text" class="form-control" id="publisher" placeholder="Developer"
+                                            name="gameDeveloper">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Publisher Website</label>
-                                        <input type="text" class="form-control" id="publisher_website"
-                                            placeholder="Publisher Website" name="publisherWebsite">
+                                        <input type="text" class="form-control" id="developer_website"
+                                            placeholder="developer Website" name="developerWebsite">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputFile">Picture Icon</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="icon">
-                                                <label class="custom-file-label" for="exampleInputFile"
-                                                    name="gameIcon">Choose
+                                                <input type="file" class="custom-file-input" id="icon"
+                                                    name="icon">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose
                                                     file</label>
                                             </div>
                                             <div class="input-group-append">
@@ -127,7 +133,7 @@
                                                             OS</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="winOs"
-                                                                placeholder="Window version">
+                                                                placeholder="Window version" name="winOs">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -135,7 +141,7 @@
                                                             class="col-sm-2 col-form-label">Chipset</label>
                                                         <div class="col-sm-10">
                                                             <input type="test" class="form-control" id="chipset"
-                                                                placeholder="Chipset Model">
+                                                                placeholder="Chipset Model" name="winChipset">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -143,7 +149,7 @@
                                                             class="col-sm-2 col-form-label">Memory</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="ram"
-                                                                placeholder="RAM">
+                                                                placeholder="RAM" name="winRam">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -151,7 +157,7 @@
                                                             class="col-sm-2 col-form-label">VGA</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="vga"
-                                                                placeholder="Graphic Card"></input>
+                                                                placeholder="Graphic Card" name="winVga"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -159,7 +165,7 @@
                                                             class="col-sm-2 col-form-label">Storage</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="storage"
-                                                                placeholder="Storage">
+                                                                placeholder="Storage" name="winStrorage">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -172,7 +178,7 @@
                                                             OS</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="macOs"
-                                                                placeholder="Apple Mac version">
+                                                                placeholder="Apple Mac version" name="macOs">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -180,7 +186,7 @@
                                                             class="col-sm-2 col-form-label">Chipset</label>
                                                         <div class="col-sm-10">
                                                             <input type="test" class="form-control" id="macChipset"
-                                                                placeholder="Chipset Model">
+                                                                placeholder="Chipset Model" name="macChipset">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -188,7 +194,7 @@
                                                             class="col-sm-2 col-form-label">Memory</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="macRam"
-                                                                placeholder="RAM">
+                                                                placeholder="RAM" name="macRam">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -196,7 +202,7 @@
                                                             class="col-sm-2 col-form-label">VGA</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="macVga"
-                                                                placeholder="Graphic Card"></input>
+                                                                placeholder="Graphic Card" name="macVga"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -204,7 +210,7 @@
                                                             class="col-sm-2 col-form-label">Storage</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="macStorage"
-                                                                placeholder="Storage">
+                                                                placeholder="Storage" name="macStorage"></input>
                                                         </div>
                                                     </div>
                                                 </div>
