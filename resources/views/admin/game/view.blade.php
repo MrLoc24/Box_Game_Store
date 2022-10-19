@@ -135,7 +135,7 @@
                                     aria-selected="false">Rating</a>
                             </div>
                         </nav>
-                        <div class="tab-content p-3" id="nav-tabContent">
+                        <div class="tab-content p-3 w-100" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="product-desc" role="tabpanel"
                                 aria-labelledby="product-desc-tab"> Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit. Morbi vitae condimentum erat. Vestibulum ante ipsum primis in faucibus orci luctus et
@@ -150,14 +150,103 @@
                                 convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a
                                 erat fringilla sollicitudin ultrices vel metus. </div>
                             <div class="tab-pane fade" id="system-requirements" role="tabpanel"
-                                aria-labelledby="product-comments-tab"> Vivamus rhoncus nisl sed venenatis luctus. Sed
-                                condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut
-                                commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla
-                                turpis elit, consequat eu eros ac, consectetur fringilla urna. Duis gravida ex pulvinar
-                                mauris ornare, eget porttitor enim vulputate. Mauris hendrerit, massa nec aliquam cursus, ex
-                                elit euismod lorem, vehicula rhoncus nisl dui sit amet eros. Nulla turpis lorem, dignissim a
-                                sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel
-                                id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. </div>
+                                aria-labelledby="product-comments-tab">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-6" >
+                                            <div class="card-body">
+                                <table id="windowOS" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>OS</th>
+                                            <th>ChipSet</th>
+                                            <th>Memory</th>
+                                            <th>VGA</th>
+                                            <th>Storage</th>
+                                            <th>Function</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($system_req_win as $key => $game)
+                                            <tr>
+                                                
+                                                <td>{{ $game->os }}</td>
+                                                <td>{{$game ->chip}}</td>
+                                                <td>{{$game->ram}}</td>
+                                                <td>{{$game->graphic}}</td>
+                                                <td>{{ $game->storage}}</td>
+                                                
+                                                <td>
+                                                    <a href="/admin/game/view/{{ $game->gameId }}"
+                                                        class="btn btn-primary">View</a>
+                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                        class="btn btn-danger">Edit</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Icon</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Developer</th>
+                                            <th>Function</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                            </div>
+                                            <div class="col-6" >
+                                            <div class="card-body">
+                                <table id="windowOS" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>OS</th>
+                                            <th>ChipSet</th>
+                                            <th>Memory</th>
+                                            <th>VGA</th>
+                                            <th>Storage</th>
+                                            <th>Function</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($system_req_mac as $key => $game)
+                                            <tr>
+                                                
+                                                <td>{{ $game->os }}</td>
+                                                <td>{{$game ->chip}}</td>
+                                                <td>{{$game->ram}}</td>
+                                                <td>{{$game->graphic}}</td>
+                                                <td>{{ $game->storage}}</td>
+                                                
+                                                <td>
+                                                    <a href="/admin/game/view/{{ $game->gameId }}"
+                                                        class="btn btn-primary">View</a>
+                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                        class="btn btn-danger">Edit</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Icon</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Developer</th>
+                                            <th>Function</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                
+                            </div>
                             <div class="tab-pane fade" id="product-rating" role="tabpanel"
                                 aria-labelledby="product-rating-tab">
                                 @if (!$rating == null)

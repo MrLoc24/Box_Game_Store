@@ -24,7 +24,9 @@ class AdminGameController extends Controller
         $system = DB::table('system_requirement')->where('gameId', $id)->first();
         $category = DB::table('category')->where('gameId', $id)->get();
         $game = DB::table('game')->where('gameId', $id)->first();
-        return view('admin.game.view', ['game' => $game, 'system' => $system, 'category' => $category, 'rating' => $rating]);
+        $system_requirement_windows = DB::table('system_requirement')->where('gameId',$id)->where("os","Windows")->get();
+        $system_requirement_macos = DB::table('system_requirement')->where('gameId',$id)->where("os","mac")->get();
+        return view('admin.game.view', ['game' => $game, 'system' => $system, 'category' => $category, 'rating' => $rating,'system_req_win'=> $system_requirement_windows,'system_req_mac'=>$system_requirement_macos]);
     }
     public function store(Request $request)
     {
