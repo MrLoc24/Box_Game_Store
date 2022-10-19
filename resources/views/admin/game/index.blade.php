@@ -53,7 +53,7 @@
                                             <tr>
                                                 <td><img src="{{ asset("$game->icon") }}" width="50px" height="50px">
                                                 </td>
-                                                <td>{{ $game->gameId }}</td>
+                                                <td>{{ str_replace('_', ' ', $game->gameId) }}</td>
                                                 {{-- $game->column name!!!!!! --}}
                                                 <td>{{ $game->price }}</td>
                                                 <td>{{ $game->developer }}</td>
@@ -62,12 +62,8 @@
                                                         class="btn btn-primary">View</a>
                                                     <a href="/admin/game/edit/{{ $game->gameId }}"
                                                         class="btn btn-warning">Edit</a>
-                                                    <form action="/admin/game/{{ $game->gameId }}" method="POST"
-                                                        class="d-inline">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
+                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                        class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

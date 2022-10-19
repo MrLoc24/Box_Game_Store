@@ -68,7 +68,8 @@
                                 <strong><i class="fas fa-book mr-1"></i> Education</strong>
 
                                 <p class="text-muted">
-                                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                                    Total washout. You want me to build this unit, stop sending me fucking clowns. Now if
+                                    you'll excuse me, I am gonna go shoot myself in the fucking head.
                                 </p>
 
                                 <hr>

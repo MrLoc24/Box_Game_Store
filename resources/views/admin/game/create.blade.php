@@ -165,7 +165,7 @@
                                                             class="col-sm-2 col-form-label">Storage</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="storage"
-                                                                placeholder="Storage" name="winStrorage">
+                                                                placeholder="Storage" name="winStorage">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -242,51 +242,46 @@
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox1" value="Adventure">
+                                                        id="customCheckbox1" value="Adventure" name="category[]">
                                                     <label for="customCheckbox1"
                                                         class="custom-control-label">Adventure</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox2" value="MOBA">
+                                                        id="customCheckbox2" value="MOBA" name="category[]">
                                                     <label for="customCheckbox2" class="custom-control-label">MOBA</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox3" value="FPS">
+                                                        id="customCheckbox3" value="FPS" name="category[]">
                                                     <label for="customCheckbox3" class="custom-control-label">FPS</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox3" value="PvP">
-                                                    <label for="customCheckbox3" class="custom-control-label">PvP</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <!-- checkbox -->
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox4" value="PvE">
-                                                    <label for="customCheckbox1" class="custom-control-label">PvE</label>
+                                                        id="customCheckbox4" value="PvP" name="category[]">
+                                                    <label for="customCheckbox4" class="custom-control-label">PvP</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox5" value="Garden">
-                                                    <label for="customCheckbox2"
+                                                        id="customCheckbox5" value="PvE" name="category[]">
+                                                    <label for="customCheckbox5" class="custom-control-label">PvE</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox"
+                                                        id="customCheckbox6" value="Garden" name="category[]">
+                                                    <label for="customCheckbox6"
                                                         class="custom-control-label">Garden</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox6" value="Family">
-                                                    <label for="customCheckbox3"
+                                                        id="customCheckbox7" value="Family" name="category[]">
+                                                    <label for="customCheckbox7"
                                                         class="custom-control-label">Family</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox7" value="Strategic">
-                                                    <label for="customCheckbox3"
+                                                        id="customCheckbox8" value="Strategic" name="category[]">
+                                                    <label for="customCheckbox8"
                                                         class="custom-control-label">Strategic</label>
                                                 </div>
                                             </div>

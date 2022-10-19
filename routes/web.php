@@ -29,8 +29,10 @@ Route::prefix('admin')->group(function () {
 //ADMIN GAME MANAGEMENT
 Route::prefix('admin/game')->middleware('checkAdminLogin')->group(function () {
     Route::get('index', 'AdminGameController@index');
+    Route::get('view/{id}', 'AdminGameController@view');
     Route::get('create', 'AdminGameController@create');
     Route::post('create', 'AdminGameController@store');
+    Route::get('delete/{id}', 'AdminGameController@delete');
     // Route::post('create', 'ProductController@store');
     // Route::get('edit/{id}', 'ProductController@edit');
     // Route::post('edit/{id}', 'ProductController@update');
