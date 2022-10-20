@@ -103,4 +103,10 @@ class AdminGameController extends Controller
         DB::table('game')->where('gameId', $id)->delete();
         return redirect('admin/game/index')->with('success', "Delete game successfully!");
     }
+    //Edit game requirements
+    public function edit($id, $os)
+    {
+        $system_req = DB::table('system_requirement')->where(['gameId', $id], ['os', $os])->first();
+        return view('admin.game.editReq', ['system_req' => $system_req]);
+    }
 }

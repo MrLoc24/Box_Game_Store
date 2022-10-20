@@ -157,7 +157,7 @@
                                                                 <td>{{ $value->graphic }}</td>
                                                                 <td>{{ $value->storage }}</td>
                                                                 <td>
-                                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                                    <a href="/admin/game/editRequire/{{ $game->gameId }}/{{ $value->os }}"
                                                                         class="btn btn-danger">Edit</a>
                                                                 </td>
                                                             </tr>
