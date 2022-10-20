@@ -60,24 +60,6 @@ class AdminGameController extends Controller
         //Add game category
         $data_category = $request->input('category');
         //Add game system requirement
-        //Window version
-        $data_system_requirement_win = array();
-        $data_system_requirement_win['gameId'] = $name_game;
-        $data_system_requirement_win['os'] = 'Windows';
-        $data_system_requirement_win['version'] = $request->input('winOs');
-        $data_system_requirement_win['chip'] = $request->input('winChipset');
-        $data_system_requirement_win['ram'] = $request->input('winRam');
-        $data_system_requirement_win['graphic'] = $request->input('winVga');
-        $data_system_requirement_win['storage'] = $request->input('winStorage');
-        //Mac version
-        $data_system_requirement_mac = array();
-        $data_system_requirement_mac['gameId'] = $name_game;
-        $data_system_requirement_mac['os'] = 'Mac';
-        $data_system_requirement_mac['version'] = $request->input('macOs');
-        $data_system_requirement_mac['chip'] = $request->input('macChipset');
-        $data_system_requirement_mac['ram'] = $request->input('macRam');
-        $data_system_requirement_mac['graphic'] = $request->input('macVga');
-        $data_system_requirement_mac['storage'] = $request->input('macStorage');
         if ($request->all()) {
             DB::table('game')->insert($data_game);
             foreach ($data_category as $value) {
@@ -86,9 +68,16 @@ class AdminGameController extends Controller
                 $data_game_category['type'] = $value;
                 DB::table('category')->insert($data_game_category);
             }
-            DB::table('system_requirement')->insert($data_system_requirement_win);
-            DB::table('system_requirement')->insert($data_system_requirement_mac);
-            return redirect('admin/game/index');
+            $data_sys_req = array();
+            $data_sys_req['gameId'] = $name_game;
+            $data_sys_req['os'] = $request->input('os');
+            $data_sys_req['version'] = $request->input('version');
+            $data_sys_req['chip'] = $request->input('chipset');
+            $data_sys_req['ram'] = $request->input('ram');
+            $data_sys_req['graphic'] = $request->input('vga');
+            $data_sys_req['storage'] = $request->input('storage');
+            DB::table('system_requirement')->insert($data_sys_req);
+            return redirect('admin/game/view/' . $name_game);
         } else {
             return redirect('admin/game/create');
         }

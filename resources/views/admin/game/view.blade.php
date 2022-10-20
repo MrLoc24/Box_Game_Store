@@ -132,7 +132,10 @@
                             <div class="tab-pane fade" id="system-requirements" role="tabpanel"
                                 aria-labelledby="product-comments-tab">
                                 <div class="container">
+                                    <a href="/admin/game/addReq/{{ $game->gameId }}" class="btn btn-primary">Add
+                                        Platform</a>
                                     <div class="row">
+
                                         @foreach ($system_req as $sys_teq => $value)
                                             <div class="col-6">
                                                 <div class="card-body">

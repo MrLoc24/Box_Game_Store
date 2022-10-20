@@ -114,121 +114,121 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="card">
-                                        <div class="card-header p-2">
-                                            <ul class="nav nav-pills">
-
-                                                <li class="nav-item"><a class="nav-link active" href="#window"
-                                                        data-toggle="tab">Windows</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#mac"
-                                                        data-toggle="tab">Mac</a></li>
-                                            </ul>
-                                        </div><!-- /.card-header -->
                                         <div class="card-body">
+                                            {{-- <div class="tab-content" id="addOrRemove" name="sysReq[0]">
+                                                <!-- /.tab-pane -->
+                                                <div class="form-group row">
+                                                    <button type="button" name="add" id="dynamic-ar"
+                                                        class="btn btn-outline-primary">Add Platform</button>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="os" class="col-sm-2 col-form-label">OS</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="os[0]"
+                                                            placeholder="Type of Os" name="os[0]">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="version" class="col-sm-2 col-form-label">Version</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="version[0]"
+                                                            placeholder="Version" name="version[0]">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="test" class="form-control" id="chipset[0]"
+                                                            placeholder="Chipset Model" name="chipset[0]">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="memory" class="col-sm-2 col-form-label">Memory</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="ram[0]"
+                                                            placeholder="RAM" name="ram[0]">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="vga" class="col-sm-2 col-form-label">VGA</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="vga[0]"
+                                                            placeholder="Graphic Card" name="vga[0]"></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputSkills"
+                                                        class="col-sm-2 col-form-label">Storage</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="storage[0]"
+                                                            placeholder="Storage" name="storage[0]">
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div> --}}
+                                            <!-- /.tab-pane -->
                                             <div class="tab-content">
                                                 <!-- /.tab-pane -->
-                                                <div class="active tab-pane" id="window">
-
-                                                    <div class="form-group row">
-                                                        <label for="inputName" class="col-sm-2 col-form-label">Win
-                                                            OS</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="winOs"
-                                                                placeholder="Window version" name="winOs">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail"
-                                                            class="col-sm-2 col-form-label">Chipset</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="test" class="form-control" id="chipset"
-                                                                placeholder="Chipset Model" name="winChipset">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputName2"
-                                                            class="col-sm-2 col-form-label">Memory</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="ram"
-                                                                placeholder="RAM" name="winRam">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputExperience"
-                                                            class="col-sm-2 col-form-label">VGA</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="vga"
-                                                                placeholder="Graphic Card" name="winVga"></input>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputSkills"
-                                                            class="col-sm-2 col-form-label">Storage</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="storage"
-                                                                placeholder="Storage" name="winStorage">
-                                                        </div>
+                                                {{-- <div class="form-group row">
+                                                    <button type="button" name="add" id="dynamic-ar"
+                                                        class="btn btn-outline-primary">Add Platform</button>
+                                                </div> --}}
+                                                <div class="form-group row">
+                                                    <p>If you need to add more platforms, add it later, don't expect
+                                                        anything good from this shit website!!! Cyka Blyat !!!</p>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="os" class="col-sm-2 col-form-label">OS</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="os"
+                                                            placeholder="Type of Os" name="os">
                                                     </div>
                                                 </div>
-                                                <!-- /.tab-pane -->
-
-                                                <div class="tab-pane" id="mac">
-
-                                                    <div class="form-group row">
-                                                        <label for="inputName" class="col-sm-2 col-form-label">Mac
-                                                            OS</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="macOs"
-                                                                placeholder="Apple Mac version" name="macOs">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputEmail"
-                                                            class="col-sm-2 col-form-label">Chipset</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="test" class="form-control" id="macChipset"
-                                                                placeholder="Chipset Model" name="macChipset">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputName2"
-                                                            class="col-sm-2 col-form-label">Memory</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="macRam"
-                                                                placeholder="RAM" name="macRam">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputExperience"
-                                                            class="col-sm-2 col-form-label">VGA</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="macVga"
-                                                                placeholder="Graphic Card" name="macVga"></input>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputSkills"
-                                                            class="col-sm-2 col-form-label">Storage</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="macStorage"
-                                                                placeholder="Storage" name="macStorage"></input>
-                                                        </div>
+                                                <div class="form-group row">
+                                                    <label for="version" class="col-sm-2 col-form-label">Version</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="version"
+                                                            placeholder="Version" name="version">
                                                     </div>
                                                 </div>
-                                                <!-- /.tab-pane -->
+                                                <div class="form-group row">
+                                                    <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="test" class="form-control" id="chipset"
+                                                            placeholder="Chipset Model" name="chipset">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="memory" class="col-sm-2 col-form-label">Memory</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="ram"
+                                                            placeholder="RAM" name="ram">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="vga" class="col-sm-2 col-form-label">VGA</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="vga"
+                                                            placeholder="Graphic Card" name="vga"></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputSkills"
+                                                        class="col-sm-2 col-form-label">Storage</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="storage"
+                                                            placeholder="Storage" name="storage">
+                                                    </div>
+                                                </div>
+                                                <hr>
                                             </div>
-                                            <!-- /.tab-content -->
-                                        </div><!-- /.card-body -->
-                                    </div>
+                                        </div>
+                                        <!-- /.tab-content -->
+                                    </div><!-- /.card-body -->
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
+                            <!-- /.card-body -->
 
-
-
-                            <!-- general form elements disabled -->
-                            <!-- /.card -->
-                            <!-- general form elements disabled -->
                             <div class="card card-secondary">
                                 <div class="card-header">
                                     <h3 class="card-title">Catelogy</h3>
@@ -253,34 +253,95 @@
 
                                         </div>
                                     </div>
-
-
-
                                 </div>
                                 <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
-                        <!--/.col (right) -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.row -->
-                    <div class="form-row">
-                        <div class="col-12" style="margin-bottom: 10px">
-                            <button type="Submit" class="btn btn-success float-center"><i
-                                    class="far fa-credit-card"></i>
-                                Submit
-                            </button>
-                            <button type="reset" class="btn btn-danger float-center" style="margin-right: 5px;">
-                                <i class="fas fa-download"></i> Reset All
-                            </button>
-                        </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+                <div class="form-row">
+                    <div class="col-12" style="margin-bottom: 10px">
+                        <button type="Submit" class="btn btn-success float-center"><i class="far fa-credit-card"></i>
+                            Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger float-center" style="margin-right: 5px;">
+                            <i class="fas fa-download"></i> Reset All
+                        </button>
                     </div>
-                </div><!-- /.container-fluid -->
-            </form>
-        </section>
-        <!-- /.content -->
+                </div>
+    </div><!-- /.container-fluid -->
+    </form>
+    </section>
+    <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    {{-- Use to add more form in one session, but still not fingure out how to post to databse --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        var i = 0;
+        $("#dynamic-ar").click(function() {
+            ++i;
+            $("#addOrRemove").append(
+                `<br><div class="tab-content" name="sysReq[` + i + `]">
+                    <div class="form-group row">
+                        <label for="os" class="col-sm-2 col-form-label">OS</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="os[` + i + `]"
+                                placeholder="Type of Os" name="os[` + i + `]">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="version"
+                            class="col-sm-2 col-form-label">Version</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="version[` + i + `]"
+                                placeholder="Window version" name="version[` + i + `]">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="chipset"
+                            class="col-sm-2 col-form-label">Chipset</label>
+                        <div class="col-sm-10">
+                            <input type="test" class="form-control" id="chipset[` + i + `]"
+                                placeholder="Chipset Model" name="chipset[` + i + `]">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="memory"
+                            class="col-sm-2 col-form-label">Memory</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="ram[` + i + `]"
+                                placeholder="RAM" name="ram[` + i + `]">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="vga" class="col-sm-2 col-form-label">VGA</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="vga[` + i + `]"
+                                placeholder="Graphic Card" name="vga[` + i + `]"></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputSkills"
+                            class="col-sm-2 col-form-label">Storage</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="storage[` + i + `]"
+                                placeholder="Storage" name="storage[` + i + `]">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-danger" id="remove-input-field">Delete</button>
+                </form>`
+            );
+        });
+        $(document).on('click', '#remove-input-field', function() {
+
+            $(this).parent('div').remove();
+        });
+    </script> --}}
 
 @endsection
 @section('footer-script')
