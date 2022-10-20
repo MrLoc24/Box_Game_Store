@@ -32,15 +32,18 @@
                                 <img src="{{ asset("$game->icon") }}" class="product-image" alt="Product Image">
                             </div>
                             <div class="col-12 product-image-thumbs">
+                                {{-- Get icon --}}
                                 <div class="product-image-thumb active">
                                     <img src="{{ asset("$game->icon") }}" alt="icon{{ $game->gameId }}">
                                 </div>
+                                {{-- Get all image in gameplay folder --}}
                                 @foreach (File::glob($game->gameplay . '/*') as $path)
                                     <div class="product-image-thumb active"><img
                                             src="{{ asset(str_replace(public_path(), '', $path)) }}"
                                             alt="{{ str_replace(public_path(), '', $path) }}">
                                     </div>
                                 @endforeach
+
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
