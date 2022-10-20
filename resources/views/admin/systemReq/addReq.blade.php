@@ -1,5 +1,5 @@
 @extends('layouts.dashboards')
-@section('title', 'System Requirements Edit | Box Game')
+@section('title', 'System Requirements Add | Box Game')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -7,19 +7,19 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>New Game</h1>
+                        <h1>New Platform</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
-                            <li class="breadcrumb-item active">Add New Game</li>
+                            <li class="breadcrumb-item active">Add New Platform</li>
                         </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
         <section class="content">
-            <form action="{{ url("/admin/game/editReq/$system_req->gameId/$system_req->os") }}" method="POST">
+            <form method="POST" action="/admin/game/addReq/{{ $id->gameId }}">
                 @csrf
                 <div class="container-fluid">
                     <div class="row">
@@ -29,7 +29,7 @@
                             <div class="card card-primary">
 
                                 <div class="card-header">
-                                    <h3 class="card-title">Game Details</h3>
+                                    <h3 class="card-title">System Requirements</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -51,51 +51,46 @@
                                                     <label for="os" class="col-sm-2 col-form-label">OS</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="os"
-                                                            placeholder="Type of Os" name="os"
-                                                            value="{{ $system_req->os }}" readonly>
+                                                            placeholder="Type of Os" name="os">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="version" class="col-sm-2 col-form-label">Version</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="version"
-                                                            placeholder="Version" name="version"
-                                                            value="{{ $system_req->version }}">
+                                                            placeholder="Version" name="version">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
                                                     <div class="col-sm-10">
                                                         <input type="test" class="form-control" id="chipset"
-                                                            placeholder="Chipset Model" name="chipset"
-                                                            value="{{ $system_req->chip }}">
+                                                            placeholder="Chipset Model" name="chipset">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="memory" class="col-sm-2 col-form-label">Memory</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="ram"
-                                                            placeholder="RAM" name="ram" value="{{ $system_req->ram }}">
+                                                            placeholder="RAM" name="ram">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="vga" class="col-sm-2 col-form-label">VGA</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="vga"
-                                                            placeholder="Graphic Card" name="vga"
-                                                            value="{{ $system_req->graphic }}">
+                                                            placeholder="Graphic Card" name="vga">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="inputSkills" class="col-sm-2 col-form-label">Storage</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="storage"
-                                                            placeholder="Storage" name="storage"
-                                                            value="{{ $system_req->storage }}">
+                                                            placeholder="Storage" name="storage">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <button type="submit" class="btn btn-primary">UPDATE</button>
+                                                    <button type="submit" class="btn btn-primary">ADD NEW</button>
                                                 </div>
                                                 <hr>
                                             </div>

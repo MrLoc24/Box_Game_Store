@@ -160,8 +160,10 @@
                                                                 <td>{{ $value->graphic }}</td>
                                                                 <td>{{ $value->storage }}</td>
                                                                 <td>
-                                                                    <a href="/admin/game/editRequire/{{ $game->gameId }}/{{ $value->os }}"
-                                                                        class="btn btn-danger">Edit</a>
+                                                                    <a href="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                                        class="btn btn-primary">Edit</a>
+                                                                    <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                                        class="btn btn-danger">Delete</a>
                                                                 </td>
                                                             </tr>
 
