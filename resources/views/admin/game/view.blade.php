@@ -29,24 +29,18 @@
                         <div class="col-12 col-sm-6">
                             <h3 class="d-inline-block d-sm-none"></h3>
                             <div class="col-12">
-                                <img src="{{ asset('assets/dist/img/prod-1.jpg') }}" class="product-image"
-                                    alt="Product Image">
+                                <img src="{{ asset("$game->icon") }}" class="product-image" alt="Product Image">
                             </div>
                             <div class="col-12 product-image-thumbs">
-                                <div class="product-image-thumb active"><img src="{{ asset('assets/dist/img/prod-1.jpg') }}"
-                                        alt="Product Image"></div>
-                                <div class="product-image-thumb"><img src="{{ asset('assets/dist/img/prod-2.jpg') }}"
-                                        alt="Product Image">
+                                <div class="product-image-thumb active">
+                                    <img src="{{ asset("$game->icon") }}" alt="icon{{ $game->gameId }}">
                                 </div>
-                                <div class="product-image-thumb"><img src="{{ asset('assets/dist/img/prod-3.jpg') }}"
-                                        alt="Product Image">
-                                </div>
-                                <div class="product-image-thumb"><img src="{{ asset('assets/dist/img/prod-4.jpg') }}"
-                                        alt="Product Image">
-                                </div>
-                                <div class="product-image-thumb"><img src="{{ asset('assets/dist/img/prod-5.jpg') }}"
-                                        alt="Product Image">
-                                </div>
+                                @foreach (File::glob($game->gameplay . '/*') as $path)
+                                    <div class="product-image-thumb active"><img
+                                            src="{{ asset(str_replace(public_path(), '', $path)) }}"
+                                            alt="{{ str_replace(public_path(), '', $path) }}">
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
@@ -151,121 +145,97 @@
                                 erat fringilla sollicitudin ultrices vel metus. </div>
                             <div class="tab-pane fade" id="system-requirements" role="tabpanel"
                                 aria-labelledby="product-comments-tab">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6" >
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6">
                                             <div class="card-body">
-                                <table id="windowOS" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>OS</th>
-                                            <th>ChipSet</th>
-                                            <th>Memory</th>
-                                            <th>VGA</th>
-                                            <th>Storage</th>
-                                            <th>Function</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($system_req_win as $key => $game)
-                                            <tr>
-                                                
-                                                <td>{{ $game->os }}</td>
-                                                <td>{{$game ->chip}}</td>
-                                                <td>{{$game->ram}}</td>
-                                                <td>{{$game->graphic}}</td>
-                                                <td>{{ $game->storage}}</td>
-                                                
-                                                <td>
-                                                    <a href="/admin/game/view/{{ $game->gameId }}"
-                                                        class="btn btn-primary">View</a>
-                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                        class="btn btn-danger">Edit</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Icon</th>
-                                            <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Developer</th>
-                                            <th>Function</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                                            </div>
-                                            <div class="col-6" >
-                                            <div class="card-body">
-                                <table id="windowOS" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>OS</th>
-                                            <th>ChipSet</th>
-                                            <th>Memory</th>
-                                            <th>VGA</th>
-                                            <th>Storage</th>
-                                            <th>Function</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($system_req_mac as $key => $game)
-                                            <tr>
-                                                
-                                                <td>{{ $game->os }}</td>
-                                                <td>{{$game ->chip}}</td>
-                                                <td>{{$game->ram}}</td>
-                                                <td>{{$game->graphic}}</td>
-                                                <td>{{ $game->storage}}</td>
-                                                
-                                                <td>
-                                                    <a href="/admin/game/view/{{ $game->gameId }}"
-                                                        class="btn btn-primary">View</a>
-                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                        class="btn btn-danger">Edit</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Icon</th>
-                                            <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Developer</th>
-                                            <th>Function</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                                            </div>
-                                            </div>
+                                                <table id="windowOS" class="table table-bordered table-striped">
+                                                    <label for="windowOs">Window</label>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Version</th>
+                                                            <th>ChipSet</th>
+                                                            <th>Memory</th>
+                                                            <th>VGA</th>
+                                                            <th>Storage</th>
+                                                            <th>Function</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($system_req_win as $key => $game)
+                                                            <tr>
 
+                                                                <td>{{ $game->version }}</td>
+                                                                <td>{{ $game->chip }}</td>
+                                                                <td>{{ $game->ram }}</td>
+                                                                <td>{{ $game->graphic }}</td>
+                                                                <td>{{ $game->storage }}</td>
+
+                                                                <td>
+                                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                                        class="btn btn-danger">Edit</a>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card-body">
+                                                <table id="macOS" class="table table-bordered table-striped">
+                                                    <label for="macOs">Mac</label>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Version</th>
+                                                            <th>ChipSet</th>
+                                                            <th>Memory</th>
+                                                            <th>VGA</th>
+                                                            <th>Storage</th>
+                                                            <th>Function</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($system_req_mac as $key => $game)
+                                                            <tr>
+
+                                                                <td>{{ $game->version }}</td>
+                                                                <td>{{ $game->chip }}</td>
+                                                                <td>{{ $game->ram }}</td>
+                                                                <td>{{ $game->graphic }}</td>
+                                                                <td>{{ $game->storage }}</td>
+
+                                                                <td>
+                                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                                        class="btn btn-danger">Edit</a>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                
+
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="product-rating" role="tabpanel"
                                 aria-labelledby="product-rating-tab">
-                                @if (!$rating == null)
-                                    @foreach ($rating as $rate)
-                                        {{ $rate->star }}
-                                    @endforeach
-                                @else
-                                    <h3>No rating yet!!! Cyka Blyat!!!!</h3>
-                                @endif
+
+                                <h3>No rating yet!!! Cyka Blyat!!!!</h3>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
 
-        </section>
-        <!-- /.content -->
+    </section>
+    <!-- /.content -->
     </div>
 @endsection
 @section('footer-script')

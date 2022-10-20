@@ -239,52 +239,18 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <!-- checkbox -->
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox1" value="Adventure" name="category[]">
-                                                    <label for="customCheckbox1"
-                                                        class="custom-control-label">Adventure</label>
+                                            @foreach ($type as $value)
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input class="custom-control-input" type="checkbox"
+                                                            id={{ $value->id }} value="{{ $value->type }}"
+                                                            name="category[]">
+                                                        <label for="{{ $value->id }}"
+                                                            class="custom-control-label">{{ $value->type }}</label>
+                                                    </div>
                                                 </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox2" value="MOBA" name="category[]">
-                                                    <label for="customCheckbox2" class="custom-control-label">MOBA</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox3" value="FPS" name="category[]">
-                                                    <label for="customCheckbox3" class="custom-control-label">FPS</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox4" value="PvP" name="category[]">
-                                                    <label for="customCheckbox4" class="custom-control-label">PvP</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox5" value="PvE" name="category[]">
-                                                    <label for="customCheckbox5" class="custom-control-label">PvE</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox6" value="Garden" name="category[]">
-                                                    <label for="customCheckbox6"
-                                                        class="custom-control-label">Garden</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox7" value="Family" name="category[]">
-                                                    <label for="customCheckbox7"
-                                                        class="custom-control-label">Family</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox"
-                                                        id="customCheckbox8" value="Strategic" name="category[]">
-                                                    <label for="customCheckbox8"
-                                                        class="custom-control-label">Strategic</label>
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
 
