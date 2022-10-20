@@ -22,12 +22,10 @@ class AdminGameController extends Controller
     public function view($id)
     {
         $rating = DB::table('rating')->where('gameId', $id)->get();
-        $system = DB::table('system_requirement')->where('gameId', $id)->first();
         $category = DB::table('category')->where('gameId', $id)->get();
         $game = DB::table('game')->where('gameId', $id)->first();
-        $system_requirement_windows = DB::table('system_requirement')->where('gameId', $id)->where("os", "Windows")->get();
-        $system_requirement_macos = DB::table('system_requirement')->where('gameId', $id)->where("os", "mac")->get();
-        return view('admin.game.view', ['game' => $game, 'system' => $system, 'category' => $category, 'rating' => $rating, 'system_req_win' => $system_requirement_windows, 'system_req_mac' => $system_requirement_macos]);
+        $system_req = DB::table('system_requirement')->where('gameId', $id)->get();
+        return view('admin.game.view', ['game' => $game, 'category' => $category, 'rating' => $rating, 'system_req' => $system_req]);
     }
     public function store(Request $request)
     {

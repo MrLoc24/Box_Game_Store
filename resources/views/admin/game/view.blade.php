@@ -47,26 +47,18 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <h3 class="my-3">{{ str_replace('_', ' ', $game->gameId) }}</h3>
-                            <p>{{ $game->description }}</p>
-                            </p>
+                            <h1 class="my-3">{{ str_replace('_', ' ', $game->gameId) }}</h1>
 
                             <hr>
                             <h4>Available Platform</h4>
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-default text-center active">
-                                    <input type="radio" name="color_option" id="color_option_a1" autocomplete="off"
-                                        checked>
-                                    Window
-                                    <br>
-                                    <i class="fas fa-window fa-2x text-green"></i>
-                                </label>
-                                <label class="btn btn-default text-center">
-                                    <input type="radio" name="color_option" id="color_option_a2" autocomplete="off">
-                                    Mac OS
-                                    <br>
-                                    <i class="fas fa-c fa-2x text-blue"></i>
-                                </label>
+                                @foreach ($system_req as $sys_req)
+                                    <label class="btn btn-default text-center">
+                                        <input type="radio" name="color_option" id="color_option_a2" autocomplete="off">
+                                        {{ $sys_req->os }}
+                                        <br>
+                                    </label>
+                                @endforeach
                             </div>
                             <hr>
                             <h4>Developer</h4>
@@ -134,90 +126,47 @@
                         </nav>
                         <div class="tab-content p-3 w-100" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="product-desc" role="tabpanel"
-                                aria-labelledby="product-desc-tab"> Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit. Morbi vitae condimentum erat. Vestibulum ante ipsum primis in faucibus orci luctus et
-                                ultrices posuere cubilia Curae; Sed posuere, purus at efficitur hendrerit, augue elit
-                                lacinia arcu, a eleifend sem elit et nunc. Sed rutrum vestibulum est, sit amet cursus dolor
-                                fermentum vel. Suspendisse mi nibh, congue et ante et, commodo mattis lacus. Duis varius
-                                finibus purus sed venenatis. Vivamus varius metus quam, id dapibus velit mattis eu. Praesent
-                                et semper risus. Vestibulum erat erat, condimentum at elit at, bibendum placerat orci.
-                                Nullam gravida velit mauris, in pellentesque urna pellentesque viverra. Nullam non
-                                pellentesque justo, et ultricies neque. Praesent vel metus rutrum, tempus erat a, rutrum
-                                ante. Quisque interdum efficitur nunc vitae consectetur. Suspendisse venenatis, tortor non
-                                convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a
-                                erat fringilla sollicitudin ultrices vel metus. </div>
+                                aria-labelledby="product-desc-tab">
+                                <p>{{ $game->description }}</p>
+                            </div>
                             <div class="tab-pane fade" id="system-requirements" role="tabpanel"
                                 aria-labelledby="product-comments-tab">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-6">
-                                            <div class="card-body">
-                                                <table id="windowOS" class="table table-bordered table-striped">
-                                                    <label for="windowOs">Window</label>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Version</th>
-                                                            <th>ChipSet</th>
-                                                            <th>Memory</th>
-                                                            <th>VGA</th>
-                                                            <th>Storage</th>
-                                                            <th>Function</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($system_req_win as $key => $game)
+                                        @foreach ($system_req as $sys_teq => $value)
+                                            <div class="col-6">
+                                                <div class="card-body">
+                                                    <table id="{{ $value->os }}"
+                                                        class="table table-bordered table-striped">
+                                                        <label for="{{ $value->os }}">{{ $value->os }}</label>
+                                                        <thead>
                                                             <tr>
-
-                                                                <td>{{ $game->version }}</td>
-                                                                <td>{{ $game->chip }}</td>
-                                                                <td>{{ $game->ram }}</td>
-                                                                <td>{{ $game->graphic }}</td>
-                                                                <td>{{ $game->storage }}</td>
-
+                                                                <th>Version</th>
+                                                                <th>ChipSet</th>
+                                                                <th>Memory</th>
+                                                                <th>VGA</th>
+                                                                <th>Storage</th>
+                                                                <th>Function</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{ $value->version }}</td>
+                                                                <td>{{ $value->chip }}</td>
+                                                                <td>{{ $value->ram }}</td>
+                                                                <td>{{ $value->graphic }}</td>
+                                                                <td>{{ $value->storage }}</td>
                                                                 <td>
                                                                     <a href="/admin/game/delete/{{ $game->gameId }}"
                                                                         class="btn btn-danger">Edit</a>
                                                                 </td>
                                                             </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="card-body">
-                                                <table id="macOS" class="table table-bordered table-striped">
-                                                    <label for="macOs">Mac</label>
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Version</th>
-                                                            <th>ChipSet</th>
-                                                            <th>Memory</th>
-                                                            <th>VGA</th>
-                                                            <th>Storage</th>
-                                                            <th>Function</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($system_req_mac as $key => $game)
-                                                            <tr>
 
-                                                                <td>{{ $game->version }}</td>
-                                                                <td>{{ $game->chip }}</td>
-                                                                <td>{{ $game->ram }}</td>
-                                                                <td>{{ $game->graphic }}</td>
-                                                                <td>{{ $game->storage }}</td>
-
-                                                                <td>
-                                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                                        class="btn btn-danger">Edit</a>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
 
                                 </div>
