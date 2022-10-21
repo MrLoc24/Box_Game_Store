@@ -171,7 +171,7 @@
             $("#dynamic-ar").click(function() {
                 ++i;
                 $("#addOrRemove").append(
-                    `<br><div class="tab-content" name="sysReq[` + i + `]">
+                    `<div class="tab-content" name="sysReq[` + i + `]">
                     <div class="form-group row">
                         <label for="type[` + i + `]" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
