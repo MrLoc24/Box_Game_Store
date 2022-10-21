@@ -38,19 +38,60 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <!-- Type of game -->
-                                    @foreach ($type as $value)
+                                    @foreach ($type as $key => $value)
                                         <div class="form-group row">
                                             <div class="col">
                                                 <p>{{ $value->type }}</p>
                                             </div>
                                             <div class="col-md-auto">
-                                                <a href="#" class="btn btn-primary" float="left">Edit</a>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#demoModal{{ $key }}">Edit</button>
+
                                             </div>
                                             <div class="col col-lg-2">
                                                 <a href="/admin/category/delete/{{ $value->type }}" class="btn btn-danger"
                                                     float="left">Delete</a>
                                             </div>
                                         </div>
+                                        <!-- Modal Form Popup Start-->
+                                        <div class="modal fade" id="demoModal{{ $key }}" tabindex="-1"
+                                            role="dialog" aria- labelledby="demoModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form action="/admin/category/edit/{{ $value->type }}" method="post"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="demoModalLabel{{ $key }}">
+                                                                Change Game Type</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-
+                                                                label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <label for="typeEdit{{ $key }}"
+                                                                    class="col-sm-2 col-form-label">Type</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control"
+                                                                        id="typeEdit{{ $key }}"
+                                                                        placeholder="Type of Game" name="typeEdit"
+                                                                        value="{{ $value->type }}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">Save
+                                                                change</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Popup Example End-->
                                     @endforeach
 
 
@@ -83,7 +124,7 @@
                                                             class="btn btn-outline-primary">Add Type</button>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="os" class="col-sm-2 col-form-label">Type</label>
+                                                        <label for="type[0]" class="col-sm-2 col-form-label">Type</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="type[0]"
                                                                 placeholder="Type of Game" name="type[0]">
@@ -91,62 +132,7 @@
                                                     </div>
                                                     <hr>
                                                 </div>
-                                                <!-- /.tab-pane -->
-                                                {{-- <div class="tab-content">
-                                                <!-- /.tab-pane -->
-                                                {{-- <div class="form-group row">
-                                                    <button type="button" name="add" id="dynamic-ar"
-                                                        class="btn btn-outline-primary">Add Platform</button>
-                                                </div> --}}
-                                                {{-- <div class="form-group row">
-                                                    <p>If you need to add more platforms, add it later, don't expect
-                                                        anything good from this shit website!!! Cyka Blyat !!!</p>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="os" class="col-sm-2 col-form-label">OS</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="os"
-                                                            placeholder="Type of Os" name="os">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="version" class="col-sm-2 col-form-label">Version</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="version"
-                                                            placeholder="Version" name="version">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="test" class="form-control" id="chipset"
-                                                            placeholder="Chipset Model" name="chipset">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="memory" class="col-sm-2 col-form-label">Memory</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="ram"
-                                                            placeholder="RAM" name="ram">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="vga" class="col-sm-2 col-form-label">VGA</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="vga"
-                                                            placeholder="Graphic Card" name="vga"></input>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputSkills" class="col-sm-2 col-form-label">Storage</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="storage"
-                                                            placeholder="Storage" name="storage">
-                                                    </div>
-                                                </div>
-
-                                                <hr>
-                                            </div> --}}
+                                                <!-- /.tab-content -->
                                             </div>
                                             <!-- /.tab-content -->
                                         </div><!-- /.card-body -->
@@ -187,7 +173,7 @@
                 $("#addOrRemove").append(
                     `<br><div class="tab-content" name="sysReq[` + i + `]">
                     <div class="form-group row">
-                        <label for="os" class="col-sm-2 col-form-label">Type</label>
+                        <label for="type[` + i + `]" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="type[` + i + `]"
                                 placeholder="Type of Game" name="type[` + i + `]">
@@ -206,10 +192,6 @@
     </section>
 @endsection
 @section('footer-script')
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
         $(function() {

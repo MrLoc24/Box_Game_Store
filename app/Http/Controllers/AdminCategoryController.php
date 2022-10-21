@@ -23,6 +23,14 @@ class AdminCategoryController extends Controller
         }
         return redirect('admin/category/view');
     }
+    //Edit game type
+    public function edit(Request $request, $id)
+    {
+        DB::table('type')->where('type', $id)->update([
+            'type' => $request->input('typeEdit')
+        ]);
+        return redirect('admin/category/view');
+    }
     //Delete game type
     public function delete($id)
     {

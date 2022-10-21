@@ -9,12 +9,7 @@ use File;
 
 class AdminGameReqController extends Controller
 {
-    //Edit game requirements
-    public function edit($id, $os)
-    {
-        $system_req = DB::table('system_requirement')->where('gameId', $id)->where('os', $os)->first();
-        return view('admin.systemReq.editReq', ['system_req' => $system_req]);
-    }
+    //Update game requirements
     public function update($id, $os, Request $request)
     {
         $data_system_req = array();
@@ -32,11 +27,6 @@ class AdminGameReqController extends Controller
         }
     }
     //Add game requirements
-    public function add($id)
-    {
-        $id = DB::table('game')->where('gameId', $id)->first();
-        return view('admin.systemReq.addReq', ['id' => $id]);
-    }
     public function addNew($id, Request $request)
     {
         $data_system_req_add = array();

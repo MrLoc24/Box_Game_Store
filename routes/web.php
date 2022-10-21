@@ -34,9 +34,7 @@ Route::prefix('admin/game')->middleware('checkAdminLogin')->group(function () {
     Route::post('create', 'AdminGameController@store');
     Route::get('delete/{id}', 'AdminGameController@delete');
     //CRUD for system requirements
-    Route::get('editReq/{id}/{os}', 'AdminGameReqController@edit');
     Route::post('editReq/{id}/{os}', 'AdminGameReqController@update');
-    Route::get('addReq/{id}', 'AdminGameReqController@add');
     Route::post('addReq/{id}', 'AdminGameReqController@addNew');
     Route::get('deleteReq/{id}/{os}', 'AdminGameReqController@delete');
 });
@@ -45,6 +43,7 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
     Route::get('view', 'AdminCategoryController@index');
     Route::post('create', 'AdminCategoryController@store');
     Route::get('delete/{id}', 'AdminCategoryController@delete');
+    Route::post('edit/{id}', 'AdminCategoryController@edit');
     // Route::get('view/{id}', 'AdminCategoryController@view');
     // Route::get('create', 'AdminCategoryController@create');
     // Route::get('delete/{id}', 'AdminCategoryController@delete');
