@@ -87,8 +87,6 @@ class AdminGameController extends Controller
         $game = DB::table('game')->where('gameId', $id)->first();
         $path_game = public_path() . '/img/game/' . $game->gameId;
         File::deleteDirectory($path_game);
-        DB::table('category')->where('gameId', $id)->delete();
-        DB::table('system_requirement')->where('gameId', $id)->delete();
         DB::table('game')->where('gameId', $id)->delete();
         return redirect('admin/game/index')->with('success', "Delete game successfully!");
     }

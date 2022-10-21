@@ -26,7 +26,9 @@ class AdminLoginController extends Controller
         $admin = DB::table('account_admin')->where(['adminId' => $userName])->first();
         if ($admin != null && $admin->password == $password) {
             $request->session()->push("admin", $admin->name);
-            $request->session()->push("adminImg", $admin->image);
+            if ($admin->image != null) {
+                $request->session()->push("adminImg", $admin->image);
+            }
             return redirect()->route('home');
         } else {
             return view('admin.login')->with(['message' => 'Wrong username or password']);

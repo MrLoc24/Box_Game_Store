@@ -33,7 +33,7 @@
                                 <div class="text-center">
                                     @if ($admin->image == null)
                                         <img class="profile-user-img img-fluid img-circle"
-                                            src="{{ asset('img/admin/default.jpg') }}" alt="User profile picture">
+                                            src="{{ asset('img/admin/default.png') }}" alt="User profile picture">
                                     @else
                                         <img class="profile-user-img img-fluid img-circle"
                                             src="{{ asset("$admin->image") }}" alt="User profile picture">

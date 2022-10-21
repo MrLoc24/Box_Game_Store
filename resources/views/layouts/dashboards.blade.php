@@ -200,13 +200,13 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if (Session::get('adminImg') == null)
-                            <img src="{{ asset('img/admin/default.jpg') }}" class="img-circle elevation-2"
-                                alt="User Image">
-                        @else
+                        @if (Session::has('adminImg') != null)
                             @foreach (Session::get('adminImg') as $image)
-                                <img src="{{ asset("$image") }}" class="img-circle elevation-2" alt="User Image">
+                                <img src="{{ asset("$image") }}" class="img-circle elevation-2" alt="Image">
                             @endforeach
+                        @else
+                            <img src="{{ asset('img/admin/default.png') }}" class="img-circle elevation-2"
+                                alt="User Image">
                         @endif
                     </div>
                     <div class="info">
@@ -239,8 +239,6 @@
                with font-awesome or any other icon font library -->
 
                         <li class="nav-header">GAME</li>
-
-
                         <li class="nav-item">
                             <a class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
@@ -297,6 +295,38 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/examples/invoice.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View All</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/examples/profile.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Edit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/examples/e-commerce.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Nem</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-header">CATEGORY</li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Detail
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/category/view" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View All</p>
                                     </a>
