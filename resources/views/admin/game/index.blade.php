@@ -60,10 +60,39 @@
                                                 <td>
                                                     <a href="/admin/game/view/{{ $game->gameId }}"
                                                         class="btn btn-primary">View</a>
-                                                    <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                        class="btn btn-danger">Delete</a>
+                                                    {{-- <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                        class="btn btn-danger">Delete</a> --}}
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#delete{{ $game->gameId }}">Delete</button>
                                                 </td>
                                             </tr>
+                                            <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="text-center" style="color: red">WARNING !!!!!</h3>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h4>Are you sure you want to delete this game? There is no
+                                                                turning back from here !!!!</h4>
+                                                            <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
+                                                                class="rounded mx-auto d-block" alt="...">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                                class="btn btn-danger">I'm the boss</a>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">No, I'm scared</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                     <tfoot>

@@ -139,7 +139,7 @@
                                         <div class="form-row">
                                             <div class="col-12" style="margin-bottom: 10px">
                                                 <button type="Submit" class="btn btn-success float-center"><i
-                                                        class="far fa-credit-card"></i>
+                                                        class="fas fa-cloud-upload-alt"></i>
                                                     Submit
                                                 </button>
                                                 <button type="reset" class="btn btn-danger float-center"

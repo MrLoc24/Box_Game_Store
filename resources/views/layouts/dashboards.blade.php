@@ -284,6 +284,26 @@
               </li> --}}
                             </ul>
                         </li>
+                        <li class="nav-header">CATEGORY</li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-database"></i>
+                                <p>
+                                    Detail
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/category/view" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View All</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-header">CUSTOMER</li>
 
 
@@ -316,26 +336,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-header">CATEGORY</li>
 
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-database"></i>
-                                <p>
-                                    Detail
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/admin/category/view" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View All</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         {{-- ORDER nav bar start --}}
                         <li class="nav-header">ORDERS</li>
                         <li class="nav-item">
