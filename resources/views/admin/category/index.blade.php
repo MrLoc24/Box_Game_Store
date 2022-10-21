@@ -47,7 +47,8 @@
                                                 <a href="#" class="btn btn-primary" float="left">Edit</a>
                                             </div>
                                             <div class="col col-lg-2">
-                                                <a href="#" class="btn btn-danger" float="left">Delete</a>
+                                                <a href="/admin/category/delete/{{ $value->type }}" class="btn btn-danger"
+                                                    float="left">Delete</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -66,7 +67,7 @@
                         <!-- right column -->
                         <div class="col-md-6">
                             <!-- Form Element sizes -->
-                            <form action="/admin/game/create" enctype="multipart/form-data" method="POST">
+                            <form action="/admin/category/create" enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="card card-success">
                                     <div class="card-header">

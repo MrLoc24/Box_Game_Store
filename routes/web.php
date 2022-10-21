@@ -43,8 +43,9 @@ Route::prefix('admin/game')->middleware('checkAdminLogin')->group(function () {
 //ADMIN CATEGORY MANAGEMENT
 Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function () {
     Route::get('view', 'AdminCategoryController@index');
+    Route::post('create', 'AdminCategoryController@store');
+    Route::get('delete/{id}', 'AdminCategoryController@delete');
     // Route::get('view/{id}', 'AdminCategoryController@view');
     // Route::get('create', 'AdminCategoryController@create');
-    // Route::post('create', 'AdminCategoryController@store');
     // Route::get('delete/{id}', 'AdminCategoryController@delete');
 });
