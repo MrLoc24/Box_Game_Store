@@ -200,14 +200,9 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if (Session::get('adminImg') != null)
-                            @foreach (Session::get('adminImg') as $image)
-                                <img src="{{ asset("$image") }}" class="img-circle elevation-2" alt="Image">
-                            @endforeach
-                        @else
-                            <img src="{{ asset('img/admin/default.png') }}" class="img-circle elevation-2"
-                                alt="User Image">
-                        @endif
+                        @foreach (Session::get('adminImg') as $image)
+                            <img src="{{ asset("$image") }}" class="img-circle elevation-2" alt="Image">
+                        @endforeach
                     </div>
                     <div class="info">
                         <a href="/admin/home" class="d-block">
