@@ -2,6 +2,8 @@
 @section('title', 'Game Details')
 @section('content')
     <section>
+
+
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -79,12 +81,7 @@
                                 <div class="mt-4">
                                     <div class="btn btn-primary btn-lg btn-flat">
                                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                                        Add to Cart
-                                    </div>
-
-                                    <div class="btn btn-default btn-lg btn-flat">
-                                        <i class="fas fa-heart fa-lg mr-2"></i>
-                                        Add to Wishlist
+                                        Edit Details
                                     </div>
                                 </div>
                                 <div class="mt-4">
@@ -169,12 +166,45 @@
                                                                         <button type="button" class="btn btn-primary"
                                                                             data-toggle="modal"
                                                                             data-target="#demoModal{{ $value->os }}">Edit</button>
-                                                                        <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
-                                                                            class="btn btn-danger">Delete</a>
+
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-toggle="modal"
+                                                                            data-target="#delete{{ $value->os }}">Delete</button>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                        {{-- Popup Delete Message --}}
+                                                        <div class="modal fade" id="delete{{ $value->os }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="demoModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h3 class="text-center" style="color: red">WARNING
+                                                                            !!!!!</h3>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h4>Sure to delete {{ $value->os }}
+                                                                            platform!!!! I
+                                                                            give you 5 seconds to think again</h4>
+                                                                        <img src="{{ asset('img/rock-bald-head.gif') }}"
+                                                                            class="fixed-ratio-resize" alt="...">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                                            class="btn btn-danger">Sure sure why not</a>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Maybe not today</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
                                                         {{-- Modal Edit Popup --}}
                                                         <div class="modal fade" id="demoModal{{ $value->os }}"
                                                             tabindex="-1" role="dialog" aria-

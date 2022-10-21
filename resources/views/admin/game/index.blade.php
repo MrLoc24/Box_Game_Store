@@ -66,6 +66,7 @@
                                                         data-target="#delete{{ $game->gameId }}">Delete</button>
                                                 </td>
                                             </tr>
+                                            {{-- Popup delete message --}}
                                             <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
