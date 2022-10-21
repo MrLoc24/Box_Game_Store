@@ -28,6 +28,8 @@ class AdminLoginController extends Controller
             $request->session()->push("admin", $admin->name);
             if ($admin->image != null) {
                 $request->session()->push("adminImg", $admin->image);
+            } else {
+                $request->session()->push("adminImg", 'img/admin/default.png');
             }
             return redirect()->route('home');
         } else {

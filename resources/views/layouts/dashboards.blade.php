@@ -200,7 +200,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if (Session::has('adminImg') != null)
+                        @if (Session::get('adminImg') != null)
                             @foreach (Session::get('adminImg') as $image)
                                 <img src="{{ asset("$image") }}" class="img-circle elevation-2" alt="Image">
                             @endforeach
@@ -318,7 +318,7 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                                <i class="nav-icon fas fa-database"></i>
                                 <p>
                                     Detail
                                     <i class="fas fa-angle-left right"></i>
@@ -329,18 +329,6 @@
                                     <a href="/admin/category/view" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View All</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/profile.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Edit</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/examples/e-commerce.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Nem</p>
                                     </a>
                                 </li>
                             </ul>

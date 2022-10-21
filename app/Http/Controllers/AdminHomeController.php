@@ -27,12 +27,22 @@ class AdminHomeController extends Controller
             $get_name_picture = 'admin' . $id . '.jpg';
             $data['image'] = 'img/admin/' . $get_name_picture;
             $get_image->move('img/admin/', $get_name_picture);
+        } else { //
+            $data['image'] = null;
         }
         DB::table('account_admin')->where(['adminId' => $id])->update(
             $data
         );
+        $admin = DB::table('account_admin')->where(['adminId' => $id])->first();
+        if ($admin->image) {
+            session()->forget('adminImg');
+            session()->push("adminImg", $admin->image);
+        } else {
+            session()->forget('adminImg');
+            session()->push("adminImg", 'img/admin/default.png');
+        }
         session()->forget('admin');
-        session()->push("admin", $request->input('adminName'));
+        session()->push("admin", $admin->name);
         if ($request->all()) {
 
             return redirect()->route('home')->with('success', "Update product successfully!");
