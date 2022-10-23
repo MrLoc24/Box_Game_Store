@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //MAIN PAGE
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/', 'UserHomeController@index');
+Route::get('/home', 'UserHomeController@index');
 
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {

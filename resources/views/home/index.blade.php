@@ -2,44 +2,48 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                        - #HERO
-                      -->
+                                                                                                                                    - #HERO
+                                                                                                                                  -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
 
             <ul class="has-scrollbar">
+                @foreach ($game as $key => $value)
+                    @if ($value->top_page == 1)
+                        <li class="scrollbar-item carousel">
+                            <div class="hero-card has-bg-image" style="background-image: url('{{ asset("$value->icon") }}')">
 
-                <li class="scrollbar-item carousel">
-                    <div class="hero-card has-bg-image"
-                        style="background-image: url('https://cdn2.unrealengine.com/egs-fn-uncharted-carousel-desktop-1920x1080-d680d711ded5.jpg?h=1080&resize=1&w=1920')">
-
-                        <div class="card-content">
-
-                            <div class="banner-logo">
-                                <img src="https://cdn2.unrealengine.com/egs-fn-uncharted-carousel-logo-350x236-712988288146.png"
-                                    alt="">
+                                <div class="card-content">
+                                    {{-- <div class="banner-logo">
+                                        <img src="{{ asset("$value->icon") }}" alt="Banner Logo">
+                                    </div> --}}
+                                    @if ($value->price == 0)
+                                        <span class="hero-title">
+                                            PLAY NOW
+                                        </span>
+                                        <p class="hero-text">
+                                            Play {{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}
+                                        </p>
+                                        <a href="#" class="btn btn-primary">DOWNLOAD NOW FOR FREE</a>
+                                    @else
+                                        <span class="hero-title">
+                                            BUY NOW
+                                        </span>
+                                        <p class="hero-text">
+                                            Buy {{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}
+                                        </p>
+                                        <p class="price">Starting at {{ $value->price }}</p>
+                                        <a href="#" class="btn btn-primary">BUY NOW</a>
+                                    @endif
+                                </div>
                             </div>
+                        </li>
+                    @endif
+                @endforeach
 
-                            <span class="hero-title">
-                                OUT NOW
-                            </span>
 
-                            <p class="hero-text">
-                                Buy UNCHARTED™: Legacy of Thieves Collection now and receive Sully's "New" Seaplane Glider
-                                in Fortnite.
-                            </p>
-
-                            <p class="price">Starting at ₫1,159,000</p>
-
-                            <a href="#" class="btn btn-primary">BUY NOW</a>
-
-                        </div>
-
-                    </div>
-                </li>
-
-                <li class="scrollbar-item carousel">
+                {{-- <li class="scrollbar-item carousel">
                     <div class="hero-card has-bg-image"
                         style="background-image: url('https://cdn2.unrealengine.com/egs-a-plague-tale-requiem-carousel-desktop-1248x702-24c927037c03.jpg?h=1080&resize=1&w=1920')">
 
@@ -97,7 +101,7 @@
                         </div>
 
                     </div>
-                </li>
+                </li> --}}
 
                 <a class="prev" onclick="plusSlides(-1)">
                     <ion-icon name="chevron-back-circle" class="btn-pre"></ion-icon>
@@ -115,8 +119,8 @@
 
 
     <!--
-                        - #SHOP
-                      -->
+                                                                                                                                    - #SHOP
+                                                                                                                                  -->
 
     <section class="section shop" data-section>
         <div class="container shop-container swiper">
@@ -389,8 +393,8 @@
 
 
     <!--
-                        - #BLOG
-                      -->
+                                                                                                                                    - #BLOG
+                                                                                                                                  -->
 
     <section class="section blog" data-section>
         <div class="container">
@@ -467,8 +471,8 @@
 
 
     <!--
-                        - #TOP LIST
-                      -->
+                                                                                                                                    - #TOP LIST
+                                                                                                                                  -->
 
     <section class="section top-list" data-section>
 
@@ -823,8 +827,8 @@
     </section>
 
     <!--
-                        - #CATALOG
-                      -->
+                                                                                                                                    - #CATALOG
+                                                                                                                                  -->
 
     <section class="section banner" data-section>
         <div class="container">

@@ -11,6 +11,6 @@ class UserHomeController extends Controller
     public function index()
     {
         $game = DB::table('game')->get();
-        return view('user.home.index');
+        return view('home.index')->with('game', $game);
     }
 }

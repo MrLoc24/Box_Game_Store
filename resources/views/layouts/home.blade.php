@@ -244,11 +244,11 @@
                     </li>
 
                     <li>
-                        <a href="" class="footer-link">+0123 - 456 - 789</a>
+                        <a href="" class="footer-link">0393-649-927</a>
                     </li>
 
                     <li>
-                        <a href="" class="footer-link">Group4-2112E0@gmail.com</a>
+                        <a href="https://youtu.be/dQw4w9WgXcQ" class="footer-link">Group 4-T1.2112.E0</a>
                     </li>
 
                 </ul>
@@ -307,7 +307,7 @@
 
                 <div class="footer-list">
 
-                    <p class="newsletter-title">Send emails.</p>
+                    <p class="newsletter-title">Send emails</p>
 
                     <p class="newsletter-text">
                         Enter your email below to be the first to know about new collections and games.
@@ -328,7 +328,7 @@
 
                 <div class="wrapper">
                     <p class="copyright">
-                        &copy; 2022 BoxGame
+                        &copy; 2022 Box Game
                     </p>
 
                     <ul class="social-list">
