@@ -11,8 +11,9 @@ class AdminGameController extends Controller
 {
     public function index()
     {
+        $category = DB::table('category')->get();
         $games = DB::table('game')->get();
-        return view('admin.game.index', ['games' => $games]);
+        return view('admin.game.index', ['games' => $games, 'category' => $category]);
     }
     public function create()
     {
@@ -30,7 +31,7 @@ class AdminGameController extends Controller
     public function store(Request $request)
     {
         //Add new game
-        $name_game = str_replace(' ', '_', $request->input('gameName'));
+        $name_game = str_replace(':', '__', str_replace(' ', '_', $request->input('gameName')));
         $path_icon = public_path() . '/img/game/' . $name_game . '/icon';
         $path_gameplay = public_path() . '/img/game/' . $name_game . '/gameplay';
         File::makeDirectory($path_icon, 0777, true, true);
@@ -43,6 +44,24 @@ class AdminGameController extends Controller
         $data_game['developer'] = $request->input('gameDeveloper');
         $data_game['developer_web'] = $request->input('developerWebsite');
         $data_game['icon'] = $request->input('icon');
+        if ($request->input('topPage') == null) {
+            $data_game['top_page'] = 0;
+        } else {
+            $data_game['top_page'] = 1;
+        }
+
+        if ($request->input('mostPlayed') == null) {
+            $data_game['most_played'] = 0;
+        } else {
+            $data_game['most_played'] = 1;
+        }
+
+        if ($request->input('comingSoon') == null) {
+            $data_game['coming_soon'] = 0;
+        } else {
+            $data_game['coming_soon'] = 1;
+        }
+
         $getIcon = $request->file('icon');
         $getGameplay = $request->file('gameplay');
         if ($getIcon) {

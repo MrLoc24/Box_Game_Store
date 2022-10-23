@@ -44,7 +44,7 @@
                                             <th>Icon</th>
                                             <th>Name</th>
                                             <th>Price</th>
-                                            <th>Developer</th>
+                                            <th>Category</th>
                                             <th>Function</th>
                                         </tr>
                                     </thead>
@@ -53,10 +53,21 @@
                                             <tr>
                                                 <td><img src="{{ asset("$game->icon") }}" width="50px" height="50px">
                                                 </td>
-                                                <td>{{ str_replace('_', ' ', $game->gameId) }}</td>
+                                                <td>{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}</td>
                                                 {{-- $game->column name!!!!!! --}}
                                                 <td>{{ $game->price }}</td>
-                                                <td>{{ $game->developer }}</td>
+                                                <td>
+                                                    @if (isset($category))
+                                                        @foreach ($category as $key => $value)
+                                                            @if ($value->gameId === $game->gameId)
+                                                                <button aria-disabled="true"
+                                                                    class="btn btn-primary">{{ $value->type }}</button>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        N/A
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a href="/admin/game/view/{{ $game->gameId }}"
                                                         class="btn btn-primary">View</a>

@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <h1 class="my-3">{{ str_replace('_', ' ', $game->gameId) }}</h1>
+                                <h1 class="my-3">{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}</h1>
 
                                 <hr>
                                 <h4>Available Platform</h4>
@@ -71,7 +71,11 @@
 
                                 <div class="bg-gray py-2 px-3 mt-4">
                                     <h2 class="mb-0">
-                                        ${{ $game->price }}
+                                        @if ($game->price > 0)
+                                            {{ $game->price }}$
+                                        @else
+                                            Free To Play
+                                        @endif
                                     </h2>
                                     <h4 class="mt-0">
                                         <small>Sale: {{ $game->sale }}% </small>

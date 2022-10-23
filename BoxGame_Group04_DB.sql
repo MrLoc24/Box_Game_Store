@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `boxgame`.`System_requirement` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-
+ALTER TABLE `game` ADD `number_sold` INT(100) NULL AFTER `sale`, ADD `top_page` BIT(1) NULL AFTER `number_sold`, ADD `coming_soon` BIT(1) NULL AFTER `top_page`, ADD `most_played` BIT(1) NULL AFTER `coming_soon`;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -213,3 +213,38 @@ INSERT INTO `type` (`type`) VALUES ('Sandbox'), ('MOBA'), ('PvP'), ('PvE'), ('Ad
 -- Value of account_admin
 INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `status`, `phone`, `create_at`, `update_at`, `image`) VALUES ('loc', 'Mr. Ezzzz', 'loclongla1999@gmail.com', '1111', b'1', NULL, NULL, NULL, NULL);
 INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `status`, `phone`, `create_at`, `update_at`, `image`) VALUES ('admin', 'admin', 'admin@gmail.com', '1111', b'1', NULL, NULL, NULL, NULL);
+-- Game table
+INSERT INTO
+  `game` (
+    `gameId`,
+    `description`,
+    `price`,
+    `release_date`,
+    `developer`,
+    `developer_web`,
+    `icon`,
+    `top_page`,
+    `most_played`,
+    `coming_soon`,
+    `gameplay`
+  )
+VALUES
+  (
+    Uncharted_Legacy_of_Thieves,
+    Play AS Nathan Drake
+    AND Chloe Frazer IN their own standalone adventures AS they confront their pasts
+    AND forge their own legacies.This game includes the critically acclaimed single - player stories
+    FROM
+      BOTH UNCHARTED 4: A Thief ’ s
+  END
+  AND UNCHARTED: The Lost Legacy.,
+  60,
+  2022 -10 -19,
+  Naghty Dog,
+  https: / / www.naughtydog.com /,
+  img / game / Uncharted_Legacy_of_Thieves / icon / icon.jpg,
+  1,
+  0,
+  1,
+  img / game / Uncharted_Legacy_of_Thieves / gameplay /
+)
