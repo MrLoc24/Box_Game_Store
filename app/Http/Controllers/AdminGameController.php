@@ -68,15 +68,17 @@ class AdminGameController extends Controller
                 $data_game_category['type'] = $value;
                 DB::table('category')->insert($data_game_category);
             }
-            $data_sys_req = array();
-            $data_sys_req['gameId'] = $name_game;
-            $data_sys_req['os'] = $request->input('os');
-            $data_sys_req['version'] = $request->input('version');
-            $data_sys_req['chip'] = $request->input('chipset');
-            $data_sys_req['ram'] = $request->input('ram');
-            $data_sys_req['graphic'] = $request->input('vga');
-            $data_sys_req['storage'] = $request->input('storage');
-            DB::table('system_requirement')->insert($data_sys_req);
+            foreach ($request->input('os') as $key => $value) {
+                $data_sys_req = array();
+                $data_sys_req['gameId'] = $name_game;
+                $data_sys_req['os'] = $request->input('os')[$key];
+                $data_sys_req['version'] = $request->input('version')[$key];
+                $data_sys_req['chip'] = $request->input('chipset')[$key];
+                $data_sys_req['ram'] = $request->input('ram')[$key];
+                $data_sys_req['graphic'] = $request->input('vga')[$key];
+                $data_sys_req['storage'] = $request->input('storage')[$key];
+                DB::table('system_requirement')->insert($data_sys_req);
+            }
             return redirect('admin/game/view/' . $name_game);
         } else {
             return redirect('admin/game/create');
