@@ -79,7 +79,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h4>Are you sure you want to delete this game? There is no
+                                                            <h4>Wanna delete this game? There is no
                                                                 turning back from here !!!!</h4>
                                                             <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
                                                                 class="rounded mx-auto d-block" alt="...">
