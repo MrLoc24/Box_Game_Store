@@ -19,15 +19,19 @@ USE `boxgame` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `boxgame`.`game` (
   `gameId` VARCHAR(45) NOT NULL,
-  `price` INT NOT NULL,
-  `description` VARCHAR(500) NOT NULL,
-  `icon` VARCHAR(45) NOT NULL,
-  `gameplay` VARCHAR(45) NOT NULL,
+  `price` FLOAT NOT NULL,
+  `description` VARCHAR(1000) NOT NULL,
+  `icon` VARCHAR(100) NOT NULL,
+  `gameplay` VARCHAR(100) NOT NULL,
   `release_date` DATETIME NOT NULL,
   `developer` VARCHAR(45) NOT NULL,
-  `developer_web` VARCHAR(45) NULL,
+  `developer_web` VARCHAR(100) NULL,
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sale` INT NULL DEFAULT 0,
+  `number_sold` INT(100) DEFAULT 0,
+  `top_page` BIT DEFAULT NULL,
+  `most_played` BIT DEFAULT NULL,
+  `coming_soon` BIT DEFAULT NULL,
   PRIMARY KEY (`gameId`))
 ENGINE = InnoDB;
 
@@ -191,8 +195,8 @@ CREATE TABLE IF NOT EXISTS `boxgame`.`System_requirement` (
   `version` VARCHAR(45) NOT NULL,
   `storage` VARCHAR(45) NOT NULL,
   `ram` VARCHAR(45) NOT NULL,
-  `chip` VARCHAR(45) NOT NULL,
-  `graphic` VARCHAR(45) NULL,
+  `chip` VARCHAR(100) NOT NULL,
+  `graphic` VARCHAR(200) NULL,
   `internet` VARCHAR(45) NULL,
   PRIMARY KEY (`sysId`),
   CONSTRAINT `game_sys_re`
@@ -242,9 +246,9 @@ VALUES
   2022 -10 -19,
   Naghty Dog,
   https: / / www.naughtydog.com /,
-  img / game / Uncharted_Legacy_of_Thieves / icon / icon.jpg,
+  img / game / Uncharted___Legacy_of_Thieves / icon / icon.jpg,
   1,
   0,
   1,
-  img / game / Uncharted_Legacy_of_Thieves / gameplay /
+  img / game / Uncharted___Legacy_of_Thieves / gameplay /
 )

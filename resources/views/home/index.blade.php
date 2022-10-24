@@ -2,8 +2,8 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                                                                                                                                    - #HERO
-                                                                                                                                  -->
+                                                                                                                                                                                                                                                                                - #HERO
+                                                                                                                                                                                                                                                                              -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
@@ -119,8 +119,8 @@
 
 
     <!--
-                                                                                                                                    - #SHOP
-                                                                                                                                  -->
+                                                                                                                                                                                                                                                                                - #SHOP
+                                                                                                                                                                                                                                                                              -->
 
     <section class="section shop" data-section>
         <div class="container shop-container swiper">
@@ -133,8 +133,53 @@
             <div class="swiper-button-prev swiper-btn"></div>
 
             <div class="swiper-wrapper">
+                @foreach ($game as $key => $value)
+                    @if ($value->sale > 0)
+                        <div class="swiper-slide">
+                            <div class="shop-card">
 
-                <div class="swiper-slide">
+                                <a href="" class="card-banner">
+                                    <img src="{{ asset("$value->icon") }}" width="400" height="600" loading="lazy"
+                                        alt="Facial cleanser" class="img-cover">
+
+                                    <span class="badge" aria-label="20% off">{{ $value->sale }}%</span>
+
+                                    <div class="card-actions">
+
+                                        <button class="action-btn">
+                                            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+
+                                        <button class="action-btn">
+                                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                                        </button>
+
+                                    </div>
+                                </a>
+
+                                <div class="card-content">
+
+                                    <span class="card-type">BASE GAME</span>
+
+                                    <h3>
+                                        <a href="#"
+                                            class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
+                                    </h3>
+
+                                    <div class="price">
+                                        <del class="del">${{ $value->price }}</del>
+
+                                        <span
+                                            class="span">${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+                {{-- <div class="swiper-slide">
                     <div class="shop-card">
 
                         <a href="" class="card-banner">
@@ -381,7 +426,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
@@ -393,10 +438,10 @@
 
 
     <!--
-                                                                                                                                    - #BLOG
-                                                                                                                                  -->
+                                                                                                                                                                                                                                                                                - #BLOG
+                                                                                                                                                                                                                                                                              -->
 
-    <section class="section blog" data-section>
+    {{-- <section class="section blog" data-section>
         <div class="container">
 
             <ul class="flex-list">
@@ -464,15 +509,15 @@
             </ul>
 
         </div>
-    </section>
+    </section> --}}
 
 
 
 
 
     <!--
-                                                                                                                                    - #TOP LIST
-                                                                                                                                  -->
+                                                                                                                                                                                                                                                                                - #TOP LIST
+                                                                                                                                                                                                                                                                              -->
 
     <section class="section top-list" data-section>
 
@@ -595,117 +640,128 @@
                     </div>
 
                 </div>
-
+                {{-- Most Played --}}
                 <div class="product-showcase flex-item">
 
                     <div class="product-tag">
                         <h3 class="h3 tag">Most Played</h3>
                         <button class="tag-btn">VIEW MORE</button>
                     </div>
-
                     <div class="showcase-wrapper">
 
                         <div class="showcase-container">
+                            @foreach ($game as $key => $value)
+                                @if ($value->most_played == 1)
+                                    <div class="showcase">
 
-                            <div class="showcase">
+                                        <a href="#" class="showcase-img-box">
+                                            <img src="{{ asset("$value->icon") }}"
+                                                alt="relaxed
+                                                short full sleeve t-shirt"
+                                                width="70" class="showcase-img">
+                                        </a>
 
-                                <a href="#" class="showcase-img-box">
-                                    <img src="https://cdn1.epicgames.com/offer/8b2d6cf2b45b41f1abe91bc5b7c1e8f9/EGS_UNCHARTEDLegacyofThievesCollection_NaughtyDogLLC_S2_1200x1600-6d81cdaf0ca5c5e1cf9f9f32a92f4b14?h=480&resize=1&w=360"
-                                        alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
-                                </a>
+                                        <div class="showcase-content">
 
-                                <div class="showcase-content">
+                                            <h4 class="showcase-title">
+                                                {{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</h4>
 
-                                    <h4 class="showcase-title">UNCHARTED™: Legacy of Thieves Collection</h4>
+                                            <div class="price-box">
+                                                @if ($value->price)
+                                                    <p class="price">{{ $value->price }}</p>
+                                                @else
+                                                    <p class="price">Free</p>
+                                                @endif
+                                            </div>
 
-                                    <div class="price-box">
-                                        <p class="price">Free</p>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                    {{-- <div class="showcase">
 
-                            </div>
+                                        <a href="#" class="showcase-img-box">
+                                            <img src="https://cdn1.epicgames.com/spt-assets/2b1f8bb2c5f941898b2a6455c77ea176/download-terror-of-hemasaurus-offer-13uc5.jpg?h=480&resize=1&w=360"
+                                                alt="relaxed short full sleeve t-shirt" width="70"
+                                                class="showcase-img">
+                                        </a>
 
-                            <div class="showcase">
+                                        <div class="showcase-content">
 
-                                <a href="#" class="showcase-img-box">
-                                    <img src="https://cdn1.epicgames.com/spt-assets/2b1f8bb2c5f941898b2a6455c77ea176/download-terror-of-hemasaurus-offer-13uc5.jpg?h=480&resize=1&w=360"
-                                        alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
-                                </a>
+                                            <h4 class="showcase-title">Terror of Hemasaurus</h4>
 
-                                <div class="showcase-content">
+                                            <div class="price-box">
+                                                <p class="price">Free</p>
+                                            </div>
 
-                                    <h4 class="showcase-title">Terror of Hemasaurus</h4>
+                                        </div>
 
-                                    <div class="price-box">
-                                        <p class="price">Free</p>
                                     </div>
 
-                                </div>
+                                    <div class="showcase">
 
-                            </div>
+                                        <a href="#" class="showcase-img-box">
+                                            <img src="https://cdn1.epicgames.com/spt-assets/64562ac3f12747e783c6153cfa30d3ad/download-trifox-offer-v26k4.jpg?h=480&resize=1&w=360"
+                                                alt="relaxed short full sleeve t-shirt" width="70"
+                                                class="showcase-img">
+                                        </a>
 
-                            <div class="showcase">
+                                        <div class="showcase-content">
 
-                                <a href="#" class="showcase-img-box">
-                                    <img src="https://cdn1.epicgames.com/spt-assets/64562ac3f12747e783c6153cfa30d3ad/download-trifox-offer-v26k4.jpg?h=480&resize=1&w=360"
-                                        alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
-                                </a>
+                                            <h4 class="showcase-title">Trifox</h4>
 
-                                <div class="showcase-content">
+                                            <div class="price-box">
+                                                <p class="price">$45.00</p>
+                                            </div>
 
-                                    <h4 class="showcase-title">Trifox</h4>
+                                        </div>
 
-                                    <div class="price-box">
-                                        <p class="price">$45.00</p>
                                     </div>
 
-                                </div>
+                                    <div class="showcase">
 
-                            </div>
+                                        <a href="#" class="showcase-img-box">
+                                            <img src="https://cdn1.epicgames.com/spt-assets/6dbfe35a26c1465cb72df1f5c0773d86/zelter-1fg78.png?h=480&resize=1&w=360"
+                                                alt="relaxed short full sleeve t-shirt" width="70"
+                                                class="showcase-img">
+                                        </a>
 
-                            <div class="showcase">
+                                        <div class="showcase-content">
 
-                                <a href="#" class="showcase-img-box">
-                                    <img src="https://cdn1.epicgames.com/spt-assets/6dbfe35a26c1465cb72df1f5c0773d86/zelter-1fg78.png?h=480&resize=1&w=360"
-                                        alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
-                                </a>
+                                            <h4 class="showcase-title">Zelter</h4>
 
-                                <div class="showcase-content">
+                                            <div class="price-box">
+                                                <p class="price">$45.00</p>
+                                            </div>
 
-                                    <h4 class="showcase-title">Zelter</h4>
+                                        </div>
 
-                                    <div class="price-box">
-                                        <p class="price">$45.00</p>
                                     </div>
 
-                                </div>
+                                    <div class="showcase">
 
-                            </div>
+                                        <a href="#" class="showcase-img-box">
+                                            <img src="https://cdn1.epicgames.com/fcefd39bedb14d6282fe2ac41edbd5f8/offer/EGS_TheJackboxPartyPack7_JackboxGamesInc_S6-1200x1600-4f431f2e11a3af78ca262c1164e22e45.jpg?h=480&resize=1&w=360"
+                                                alt="relaxed short full sleeve t-shirt" width="70"
+                                                class="showcase-img">
+                                        </a>
 
-                            <div class="showcase">
+                                        <div class="showcase-content">
 
-                                <a href="#" class="showcase-img-box">
-                                    <img src="https://cdn1.epicgames.com/fcefd39bedb14d6282fe2ac41edbd5f8/offer/EGS_TheJackboxPartyPack7_JackboxGamesInc_S6-1200x1600-4f431f2e11a3af78ca262c1164e22e45.jpg?h=480&resize=1&w=360"
-                                        alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
-                                </a>
+                                            <h4 class="showcase-title">The Jackbox Party Pack 7</h4>
 
-                                <div class="showcase-content">
+                                            <div class="price-box">
+                                                <p class="price">Free</p>
+                                            </div>
 
-                                    <h4 class="showcase-title">The Jackbox Party Pack 7</h4>
+                                        </div>
 
-                                    <div class="price-box">
-                                        <p class="price">Free</p>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
+                                    </div> --}}
+                                @endif
+                            @endforeach
                         </div>
 
                     </div>
-
                 </div>
 
                 <div class="product-showcase flex-item">
@@ -827,8 +883,8 @@
     </section>
 
     <!--
-                                                                                                                                    - #CATALOG
-                                                                                                                                  -->
+                                                                                                                                                                                                                                                                                - #CATALOG
+                                                                                                                                                                                                                                                                              -->
 
     <section class="section banner" data-section>
         <div class="container">

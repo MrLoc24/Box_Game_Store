@@ -39,42 +39,47 @@
 
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Game Name</label>
+                                            <label for="name">Game Name</label>
                                             <input type="text" class="form-control" name="gameName" id="name"
                                                 placeholder="Enter Name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Price</label>
-                                            <input type="number" class="form-control" id="price" name="gamePrice"
-                                                placeholder="Price">
+                                            <label for="price">Price</label>
+                                            <input type="number" step="0.01" min='0' class="form-control"
+                                                id="price" name="gamePrice" placeholder="Price">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Description</label>
+                                            <label for="sale">Sale</label>
+                                            <input type="number" min='0' class="form-control" id="sale"
+                                                name="sale" placeholder="Sale Percent">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
                                             <textarea rows="5" type="text" class="form-control" id="description" name="gameDescription"
                                                 placeholder="Description"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Release Date</label>
+                                            <label for="date">Release Date</label>
                                             <input type="date" class="form-control" id="date" name="gameDate"
-                                                placeholder="Description">
+                                                placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Developer</label>
-                                            <input type="text" class="form-control" id="publisher"
+                                            <label for="developer">Developer</label>
+                                            <input type="text" class="form-control" id="developer"
                                                 placeholder="Developer" name="gameDeveloper">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Publisher Website</label>
+                                            <label for="developer_website">Developer Website</label>
                                             <input type="text" class="form-control" id="developer_website"
                                                 placeholder="developer Website" name="developerWebsite">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Picture Icon</label>
+                                            <label for="icone">Picture Icon</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="icon"
                                                         name="icon">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
+                                                    <label class="custom-file-label" for="icon">Choose
                                                         file</label>
                                                 </div>
                                                 <div class="input-group-append">
@@ -83,12 +88,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Gameplay Image</label>
+                                            <label for="gameplay">Gameplay Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="exampleInputFile"
-                                                        multiple name="gameplay[]">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose multiple
+                                                    <input type="file" class="custom-file-input" id="gameplay" multiple
+                                                        name="gameplay[]">
+                                                    <label class="custom-file-label" for="gameplay">Choose multiple
                                                         file</label>
                                                 </div>
                                                 <div class="input-group-append">

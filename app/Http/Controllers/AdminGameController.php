@@ -40,6 +40,7 @@ class AdminGameController extends Controller
         $data_game['gameId'] = $name_game;
         $data_game['description'] = $request->input('gameDescription');
         $data_game['price'] = $request->input('gamePrice');
+        $data_game['sale'] = $request->input('sale');
         $data_game['release_date'] = $request->input('gameDate');
         $data_game['developer'] = $request->input('gameDeveloper');
         $data_game['developer_web'] = $request->input('developerWebsite');
@@ -49,13 +50,11 @@ class AdminGameController extends Controller
         } else {
             $data_game['top_page'] = 1;
         }
-
         if ($request->input('mostPlayed') == null) {
             $data_game['most_played'] = 0;
         } else {
             $data_game['most_played'] = 1;
         }
-
         if ($request->input('comingSoon') == null) {
             $data_game['coming_soon'] = 0;
         } else {
