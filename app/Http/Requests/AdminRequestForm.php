@@ -27,19 +27,15 @@ class AdminRequestForm extends FormRequest
             'loginName' => 'required|bail',
             'adminEmail' => 'required|bail',
             'adminName' => 'required|bail',
-            'adminPassword' => 'required|bail|min:4',
             // 'picture'=> 'required|bail',
         ];
     }
     public function messages()
     {
         return [
-            'loginName.required' => '* Product Name cannot blank',
-            // 'txtname.unique'=> '* Product Name must be unique !',
-            'adminName.required' => '* Manufacturer cannot blank',
-            'adminEmail.required' => '* Sale Price must be numeric',
-            // 'picture.required'=> '* Product picture cannot blank',
-            'adminPassword.required' => '* Password cannot blank',
+            'loginName.required' => '* Login naame cannot blank',
+            'adminName.required' => '* Display name cannot blank',
+            'adminEmail.required' => '* Email cannot blank',
         ];
     }
 }

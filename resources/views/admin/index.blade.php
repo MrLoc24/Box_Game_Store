@@ -113,15 +113,18 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
 
-                                    <li class="nav-item"><a class="nav-link active" href="#settings"
-                                            data-toggle="tab">Edit</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#edit" data-toggle="tab">Edit
+                                            Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#password" data-toggle="tab">Change
+                                            Password</a>
+                                    </li>
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
 
-
-                                    <div class="active tab-pane" id="settings">
+                                    {{-- Edit Profile --}}
+                                    <div class="active tab-pane" id="edit">
                                         <form class="form-horizontal" method="post"
                                             action="/admin/home/{{ $admin->adminId }}" enctype="multipart/form-data">
                                             @csrf
@@ -156,16 +159,6 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputName2" class="col-sm-2 col-form-label">Password</label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" name="adminPassword" class="form-control"
-                                                        id="inputPassword" placeholder="Password">
-                                                </div>
-                                                @error('adminPassword')
-                                                    <p class="text-danger"><strong>{{ $message }}</strong></p>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group row">
                                                 <label for="inputName2" class="col-sm-2 col-form-label">Picture</label>
                                                 <div class="col-sm-10">
                                                     <input type="file" name="adminPicture" class="form-control"
@@ -188,6 +181,57 @@
                                                 <button type="reset" class="btn btn-danger float-left"
                                                     style="margin-left: 3px">Reset</button>
 
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    {{-- Edit Profile --}}
+                                    <div class="tab-pane" id="password">
+                                        <form class="form-horizontal" method="post"
+                                            action="/admin/changePass/{{ $admin->adminId }}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group row">
+                                                <label for="inputPasswordOld" class="col-sm-2 col-form-label">Old
+                                                    Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="adminPassword" class="form-control"
+                                                        id="inputPasswordOld" placeholder="Old Password">
+                                                </div>
+                                                @error('adminPassword')
+                                                    <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="inputPasswordNew" class="col-sm-2 col-form-label">New
+                                                    Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="adminPasswordNew" class="form-control"
+                                                        id="inputPasswordNew" placeholder="New Password">
+                                                </div>
+                                                @error('adminPassword')
+                                                    <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="adminPasswordRetype" class="col-sm-2 col-form-label">Retype
+                                                    Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="adminPasswordRetype"
+                                                        class="form-control" id="adminPasswordRetype"
+                                                        placeholder="Retype Password">
+                                                </div>
+                                                @error('adminPassword')
+                                                    <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                @enderror
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <input type="submit" class="btn btn-success float-left"
+                                                    value="Change Password"></input>
+                                                <button type="reset" class="btn btn-danger float-left"
+                                                    style="margin-left: 3px">Reset</button>
                                             </div>
                                         </form>
                                     </div>

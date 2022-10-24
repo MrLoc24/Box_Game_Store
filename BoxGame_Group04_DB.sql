@@ -329,6 +329,8 @@ ALTER TABLE `type`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`);
 
+ALTER TABLE `user` ADD `remember_token` VARCHAR(45) NULL AFTER `password`;
+
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --

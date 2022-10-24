@@ -23,6 +23,7 @@ Route::prefix('admin')->group(function () {
     Route::get('logout', 'AdminLoginController@logout');
     Route::get('home', 'AdminHomeController@index')->name('home')->middleware('checkAdminLogin');
     Route::post('home/{id}', 'AdminHomeController@update');
+    Route::post('changePass/{id}', 'AdminHomeController@changePass')->middleware('checkAdminLogin');
 });
 //name('home') for redirect()->route('home') in AdminLoginController, or can redirect directly by redirect('admin/home') but not recommend
 //ADMIN GAME MANAGEMENT

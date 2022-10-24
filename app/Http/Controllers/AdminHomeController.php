@@ -17,11 +17,9 @@ class AdminHomeController extends Controller
     public function update(AdminRequestForm $request, $id)
     {
         $data = array();
-
         $data['adminId'] = $request->input('loginName');
         $data['email'] = $request->input('adminEmail');
         $data['name'] = $request->input('adminName');
-        $data['password'] = $request->input('adminPassword');
         $get_image = $request->file('adminPicture');
         if ($get_image) {
             $get_name_picture = 'admin' . $id . '.jpg';
@@ -48,6 +46,24 @@ class AdminHomeController extends Controller
             return redirect()->route('home')->with('success', "Update product successfully!");
         } else {
             return redirect()->route('home')->with('error', "Update product failed!");
+        }
+    }
+    // Change password
+    public function changePass(Request $request, $id)
+    {
+        $data = array();
+        $data['password'] = $request->input('adminPasswordNew');
+        $admin = DB::table('account_admin')->where(['adminId' => $id])->first();
+        if ($request->input('adminPassword') == $admin->password) {
+            // Check password new
+            if ($request->input('adminPasswordRetype') == $data['password']) {
+                DB::table('account_admin')->where(['adminId' => $id])->update(
+                    $data
+                );
+                $request->session()->forget('admin');
+                return redirect('/admin');
+            }
+            return redirect()->route('home')->with('error', "Retype password incorrect!");
         }
     }
 }
