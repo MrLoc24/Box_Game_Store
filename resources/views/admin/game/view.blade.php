@@ -140,203 +140,189 @@
                                 </div>
                                 <div class="tab-pane fade" id="system-requirements" role="tabpanel"
                                     aria-labelledby="product-comments-tab">
-                                    <div class="container">
-                                        {{-- <a href="/admin/game/addReq/{{ $game->gameId }}" class="btn btn-primary">Add
+
+                                    {{-- <a href="/admin/game/addReq/{{ $game->gameId }}" class="btn btn-primary">Add
                                         Platform</a> --}}
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#addPlatform">Add Platform</button>
-                                        <div class="card-body">
-                                            <table id="example1" class="table table-bordered table-striped">
-                                                <thead>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addPlatform">Add Platform</button>
+                                    <div class="tab-content">
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>OS</th>
+                                                    <th>Version</th>
+                                                    <th>ChipSet</th>
+                                                    <th>Memory</th>
+                                                    <th>VGA</th>
+                                                    <th>Storage</th>
+                                                    <th>Function</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($system_req as $sys_teq => $value)
                                                     <tr>
-                                                        <th>OS</th>
-                                                        <th>Version</th>
-                                                        <th>ChipSet</th>
-                                                        <th>Memory</th>
-                                                        <th>VGA</th>
-                                                        <th>Storage</th>
-                                                        <th>Function</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($system_req as $sys_teq => $value)
-                                                        <tr>
-                                                            <td>{{ $value->os }}</td>
-                                                            <td>{{ $value->version }}</td>
-                                                            <td>{{ $value->chip }}</td>
-                                                            <td>{{ $value->ram }}</td>
-                                                            <td>{{ $value->graphic }}</td>
-                                                            <td>{{ $value->storage }}</td>
-                                                            <td>
-                                                                {{-- <a href="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                        <td>{{ $value->os }}</td>
+                                                        <td>{{ $value->version }}</td>
+                                                        <td>{{ $value->chip }}</td>
+                                                        <td>{{ $value->ram }}</td>
+                                                        <td>{{ $value->graphic }}</td>
+                                                        <td>{{ $value->storage }}</td>
+                                                        <td>
+                                                            {{-- <a href="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
                                                                         class="btn btn-primary">Edit</a> --}}
-                                                                <button type="button" class="btn btn-primary"
-                                                                    data-toggle="modal"
-                                                                    data-target="#demoModal{{ $value->os }}">Edit</button>
+                                                            <button type="button" class="btn btn-primary"
+                                                                data-toggle="modal"
+                                                                data-target="#demoModal{{ $value->os }}">Edit</button>
 
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-toggle="modal"
-                                                                    data-target="#delete{{ $value->os }}">Delete</button>
-                                                            </td>
-                                                        </tr>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-toggle="modal"
+                                                                data-target="#delete{{ $value->os }}">Delete</button>
+                                                        </td>
+                                                    </tr>
 
-                                                        {{-- Popup Delete Message --}}
-                                                        <div class="modal fade" id="delete{{ $value->os }}"
-                                                            tabindex="-1" role="dialog"
-                                                            aria-labelledby="demoModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
+                                                    {{-- Popup Delete Message --}}
+                                                    <div class="modal fade" id="delete{{ $value->os }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="demoModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="text-center" style="color: red">WARNING
+                                                                        !!!!!</h3>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h4>Sure to delete {{ $value->os }}
+                                                                        platform!!!! I
+                                                                        give you 5 seconds to think again</h4>
+                                                                    <img src="{{ asset('img/rock-bald-head.gif') }}"
+                                                                        class="fixed-ratio-resize" alt="...">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                                        class="btn btn-danger">Sure sure why
+                                                                        not</a>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Maybe not
+                                                                        today</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    {{-- Modal Edit Popup --}}
+                                                    <div class="modal fade" id="demoModal{{ $value->os }}"
+                                                        tabindex="-1" role="dialog" aria- labelledby="demoModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <form
+                                                                action="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                                method="post" enctype="multipart/form-data">
+                                                                @csrf
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h3 class="text-center" style="color: red">WARNING
-                                                                            !!!!!</h3>
+                                                                        <h5 class="modal-title"
+                                                                            id="demoModalLabel{{ $value->os }}">
+                                                                            Edit Game Requirements for
+                                                                            {{ $value->os }}
+                                                                        </h5>
                                                                         <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            data-dismiss="modal" aria- label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <h4>Sure to delete {{ $value->os }}
-                                                                            platform!!!! I
-                                                                            give you 5 seconds to think again</h4>
-                                                                        <img src="{{ asset('img/rock-bald-head.gif') }}"
-                                                                            class="fixed-ratio-resize" alt="...">
+                                                                        <div class="form-group row">
+                                                                            <p>If you need to add more
+                                                                                platforms, add it
+                                                                                later, don't expect
+                                                                                anything good from this shit
+                                                                                website!!!
+                                                                                Cyka
+                                                                                Blyat !!!</p>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="os"
+                                                                                class="col-sm-2 col-form-label">OS</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="os"
+                                                                                    placeholder="Type of Os"
+                                                                                    name="os"
+                                                                                    value="{{ $value->os }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="version"
+                                                                                class="col-sm-2 col-form-label">Version</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="version" placeholder="Version"
+                                                                                    name="version"
+                                                                                    value="{{ $value->version }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="chipset"
+                                                                                class="col-sm-2 col-form-label">Chipset</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="test" class="form-control"
+                                                                                    id="chipset"
+                                                                                    placeholder="Chipset Model"
+                                                                                    name="chipset"
+                                                                                    value="{{ $value->chip }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="memory"
+                                                                                class="col-sm-2 col-form-label">Memory</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="ram" placeholder="RAM"
+                                                                                    name="ram"
+                                                                                    value="{{ $value->ram }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="vga"
+                                                                                class="col-sm-2 col-form-label">VGA</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="vga"
+                                                                                    placeholder="Graphic Card"
+                                                                                    name="vga"
+                                                                                    value="{{ $value->graphic }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="inputSkills"
+                                                                                class="col-sm-2 col-form-label">Storage</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="storage" placeholder="Storage"
+                                                                                    name="storage"
+                                                                                    value="{{ $value->storage }}">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
-                                                                            class="btn btn-danger">Sure sure why
-                                                                            not</a>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Save
+                                                                            change</button>
                                                                         <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Maybe not
-                                                                            today</button>
+                                                                            data-dismiss="modal">Close</button>
                                                                     </div>
                                                                 </div>
-
-                                                            </div>
+                                                            </form>
                                                         </div>
-                                                        {{-- Modal Edit Popup --}}
-                                                        <div class="modal fade" id="demoModal{{ $value->os }}"
-                                                            tabindex="-1" role="dialog" aria-
-                                                            labelledby="demoModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <form
-                                                                    action="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
-                                                                    method="post" enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title"
-                                                                                id="demoModalLabel{{ $value->os }}">
-                                                                                Edit Game Requirements for
-                                                                                {{ $value->os }}
-                                                                            </h5>
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal" aria- label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="form-group row">
-                                                                                <p>If you need to add more
-                                                                                    platforms, add it
-                                                                                    later, don't expect
-                                                                                    anything good from this shit
-                                                                                    website!!!
-                                                                                    Cyka
-                                                                                    Blyat !!!</p>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="os"
-                                                                                    class="col-sm-2 col-form-label">OS</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        id="os"
-                                                                                        placeholder="Type of Os"
-                                                                                        name="os"
-                                                                                        value="{{ $value->os }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="version"
-                                                                                    class="col-sm-2 col-form-label">Version</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        id="version"
-                                                                                        placeholder="Version"
-                                                                                        name="version"
-                                                                                        value="{{ $value->version }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="chipset"
-                                                                                    class="col-sm-2 col-form-label">Chipset</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="test"
-                                                                                        class="form-control"
-                                                                                        id="chipset"
-                                                                                        placeholder="Chipset Model"
-                                                                                        name="chipset"
-                                                                                        value="{{ $value->chip }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="memory"
-                                                                                    class="col-sm-2 col-form-label">Memory</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        id="ram" placeholder="RAM"
-                                                                                        name="ram"
-                                                                                        value="{{ $value->ram }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="vga"
-                                                                                    class="col-sm-2 col-form-label">VGA</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        id="vga"
-                                                                                        placeholder="Graphic Card"
-                                                                                        name="vga"
-                                                                                        value="{{ $value->graphic }}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group row">
-                                                                                <label for="inputSkills"
-                                                                                    class="col-sm-2 col-form-label">Storage</label>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        id="storage"
-                                                                                        placeholder="Storage"
-                                                                                        name="storage"
-                                                                                        value="{{ $value->storage }}">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary">Save
-                                                                                change</button>
-                                                                            <button type="button"
-                                                                                class="btn btn-secondary"
-                                                                                data-dismiss="modal">Close</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
-
-
-
-
 
                                 </div>
                                 <div class="tab-pane fade" id="product-rating" role="tabpanel"
