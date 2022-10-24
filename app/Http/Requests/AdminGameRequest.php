@@ -35,10 +35,8 @@ class AdminGameRequest extends FormRequest
     {
         return [
             'loginName.required' => '* Lo Name cannot blank',
-            // 'txtname.unique'=> '* Product Name must be unique !',
             'adminName.required' => '* Manufacturer cannot blank',
             'adminEmail.required' => '* Sale Price must be numeric',
-            // 'picture.required'=> '* Product picture cannot blank',
             'adminPassword.required' => '* Password cannot blank',
         ];
     }

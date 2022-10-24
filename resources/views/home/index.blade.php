@@ -2,8 +2,8 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                                                                                                                                                                                                                                                                                - #HERO
-                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                            - #HERO
+                                                                                                                                                                                                                                                                                          -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
@@ -119,8 +119,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                - #SHOP
-                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                            - #SHOP
+                                                                                                                                                                                                                                                                                          -->
 
     <section class="section shop" data-section>
         <div class="container shop-container swiper">
@@ -139,8 +139,9 @@
                             <div class="shop-card">
 
                                 <a href="" class="card-banner">
-                                    <img src="{{ asset("$value->icon") }}" width="400" height="600" loading="lazy"
-                                        alt="Facial cleanser" class="img-cover">
+                                    <img src="{{ asset("$value->icon") }}" style="min-height: 400px !important"
+                                        width="400" height="600" loading="lazy" alt="Facial cleanser"
+                                        class="img-cover">
 
                                     <span class="badge" aria-label="20% off">{{ $value->sale }}%</span>
 
@@ -438,8 +439,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                - #BLOG
-                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                            - #BLOG
+                                                                                                                                                                                                                                                                                          -->
 
     {{-- <section class="section blog" data-section>
         <div class="container">
@@ -516,8 +517,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                - #TOP LIST
-                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                            - #TOP LIST
+                                                                                                                                                                                                                                                                                          -->
 
     <section class="section top-list" data-section>
 
@@ -883,8 +884,8 @@
     </section>
 
     <!--
-                                                                                                                                                                                                                                                                                - #CATALOG
-                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                            - #CATALOG
+                                                                                                                                                                                                                                                                                          -->
 
     <section class="section banner" data-section>
         <div class="container">
