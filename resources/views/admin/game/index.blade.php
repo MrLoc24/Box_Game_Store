@@ -112,7 +112,7 @@
                                             <th>Icon</th>
                                             <th>Name</th>
                                             <th>Price</th>
-                                            <th>Developer</th>
+                                            <th>Category</th>
                                             <th>Function</th>
                                         </tr>
                                     </tfoot>

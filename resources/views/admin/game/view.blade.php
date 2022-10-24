@@ -1,5 +1,11 @@
 @extends('layouts.dashboards')
 @section('title', 'Game Details')
+@section('header-specific')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+@endsection
 @section('content')
     <section>
 
@@ -139,45 +145,41 @@
                                         Platform</a> --}}
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#addPlatform">Add Platform</button>
-                                        <div class="row">
-
-                                            @foreach ($system_req as $sys_teq => $value)
-                                                <div class="col-6">
-                                                    <div class="card-body">
-                                                        <table id="{{ $value->os }}"
-                                                            class="table table-bordered table-striped">
-                                                            <label for="{{ $value->os }}">{{ $value->os }}</label>
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Version</th>
-                                                                    <th>ChipSet</th>
-                                                                    <th>Memory</th>
-                                                                    <th>VGA</th>
-                                                                    <th>Storage</th>
-                                                                    <th>Function</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>{{ $value->version }}</td>
-                                                                    <td>{{ $value->chip }}</td>
-                                                                    <td>{{ $value->ram }}</td>
-                                                                    <td>{{ $value->graphic }}</td>
-                                                                    <td>{{ $value->storage }}</td>
-                                                                    <td>
-                                                                        {{-- <a href="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
+                                        <div class="card-body">
+                                            <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>OS</th>
+                                                        <th>Version</th>
+                                                        <th>ChipSet</th>
+                                                        <th>Memory</th>
+                                                        <th>VGA</th>
+                                                        <th>Storage</th>
+                                                        <th>Function</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($system_req as $sys_teq => $value)
+                                                        <tr>
+                                                            <td>{{ $value->os }}</td>
+                                                            <td>{{ $value->version }}</td>
+                                                            <td>{{ $value->chip }}</td>
+                                                            <td>{{ $value->ram }}</td>
+                                                            <td>{{ $value->graphic }}</td>
+                                                            <td>{{ $value->storage }}</td>
+                                                            <td>
+                                                                {{-- <a href="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
                                                                         class="btn btn-primary">Edit</a> --}}
-                                                                        <button type="button" class="btn btn-primary"
-                                                                            data-toggle="modal"
-                                                                            data-target="#demoModal{{ $value->os }}">Edit</button>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-toggle="modal"
+                                                                    data-target="#demoModal{{ $value->os }}">Edit</button>
 
-                                                                        <button type="button" class="btn btn-danger"
-                                                                            data-toggle="modal"
-                                                                            data-target="#delete{{ $value->os }}">Delete</button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-toggle="modal"
+                                                                    data-target="#delete{{ $value->os }}">Delete</button>
+                                                            </td>
+                                                        </tr>
+
                                                         {{-- Popup Delete Message --}}
                                                         <div class="modal fade" id="delete{{ $value->os }}"
                                                             tabindex="-1" role="dialog"
@@ -201,9 +203,11 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
-                                                                            class="btn btn-danger">Sure sure why not</a>
+                                                                            class="btn btn-danger">Sure sure why
+                                                                            not</a>
                                                                         <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Maybe not today</button>
+                                                                            data-dismiss="modal">Maybe not
+                                                                            today</button>
                                                                     </div>
                                                                 </div>
 
@@ -232,9 +236,11 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <div class="form-group row">
-                                                                                <p>If you need to add more platforms, add it
+                                                                                <p>If you need to add more
+                                                                                    platforms, add it
                                                                                     later, don't expect
-                                                                                    anything good from this shit website!!!
+                                                                                    anything good from this shit
+                                                                                    website!!!
                                                                                     Cyka
                                                                                     Blyat !!!</p>
                                                                             </div>
@@ -322,100 +328,109 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
-
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="product-rating" role="tabpanel"
-                                    aria-labelledby="product-rating-tab">
 
-                                    <h3>No rating yet!!! Cyka Blyat!!!!</h3>
+
+
+
 
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane fade" id="product-rating" role="tabpanel"
+                            aria-labelledby="product-rating-tab">
+
+                            <h3>No rating yet!!! Cyka Blyat!!!!</h3>
 
                         </div>
+                    </div>
+
+                </div>
+        </div>
+        </div>
+
+    </section> <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+    <!-- Modal Add Platform Popup Start-->
+    <div class="modal fade" id="addPlatform" tabindex="-1" role="dialog" aria- labelledby="demoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form method="POST" action="/admin/game/addReq/{{ $game->gameId }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Add New Platform</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <p>If you need to add more platforms, add it later, don't expect
+                                anything good from this shit website!!! Cyka Blyat !!!</p>
+                        </div>
+                        <div class="form-group row">
+                            <label for="os" class="col-sm-2 col-form-label">OS</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="os" placeholder="Type of Os"
+                                    name="os">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="version" class="col-sm-2 col-form-label">Version</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="version" placeholder="Version"
+                                    name="version">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
+                            <div class="col-sm-10">
+                                <input type="test" class="form-control" id="chipset" placeholder="Chipset Model"
+                                    name="chipset">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="memory" class="col-sm-2 col-form-label">Memory</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="ram" placeholder="RAM"
+                                    name="ram">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="vga" class="col-sm-2 col-form-label">VGA</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="vga" placeholder="Graphic Card"
+                                    name="vga">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputSkills" class="col-sm-2 col-form-label">Storage</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="storage" placeholder="Storage"
+                                    name="storage">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Add New</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
-            </section> <!-- /.card-body -->
+            </form>
         </div>
-        <!-- /.card -->
-        <!-- Modal Add Platform Popup Start-->
-        <div class="modal fade" id="addPlatform" tabindex="-1" role="dialog" aria- labelledby="demoModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <form method="POST" action="/admin/game/addReq/{{ $game->gameId }}">
-                    @csrf
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Add New Platform</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <p>If you need to add more platforms, add it later, don't expect
-                                    anything good from this shit website!!! Cyka Blyat !!!</p>
-                            </div>
-                            <div class="form-group row">
-                                <label for="os" class="col-sm-2 col-form-label">OS</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="os" placeholder="Type of Os"
-                                        name="os">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="version" class="col-sm-2 col-form-label">Version</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="version" placeholder="Version"
-                                        name="version">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
-                                <div class="col-sm-10">
-                                    <input type="test" class="form-control" id="chipset"
-                                        placeholder="Chipset Model" name="chipset">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="memory" class="col-sm-2 col-form-label">Memory</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="ram" placeholder="RAM"
-                                        name="ram">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="vga" class="col-sm-2 col-form-label">VGA</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="vga" placeholder="Graphic Card"
-                                        name="vga">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">Storage</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="storage" placeholder="Storage"
-                                        name="storage">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add New</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Modal Add Platform Popup End-->
+    </div>
+    <!-- Modal Add Platform Popup End-->
     </section>
 @endsection
+
+
+
 @section('footer-script')
     <script>
         $(document).ready(function() {
@@ -426,5 +441,43 @@
                 $(this).addClass('active')
             })
         })
+    </script>
+
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "searching": false,
+                "responsive": true,
+                "lengthChange": false,
+                "ordering": true,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
     </script>
 @endsection
