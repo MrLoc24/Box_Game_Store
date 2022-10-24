@@ -339,14 +339,15 @@
 
 
                                 </div>
+                                <div class="tab-pane fade" id="product-rating" role="tabpanel"
+                                    aria-labelledby="product-rating-tab">
+
+                                    <h3>No rating yet!!! Cyka Blyat!!!!</h3>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="product-rating" role="tabpanel"
-                            aria-labelledby="product-rating-tab">
 
-                            <h3>No rating yet!!! Cyka Blyat!!!!</h3>
-
-                        </div>
                     </div>
 
                 </div>
