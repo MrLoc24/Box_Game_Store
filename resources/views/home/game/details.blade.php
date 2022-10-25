@@ -10,7 +10,7 @@
         <div class="container bodydetails">
 
             <div class="gamename">
-                <h1>{{ __('PC Building Simulator 2') }}</h1>
+                <h1>{{ $gameName }}</h1>
             </div>
 
             <div class="smallinfo">
@@ -149,15 +149,15 @@
                         <div class="description3">
                             @if ($game->price == 0)
                                 <span>
-                                    Get {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }} for free now
+                                    Get {{ $gameName }} for free now
                                 </span>
                             @elseif($game->price != 0 && $game->sale == 0)
                                 <span>
-                                    {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }} is available now
+                                    {{ $gameName }} is available now
                                 </span>
                             @else
                                 <span>
-                                    {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }} is available now -
+                                    {{ $gameName }} is available now -
                                     Get {{ $game->sale }}% off
                                 </span>
                             @endif
@@ -389,13 +389,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                - custom js link
-                                                                                                                                                -->
+                                                                                                                                                            - custom js link
+                                                                                                                                                            -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                - ionicon link
-                                                                                                                                                -->
+                                                                                                                                                            - ionicon link
+                                                                                                                                                            -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection

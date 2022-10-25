@@ -10,7 +10,7 @@
     <!--
     - BoxGame Icon
   -->
-    <link rel="shortcut icon" href="assets_home/images/boxlogo1.png">
+    <link rel="shortcut icon" href="{{ asset('assets_home/images/boxlogo1.png') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
@@ -50,7 +50,7 @@
 
                 <div class="header-left">
                     <a href="#" class="logo">
-                        <img src="assets_home/images/boxlogo.png" alt="">
+                        <img src="{{ asset('assets_home/images/boxlogo.png') }}" alt="">
                     </a>
                     <ul class="header-left-list">
                         <li>
