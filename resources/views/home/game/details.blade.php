@@ -171,27 +171,7 @@
                                 </h4>
                             </div>
                             <div class="body">
-                                <p>
-                                    Start your own PC business in Career Mode, and learn to build and repair PCs.
-                                    Upgrade your workshop and unlock new tools and equipment as you level up. Turn a
-                                    profit while going the extra mile for your customers, and watch the positive reviews
-                                    roll in.
-                                    Unleash your creativity in Free Build Mode. Select from 1200+ components to plan and
-                                    execute a powerhouse PC. Install upgraded water cooling, overclock your CPU & GPU,
-                                    and tweak RAM timings to turbocharge performance. Use 3DMark and Cinebench
-                                    benchmarks to test and optimize your design.
-                                    Add sequenced RGB lighting, spray paint and stickers to create the ultimate custom
-                                    rig. Customize your workshop with new walls, floors, posters and furniture, and make
-                                    your PC building space your own.
-                                    Go deeper into your builds with realistic hardware and software simulation. Optimize
-                                    cooling with the Fan Control app and thermal camera, track power consumption with
-                                    Power Monitor, and add custom water blocks to GPUs, CPUs, RAM and Motherboards.
-                                    18 original tracks that span the genres from French Touch, UK Garage and Grime to
-                                    Indie Rock, soulful Dub and Synth Pop ballads. Gavin employs original vintage synths
-                                    and studio equipment throughout the record, elevating the production beyond the
-                                    purely digital, and creating an album with warmth, character and retro charm. Get
-                                    the official soundtrack on Bandcamp
-                                </p>
+                                <p>{{ $game->about }}</p>
                                 <div class="load">
                                     <div class="show" ng-click="loadMore()">
                                         show more
@@ -246,10 +226,35 @@
                         <span class="informa">{{ date('d-m-Y', strtotime($game->release_date)) }}</span>
                     </div>
                     <div class="platform">
-                        <span class="title">Publisher</span>
+                        <span class="title">Platform</span>
                         <span class="informa">
-                            <ion-icon name="logo-windows"></ion-icon>
-                            <ion-icon name="logo-apple"></ion-icon>
+                            @foreach ($sys_req as $value)
+                                @switch(strtolower($value->os))
+                                    @case('window')
+                                        <ion-icon name="logo-windows"></ion-icon>
+                                    @break
+
+                                    @case('mac')
+                                        <ion-icon name="logo-apple"></ion-icon>
+                                    @break
+
+                                    @case('xbox')
+                                        <ion-icon name="logo-xbox"></ion-icon>
+                                    @break
+
+                                    @case('linux')
+                                        Linux
+                                    @break
+
+                                    @case('ps')
+                                        PS
+                                    @break
+
+                                    @default
+                                        <ion-icon name="logo-windows"></ion-icon>
+                                    @break
+                                @endswitch
+                            @endforeach
                         </span>
                     </div>
 
@@ -389,13 +394,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                            - custom js link
-                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                        - custom js link
+                                                                                                                                                                                                                                                                        -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                            - ionicon link
-                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                        - ionicon link
+                                                                                                                                                                                                                                                                        -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
