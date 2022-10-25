@@ -130,8 +130,7 @@
 
                         <div class="description1">
                             <p style="text-align: left;">
-                                {{ __('Grow your empire as you learn to repair, build and customize PCs at the next level. Experience deeper simulation, an upgraded career mode, and powerful new customization features.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Use realistic parts from 40+ hardware brands to bring your ultimate PC to life.') }}
+                                {{ $game->description }}
                             </p>
                         </div>
 
@@ -199,8 +198,7 @@
                 <div class="info" data-info>
 
                     <div class="name">
-                        <img src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-ic1-400x71-cf4b79862aec.png?h=270&resize=1&w=480"
-                            alt="">
+                        <img src="{{ asset("$game->icon") }}" alt="">
                     </div>
 
                     <div class="box">
@@ -211,9 +209,9 @@
 
 
                     <div class="price">
-                        <span class="badge">-10%</span>
-                        <del class="del">$582.163</del>
-                        <span class="span">$523.046</span>
+                        <span class="badge">{{ $game->sale }}</span>
+                        <del class="del">${{ $game->price }}</del>
+                        <span class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
                     </div>
 
                     <span class="sale">{{ __('Sale ends 11/1/2022 at 10:00 PM') }}</span>
@@ -232,15 +230,15 @@
                     </div>
                     <div class="developer">
                         <span class="title">Developer</span>
-                        <span class="informa">Spiral House Ltd</span>
+                        <span class="informa"><a href="{{ $game->developer_web }}">{{ $game->developer }}</a></span>
                     </div>
                     <div class="publisher">
                         <span class="title">Publisher</span>
-                        <span class="informa">Epic Games Publishing</span>
+                        <span class="informa">Box Game Publishing</span>
                     </div>
                     <div class="release">
                         <span class="title">Release Date</span>
-                        <span class="informa">10/12/22</span>
+                        <span class="informa">{{ date('d-m-Y', strtotime($game->release_date)) }}</span>
                     </div>
                     <div class="platform">
                         <span class="title">Publisher</span>
@@ -385,13 +383,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                            - custom js link
-                                            -->
+                                                                                                    - custom js link
+                                                                                                    -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                            - ionicon link
-                                            -->
+                                                                                                    - ionicon link
+                                                                                                    -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
