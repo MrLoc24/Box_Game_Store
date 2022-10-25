@@ -295,7 +295,7 @@ ALTER TABLE `category`
 --
 ALTER TABLE `game`
   ADD PRIMARY KEY (`gameId`);
-
+ALTER TABLE `game` ADD `about` VARCHAR(2000) NULL AFTER `description`;
 --
 -- Chỉ mục cho bảng `payment`
 --
