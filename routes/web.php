@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 //MAIN PAGE
 Route::get('/', 'UserHomeController@index');
 Route::get('/home', 'UserHomeController@index');
+Route::get('/{id}', 'UserHomeController@detail');
 
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {
