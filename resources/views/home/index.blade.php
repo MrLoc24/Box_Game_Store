@@ -2,8 +2,8 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                                                                                                                                                                                                                                                                                                                - #HERO
-                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                - #HERO
+                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
@@ -25,7 +25,8 @@
                                         <p class="hero-text">
                                             Play {{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}
                                         </p>
-                                        <a href="#" class="btn btn-primary">DOWNLOAD NOW FOR FREE</a>
+                                        <a href="/game/{{ $value->gameId }}" class="btn btn-primary">DOWNLOAD NOW FOR
+                                            FREE</a>
                                     @else
                                         <span class="hero-title">
                                             BUY NOW
@@ -34,7 +35,7 @@
                                             Buy {{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}
                                         </p>
                                         <p class="price">Starting at {{ $value->price }}</p>
-                                        <a href="/{{ $value->gameId }}" class="btn btn-primary">BUY NOW</a>
+                                        <a href="/game/{{ $value->gameId }}" class="btn btn-primary">BUY NOW</a>
                                     @endif
                                 </div>
                             </div>
@@ -119,8 +120,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                - #SHOP
-                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                - #SHOP
+                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section shop" data-section>
         <div class="container shop-container swiper">
@@ -138,7 +139,7 @@
                         <div class="swiper-slide">
                             <div class="shop-card">
 
-                                <a href="{{ $value->gameId }}" class="card-banner">
+                                <a href="/game/{{ $value->gameId }}" class="card-banner">
                                     <img src="{{ asset("$value->icon") }}" style="min-height: 400px !important"
                                         width="400" height="600" loading="lazy" alt="Facial cleanser"
                                         class="img-cover">
@@ -163,7 +164,7 @@
                                     <span class="card-type">BASE GAME</span>
 
                                     <h3>
-                                        <a href="/{{ $value->gameId }}"
+                                        <a href="/game/{{ $value->gameId }}"
                                             class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
                                     </h3>
 
@@ -439,8 +440,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                - #BLOG
-                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                - #BLOG
+                                                                                                                                                                                                                                                                                                                              -->
 
     {{-- <section class="section blog" data-section>
         <div class="container">
@@ -517,8 +518,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                - #TOP LIST
-                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                - #TOP LIST
+                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section top-list" data-section>
 
@@ -884,8 +885,8 @@
     </section>
 
     <!--
-                                                                                                                                                                                                                                                                                                                - #CATALOG
-                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                - #CATALOG
+                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section banner" data-section>
         <div class="container">

@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//MAIN PAGE
+// //MAIN PAGE
 Route::get('/', 'UserHomeController@index');
 Route::get('/home', 'UserHomeController@index');
-Route::get('/{id}', 'UserHomeController@detail');
+Route::get('/game/{id}', 'UserHomeController@detail');
 
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {

@@ -16,6 +16,7 @@ class UserHomeController extends Controller
     public function detail($id)
     {
         $game = DB::table('game')->where('gameId', $id)->first();
-        return view('home.game.details', compact('game'))->with(['gameName' =>  str_replace('_', ' ', str_replace('__', ': ', $game->gameId))]);
+        $cate = DB::table('category')->where('gameId', $id)->get();
+        return view('home.game.details', compact('game', 'cate'))->with(['gameName' =>  str_replace('_', ' ', str_replace('__', ': ', $game->gameId))]);
     }
 }

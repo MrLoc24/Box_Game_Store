@@ -138,29 +138,36 @@
                             <div class="genres">
                                 <p class="genres2">Genres</p>
                                 <p class="genres1">
-                                    <a href="#">Casual</a>,
-                                    <a href="#"> Simulation</a>
+                                    @foreach ($cate as $type)
+                                        <a href="#">{{ $type->type }}</a>
+                                    @endforeach
                                 </p>
                             </div>
-                            <div class="features">
-                                <p class="features2">Features</p>
-                                <p class="features1">
-                                    <a href="#">Casual</a>,
-                                    <a href="#"> Simulation</a>
-                                </p>
-                            </div>
+
                         </div>
 
                         <div class="description3">
-                            <span>
-                                PC Building Simulator 2 is available now - get 10% off until Nov 1st
-                            </span>
+                            @if ($game->price == 0)
+                                <span>
+                                    Get {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }} for free now
+                                </span>
+                            @elseif($game->price != 0 && $game->sale == 0)
+                                <span>
+                                    {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }} is available now
+                                </span>
+                            @else
+                                <span>
+                                    {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }} is available now -
+                                    Get {{ $game->sale }}% off
+                                </span>
+                            @endif
+
                         </div>
 
                         <div class="description4">
                             <div class="head">
                                 <h4>
-                                    About PC Building Simulator 2
+                                    About {{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}
                                 </h4>
                             </div>
                             <div class="body">
@@ -209,13 +216,11 @@
 
 
                     <div class="price">
-                        <span class="badge">{{ $game->sale }}</span>
+                        <span class="badge">-{{ $game->sale }}%</span>
                         <del class="del">${{ $game->price }}</del>
-                        <span class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
+                        <span
+                            class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
                     </div>
-
-                    <span class="sale">{{ __('Sale ends 11/1/2022 at 10:00 PM') }}</span>
-
                     <div class="deal">
                         <input type="submit" name="buynow" value="{{ __('buy now') }}" class="buy">
                         <input type="submit" name="addtocard" value="{{ __('add to cart') }}" class="addtocart">
@@ -244,6 +249,7 @@
                         <span class="title">Publisher</span>
                         <span class="informa">
                             <ion-icon name="logo-windows"></ion-icon>
+                            <ion-icon name="logo-apple"></ion-icon>
                         </span>
                     </div>
 
@@ -291,7 +297,7 @@
 
                     <div class="rating1">
                         <h2>Box Player Ratings</h2>
-                        <p>Captured from players in the Epic Games ecosystem.</p>
+                        <p>Captured from players in the Box Game ecosystem.</p>
                         <span>
                             4.6
                             <ion-icon name="star-sharp"></ion-icon>
@@ -383,13 +389,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                    - custom js link
-                                                                                                    -->
+                                                                                                                                                - custom js link
+                                                                                                                                                -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                    - ionicon link
-                                                                                                    -->
+                                                                                                                                                - ionicon link
+                                                                                                                                                -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
