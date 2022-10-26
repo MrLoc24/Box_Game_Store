@@ -34,7 +34,12 @@
                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                         class="swiper mySwiper2 detailsswiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            @foreach (File::glob($game->gameplay . '/*') as $path)
+                                <div class="swiper-slide"><img src="{{ asset(str_replace(public_path(), '', $path)) }}"
+                                        alt="{{ str_replace(public_path(), '', $path) }}">
+                                </div>
+                            @endforeach
+                            {{-- <div class="swiper-slide">
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-01-1920x1080-291add6c1de2.jpg" />
                             </div>
@@ -73,14 +78,19 @@
                             <div class="swiper-slide">
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-10-1920x1080-5085fc260c37.jpg?h=720&resize=1&w=1280">
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
                     <div thumbsSlider="" class="swiper mySwiper detailsswiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            @foreach (File::glob($game->gameplay . '/*') as $path)
+                                <div class="swiper-slide"><img src="{{ asset(str_replace(public_path(), '', $path)) }}"
+                                        alt="{{ str_replace(public_path(), '', $path) }}">
+                                </div>
+                            @endforeach
+                            {{-- <div class="swiper-slide">
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-01-1920x1080-291add6c1de2.jpg" />
                             </div>
@@ -120,7 +130,7 @@
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-10-1920x1080-5085fc260c37.jpg?h=720&resize=1&w=1280">
                                 <img src="" alt="">
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="swiper-button-next bb"></div>
                         <div class="swiper-button-prev bb"></div>
@@ -196,16 +206,30 @@
 
 
                     <div class="price">
-                        <span class="badge">-{{ $game->sale }}%</span>
-                        <del class="del">${{ $game->price }}</del>
-                        <span
-                            class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
+                        @if ($game->price == 0)
+                            <span class="badge">
+                                Get {{ $gameName }} for free now
+                            </span>
+                        @else
+                            @if ($game->sale != 0)
+                                <span class="badge">-{{ $game->sale }}%</span>
+                                <del class="del">${{ $game->price }}</del>
+                                <span
+                                    class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
+                            @endif
+                            <span class="span">${{ $game->price }}</span>
+                        @endif
                     </div>
-                    <div class="deal">
-                        <input type="submit" name="buynow" value="{{ __('buy now') }}" class="buy">
-                        <input type="submit" name="addtocard" value="{{ __('add to cart') }}" class="addtocart">
-                    </div>
-
+                    @if ($game->price != 0)
+                        <div class="deal">
+                            <input type="submit" name="buynow" value="{{ __('buy now') }}" class="buy">
+                            <input type="submit" name="addtocard" value="{{ __('add to cart') }}" class="addtocart">
+                        </div>
+                    @else
+                        <div class="deal">
+                            <input type="submit" name="buynow" value="{{ __('download now') }}" class="buy">
+                        </div>
+                    @endif
                     <div class="refund">
                         <span class="title">Refund Type</span>
                         <span class="informa">
@@ -394,13 +418,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                            - custom js link
-                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                    - custom js link
+                                                                                                                                                                                                                                                                                                                                    -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                            - ionicon link
-                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                    - ionicon link
+                                                                                                                                                                                                                                                                                                                                    -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
