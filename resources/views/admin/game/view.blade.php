@@ -420,15 +420,29 @@
                         <div class="form-group row">
                             <p>Uncheck type to delete</p>
                         </div>
-                        @foreach ($cate_all as $key => $value)
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id={{ $value->type }}
-                                        value="{{ $value->type }}" name="category[]">
-                                    <label for="{{ $value->type }}"
-                                        class="custom-control-label">{{ $value->type }}</label>
-                                </div>
-                            </div>
+                        @foreach ($cate_all as $value)
+                            @foreach ($category as $cate)
+                                @if ($value->type == $cate->type)
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id={{ $value->type }}
+                                                value="{{ $value->type }}" name="category[]"
+                                                @checked(true)>
+                                            <label for="{{ $value->type }}"
+                                                class="custom-control-label">{{ $value->type }}</label>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id={{ $value->type }}
+                                                value="{{ $value->type }}" name="category[]">
+                                            <label for="{{ $value->type }}"
+                                                class="custom-control-label">{{ $value->type }}</label>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         @endforeach
                     </div>
                     <div class="modal-footer">
