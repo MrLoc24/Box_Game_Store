@@ -60,8 +60,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="about">About</label>
-                                            <textarea rows="5" type="text" class="form-control" id="about" name="gameAbout"
-                                                placeholder="About"></textarea>
+                                            <textarea rows="5" type="text" class="form-control" id="about" name="gameAbout" placeholder="About"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Release Date</label>
@@ -196,61 +195,6 @@
                                                     </div>
                                                     <hr>
                                                 </div>
-                                                <!-- /.tab-pane -->
-                                                {{-- <div class="tab-content">
-
-                                                    <div class="form-group row">
-                                                        <p>If you need to add more platforms, add it later, don't expect
-                                                            anything good from this shit website!!! Cyka Blyat !!!</p>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="os" class="col-sm-2 col-form-label">OS</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="os"
-                                                                placeholder="Type of Os" name="os">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="version"
-                                                            class="col-sm-2 col-form-label">Version</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="version"
-                                                                placeholder="Version" name="version">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="chipset"
-                                                            class="col-sm-2 col-form-label">Chipset</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="test" class="form-control" id="chipset"
-                                                                placeholder="Chipset Model" name="chipset">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="memory"
-                                                            class="col-sm-2 col-form-label">Memory</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="ram"
-                                                                placeholder="RAM" name="ram">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="vga" class="col-sm-2 col-form-label">VGA</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="vga"
-                                                                placeholder="Graphic Card" name="vga"></input>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputSkills"
-                                                            class="col-sm-2 col-form-label">Storage</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="storage"
-                                                                placeholder="Storage" name="storage">
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                </div> --}}
                                             </div>
                                             <!-- /.tab-content -->
                                         </div><!-- /.card-body -->

@@ -14,13 +14,25 @@
             </div>
 
             <div class="smallinfo">
+                {{-- Rating star --}}
                 <div class="rating">
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-half-sharp"></ion-icon>
-                    <p>4.6</p>
+                    @if ($avg_star == 0)
+                        <p>Not rated yet</p>
+                    @else
+                        @foreach (range(1, 5) as $i)
+                            <span class="fa-stack" style="width:1em">
+                                <i class="far fa-star fa-stack-1x"></i>
+                                @if ($avg_star > 0)
+                                    @if ($avg_star > 0.5)
+                                        <i class="fas fa-star fa-stack-1x"></i>
+                                    @else
+                                        <i class="fas fa-star-half fa-stack-1x"></i>
+                                    @endif
+                                @endif
+                                {{ $avg_star-- }}
+                            </span>
+                        @endforeach
+                    @endif
                 </div>
                 <h4>{{ __('Quickly Understood Controls') }}</h4>
             </div>
@@ -34,7 +46,12 @@
                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                         class="swiper mySwiper2 detailsswiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            @foreach (File::glob($game->gameplay . '/*') as $path)
+                                <div class="swiper-slide"><img src="{{ asset(str_replace(public_path(), '', $path)) }}"
+                                        alt="{{ str_replace(public_path(), '', $path) }}">
+                                </div>
+                            @endforeach
+                            {{-- <div class="swiper-slide">
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-01-1920x1080-291add6c1de2.jpg" />
                             </div>
@@ -73,14 +90,19 @@
                             <div class="swiper-slide">
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-10-1920x1080-5085fc260c37.jpg?h=720&resize=1&w=1280">
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
                     <div thumbsSlider="" class="swiper mySwiper detailsswiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            @foreach (File::glob($game->gameplay . '/*') as $path)
+                                <div class="swiper-slide"><img src="{{ asset(str_replace(public_path(), '', $path)) }}"
+                                        alt="{{ str_replace(public_path(), '', $path) }}">
+                                </div>
+                            @endforeach
+                            {{-- <div class="swiper-slide">
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-01-1920x1080-291add6c1de2.jpg" />
                             </div>
@@ -120,7 +142,7 @@
                                 <img
                                     src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-10-1920x1080-5085fc260c37.jpg?h=720&resize=1&w=1280">
                                 <img src="" alt="">
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="swiper-button-next bb"></div>
                         <div class="swiper-button-prev bb"></div>
@@ -196,16 +218,31 @@
 
 
                     <div class="price">
-                        <span class="badge">-{{ $game->sale }}%</span>
-                        <del class="del">${{ $game->price }}</del>
-                        <span
-                            class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
+                        @if ($game->price == 0)
+                            <span class="badge">
+                                Get {{ $gameName }} for free now
+                            </span>
+                        @else
+                            @if ($game->sale != 0)
+                                <span class="badge">-{{ $game->sale }}%</span>
+                                <del class="del">${{ $game->price }}</del>
+                                <span
+                                    class="span">${{ number_format($game->price * (1 - $game->sale / 100), 2, '.', '') }}</span>
+                            @else
+                                <span class="span">${{ $game->price }}</span>
+                            @endif
+                        @endif
                     </div>
-                    <div class="deal">
-                        <input type="submit" name="buynow" value="{{ __('buy now') }}" class="buy">
-                        <input type="submit" name="addtocard" value="{{ __('add to cart') }}" class="addtocart">
-                    </div>
-
+                    @if ($game->price != 0)
+                        <div class="deal">
+                            <input type="submit" name="buynow" value="{{ __('buy now') }}" class="buy">
+                            <input type="submit" name="addtocard" value="{{ __('add to cart') }}" class="addtocart">
+                        </div>
+                    @else
+                        <div class="deal">
+                            <input type="submit" name="buynow" value="{{ __('download now') }}" class="buy">
+                        </div>
+                    @endif
                     <div class="refund">
                         <span class="title">Refund Type</span>
                         <span class="informa">
@@ -304,12 +341,30 @@
                         <h2>Box Player Ratings</h2>
                         <p>Captured from players in the Box Game ecosystem.</p>
                         <span>
-                            4.6
+                            {{-- 4.6
                             <ion-icon name="star-sharp"></ion-icon>
                             <ion-icon name="star-sharp"></ion-icon>
                             <ion-icon name="star-sharp"></ion-icon>
                             <ion-icon name="star-sharp"></ion-icon>
-                            <ion-icon name="star-half-sharp"></ion-icon>
+                            <ion-icon name="star-half-sharp"></ion-icon> --}}
+                            @if ($avg_star == 0)
+                                <p>Not rated yet, be the first one to review</p>
+                            @else
+                                @foreach (range(1, 5) as $i)
+                                    <span class="fa-stack" style="width:1em">
+                                        <i class="far fa-star fa-stack-1x"></i>
+                                        @if ($avg_star > 0)
+                                            @if ($avg_star > 0.5)
+                                                <i class="fas fa-star fa-stack-1x"></i>
+                                            @else
+                                                <i class="fas fa-star-half fa-stack-1x"></i>
+                                            @endif
+                                        @endif
+                                        {{ $avg_star-- }}
+                                    </span>
+                                @endforeach
+                                {{ $avg_star }}
+                            @endif
                         </span>
                     </div>
 
@@ -375,8 +430,8 @@
                                     - Brazil, Russian, Chinese - Simplified, Spanish - Spain</p>
                             </div>
                             <div class="end">
-                                <p>Published by Epic Games, Inc. © 2022. “Epic Games” and the Epic Games logo are
-                                    registered trademarks or trademarks of Epic Games, Inc. in the United States and
+                                <p>Published by Box Game, Inc. © 2022. “Box Game” and the Box Game logo are
+                                    registered trademarks or trademarks of Box Game, Inc. in the United States and
                                     other countries.</p>
                                 <a href="">Privacy Policy</a>
                             </div>
@@ -394,13 +449,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                        - custom js link
-                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                - custom js link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                        - ionicon link
-                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                - ionicon link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
