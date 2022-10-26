@@ -17,6 +17,10 @@ Route::get('/', 'UserHomeController@index');
 Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail');
 
+Route::get('/tttt', function () {
+    return view('tt');
+});
+
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminLoginController@login')->middleware('checkAdminLogout');
