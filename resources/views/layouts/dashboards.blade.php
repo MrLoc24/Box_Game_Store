@@ -81,10 +81,11 @@
                         <i class="fas fa-search"></i>
                     </a>
                     <div class="navbar-search-block">
-                        <form class="form-inline">
+                        <form class="form-inline" action="/search" method="post">
+                            @csrf
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
+                                    aria-label="Search" id="search" name="search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -96,7 +97,17 @@
                             </div>
                         </form>
                     </div>
+                    {{-- <div class="col-md-8">
+                        <div class="card mycard m-2 p-2" style="width: 18rem;">
+
+                        </div>
+                    </div> --}}
                 </li>
+
+
+
+
+
 
                 <!-- Messages Dropdown Menu -->
                 {{-- <li class="nav-item dropdown">
@@ -349,8 +360,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
