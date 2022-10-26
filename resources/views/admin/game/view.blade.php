@@ -104,7 +104,7 @@
 
                                 <div class="mt-4 product-share">
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#Edit Type">Add/Delete Type</button>
+                                        data-target="#editType">Add/Delete Type</button>
                                 </div>
 
                             </div>
@@ -403,6 +403,43 @@
         </div>
     </div>
     <!-- Modal Add Platform Popup End-->
+    <!-- Modal Edit Type Popup Start-->
+    <div class="modal fade" id="editType" tabindex="-1" role="dialog" aria- labelledby="demoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form method="POST" action="">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Add or Delete Type</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <p>Uncheck type to delete</p>
+                        </div>
+                        @foreach ($cate_all as $key => $value)
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id={{ $value->type }}
+                                        value="{{ $value->type }}" name="category[]">
+                                    <label for="{{ $value->type }}"
+                                        class="custom-control-label">{{ $value->type }}</label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Add New</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal Edit type Popup End-->
     </section>
 @endsection
 
