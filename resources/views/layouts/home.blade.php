@@ -13,6 +13,8 @@
     <link rel="shortcut icon" href="{{ asset('assets_home/images/boxlogo1.png') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
 
     <!--
     - custom css link
@@ -54,7 +56,7 @@
                     </a>
                     <ul class="header-left-list">
                         <li>
-                            <a href="#store" class="hll-link">STORE</a>
+                            <a href="/" class="hll-link">STORE</a>
                         </li>
                         <li>
                             <a href="#faq" class="hll-link">FAQ</a>

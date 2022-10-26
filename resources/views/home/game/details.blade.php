@@ -14,13 +14,25 @@
             </div>
 
             <div class="smallinfo">
+                {{-- Rating star --}}
                 <div class="rating">
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-sharp"></ion-icon>
-                    <ion-icon name="star-half-sharp"></ion-icon>
-                    <p>4.6</p>
+                    @if ($avg_star == 0)
+                        <p>Not rated yet</p>
+                    @else
+                        @foreach (range(1, 5) as $i)
+                            <span class="fa-stack" style="width:1em">
+                                <i class="far fa-star fa-stack-1x"></i>
+                                @if ($avg_star > 0)
+                                    @if ($avg_star > 0.5)
+                                        <i class="fas fa-star fa-stack-1x"></i>
+                                    @else
+                                        <i class="fas fa-star-half fa-stack-1x"></i>
+                                    @endif
+                                @endif
+                                {{ $avg_star-- }}
+                            </span>
+                        @endforeach
+                    @endif
                 </div>
                 <h4>{{ __('Quickly Understood Controls') }}</h4>
             </div>
@@ -329,12 +341,30 @@
                         <h2>Box Player Ratings</h2>
                         <p>Captured from players in the Box Game ecosystem.</p>
                         <span>
-                            4.6
+                            {{-- 4.6
                             <ion-icon name="star-sharp"></ion-icon>
                             <ion-icon name="star-sharp"></ion-icon>
                             <ion-icon name="star-sharp"></ion-icon>
                             <ion-icon name="star-sharp"></ion-icon>
-                            <ion-icon name="star-half-sharp"></ion-icon>
+                            <ion-icon name="star-half-sharp"></ion-icon> --}}
+                            @if ($avg_star == 0)
+                                <p>Not rated yet, be the first one to review</p>
+                            @else
+                                @foreach (range(1, 5) as $i)
+                                    <span class="fa-stack" style="width:1em">
+                                        <i class="far fa-star fa-stack-1x"></i>
+                                        @if ($avg_star > 0)
+                                            @if ($avg_star > 0.5)
+                                                <i class="fas fa-star fa-stack-1x"></i>
+                                            @else
+                                                <i class="fas fa-star-half fa-stack-1x"></i>
+                                            @endif
+                                        @endif
+                                        {{ $avg_star-- }}
+                                    </span>
+                                @endforeach
+                                {{ $avg_star }}
+                            @endif
                         </span>
                     </div>
 
@@ -419,13 +449,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                        - custom js link
-                                                                                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                - custom js link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                        - ionicon link
-                                                                                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                - ionicon link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
