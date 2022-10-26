@@ -375,8 +375,8 @@
                                     - Brazil, Russian, Chinese - Simplified, Spanish - Spain</p>
                             </div>
                             <div class="end">
-                                <p>Published by Epic Games, Inc. © 2022. “Epic Games” and the Epic Games logo are
-                                    registered trademarks or trademarks of Epic Games, Inc. in the United States and
+                                <p>Published by Box Game, Inc. © 2022. “Box Game” and the Box Game logo are
+                                    registered trademarks or trademarks of Box Game, Inc. in the United States and
                                     other countries.</p>
                                 <a href="">Privacy Policy</a>
                             </div>
@@ -394,13 +394,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                        - custom js link
-                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                            - custom js link
+                                                                                                                                                                                                                                                                            -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                        - ionicon link
-                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                            - ionicon link
+                                                                                                                                                                                                                                                                            -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
