@@ -34,7 +34,8 @@ Route::prefix('admin/game')->middleware('checkAdminLogin')->group(function () {
     Route::get('create', 'AdminGameController@create');
     Route::post('create', 'AdminGameController@store');
     Route::get('delete/{id}', 'AdminGameController@delete');
-    Route::post('editDetail/{id}','AdminGameDetailController@update');
+    Route::post('editDetail/{id}', 'AdminGameDetailController@update');
+    Route::post('editType/{id}', 'AdminGameDetailController@updateType');
 
     //CRUD for system requirements
     Route::post('editReq/{id}/{os}', 'AdminGameReqController@update');
