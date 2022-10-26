@@ -78,7 +78,7 @@
                                                 placeholder="developer Website" name="developerWebsite">
                                         </div>
                                         <div class="form-group">
-                                            <label for="icone">Picture Icon</label>
+                                            <label for="icon">Picture Icon</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="icon"
@@ -92,12 +92,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="icone">Banner</label>
+                                            <label for="banner">Banner</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="icon"
+                                                    <input type="file" class="custom-file-input" id="banner"
                                                         name="banner">
-                                                    <label class="custom-file-label" for="icon">Choose
+                                                    <label class="custom-file-label" for="banner">Choose
                                                         file</label>
                                                 </div>
                                                 <div class="input-group-append">

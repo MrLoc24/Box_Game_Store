@@ -34,7 +34,6 @@
                         @endforeach
                     @endif
                 </div>
-                <h4>{{ __('Quickly Understood Controls') }}</h4>
             </div>
 
             <div class="overview">
@@ -453,13 +452,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - custom js link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - custom js link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - ionicon link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - ionicon link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection

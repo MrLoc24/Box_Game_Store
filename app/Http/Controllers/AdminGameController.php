@@ -38,6 +38,7 @@ class AdminGameController extends Controller
         $path_gameplay = public_path() . '/img/game/' . $name_game . '/gameplay';
         File::makeDirectory($path_icon, 0777, true, true);
         File::makeDirectory($path_gameplay, 0777, true, true);
+        File::makeDirectory($path_banner, 0777, true, true);
         $data_game = array();
         $data_game['gameId'] = $name_game;
         $data_game['description'] = $request->input('gameDescription');
@@ -65,17 +66,18 @@ class AdminGameController extends Controller
         }
 
         $getIcon = $request->file('icon');
-        $getBanner = $request->file('banner');
+
         $getGameplay = $request->file('gameplay');
         if ($getIcon) {
             $get_name_picture = 'icon.jpg';
             $data_game['icon'] = "img/game/" . $name_game . "/icon/" . $get_name_picture;
             $getIcon->move("img/game/" . $name_game . "/icon/", $get_name_picture);
         }
+        $getBanner = $request->file('banner');
         if ($getBanner) {
             $get_name_picture = 'banner.jpg';
-            $data_game['icon'] = "img/game/" . $name_game . "/banner/" . $get_name_picture;
-            $getIcon->move("img/game/" . $name_game . "/banner/", $get_name_picture);
+            $data_game['banner'] = "img/game/" . $name_game . "/banner/" . $get_name_picture;
+            $getBanner->move("img/game/" . $name_game . "/banner/", $get_name_picture);
         }
         if ($getGameplay) {
             foreach ($getGameplay as $key => $value) {
