@@ -59,6 +59,11 @@
                                                 placeholder="Description"></textarea>
                                         </div>
                                         <div class="form-group">
+                                            <label for="about">About</label>
+                                            <textarea rows="5" type="text" class="form-control" id="about" name="gameAbout"
+                                                placeholder="About"></textarea>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="date">Release Date</label>
                                             <input type="date" class="form-control" id="date" name="gameDate"
                                                 placeholder="">

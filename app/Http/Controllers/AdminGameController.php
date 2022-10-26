@@ -39,6 +39,7 @@ class AdminGameController extends Controller
         $data_game = array();
         $data_game['gameId'] = $name_game;
         $data_game['description'] = $request->input('gameDescription');
+        $data_game['about'] = $request->input('gameAbout');
         $data_game['price'] = $request->input('gamePrice');
         $data_game['sale'] = $request->input('sale');
         $data_game['release_date'] = $request->input('gameDate');
