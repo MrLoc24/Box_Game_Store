@@ -87,7 +87,7 @@
                                         <small>Sale: {{ $game->sale }}% </small>
                                     </h4>
                                 </div>
-                                --------------
+                            
                                 <div class="mt-4">
                                 {{-- <a href="/admin/game/editDetail/{{ $game->gameId }}" class="btn btn-primary">Edit Details</a> --}}
                                 <!-- <div class="btn btn-primary btn-lg btn-flat">
@@ -227,7 +227,7 @@
 
 
 
-                                --------------
+                               
                                 <div class="mt-4">
                                     <h2 class="mb-0">
                                         @foreach ($category as $item => $cate)
