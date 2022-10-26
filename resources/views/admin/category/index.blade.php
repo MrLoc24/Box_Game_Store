@@ -130,6 +130,13 @@
                                                                 placeholder="Type of Game" name="type[0]">
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <label for="image[0]" class="col-sm-2 col-form-label">Image</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="file" class="form-control" id="image[0]"
+                                                                placeholder="Type's Image" name="image[0]">
+                                                        </div>
+                                                    </div>
                                                     <hr>
                                                 </div>
                                                 <!-- /.tab-content -->
@@ -179,6 +186,13 @@
                                 placeholder="Type of Game" name="type[` + i + `]">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="image[` + i + `]" class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="image[` + i + `]"
+                                    placeholder="Type's Image" name="image[` + i + `]">
+                            </div>
+                        </div>
                     <button type="button" class="btn btn-outline-danger" id="remove-input-field">Delete</button>
                     <hr>
                 </div>`

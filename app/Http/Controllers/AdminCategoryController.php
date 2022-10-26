@@ -16,10 +16,16 @@ class AdminCategoryController extends Controller
     //Add new game type
     public function store(Request $request)
     {
-        foreach ($request->input('type') as $type) {
-            DB::table('type')->insert([
-                'type' => $type
-            ]);
+        foreach ($request->input('type') as $key => $value) {
+            $data_type = array();
+            $data_type['type'] = $value;
+            $getImage = $request->file("image")[$key];
+            if ($getImage) {
+                $get_name_image = 'type_' . str_replace(' ', '_', $value) . '.jpg';
+                $data_type['image'] = 'img/type/' . $get_name_image;
+                $getImage->move('img/type/', $get_name_image);
+            }
+            DB::table('type')->insert($data_type);
         }
         return redirect('admin/category/view');
     }

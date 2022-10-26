@@ -45,6 +45,9 @@
                                     <div class="product-image-thumb active">
                                         <img src="{{ asset("$game->icon") }}" alt="icon{{ $game->gameId }}">
                                     </div>
+                                    <div class="product-image-thumb active">
+                                        <img src="{{ asset("$game->banner") }}" alt="banner{{ $game->banner }}">
+                                    </div>
                                     {{-- Get all image in gameplay folder --}}
                                     @foreach (File::glob($game->gameplay . '/*') as $path)
                                         <div class="product-image-thumb active"><img
@@ -92,12 +95,7 @@
                                 </div>
 
                                 <div class="mt-4">
-                                    {{-- <a href="/admin/game/editDetail/{{ $game->gameId }}" class="btn btn-primary">Edit Details</a> --}}
-                                    <!-- <div class="btn btn-primary btn-lg btn-flat">
-                                                                                                                                                                                                                                        <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                                                                                                                                                                                                                                        Edit Details
-                                                                                                                                                                                                                                    </div> -->
-
+                                    {{-- Edit Details Game --}}
                                     <button type="button" class="btn btn-primary btn-lg btn-flat" data-toggle="modal"
                                         data-target="#detailModal">
                                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
@@ -127,7 +125,8 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text" class="form-control" id="detailID"
                                                                     placeholder="Type of Os" name="detailID"
-                                                                    value="{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}">
+                                                                    value="{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}"
+                                                                    readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -467,10 +466,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group row">
-                            <p>If you need to add more platforms, add it later, don't expect
-                                anything good from this shit website!!! Cyka Blyat !!!</p>
-                        </div>
                         <div class="form-group row">
                             <label for="os" class="col-sm-2 col-form-label">OS</label>
                             <div class="col-sm-10">
