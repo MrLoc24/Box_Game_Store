@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use File;
 
 class AdminCategoryController extends Controller
 {
@@ -40,6 +41,8 @@ class AdminCategoryController extends Controller
     //Delete game type
     public function delete($id)
     {
+        $imageName = 'type_' . str_replace(' ', '_', $id) . '.jpg';
+        File::delete('img/type/' . $imageName);
         DB::table('type')->where('type', $id)->delete();
         return redirect('admin/category/view');
     }
