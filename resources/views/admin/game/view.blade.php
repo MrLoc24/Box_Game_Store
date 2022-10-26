@@ -87,13 +87,147 @@
                                         <small>Sale: {{ $game->sale }}% </small>
                                     </h4>
                                 </div>
-
+                            
                                 <div class="mt-4">
-                                    <div class="btn btn-primary btn-lg btn-flat">
+                                {{-- <a href="/admin/game/editDetail/{{ $game->gameId }}" class="btn btn-primary">Edit Details</a> --}}
+                                <!-- <div class="btn btn-primary btn-lg btn-flat">
                                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
                                         Edit Details
-                                    </div>
-                                </div>
+                                    </div> -->
+                                
+                                <button type="button" class="btn btn-primary btn-lg btn-flat" data-toggle="modal" data-target="#detailModal">
+                                <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                                        Edit Details
+</button>
+                                <                                                    <div class="modal fade" id="detailModal"
+                                                        tabindex="-1" role="dialog" aria- labelledby="demoModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-xl" role="document">
+                                                            <form
+                                                                action="/admin/game/editDetail/{{ $game->gameId }}"
+                                                                method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="demoModalLabel{{ $game->gameId }}">
+                                                                            Edit Detail Game For
+                                                                            {{ $game->gameId }}
+                                                                        </h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria- label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group row">
+                                                                            <p>If you need to add more
+                                                                                platforms, add it
+                                                                                later, don't expect
+                                                                                anything good from this shit
+                                                                                website!!!
+                                                                                Cyka
+                                                                                Blyat !!!</p>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="os"
+                                                                                class="col-sm-2 col-form-label">GameID</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="detailID"
+                                                                                    placeholder="Type of Os"
+                                                                                    name="detailID"
+                                                                                    value="{{ $game->gameId }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="description"
+                                                                                class="col-sm-2 col-form-label">Description</label>
+                                                                            <div class="col-sm-10">
+                                                                                <textarea type="text" class="form-control" 
+                                                                                    id="detailDesc" placeholder="detailDescription"
+                                                                                    name="detailDesc"
+                                                                                    value="{{ $game->description }}">{{ $game->description }}
+                                                                                    </textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="about"
+                                                                                class="col-sm-2 col-form-label">about</label>
+                                                                            <div class="col-sm-10">
+                                                                                <textarea type="text" class="form-control" 
+                                                                                    id="detailAbout" placeholder="detailAbout"
+                                                                                    name="detailAbout"
+                                                                                    >{{ $game->about }}
+                                                                                    </textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                            <label for="date">Release Date</label>
+                                            <input type="date" class="form-control" id="detailDate" name="detailDate" value="{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $game->release_date)->format('Y-m-d') }}"
+                                                placeholder="">
+                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="price"
+                                                                                class="col-sm-2 col-form-label">Price</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="test" class="form-control"
+                                                                                    id="detailPrice"
+                                                                                    placeholder="Chipset Model"
+                                                                                    name="detailPrice"
+                                                                                    value="{{ $game->price }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="sale"
+                                                                                class="col-sm-2 col-form-label">Sale</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="number" class="form-control"
+                                                                                    id="detailSale" placeholder="RAM"
+                                                                                    name="detailSale"
+                                                                                    value="{{$game->sale }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="developer"
+                                                                                class="col-sm-2 col-form-label">Developer</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="detailDev"
+                                                                                    placeholder="Graphic Card"
+                                                                                    name="detailDev"
+                                                                                    value="{{ $game->developer }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="developerweb"
+                                                                                class="col-sm-2 col-form-label">Developer Web</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    id="detaildevWeb" placeholder="Storage"
+                                                                                    name="detaildevWeb"
+                                                                                    value="{{ $game->developer_web }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Save
+                                                                            change</button>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+                               
                                 <div class="mt-4">
                                     <h2 class="mb-0">
                                         @foreach ($category as $item => $cate)
@@ -506,6 +640,9 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+            $('.date').datepicker({
+    format: '{{ config('app.date_format_js') }}'
+});
         });
     </script>
 @endsection
