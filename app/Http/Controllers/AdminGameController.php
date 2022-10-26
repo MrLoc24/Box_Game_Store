@@ -34,6 +34,7 @@ class AdminGameController extends Controller
         //Add new game
         $name_game = str_replace(':', '__', str_replace(' ', '_', $request->input('gameName')));
         $path_icon = public_path() . '/img/game/' . $name_game . '/icon';
+        $path_banner = public_path() . '/img/game/' . $name_game . '/banner';
         $path_gameplay = public_path() . '/img/game/' . $name_game . '/gameplay';
         File::makeDirectory($path_icon, 0777, true, true);
         File::makeDirectory($path_gameplay, 0777, true, true);
@@ -64,11 +65,17 @@ class AdminGameController extends Controller
         }
 
         $getIcon = $request->file('icon');
+        $getBanner = $request->file('banner');
         $getGameplay = $request->file('gameplay');
         if ($getIcon) {
             $get_name_picture = 'icon.jpg';
             $data_game['icon'] = "img/game/" . $name_game . "/icon/" . $get_name_picture;
             $getIcon->move("img/game/" . $name_game . "/icon/", $get_name_picture);
+        }
+        if ($getBanner) {
+            $get_name_picture = 'banner.jpg';
+            $data_game['icon'] = "img/game/" . $name_game . "/banner/" . $get_name_picture;
+            $getIcon->move("img/game/" . $name_game . "/banner/", $get_name_picture);
         }
         if ($getGameplay) {
             foreach ($getGameplay as $key => $value) {

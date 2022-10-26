@@ -92,11 +92,25 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="icone">Banner</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="icon"
+                                                        name="banner">
+                                                    <label class="custom-file-label" for="icon">Choose
+                                                        file</label>
+                                                </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">Upload</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="gameplay">Gameplay Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="gameplay" multiple
-                                                        name="gameplay[]">
+                                                    <input type="file" class="custom-file-input" id="gameplay"
+                                                        multiple name="gameplay[]">
                                                     <label class="custom-file-label" for="gameplay">Choose multiple
                                                         file</label>
                                                 </div>

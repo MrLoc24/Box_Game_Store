@@ -2,8 +2,8 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                                                                                                                                                                                                                                                                                                                                - #HERO
-                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                - #HERO
+                                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
@@ -12,7 +12,8 @@
                 @foreach ($game as $key => $value)
                     @if ($value->top_page == 1)
                         <li class="scrollbar-item carousel">
-                            <div class="hero-card has-bg-image" style="background-image: url('{{ asset("$value->icon") }}')">
+                            <div class="hero-card has-bg-image"
+                                style="background-image: url('{{ asset("$value->banner") }}')">
 
                                 <div class="card-content">
                                     {{-- <div class="banner-logo">
@@ -120,8 +121,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                                - #SHOP
-                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                - #SHOP
+                                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section shop" data-section>
         <div class="container shop-container swiper">
@@ -140,9 +141,8 @@
                             <div class="shop-card">
 
                                 <a href="/game/{{ $value->gameId }}" class="card-banner">
-                                    <img src="{{ asset("$value->icon") }}" style="min-height: 400px !important"
-                                        width="400" height="600" loading="lazy" alt="Facial cleanser"
-                                        class="img-cover">
+                                    <img src="{{ asset("$value->icon") }}" width="400" height="540" loading="lazy"
+                                        alt="Facial cleanser" class="img-cover">
 
                                     <span class="badge" aria-label="20% off">{{ $value->sale }}%</span>
 
@@ -440,8 +440,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                                - #BLOG
-                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                - #BLOG
+                                                                                                                                                                                                                                                                                                                                              -->
 
     {{-- <section class="section blog" data-section>
         <div class="container">
@@ -518,8 +518,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                                - #TOP LIST
-                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                - #TOP LIST
+                                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section top-list" data-section>
 
@@ -885,8 +885,8 @@
     </section>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                - #CATALOG
-                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                - #CATALOG
+                                                                                                                                                                                                                                                                                                                                              -->
 
     <section class="section banner" data-section>
         <div class="container">
