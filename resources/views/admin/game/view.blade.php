@@ -94,9 +94,9 @@
                                 <div class="mt-4">
                                     {{-- <a href="/admin/game/editDetail/{{ $game->gameId }}" class="btn btn-primary">Edit Details</a> --}}
                                     <!-- <div class="btn btn-primary btn-lg btn-flat">
-                                                                                                                                                                                                                                    <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                                                                                                                                                                                                                                    Edit Details
-                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                        <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                                                                                                                                                                                                                                        Edit Details
+                                                                                                                                                                                                                                    </div> -->
 
                                     <button type="button" class="btn btn-primary btn-lg btn-flat" data-toggle="modal"
                                         data-target="#detailModal">
