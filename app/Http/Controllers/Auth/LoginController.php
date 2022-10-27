@@ -10,18 +10,21 @@ use Illuminate\Contracts\Session\Session;
 
 class LoginController extends Controller
 {
-    public function login() {
+    public function login()
+    {
         return view('user.auth.login');
     }
 
-    public function authenticate(Request $request) {
+    public function authenticate(Request $request)
+    {
 
         //$credentials = $request->only('userID', 'password');
         $displayname = $request->display_name;
         $password = $request->password;
         $remember = $request->has('remember');
-
-        if (Auth::attempt(['userID' => $displayname, 'password' => $password], $remember)) {
+        //Login with userID or email
+        $field = filter_var($displayname, FILTER_VALIDATE_EMAIL) ? 'email' : 'userID';
+        if (Auth::attempt([$field => $displayname, 'password' => $password], $remember)) {
             $request->session()->regenerate();
             return redirect()->intended(RouteServiceProvider::HOME);
         }
@@ -30,7 +33,8 @@ class LoginController extends Controller
         credentials');
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
 
         Auth::guard('web')->logout();
 

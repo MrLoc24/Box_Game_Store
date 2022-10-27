@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
@@ -11,8 +12,9 @@
 
     <link rel="stylesheet" href="{{ asset('assets_home/css/styleauth.css') }}">
 </head>
+
 <body>
-    
+
     <div class="form-container">
         <form action="{{ route('login') }}" method="post">
 
@@ -21,53 +23,56 @@
 
             <h4>{{ __('Sign In') }}</h4>
 
-            @if(session()->has('status'))
-            <div class="valid-feedback">
-                {{ session()->get('status') }}
-            </div>
+            @if (session()->has('status'))
+                <div class="valid-feedback">
+                    {{ session()->get('status') }}
+                </div>
             @endif
 
-            @if(session()->has('error'))
-            <div class="invalid-feedback">
-                {{ session()->get('error') }}
-            </div>
+            @if (session()->has('error'))
+                <div class="invalid-feedback">
+                    {{ session()->get('error') }}
+                </div>
             @endif
 
             <div class="box">
 
-                <label for="display_name">{{ __('Display Name *') }}</label>
-                <input id="display_name" type="text" class="@error('display_name') is-invalid @enderror" name="display_name" value="{{ old('display_name') }}" autocomplete="display_name" autofocus>
+                <label for="display_name">{{ __('Display Name or Email *') }}</label>
+                <input id="display_name" type="text" class="@error('display_name') is-invalid @enderror"
+                    name="display_name" value="{{ old('display_name') }}" autocomplete="display_name" autofocus>
 
             </div>
 
             @error('display_name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>               
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
             @enderror
 
             <div class="box">
-                
+
                 <label for="password">{{ __('Password *') }}</label>
-                <input id="password" type="password" name="password" class="@error('password') is-invalid @enderror" autocomplete="current-password">
-                
+                <input id="password" type="password" name="password" class="@error('password') is-invalid @enderror"
+                    autocomplete="current-password">
+
             </div>
 
             @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>            
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
             @enderror
 
             <div class="check">
-                
+
                 <div class="checkbox">
-                    <input type="checkbox" name="remember" id="remember" value= "{{ old('remember') ? 'checked' : '' }}">
+                    <input type="checkbox" name="remember" id="remember"
+                        value="{{ old('remember') ? 'checked' : '' }}">
                     <label for="remember">{{ __('Remember me') }}</label>
                 </div>
-                
+
                 @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}">{{ __('Forgot Your Password') }}</a>
+                    <a href="{{ route('password.request') }}">{{ __('Forgot Your Password') }}</a>
                 @endif
             </div>
 
@@ -85,4 +90,5 @@
     </div>
 
 </body>
+
 </html>
