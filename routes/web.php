@@ -17,9 +17,6 @@ Route::get('/', 'UserHomeController@index');
 Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail');
 
-Route::get('/tttt', function () {
-    return view('tt');
-});
 
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {
@@ -56,4 +53,37 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
 //ADMIN USER MANAGEMENT
 Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
     Route::get('/', 'AdminUserController@index');
+});
+
+Route::middleware('guest')->group(function () {
+
+    //start register
+    Route::get('register', [RegisterController::class, 'register'])->name('register');
+    Route::post('register', [RegisterController::class, 'store'])->middleware('checkregister');
+    //end register
+
+    //start login
+    Route::get('login', [LoginController::class, 'login'])->name('login');
+    Route::post('login', [LoginController::class, 'authenticate'])->middleware('checklogin');
+    //end login
+
+    //start forgot password
+    Route::get('forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
+    Route::post('forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
+    //end forgot password
+
+    //start reset password
+    Route::get('reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
+    Route::post('reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
+    //end reset password
+
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/personal', function () {
+        return view('user.profile.accountsettings');
+    })->name('accountsettings');
+    Route::get('payment', [AddPaymentController::class, 'add'])->name('paymentmanagement');
+    Route::post('payment', [AddPaymentController::class, 'store'])->middleware('checkaddpayment');
 });

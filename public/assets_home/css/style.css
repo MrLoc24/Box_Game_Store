@@ -26,7 +26,8 @@
   --bg-black: #121212;
   --bg-silver: #202020;
   --text-white: #f5f5f5;
-  --text-silver: #f5f5f599;
+  --text-silver: #e1e1e199;
+  --text-silver2: #979797;
   --black_50: hsla(0, 0%, 0%, 0.5);
   --text-header: #cccccc;
 
@@ -2785,24 +2786,27 @@ body {
 .profile .options{
   margin-right: 15px;
   width: 25%;
+  background: var(--white);
+  height: fit-content;
 }
 
-.profile .options .accountsettings,
+.profile .options :is(.accountsettings,
 .communication,
 .payment,
 .transaction, 
 .password,
-.redeem{
+.redeem){
   display: flex;
   align-items: center;
   gap: 1rem;
   width: 100%;
   padding-left: 1.5rem;
-  padding-block: 1rem;
+  padding-block: 1.5rem;
   font-size: 1.2rem;
-  font-weight: 650;
+  font-weight: 620;
   text-transform: uppercase;
-  border: var(--blue_20) solid 1px;
+  border: #d2d2d2 solid .5px;
+  color: #939393;
 }
 
 .profile .options :is(.accountsettings,
@@ -2829,6 +2833,8 @@ body {
   width: 74%;
   padding: 35px 30px;
   border: var(--blue_20) solid 1px;
+  background: var(--white);
+  border: #d2d2d2 solid .5px;
 }
 
 .profile .informations .information{
@@ -2852,10 +2858,325 @@ body {
 }
 
 .profile .informations .information .settings .content-settings{
+  margin-bottom: 1rem;
+}
+
+.profile .informations .information .payment{
   font-size: 14px;
-  font-family: Brutal, sans-serif;
-  font-weight: 400;
-  line-height: 1.43;
+}
+
+.profile .informations .information .payment .content-payment{
+  font-size: 14px;
+}
+
+.profile .informations .information .your_payment{
+  margin-top: 2rem;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--black);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #d2d2d2;
+}
+
+.profile .informations .information .add_or_manage{
+  margin-top: 1.5rem;
+}
+
+.profile .informations .information .add_or_manage .content_add_or_manage{
+  color: var(--text-silver2);
+}
+
+.profile .informations .information .add_or_manage .add{
+  margin-top: 3rem;
+}
+
+.profile .informations .information .add_or_manage .add .payment-show{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile .informations .information .add_or_manage .add .payment-show .payment-name{
+  color: var(--blue);
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-right: 2rem;
+}
+
+.profile .informations .information .add_or_manage .add .payment-show .btn-showmethod{
+  color: var(--blue);
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide{
+  margin-top: 2rem;
+  display: none;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide.active{
+  display: block;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item{
+  background: var(--text-silver);
+  border-radius: .6rem;
+  margin-bottom: 1rem;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item:has(> .content_payment.active){
+  border: 1px solid var(--blue);
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .title_payment{
+  padding-block: 2px;
+  padding-left: 2rem;
+  font-size: var(--fs-7);
+  margin-block-end: 7px;
+  color: var(--black);
+  height: 6rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .title_payment input{
+  width: fit-content;
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .title_payment img{
+  border: 1px solid var(--text-silver2);
+  border-radius: .5rem;
+  width: 6.5rem;
+  height: 4.5rem;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment{
+  padding-left: 50px;
+  display: none;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment.active{
+  display: block;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .card_details{
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment {
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-block: 2rem;
+  padding-left: 0;
+  border-radius: .5rem; 
+  border: var(--border);
+  text-align: center;
+  display: flex;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item{
+  margin-bottom: 10px;
+  height: 6rem;
+  border-radius: .5rem;
+  padding: 2px 10px;
+  border: 1px solid var(--bg-silver);
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item:focus-within{
+  border: .2rem solid var(--black);
+  padding-left: .4rem;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item label{
+  font-size: 1.3rem;
+  display: flex;
+  width: 100%;
+  padding: .2rem 1rem;
+  color: var(--black);
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item input{
+  font-size: 1.4rem;
+  height: 3rem;
+  width: 100%;
+  padding: .1rem 1rem;
+  color: var(--black);
+  outline: none;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .card_number{
+  width: 100%;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment :is(.card_expi, .card_cvv) {
+  width: 48%;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .submit{
+  margin-left: 80%;
+  margin-top: 2rem;
+  background: var(--blue);
+  text-transform: uppercase;
+  width: 20%;
+  color: white;
+  height: 4rem;
+} 
+
+.profile .informations .information .add_or_manage .manage{
+  margin-top: 3rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-show1{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-show1 .payment-name1{
+  color: var(--blue);
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-right: 2rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-show1 .btn-showmethod1{
+  color: var(--blue);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1{
+  margin-top: 2rem;
+  display: none;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1.active{
+  display: block;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1{
+  background: var(--text-silver);
+  border-radius: .6rem;
+  margin-bottom: 1rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1:has(> .content_payment1.active){
+  border: 1px solid var(--blue);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .title_payment1{
+  padding-block: 2px;
+  padding-left: 2rem;
+  font-size: var(--fs-7);
+  margin-block-end: 7px;
+  color: var(--black);
+  height: 6rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .title_payment1 input{
+  width: fit-content;
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .title_payment1 img{
+  border: 1px solid var(--text-silver2);
+  border-radius: .5rem;
+  width: 6.5rem;
+  height: 4.5rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .title_payment1 label::first-letter{
+  text-transform: uppercase;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1{
+  padding-left: 50px;
+  display: none;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1.active{
+  display: block;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .card_details1{
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 {
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-block: 2rem;
+  padding-left: 0;
+  border-radius: .5rem; 
+  border: var(--border);
+  text-align: center;
+  display: flex;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1{
+  margin-bottom: 10px;
+  height: 6rem;
+  border-radius: .5rem;
+  padding: 2px 10px;
+  border: 1px solid var(--bg-silver);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1:focus-within{
+  border: .2rem solid var(--black);
+  padding-left: .4rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1 label{
+  font-size: 1.3rem;
+  display: flex;
+  width: 100%;
+  padding: .2rem 1rem;
+  color: var(--black);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1 input{
+  font-size: 1.4rem;
+  height: 3rem;
+  width: 100%;
+  padding: .1rem 1rem;
+  color: var(--black);
+  outline: none;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .card_number1{
+  width: 100%;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 :is(.card_expi1, .card_cvv1) {
+  width: 48%;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .submit1{
+  margin-left: 80%;
+  margin-top: 2rem;
+  background: var(--blue);
+  text-transform: uppercase;
+  width: 20%;
+  color: white;
+  height: 4rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 span{
+  font-size: 1.8rem;
+  color: var(--black);
+  text-align: center;
 }
 
 .profile .informations .information .info{
@@ -2920,9 +3241,12 @@ body {
   color: var(--white);
 }
 
-.profile .informations .information .info .content-info .change1 i{
-  font-size: 1.8rem;
+.profile .informations .information .info .content-info .fa-user-pen{
+  font-size: 1.5rem;
   color: var(--white);
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile .informations .information .personal-details{
@@ -2934,10 +3258,6 @@ body {
   font-size: 14px;
 }
 
-.profile .informations .information .personal-details .content-details2 .name{
-  display: flex;
-}
-
 .profile .informations .information .personal-details .content-details2 .details-input{
   height: 50px;
   width: 46.5%;
@@ -2945,11 +3265,41 @@ body {
   margin-bottom: 20px;
   align-items: center;
   border-radius: .5rem;
-  background-color: #eee;
   border: var(--bg-silver) solid 1px;
 }
 
-.profile .informations .information .personal-details .content-details2 label{
+.profile .informations .information .personal-details .content-details2 .ava{
+  display: flex;
+}
+
+.profile .informations .information .personal-details .content-details2 .ava .changeava{
+  margin-left: 1rem;
+  margin-right: 1.3rem;
+  height: 50px;
+  width: 7%;
+  border-radius: .5rem;
+  background-color: var(--blue);
+  border: var(--bg-silver) solid 1px;
+  padding-top: 13px;
+  padding-left: 16px;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: var(--white);
+}
+
+.profile .informations .information .personal-details .content-details2 .save{
+  height: 50px;
+  width: 46.5%;
+  font-size: 14px;
+  text-align: center;
+  color: var(--white);
+  text-transform: uppercase;
+  border-radius: .5rem;
+  border: var(--bg-silver) solid 1px;
+  background: var(--blue);
+}
+
+.profile .informations .information .personal-details .content-details2 .details-input label{
   font-size: .9rem;
   width: 100%;
   padding-left: 1.4rem;
@@ -2957,22 +3307,21 @@ body {
   text-transform: uppercase;
 }
 
-.profile .informations .information .personal-details .content-details2 input{
+.profile .informations .information .personal-details .content-details2 .details-input input{
   font-size: 1.6rem;
   height: 2.5rem;
   width: 100%;
   padding-inline: 1.4rem;
   padding-bottom: 1.3rem;
-  color: var(--white);
-  color: #999;
+  color: var(--black);
 }
 
-.profile .informations .information .personal-details .content-details2 input:focus{
+.profile .informations .information .personal-details .content-details2 .details-input input:focus{
   outline: none;
 }
 
 .profile .informations .information .delete{
-  border-top: var(--blue_20) solid 1px;
+  border-top: #d2d2d2 solid .5px;
   padding-top: 2rem;
 }
 
@@ -3095,6 +3444,10 @@ body {
   cursor: pointer;
 }
 
+.invalid-feedback{
+    font-size: 1.2rem;
+    color: red;
+}
 
 
 

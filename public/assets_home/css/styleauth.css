@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root{
+    --blue: #0074e4;
+    --black: rgb(0, 0, 0);
+    --white: #fff;
+    --bg-black: rgb(32, 32, 32);
+    --bg-silver: #2a2a2a;
+    --border: .1rem solid var(--text-silver);
+    --text-silver: #f5f5f599;
+}
+
+*{
+    font-family: 'Rubik', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+*::selection{
+    background-color: var(--black);
+    color: var(--white);
+}
+
+*::-webkit-scrollbar{
+    height: .5rem;
+    width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+    background-color: var(--black);
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: var(--bg-silver);
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.btn,
+.option-btn,
+.delete-btn,
+.white-btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    color: var(--white);
+    font-size: 1.8rem;
+    border-radius: .5rem;
+    text-transform: capitalize;
+
+}
+
+.btn:hover,
+.option-btn:hover,
+.delete-btn:hover{
+    background-color: var(--blue);
+} 
+
+.white-btn,
+.btn{
+    background-color: var(--black);
+}
+
+.option-btn{
+    background-color: #fff;
+}
+
+.delete-btn{
+    background-color: #fff;
+}
+
+.form-container{
+    min-height: 100vh;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container form{
+    justify-content: center;
+    padding: 2rem;
+    width: 40rem;
+    border-radius: .5rem; 
+    border: var(--border);
+    background-color: var(--bg-black);
+    text-align: center;
+}
+
+.form-container form img{
+    margin-top: 2rem;
+    width: 40px;
+    height: 40px;
+}
+
+.form-container form h4{
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.form-container form h5{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    margin-top: 3rem;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.form-container form .box{
+    height: 6rem;
+    width: 90%;
+    border-radius: .5rem;
+    background-color: var(--bg-black);
+    padding: .5rem 1.4rem;
+    border: var(--border);
+    margin: 2rem;
+}
+
+.form-container form .box:focus-within {
+    border: .2rem solid var(--white);
+    padding: .3rem;
+}
+
+.form-container form .box input{
+    font-size: 1.4rem;
+    height: 3rem;
+    width: 100%;
+    background-color: var(--bg-black);
+    padding: .1rem 1.2rem;
+    color: var(--white);
+}
+
+.form-container form .box p{
+    display: flex;
+    width: 100%;
+    background-color: var(--bg-black);
+    padding: .5rem 1.4rem;
+    color: var(--bg-silver);
+}
+
+.form-container form .box label{
+    font-size: 1.4rem;
+    display: flex;
+    width: 100%;
+    background-color: var(--bg-black);
+    padding: .2rem 1.4rem;
+    color: var(--text-silver);
+}
+
+.form-container form .check{
+    margin-right: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+    height: 4rem;
+    /* padding: 1.2rem 0; */
+}
+
+.form-container form .checkbox{
+    margin-left: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1.2rem 0;
+}
+
+.form-container form .checkbox #receive-news{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.form-container form .checkbox #termsofservice{
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+.form-container form .checkbox #remember{
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+.form-container form .checkbox label{
+    text-align: left;
+    font-weight: 550;
+    font-size: 1.3rem;
+    color: var(--text-silver);
+    cursor: pointer;
+    margin: .5rem;
+}
+
+.form-container form .check a{
+    text-align: right;
+    font-weight: 550;
+    font-size: 1.3rem;
+    color: var(--text-silver);
+    cursor: pointer;
+}
+
+.form-container form p{
+    font-weight: 550;
+    margin: 3rem;
+    font-size: 1.3rem;
+    color: var(--text-silver);
+}
+
+.form-container form a{
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.form-container form a:hover{
+    text-decoration: none;
+}
+
+.invalid-feedback{
+    font-size: 1.2rem;
+    color: red;
+}
+
+.valid-feedback {
+    font-size: 1.2rem;
+    color: rgb(20, 202, 0);
+    padding-top: .5rem;
+}
+

@@ -70,50 +70,64 @@
                     </ul>
                 </div>
 
-                <div class="header-actions">
+                @if (Route::has('login'))
+                    <div class="header-actions">
 
                     <button class="header-action-btn btn-language">
                         <ion-icon name="earth"></ion-icon>
                         <ul class="languages-list">
-                            <li>
-                                <a href="" class="laguages-list-link first">Vietnamese</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Enghlish</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Español (Spain)</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Italiano</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Français (French)</a>
-                            </li>
+                        <li>
+                            <a href="" class="laguages-list-link first">Vietnamese</a>
+                        </li>
+                        <li>
+                            <a href="" class="laguages-list-link">Enghlish</a>
+                        </li>
+                        <li>
+                            <a href="" class="laguages-list-link">Español (Spain)</a>
+                        </li>
+                        <li>
+                            <a href="" class="laguages-list-link">Italiano</a>
+                        </li>
+                        <li>
+                            <a href="" class="laguages-list-link">Français (French)</a>
+                        </li>
                         </ul>
                     </button>
 
+                    @auth
                     <button class="header-action-btn btn-user-login">
+                        <ion-icon style="color: var(--text-white);" name="person"></ion-icon>
+                        <span style="color: var(--text-white);">{{ Auth::user()->userID }}</span>
+                        <ul class="user-list">
+                        <li>
+                            <a href="{{ route('accountsettings') }}" class="user-list-link first">account</a>
+                        </li>
+                        <li>
+                            <a href="" class="user-list-link">wish list</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}" class="user-list-link">sign out</a>
+                        </li>
+                        </ul>
+                    </button>
+
+                    @else
+
+                    <a href="{{ route('login') }}" class="header-action-btn btn-user-login">
                         <ion-icon name="person"></ion-icon>
                         <span>sign in</span>
-                        <ul class="user-list">
-                            <li>
-                                <a href="" class="user-list-link first">account</a>
-                            </li>
-                            <li>
-                                <a href="" class="user-list-link">wish list</a>
-                            </li>
-                            <li>
-                                <a href="" class="user-list-link">sign out</a>
-                            </li>
-                        </ul>
-                    </button>
+                    </a>
 
-                    <button class="header-action-btn btn-user-register">
-                        REGISTER
-                    </button>
+                        @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="header-action-btn btn-user-register">
+                            REGISTER
+                        </a>
+                        @endif
 
-                </div>
+                    @endauth
+
+                    </div>
+                @endif
 
 
 
