@@ -207,7 +207,8 @@
                                     <div class="mt-4">
                                         <h2 class="mb-0">
                                             @foreach ($category as $item => $cate)
-                                                <span class="badge badge-primary">{{ $cate->type }}</span>
+                                                <span
+                                                    class="badge badge-primary">{{ str_replace('_', ' ', $cate->type) }}</span>
                                             @endforeach
                                         </h2>
                                     </div>
@@ -538,11 +539,11 @@
                         @foreach ($cate_all as $value)
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id={{ $value->type }}
+                                    <input class="custom-control-input" type="checkbox" id="{{ $value->type }}"
                                         value="{{ $value->type }}" name="category[]"
                                         @if ($category->contains('type', $value->type)) @checked(true) @endif>
                                     <label for="{{ $value->type }}"
-                                        class="custom-control-label">{{ $value->type }}</label>
+                                        class="custom-control-label">{{ str_replace('_', ' ', $value->type) }}</label>
                                 </div>
                             </div>
                         @endforeach

@@ -61,7 +61,7 @@
                                                         @foreach ($category as $key => $value)
                                                             @if ($value->gameId === $game->gameId)
                                                                 <button aria-disabled="true"
-                                                                    class="btn btn-primary">{{ $value->type }}</button>
+                                                                    class="btn btn-primary">{{ str_replace('_', ' ', $value->type) }}</button>
                                                             @endif
                                                         @endforeach
                                                     @else
