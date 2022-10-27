@@ -273,6 +273,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Đang đổ dữ liệu cho bảng `system_requirement`
+--
+INSERT INTO `users` (`userID`, `username`, `email`, `status`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
+('Mr. Ezzz', 'loc', 'loclongla1999@gmail.com', b'1', NULL, '$2y$10$xbySnCMG9uj5jJNruI4MCOOYdLf7fnNi7LazPro2w8zq1O1JYHH6G', NULL, NULL, '2022-10-27 04:00:35', '2022-10-27 04:00:35');
+
+--
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
