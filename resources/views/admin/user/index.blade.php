@@ -42,6 +42,7 @@
                                     <thead>
                                         <tr>
                                             <th>Icon</th>
+                                            <th>Display Name</th>
                                             <th>Username</th>
                                             <th>Email</th>
                                             <th>Status</th>
@@ -54,6 +55,7 @@
                                                 <td><img src="{{ asset("$user->image") }}" width="50px" height="50px">
                                                 </td>
                                                 <td>{{ $user->username }}</td>
+                                                <td>{{ $user->userID }}</td>
                                                 {{-- $game->column name!!!!!! --}}
                                                 <td>{{ $user->email }}</td>
                                                 <td>
@@ -66,10 +68,10 @@
                                                 <td>
                                                     @if ($user->status == 1)
                                                         <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                            data-target="#deactive{{ $user->userId }}">Deactive</button>
+                                                            data-target="#deactive{{ $user->userID }}">Deactive</button>
                                                     @else
                                                         <button type="button" class="btn btn-success" data-toggle="modal"
-                                                            data-target="#active{{ $user->userId }}">Active</button>
+                                                            data-target="#active{{ $user->userID }}">Active</button>
                                                     @endif
 
                                                 </td>
@@ -108,6 +110,7 @@
                                         <tr>
                                             <th>Icon</th>
                                             <th>Userame</th>
+                                            <th>Display Name</th>
                                             <th>Email</th>
                                             <th>Status</th>
                                             <th>Function</th>

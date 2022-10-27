@@ -52,25 +52,11 @@ INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `status`, `
 -- Cấu trúc bảng cho bảng `cart_details`
 --
 
-CREATE TABLE `cart_details` (
-  `cartId` int(11) NOT NULL,
-  `gameId` varchar(45) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- --------------------------------------------------------
 
 --
 -- Cấu trúc bảng cho bảng `cart_master`
 --
-
-CREATE TABLE `cart_master` (
-  `cardId` int(11) NOT NULL,
-  `userId` varchar(45) NOT NULL,
-  `create_at` timestamp GENERATED ALWAYS AS (current_timestamp()) VIRTUAL,
-  `status` bit(1) NOT NULL DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- --------------------------------------------------------
 
 --
@@ -166,28 +152,11 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 -- Cấu trúc bảng cho bảng `payment`
 --
 
-CREATE TABLE `payment` (
-  `cardId` int(11) NOT NULL,
-  `userId` varchar(45) NOT NULL,
-  `card_number` int(12) NOT NULL,
-  `cvv` int(3) NOT NULL,
-  `payment_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- --------------------------------------------------------
 
 --
 -- Cấu trúc bảng cho bảng `rating`
 --
-
-CREATE TABLE `rating` (
-  `userId` varchar(45) NOT NULL,
-  `gameId` varchar(45) NOT NULL,
-  `message` varchar(1000) DEFAULT NULL,
-  `star` float NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `update_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -256,21 +225,7 @@ INSERT INTO `type` (`type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
---
 
-CREATE TABLE `user` (
-  `userId` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `remember_token` varchar(45) DEFAULT NULL,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `update_at` datetime DEFAULT current_timestamp(),
-  `image` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -281,20 +236,7 @@ ALTER TABLE `account_admin`
   ADD PRIMARY KEY (`adminId`);
 
 --
--- Chỉ mục cho bảng `cart_details`
---
-ALTER TABLE `cart_details`
-  ADD PRIMARY KEY (`cartId`,`gameId`),
-  ADD KEY `game_cart` (`gameId`);
 
---
--- Chỉ mục cho bảng `cart_master`
---
-ALTER TABLE `cart_master`
-  ADD PRIMARY KEY (`cardId`),
-  ADD KEY `name_cart` (`userId`);
-
---
 -- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
@@ -311,16 +253,10 @@ ALTER TABLE `game`
 --
 -- Chỉ mục cho bảng `payment`
 --
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`cardId`),
-  ADD KEY `user_payment` (`userId`);
 
 --
 -- Chỉ mục cho bảng `rating`
 --
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`userId`,`gameId`),
-  ADD KEY `game_cmt` (`gameId`);
 
 --
 -- Chỉ mục cho bảng `system_requirement`
@@ -338,8 +274,6 @@ ALTER TABLE `type`
 --
 -- Chỉ mục cho bảng `user`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userId`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -348,8 +282,6 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT cho bảng `cart_master`
 --
-ALTER TABLE `cart_master`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -360,8 +292,7 @@ ALTER TABLE `category`
 --
 -- AUTO_INCREMENT cho bảng `payment`
 --
-ALTER TABLE `payment`
-  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
+
 
 --
 -- AUTO_INCREMENT cho bảng `system_requirement`
@@ -373,38 +304,14 @@ ALTER TABLE `system_requirement`
 -- Các ràng buộc cho các bảng đã đổ
 --
 
---
--- Các ràng buộc cho bảng `cart_details`
---
-ALTER TABLE `cart_details`
-  ADD CONSTRAINT `cart` FOREIGN KEY (`cartId`) REFERENCES `cart_master` (`cardId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `game_cart` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Các ràng buộc cho bảng `cart_master`
---
-ALTER TABLE `cart_master`
-  ADD CONSTRAINT `name_cart` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Các ràng buộc cho bảng `category`
 --
 ALTER TABLE `category`
   ADD CONSTRAINT `game_cate` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `type_cate` FOREIGN KEY (`type`) REFERENCES `type` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Các ràng buộc cho bảng `payment`
---
-ALTER TABLE `payment`
-  ADD CONSTRAINT `user_payment` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Các ràng buộc cho bảng `rating`
---
-ALTER TABLE `rating`
-  ADD CONSTRAINT `game_cmt` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_cmt` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `system_requirement`

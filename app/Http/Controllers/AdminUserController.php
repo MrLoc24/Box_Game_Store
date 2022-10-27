@@ -10,7 +10,7 @@ class AdminUserController extends Controller
     //View All Users
     public function index()
     {
-        $users = DB::table('user')->get();
+        $users = DB::table('users')->get();
         return view('admin.user.index', ['users' => $users]);
     }
 }
