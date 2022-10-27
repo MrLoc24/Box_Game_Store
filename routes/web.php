@@ -55,5 +55,5 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
 });
 //ADMIN USER MANAGEMENT
 Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
-    Route::get('view', 'AdminUserController@index');
+    Route::get('/', 'AdminUserController@index');
 });
