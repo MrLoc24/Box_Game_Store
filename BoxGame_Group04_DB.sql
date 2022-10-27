@@ -20,6 +20,8 @@ use `boxgame`;
 --
 -- Cơ sở dữ liệu: `boxgame`
 --
+CREATE SCHEMA IF NOT EXISTS `boxgame` DEFAULT CHARACTER SET utf8 ;
+USE `boxgame` ;
 
 -- --------------------------------------------------------
 
@@ -157,7 +159,19 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 --
 -- Cấu trúc bảng cho bảng `rating`
 --
-
+CREATE TABLE `rating` (
+  `userId` varchar(255) NOT NULL,
+  `gameId` varchar(45) NOT NULL,
+  `message` varchar(1000) DEFAULT NULL,
+  `star` float NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`userId`,`gameId`),
+  ADD KEY `game_cmt` (`gameId`);
+ALTER TABLE `rating`
+  ADD CONSTRAINT `game_cmt` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`) ON DELETE CASCADE ON UPDATE CASCADE;
 -- --------------------------------------------------------
 
 --

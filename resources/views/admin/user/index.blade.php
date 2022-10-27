@@ -60,9 +60,9 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>
                                                     @if ($user->status == 1)
-                                                        <span class="badge badge-success">Active</span>
+                                                        <span class="btn btn-success">Active</span>
                                                     @else
-                                                        <span class="badge badge-danger">Inactive</span>
+                                                        <span class="btn btn-danger">Inactive</span>
                                                     @endif
                                                 </td>
                                                 <td>
