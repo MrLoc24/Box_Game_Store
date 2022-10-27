@@ -40,9 +40,14 @@
                                     <!-- Type of game -->
                                     @foreach ($type as $key => $value)
                                         <div class="form-group row">
-                                            <div class="col">
-                                                <p>{{ $value->type }}</p>
+                                            <div clas="col">
+                                                <img src="{{ asset("$value->image") }}" width="50px" height="50px"
+                                                    alt="{{ $value->type }}">
                                             </div>
+                                            <div class="col">
+                                                <p>{{ str_replace('_', ' ', $value->type) }}</p>
+                                            </div>
+
                                             <div class="col-md-auto">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target="#demoModal{{ $key }}">Edit</button>
@@ -77,7 +82,16 @@
                                                                     <input type="text" class="form-control"
                                                                         id="typeEdit{{ $key }}"
                                                                         placeholder="Type of Game" name="typeEdit"
-                                                                        value="{{ $value->type }}">
+                                                                        value="{{ str_replace('_', ' ', $value->type) }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="typeEditImage{{ $key }}"
+                                                                    class="col-sm-2 col-form-label">Image</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="file" class="form-control"
+                                                                        id="typeEditImage{{ $key }}"
+                                                                        placeholder="Type's Image" name="typeEditImage">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -131,7 +145,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="image[0]" class="col-sm-2 col-form-label">Image</label>
+                                                        <label for="image[0]"
+                                                            class="col-sm-2 col-form-label">Image</label>
                                                         <div class="col-sm-10">
                                                             <input type="file" class="form-control" id="image[0]"
                                                                 placeholder="Type's Image" name="image[0]">

@@ -19,7 +19,7 @@ class AdminCategoryController extends Controller
     {
         foreach ($request->input('type') as $key => $value) {
             $data_type = array();
-            $data_type['type'] = $value;
+            $data_type['type'] = str_replace(' ', '_', $value);
             $getImage = $request->file("image")[$key];
             if ($getImage) {
                 $get_name_image = 'type_' . str_replace(' ', '_', $value) . '.jpg';
@@ -33,9 +33,15 @@ class AdminCategoryController extends Controller
     //Edit game type
     public function edit(Request $request, $id)
     {
-        DB::table('type')->where('type', $id)->update([
-            'type' => $request->input('typeEdit')
-        ]);
+        $data_edit = array();
+        $data_edit['type'] = str_replace(' ', '_', $request->input('typeEdit'));
+        $getImage = $request->file("typeEditImage");
+        if ($getImage) {
+            $get_name_image = 'type_' . str_replace(' ', '_', $request->input('typeEdit')) . '.jpg';
+            $data_edit['image'] = 'img/type/' . $get_name_image;
+            $getImage->move('img/type/', $get_name_image);
+        }
+        DB::table('type')->where('type', $id)->update($data_edit);
         return redirect('admin/category/view');
     }
     //Delete game type

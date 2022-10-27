@@ -52,7 +52,8 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
     Route::post('create', 'AdminCategoryController@store');
     Route::get('delete/{id}', 'AdminCategoryController@delete');
     Route::post('edit/{id}', 'AdminCategoryController@edit');
-    // Route::get('view/{id}', 'AdminCategoryController@view');
-    // Route::get('create', 'AdminCategoryController@create');
-    // Route::get('delete/{id}', 'AdminCategoryController@delete');
+});
+//ADMIN USER MANAGEMENT
+Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
+    Route::get('view', 'AdminUserController@index');
 });
