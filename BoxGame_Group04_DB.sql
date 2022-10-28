@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2022 lúc 02:29 PM
+-- Thời gian đã tạo: Th10 28, 2022 lúc 02:43 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -11,12 +11,13 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS `boxgame` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-use `boxgame`;
+CREATE DATABASE IF NOT EXISTS `boxgame` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `boxgame`;
 --
 -- Cơ sở dữ liệu: `boxgame`
 --
@@ -32,6 +33,7 @@ CREATE TABLE `account_admin` (
   `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL,
   `status` bit(1) NOT NULL DEFAULT b'1',
   `phone` varchar(10) DEFAULT NULL,
   `created_at` varchar(45) DEFAULT NULL,
@@ -43,8 +45,9 @@ CREATE TABLE `account_admin` (
 -- Đang đổ dữ liệu cho bảng `account_admin`
 --
 
-INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `status`, `phone`, `created_at`, `update_at`, `image`) VALUES
-('loc', 'Mr. Clown', 'loclongla1999@gmail.com', '1234', b'1', NULL, NULL, NULL, 'img/admin/adminloc.jpg');
+INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `role`, `status`, `phone`, `created_at`, `update_at`, `image`) VALUES
+('admin', 'admin', 'admin@gmail.com', '1234', 'manager', b'1', NULL, NULL, NULL, NULL),
+('loc', 'Mr. Clown', 'loclongla1999@gmail.com', '1234', 'boss', b'1', NULL, NULL, NULL, 'img/admin/adminloc.jpg');
 
 -- --------------------------------------------------------
 
@@ -53,9 +56,12 @@ INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `status`, `
 --
 
 CREATE TABLE `cart_details` (
+  `cart_details_id` int(11) NOT NULL,
   `cartId` int(11) NOT NULL,
   `gameId` varchar(45) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `gamePrice` int(11) NOT NULL,
+  `gameIcon` varchar(100) NOT NULL,
+  `gameSale` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -68,7 +74,8 @@ CREATE TABLE `cart_master` (
   `cartId` int(11) NOT NULL,
   `userID` varchar(255) NOT NULL,
   `created_at` timestamp GENERATED ALWAYS AS (current_timestamp()) VIRTUAL,
-  `status` bit(1) NOT NULL DEFAULT b'0'
+  `status` bit(1) NOT NULL DEFAULT b'0',
+  `cartTotal` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -239,25 +246,25 @@ CREATE TABLE `type` (
 -- Đang đổ dữ liệu cho bảng `type`
 --
 
-INSERT INTO `type` (`type`) VALUES
-('Adventure'),
-('Crafting'),
-('Family'),
-('FPS-Shooter'),
-('Garden'),
-('Horror'),
-('MOBA'),
-('Puzzle'),
-('PvE'),
-('PvP'),
-('Sandbox'),
-('Simulator'),
-('Strategic');
+INSERT INTO `type` (`type`, `image`) VALUES
+('Adventure', NULL),
+('Crafting', NULL),
+('Family', NULL),
+('FPS-Shooter', NULL),
+('Garden', NULL),
+('Horror', NULL),
+('MOBA', NULL),
+('Puzzle', NULL),
+('PvE', NULL),
+('PvP', NULL),
+('Sandbox', NULL),
+('Simulator', NULL),
+('Strategic', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -266,19 +273,19 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
-  `status` bit DEFAULT 1,
+  `status` bit(1) DEFAULT b'1',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `system_requirement`
+-- Đang đổ dữ liệu cho bảng `users`
 --
-INSERT INTO `users` (`userID`, `username`, `email`, `status`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-('Mr. Ezzz', 'loc', 'loclongla1999@gmail.com', b'1', NULL, '$2y$10$xbySnCMG9uj5jJNruI4MCOOYdLf7fnNi7LazPro2w8zq1O1JYHH6G', NULL, NULL, '2022-10-27 04:00:35', '2022-10-27 04:00:35');
 
---
+INSERT INTO `users` (`userID`, `username`, `email`, `password`, `remember_token`, `status`, `created_at`, `updated_at`, `image`) VALUES
+('loc', 'loc', 'loclongla1999@gmail.com', '$2y$10$8X8m1KExFPl9ajMjt7ASP.ubQI4Gu8MZcPPL6O05LRMRwWUDnqXwi', NULL, b'1', '2022-10-27 07:28:54', '2022-10-27 07:28:54', NULL);
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -293,7 +300,8 @@ ALTER TABLE `account_admin`
 -- Chỉ mục cho bảng `cart_details`
 --
 ALTER TABLE `cart_details`
-  ADD PRIMARY KEY (`cartId`,`gameId`),
+  ADD PRIMARY KEY (`cart_details_id`),
+  ADD KEY `cartId` (`cartId`,`gameId`),
   ADD KEY `game_cart` (`gameId`);
 
 --
@@ -321,7 +329,7 @@ ALTER TABLE `game`
 -- Chỉ mục cho bảng `payment`
 --
 ALTER TABLE `payment`
-  ADD PRIMARY KEY (`cardId`),
+  ADD PRIMARY KEY (`CardId`),
   ADD KEY `user_payment` (`userID`);
 
 --
@@ -345,7 +353,7 @@ ALTER TABLE `type`
   ADD PRIMARY KEY (`type`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userID`),
