@@ -455,16 +455,10 @@
 
 
 
-<<<<<<< Updated upstream
-    <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #BLOG
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
-=======
+
 <!--                                                                                                                                                                                                                                                                                                                                                                                                                   
 - #BLOG                                                                                                                                                                                                                                                                                                                                                                                                                     
 -->
->>>>>>> Stashed changes
-
     {{-- <section class="section blog" data-section>
         <div class="container">
 

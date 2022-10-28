@@ -99,7 +99,7 @@
             <span style="color: var(--text-white);">{{ Auth::user()->userID }}</span>
             <ul class="user-list">
               <li>
-                <a href="" class="user-list-link first">account</a>
+                <a href="{{ route('accountsettings') }}" class="user-list-link first">account</a>
               </li>
               <li>
                 <a href="" class="user-list-link">wish list</a>
