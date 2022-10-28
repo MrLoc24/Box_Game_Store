@@ -37,7 +37,7 @@
 
             <div class="box">
 
-                <label for="display_name">{{ __('Display Name or Email *') }}</label>
+                <label for="display_name">{{ __('Display Name *') }}</label>
                 <input id="display_name" type="text" class="@error('display_name') is-invalid @enderror"
                     name="display_name" value="{{ old('display_name') }}" autocomplete="display_name" autofocus>
 
