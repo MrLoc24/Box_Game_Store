@@ -38,6 +38,10 @@ class LoginController extends Controller
 
     public function logout(Request $request) {
 
+        Auth::user()->forceFill([
+            'status' => 0,
+        ])->save(); 
+        
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
