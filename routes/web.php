@@ -19,7 +19,7 @@ use App\Http\Controllers\Payment\AddPaymentController;
 */
 // //MAIN PAGE
 Route::get('/', 'UserHomeController@index');
-Route::get('/home', 'UserHomeController@index')->name('userhome');
+Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail');
 
 
@@ -59,6 +59,22 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
 Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
     Route::get('/', 'AdminUserController@index');
 });
+//ADMIN CART MANAGEMENT
+Route::prefix('admin/cart')->middleware('checkAdminLogin')->group(function () {
+    Route::get('index', 'AdminCartController@index');
+    Route::get('index/cartDetails', 'AdminCartController@indexCartDetails');
+    // Route::get('view/{id}', 'AdminGameController@view');
+    // Route::get('create', 'AdminGameController@create');
+    // Route::post('create', 'AdminGameController@store');
+    // Route::get('delete/{id}', 'AdminGameController@delete');
+    // Route::post('editDetail/{id}', 'AdminGameDetailController@update');
+    // Route::post('editType/{id}', 'AdminGameDetailController@updateType');
+
+    //CRUD for system requirements
+    // Route::post('editReq/{id}/{os}', 'AdminGameReqController@update');
+    // Route::post('addReq/{id}', 'AdminGameReqController@addNew');
+    // Route::get('deleteReq/{id}/{os}', 'AdminGameReqController@delete');
+});
 
 Route::middleware('guest')->group(function () {
 
@@ -91,4 +107,9 @@ Route::middleware('auth')->group(function () {
     })->name('accountsettings');
     Route::get('payment', [AddPaymentController::class, 'add'])->name('paymentmanagement');
     Route::post('payment', [AddPaymentController::class, 'store'])->middleware('checkaddpayment');
+    Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
+    Route::get('/cart', 'CartController@show')->name('cart');
+    Route::get('remove-cart/{rowId}', 'CartController@removeCart');
+    Route::get('/checkoutCart/{cartTotal}', 'CheckoutController@checkout');
 });
+

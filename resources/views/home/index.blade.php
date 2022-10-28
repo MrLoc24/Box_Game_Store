@@ -140,24 +140,40 @@
                         <div class="swiper-slide">
                             <div class="shop-card">
 
-                                <a href="/game/{{ $value->gameId }}" class="card-banner">
-                                    <img src="{{ asset("$value->icon") }}" width="400" height="540" loading="lazy"
-                                        alt="Facial cleanser" class="img-cover">
+                                <div class="card-banner">
+                                    <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}" width="400" height="540" loading="lazy"
+                                        alt="Facial cleanser" class="img-cover"></a>
 
                                     <span class="badge" aria-label="20% off">{{ $value->sale }}%</span>
 
-                                    <div class="card-actions">
+                                    <form action="/add-cart" method="post">    
+                                        <div class="card-actions">
 
-                                        <button class="action-btn">
-                                            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                        </button>
+                                            <button class="action-btn" type="submit">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
 
-                                        <button class="action-btn">
-                                            <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                        </button>
+                                            <button class="action-btn">
+                                                <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                            <input type="hidden" name="gameId" value="{{ $value->gameId }}">
+                                            @csrf
+                                        </div>
+                                    </form>
 
-                                    </div>
-                                </a>
+                                    {{-- <form>    
+                                        <div class="card-actions">
+                                            <input type="hidden" class="cart_game_id_{{ $value->gameId }}" value="{{ $value->gameId }}">
+                                            <input type="hidden" class="cart_game_icon_{{ $value->icon }}" value="{{ $value->icon }}">
+                                            <input type="hidden" class="cart_game_price_{{ $value->price }}" value="{{ $value->price }}">
+                                            <input type="hidden" class="cart_game_sale_{{ $value->sale }}" value="{{ $value->sale }}">
+
+                                            <button class="action-btn add-to-cart" type="button" data-id="{{ $value->gameId }}" name="add-to-cart" onclick="getData()">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </div>
+                                    </form> --}}
+                                </div>
 
                                 <div class="card-content">
 
@@ -939,4 +955,5 @@
 
         </div>
     </section>
+
 @endsection

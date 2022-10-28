@@ -17,10 +17,9 @@ return new class extends Migration
             $table->string('userID')->primary('userID');
             $table->string('username');
             $table->string('email')->unique();
-            $table->bit('status')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->rememberToken();
             $table->timestamps();
         });

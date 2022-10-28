@@ -10,25 +10,23 @@
     <!--
     - BoxGame Icon
   -->
-    <link rel="shortcut icon" href="{{ asset('assets_home/images/boxlogo1.png') }}">
+    <link rel="shortcut icon" href="assets_home/images/boxlogo1.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
 
     <!--
     - custom css link
   -->
     <link rel="stylesheet" href="{{ asset('assets_home/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets_home/css/sweetalert.css') }}">
 
     <!--
     - google font link
   -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     @yield('header-specific')
 </head>
 
@@ -52,12 +50,12 @@
 
 
                 <div class="header-left">
-                    <a href="{{ route('userhome') }}" class="logo">
+                    <a href="#" class="logo">
                         <img src="{{ asset('assets_home/images/boxlogo.png') }}" alt="">
                     </a>
                     <ul class="header-left-list">
                         <li>
-                            <a href="/" class="hll-link">STORE</a>
+                            <a href="{{ route('homeuser') }}" class="hll-link">STORE</a>
                         </li>
                         <li>
                             <a href="#faq" class="hll-link">FAQ</a>
@@ -72,63 +70,63 @@
                 </div>
 
                 @if (Route::has('login'))
-                    <div class="header-actions">
+        <div class="header-actions">
 
-                    <button class="header-action-btn btn-language">
-                        <ion-icon name="earth"></ion-icon>
-                        <ul class="languages-list">
-                        <li>
-                            <a href="" class="laguages-list-link first">Vietnamese</a>
-                        </li>
-                        <li>
-                            <a href="" class="laguages-list-link">Enghlish</a>
-                        </li>
-                        <li>
-                            <a href="" class="laguages-list-link">Español (Spain)</a>
-                        </li>
-                        <li>
-                            <a href="" class="laguages-list-link">Italiano</a>
-                        </li>
-                        <li>
-                            <a href="" class="laguages-list-link">Français (French)</a>
-                        </li>
-                        </ul>
-                    </button>
+          <button class="header-action-btn btn-language">
+            <ion-icon name="earth"></ion-icon>
+            <ul class="languages-list">
+              <li>
+                <a href="" class="laguages-list-link first">Vietnamese</a>
+              </li>
+              <li>
+                <a href="" class="laguages-list-link">Enghlish</a>
+              </li>
+              <li>
+                <a href="" class="laguages-list-link">Español (Spain)</a>
+              </li>
+              <li>
+                <a href="" class="laguages-list-link">Italiano</a>
+              </li>
+              <li>
+                <a href="" class="laguages-list-link">Français (French)</a>
+              </li>
+            </ul>
+          </button>
 
-                    @auth
-                    <button class="header-action-btn btn-user-login">
-                        <ion-icon style="color: var(--text-white);" name="person"></ion-icon>
-                        <span style="color: var(--text-white);">{{ Auth::user()->userID }}</span>
-                        <ul class="user-list">
-                        <li>
-                            <a href="{{ route('accountsettings') }}" class="user-list-link first">account</a>
-                        </li>
-                        <li>
-                            <a href="" class="user-list-link">wish list</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}" class="user-list-link">sign out</a>
-                        </li>
-                        </ul>
-                    </button>
+        @auth
+          <button class="header-action-btn btn-user-login">
+            <ion-icon style="color: var(--text-white);" name="person"></ion-icon>
+            <span style="color: var(--text-white);">{{ Auth::user()->userID }}</span>
+            <ul class="user-list">
+              <li>
+                <a href="" class="user-list-link first">account</a>
+              </li>
+              <li>
+                <a href="" class="user-list-link">wish list</a>
+              </li>
+              <li>
+                <a href="{{ route('logout') }}" class="user-list-link">sign out</a>
+              </li>
+            </ul>
+          </button>
 
-                    @else
+          @else
 
-                    <a href="{{ route('login') }}" class="header-action-btn btn-user-login">
-                        <ion-icon name="person"></ion-icon>
-                        <span>sign in</span>
-                    </a>
+          <a href="{{ route('login') }}" class="header-action-btn btn-user-login">
+            <ion-icon name="person"></ion-icon>
+            <span>sign in</span>
+          </a>
 
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="header-action-btn btn-user-register">
-                            REGISTER
-                        </a>
-                        @endif
+            @if (Route::has('register'))
+              <a href="{{ route('register') }}" class="header-action-btn btn-user-register">
+                REGISTER
+              </a>
+            @endif
 
-                    @endauth
+        @endauth
 
-                    </div>
-                @endif
+        </div>
+      @endif
 
 
 
@@ -161,8 +159,14 @@
                         <li>
                             <a href="" class="navbar-link">Wishlist</a>
                         </li>
-                        <li>
-                            <a href="" class="navbar-link">Cart</a>
+                        <li class="cart-count-item">
+                            <a href="{{ route('cart') }}" class="navbar-link">Cart</a>
+                        @if (count(Gloudemans\Shoppingcart\Facades\Cart::content()) != 0)
+                            <div class="change-cart-item">
+                                <span class="cart-count">{{ count(Gloudemans\Shoppingcart\Facades\Cart::content()) }}</span>
+                            </div>
+                        @else    
+                        @endif
                         </li>
                     </ul>
                 </nav>
@@ -185,7 +189,7 @@
 
             <div class="wrapper">
                 <a href="#" class="logo">
-                    <img src="{{ asset('assets_home/images/boxlogo.png') }}" alt="">
+                    BOX<span>GAME</span>
                 </a>
 
                 <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
@@ -414,7 +418,20 @@
   -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    @yield('footer-script')
+
+
+    <!--
+    - sweet alert
+     -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    {{-- <script>
+        function getData() {
+            let id = $(this).data('id');
+            swal("Hello world!");
+        };
+    </script> --}}
+
 </body>
 
 </html>
