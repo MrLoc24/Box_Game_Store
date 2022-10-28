@@ -23,8 +23,8 @@ class LoginController extends Controller
         $password = $request->password;
         $remember = $request->has('remember');
         //Login with userID or email
-        $field = filter_var($displayname, FILTER_VALIDATE_EMAIL) ? 'email' : 'userID';
-        if (Auth::attempt([$field => $displayname, 'password' => $password], $remember)) {
+        //$field = filter_var($displayname, FILTER_VALIDATE_EMAIL) ? 'email' : 'userID';
+        if (Auth::attempt(['userID' => $displayname, 'password' => $password], $remember)) {
             $request->session()->regenerate();
             return redirect()->intended(RouteServiceProvider::HOME);
         }
