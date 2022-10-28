@@ -3518,5 +3518,11 @@ body {
     color: red;
 }
 
+.valid-feedback {
+  font-size: 1.2rem;
+  color: rgb(20, 202, 0);
+  padding-top: .5rem;
+}
+
 
 
