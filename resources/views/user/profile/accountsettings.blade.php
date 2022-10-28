@@ -26,9 +26,7 @@
                         autocomplete="displayname" disabled>
                 </div>
 
-            <div class="changename change1 fa-solid fa-user-pen" id="login-btn" onclick="showchangenameForm()"></div>
-
-                <div class="changename change1 fa-solid fa-user-pen" id="login-btn" onclick="loginForm()"></div>
+                <div class="changename change1 fa-solid fa-user-pen" id="login-btn" onclick="showchangenameForm()"></div>
 
                 <div class="email change">
                     <label for="email">{{ __('email address') }}</label>
@@ -54,6 +52,7 @@
                         <img src="{{ asset(Auth::user()->image) }}" alt="">
                         <input type="file"></input>
                     </div>
+                    <input class="save" type="submit" value="save changes" name="">
                 </div>
             </div>
         </form>
