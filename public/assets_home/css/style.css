@@ -3322,11 +3322,13 @@ body {
 
 .profile .informations .information .personal-details .content-details2 .ava label{
   text-transform: uppercase;
-  margin-right: 1rem;
+  margin-right: 3rem;
 }
 
 .profile .informations .information .personal-details .content-details2 .ava input{
-  margin-left: 1rem;
+  margin-left: 3rem;
+  width: 10rem;
+  height: fit-content;
 }
 
 .profile .informations .information .personal-details .content-details2 .save{
@@ -3339,6 +3341,7 @@ body {
   border-radius: .5rem;
   border: var(--bg-silver) solid 1px;
   background: var(--blue);
+
 }
 
 .profile .informations .information .personal-details .content-details2 .details-input label{
