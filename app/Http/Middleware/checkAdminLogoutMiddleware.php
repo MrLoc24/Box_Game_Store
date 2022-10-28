@@ -16,7 +16,7 @@ class checkAdminLogoutMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('admin')) {
+        if ($request->session()->has('admin') || $request->session()->has('boss')) {
             return redirect()->route('home');
         }
         return $next($request);

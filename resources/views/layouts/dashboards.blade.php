@@ -227,9 +227,14 @@
                     </div>
                     <div class="info">
                         <a href="/admin/home" class="d-block">
-                            @foreach (Session::get('admin') as $variableName)
-                                <span>{{ $variableName }}</span>
-                            @endforeach
+                            @if (Session::has('admin'))
+                                @foreach (Session::get('admin') as $variableName)
+                                    <span>{{ $variableName }}</span>
+                                @endforeach
+                            @else
+                                <span>{{ Session::get('boss') }}</span>
+
+                            @endif
                         </a>
                     </div>
                 </div>
@@ -326,7 +331,26 @@
                             </ul>
                         </li>
                         {{-- ORDER nav bar end --}}
-
+                        @if (Session::has('boss'))
+                            <li class="nav-header">MANAGER</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-cart-plus"></i>
+                                    <p>
+                                        Detail
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/examples/invoice.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>View All</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

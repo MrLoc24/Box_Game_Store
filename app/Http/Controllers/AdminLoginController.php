@@ -25,7 +25,11 @@ class AdminLoginController extends Controller
         $checkbox = $request->has('checkRemember');
         $admin = DB::table('account_admin')->where('adminId', $userName)->orWhere('email', $userName)->first();
         if ($admin != null && $admin->password == $password) {
-            $request->session()->push("admin", $admin->name);
+            if ($admin->role == 'boss') {
+                $request->session()->push('boss', $admin->name);
+            } else {
+                $request->session()->push("admin", $admin->name);
+            }
             if ($admin->image != null) {
                 $request->session()->push("adminImg", $admin->image);
             } else {
