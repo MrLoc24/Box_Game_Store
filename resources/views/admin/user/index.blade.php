@@ -54,10 +54,7 @@
                                             <tr>
                                                 <td><img src="{{ asset("$user->image") }}" width="50px" height="50px">
                                                 </td>
-<<<<<<< Updated upstream
-                                                <td>{{ $user->username }}</td>
-=======
->>>>>>> Stashed changes
+
                                                 <td>{{ $user->userID }}</td>
                                                 {{-- $game->column name!!!!!! --}}
                                                 <td>{{ $user->email }}</td>
