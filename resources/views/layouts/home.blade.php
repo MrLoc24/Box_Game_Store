@@ -25,8 +25,8 @@
   -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"/>
 
 </head>
 
@@ -50,7 +50,7 @@
 
 
                 <div class="header-left">
-                    <a href="#" class="logo">
+                    <a href="{{ route('homeuser') }}" class="logo">
                         <img src="assets_home/images/boxlogo.png" alt="">
                     </a>
                     <ul class="header-left-list">

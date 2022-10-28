@@ -40,22 +40,22 @@
 
             </div>
         </div>
-    <form action="" method="post">
-        <div class="personal-details">
-            <p class="title-details title">{{ __('personal details') }}</p>
-            <p class="content-details1">{{ __('Manage your name and contact info. These personal details are private and will not be displayed to other users. View our Privacy Policy.') }}</p>
-            <div class="content-details2">
-                <div class="firstname details-input">
-                    <label for="firstname">{{ __('full name') }}</label>
-                    <input id="firstname-details" type="text" name="firstname" class="@error('firstname') is-invalid @enderror" value="{{ Auth::user()->username }}" autocomplete="firstname">           
-                </div>
-                <div class="ava">
-                    <label for="ava">{{ __('avatar') }}</label>           
-                    <img src="{{ asset(Auth::user()->image) }}" alt="">
-                    <input type="file"></input>
+        <form action="" method="post">
+            <div class="personal-details">
+                <p class="title-details title">{{ __('personal details') }}</p>
+                <p class="content-details1">{{ __('Manage your name and contact info. These personal details are private and will not be displayed to other users. View our Privacy Policy.') }}</p>
+                <div class="content-details2">
+                    <div class="firstname details-input">
+                        <label for="firstname">{{ __('full name') }}</label>
+                        <input id="firstname-details" type="text" name="firstname" class="@error('firstname') is-invalid @enderror" value="{{ Auth::user()->username }}" autocomplete="firstname">           
+                    </div>
+                    <div class="ava">
+                        <label for="ava">{{ __('avatar') }}</label>           
+                        <img src="{{ asset(Auth::user()->image) }}" alt="">
+                        <input type="file"></input>
+                    </div>
                 </div>
             </div>
-        </div>
         </form>
 
         <div class="delete">
