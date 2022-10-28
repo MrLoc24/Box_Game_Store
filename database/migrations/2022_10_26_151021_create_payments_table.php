@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('card_number');
             $table->integer('cvv');
             $table->dateTime('payment_date');
+            $table->string('card_name');
         });
     }
 

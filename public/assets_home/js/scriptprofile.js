@@ -97,12 +97,8 @@ scrollReveal();
 addEventOnElem(window, "scroll", scrollReveal);
 
 
-let loginForm1 = document.querySelector('[data-login]');
+let changenameForm = document.querySelector('[data-changename]');
 
-const loginForm = function () {
-  loginForm1.classList.toggle("active");
-}
-
-const closeForm = function () {
-  loginForm1.classList.remove("active");
+const showchangenameForm = function () {
+  changenameForm.classList.toggle("active");
 }

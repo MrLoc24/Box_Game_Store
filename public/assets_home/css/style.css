@@ -3270,21 +3270,21 @@ body {
 
 .profile .informations .information .personal-details .content-details2 .ava{
   display: flex;
+  margin-bottom: 4rem;
 }
 
-.profile .informations .information .personal-details .content-details2 .ava .changeava{
+.profile .informations .information .personal-details .content-details2 .ava img{
+  height: 10rem;
+  width: 10rem;
+}
+
+.profile .informations .information .personal-details .content-details2 .ava label{
+  text-transform: uppercase;
+  margin-right: 1rem;
+}
+
+.profile .informations .information .personal-details .content-details2 .ava input{
   margin-left: 1rem;
-  margin-right: 1.3rem;
-  height: 50px;
-  width: 7%;
-  border-radius: .5rem;
-  background-color: var(--blue);
-  border: var(--bg-silver) solid 1px;
-  padding-top: 13px;
-  padding-left: 16px;
-  cursor: pointer;
-  font-size: 1.8rem;
-  color: var(--white);
 }
 
 .profile .informations .information .personal-details .content-details2 .save{
@@ -3359,12 +3359,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(212, 212, 212, 0.9);
   position: fixed;
   top: 0; right: -105%;
   z-index: 10000;
   height: 100%;
   width: 100%;
+  padding: 2rem;
 }
 
 .changename-form-container.active{
@@ -3372,73 +3373,99 @@ body {
 }
 
 .changename-form-container form{
+  /* position: fixed; */
+  justify-content: center;
+  text-align: center;
   background: #fff;
-  border: var(--border);
+  border: .1rem solid var(--bg-silver);
   width: 40rem;
   padding: 2rem;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);;
   border-radius: .5rem;
-  margin: 2rem;
 }
 
-.changename-form-container form h3{
-  font-size: 2.5rem;
+.changename-form-container form img{
+  margin-top: 2rem;
+  width: 40px;
+  height: 40px;
+  display: unset;
+}
+
+.changename-form-container form h4{
+  font-size: 2rem;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
   text-transform: uppercase;
   color: var(--black);
-  text-align: center;
-}
-
-.changename-form-container form span{
-  display: block;
-  font-size: 1.5rem;
-  padding-top: 1rem;
 }
 
 .changename-form-container form .box{
-  width: 100%;
-  margin: .7rem 0;
-  font-size: 1.6rem;
-  border: var(--border);
+  height: 6rem;
+  width: 90%;
   border-radius: .5rem;
-  padding: 1rem 1.2rem;
-  color: var(--black);
-  text-transform: none;
+  padding: .5rem 1.4rem;
+  border: .1rem solid var(--bg-silver);
+  margin: 2rem;
+}
+
+.changename-form-container form .box input{
+  font-size: 1.4rem;
+  height: 2.5rem;
+  width: 100%;
+  padding: .1rem 1.2rem;
+  color: var(--text-silver2);
+  outline: none;
+}
+
+.changename-form-container form .box label{
+  font-size: 1.4rem;
+  display: flex;
+  width: 100%;
+  padding-inline: 1.4rem;
+  color: var(--text-silver2);
+}
+
+.changename-form-container form .box:focus-within {
+  border: .2rem solid var(--black);
 }
 
 .changename-form-container form .checkbox{
+  margin-left: 1.8rem;
   display: flex;
   align-items: center;
   gap: .5rem;
-  padding: 1rem 0;
+  padding: 1.2rem 0;
 }
 
 .changename-form-container form .checkbox label{
-  font-size: 1.5rem;
-  color: var(--light-color);
+  text-align: left;
+  font-weight: 550;
+  font-size: 1.3rem;
+  color: var(--text-silver2);
   cursor: pointer;
+  margin: .5rem;
+}
+
+.changename-form-container form .checkbox input{
+  width: unset;
 }
 
 .changename-form-container form .btn{
-  text-align: center;
-  width: 100%;
-  margin: 1.5rem 0;
-}
-
-.changename-form-container form p{
-  padding-top: .8rem;
-  color: var(--light-color);
-  font-size: 1.5rem;
-}
-
-.changename-form-container form p a{
-  color: var(--green);
-  text-decoration: underline;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  color: var(--white);
+  font-size: 1.8rem;
+  border-radius: .5rem;
+  text-transform: capitalize;
+  background-color: var(--blue);
 }
 
 .changename-form-container #close-changename-btn{
   position: absolute;
-  top: 1.5rem; right: 2.5rem;
-  font-size: 5rem;
+  top: 1.5rem; right: 1.5rem;
+  font-size: 3rem;
   color: var(--black);
   animation: rotate .4s linear .4s backwards;
   cursor: pointer;

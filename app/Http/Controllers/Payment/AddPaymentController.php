@@ -23,6 +23,7 @@ class AddPaymentController extends Controller
             'cvv' => $request->cvv,
             'payment_date' => $request->expiration,
             'card_name' => $request->paymentname,
+            'image' => $request->paymentimage,
         ]);
 
         return redirect('payment');

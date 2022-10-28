@@ -2,8 +2,8 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                        - #HERO
-                                                                                                                                                                                                                                                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #HERO
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
@@ -121,8 +121,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                        - #SHOP
-                                                                                                                                                                                                                                                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #SHOP
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
 
     <section class="section shop" data-section>
         <div class="container shop-container swiper">
@@ -439,9 +439,15 @@
 
 
 
+<<<<<<< Updated upstream
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                        - #BLOG
-                                                                                                                                                                                                                                                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #BLOG
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
+=======
+<!--                                                                                                                                                                                                                                                                                                                                                                                                                   
+- #BLOG                                                                                                                                                                                                                                                                                                                                                                                                                     
+-->
+>>>>>>> Stashed changes
 
     {{-- <section class="section blog" data-section>
         <div class="container">
@@ -518,8 +524,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                        - #TOP LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #TOP LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
 
     <section class="section top-list" data-section>
 
@@ -671,10 +677,13 @@
 
                                             <h4 class="showcase-title">
                                                 {{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</h4>
-
                                             <div class="price-box">
-                                                @if ($value->price)
-                                                    <p class="price">{{ $value->price }}</p>
+                                                @if ($value->price && $value->sale)
+                                                    <p class="price">
+                                                        ${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}
+                                                    </p>
+                                                @elseif ($value->price)
+                                                    <p class="price">${{ $value->price }}</p>
                                                 @else
                                                     <p class="price">Free</p>
                                                 @endif
@@ -890,8 +899,8 @@
     </section>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                        - #CATALOG
-                                                                                                                                                                                                                                                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #CATALOG
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
 
     <section class="section banner" data-section>
         <div class="container">

@@ -11,7 +11,7 @@ class AdminHomeController extends Controller
 {
     public function index()
     {
-        $admin = DB::table('account_admin')->where(['name' => session('admin')])->first();
+        $admin = DB::table('account_admin')->where(['name' => session('admin')])->orWhere(['name' => session('boss')])->first();
         return view('admin.index')->with('admin', $admin);
     }
     public function update(AdminRequestForm $request, $id)

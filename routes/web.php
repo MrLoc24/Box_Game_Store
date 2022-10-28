@@ -1,11 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Payment\AddPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +14,7 @@ use App\Http\Controllers\Payment\AddPaymentController;
 */
 // //MAIN PAGE
 Route::get('/', 'UserHomeController@index');
-Route::get('/home', 'UserHomeController@index');
+Route::get('/home', 'UserHomeController@index')->name('userhome');
 Route::get('/game/{id}', 'UserHomeController@detail');
 
 

@@ -18,7 +18,7 @@ class checkAdminLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('admin')) {
+        if ($request->session()->has('admin') || $request->session()->has('boss')) {
             return $next($request);
         }
         return redirect('admin');

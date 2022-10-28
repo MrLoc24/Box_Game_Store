@@ -38,7 +38,7 @@
                             <li class="payment-hide-item1">
                                 <div class="title_payment1" onclick="showpaymentdetails()">
                                     <input type="radio" name="payment">
-                                    <img src="{{ asset('img/paypal.png') }}" alt="">
+                                    <img src="{{ asset($payment->image) }}" alt="">
                                     <label for="">{{ $payment->card_name }}</label>
                                 </div>
                                         
@@ -85,7 +85,7 @@
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails()">
                             <input type="radio" name="payment">
-                            <img src="{{ asset('img/paypal.png') }}" alt="">
+                            <img src="{{ asset('assets_home/images/paypal.png') }}" alt="">
                             <label for="">PayPal</label>
                         </div>
                                 
@@ -94,6 +94,7 @@
                             <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="paypal" id="">
+                                <input type="hidden" name="paymentimage" value="assets_home/images/paypal.png" id="">
                                 <div class="payment-form-item card_number">
                                     <label for="card_number">{{ __('Card Number *') }}</label>
                                     <input type="text" name="card_number" id="card_number">        
@@ -113,7 +114,7 @@
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails1()">
                             <input type="radio" name="payment">
-                            <img src="{{ asset('img/visa.jpg') }}" alt="">
+                            <img src="{{ asset('assets_home/images/visa.jpg') }}" alt="">
                             <label for="">Visa</label>
                         </div>
 
@@ -122,6 +123,7 @@
                             <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="visa" id="">
+                                <input type="hidden" name="paymentimage" value="assets_home/images/visa.jpg" id="">
                                 <div class="payment-form-item card_number">
                                     <label for="card_number">{{ __('Card Number *') }}</label>
                                     <input type="text" name="card_number" id="card_number">        
@@ -141,7 +143,7 @@
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails2()">
                             <input type="radio" name="payment">
-                            <img src="{{ asset('img/master.png') }}" alt="">
+                            <img src="{{ asset('assets_home/images/master.png') }}" alt="">
                             <label for="">Master Card</label>
                         </div>
 
@@ -150,6 +152,7 @@
                             <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="mastercard" id="">
+                                <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
                                 <div class="payment-form-item card_number">
                                     <label for="card_number">{{ __('Card Number *') }}</label>
                                     <input type="text" name="card_number" id="card_number">        
@@ -169,7 +172,7 @@
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails3()">
                             <input type="radio" name="payment">
-                            <img src="{{ asset('img/vnpay.png') }}" alt="">
+                            <img src="{{ asset('assets_home/images/vnpay.png') }}" alt="">
                             <label for="">VN Pay</label>
                         </div>
 
@@ -178,6 +181,7 @@
                             <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="vnpay" id="">
+                                <input type="hidden" name="paymentimage" value="assets_home/images/vnpay.png" id="">
                                 <div class="payment-form-item card_number">
                                     <label for="card_number">{{ __('Card Number *') }}</label>
                                     <input type="text" name="card_number" id="card_number">        
@@ -197,7 +201,7 @@
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails4()">
                             <input type="radio" name="payment">
-                            <img src="{{ asset('img/momo.png') }}" alt="">
+                            <img src="{{ asset('assets_home/images/momo.png') }}" alt="">
                             <label for="">Momo</label>
                         </div>
 
@@ -206,6 +210,7 @@
                             <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="momo" id="">
+                                <input type="hidden" name="paymentimage" value="assets_home/images/momo.png" id="">
                                 <div class="payment-form-item card_number">
                                     <label for="card_number">{{ __('Card Number *') }}</label>
                                     <input type="text" name="card_number" id="card_number" class="@error('card_number') is-invalid @enderror" value="{{ old('card_number') }}" autocomplete="card_number">        

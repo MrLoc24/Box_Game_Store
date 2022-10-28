@@ -15,5 +15,6 @@ class Payment extends Model
         'cvv',
         'payment_date',
         'card_name',
+        'image'
     ];
 }
