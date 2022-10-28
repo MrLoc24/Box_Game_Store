@@ -52,46 +52,7 @@
                                         alt="{{ str_replace(public_path(), '', $path) }}">
                                 </div>
                             @endforeach
-                            {{-- <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-01-1920x1080-291add6c1de2.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-02-1920x1080-efb83eb294dd.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-03-1920x1080-24391139e7ed.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-04-1920x1080-f694ca838125.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-05-1920x1080-3afc39cc13fd.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-06-1920x1080-6601795fd3d2.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-07-1920x1080-a6ed9966eeed.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-08-1920x1080-c5fc3bb0c24e.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-09-1920x1080-0b4a011edb38.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-10-1920x1080-5085fc260c37.jpg?h=720&resize=1&w=1280">
-                            </div> --}}
+
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -105,47 +66,7 @@
                                         alt="{{ str_replace(public_path(), '', $path) }}">
                                 </div>
                             @endforeach
-                            {{-- <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-01-1920x1080-291add6c1de2.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-02-1920x1080-efb83eb294dd.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-03-1920x1080-24391139e7ed.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-04-1920x1080-f694ca838125.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-05-1920x1080-3afc39cc13fd.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-06-1920x1080-6601795fd3d2.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-07-1920x1080-a6ed9966eeed.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-08-1920x1080-c5fc3bb0c24e.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-09-1920x1080-0b4a011edb38.jpg?h=720&resize=1&w=1280">
-                            </div>
-                            <div class="swiper-slide">
-                                <img
-                                    src="https://cdn2.unrealengine.com/egs-pcbuildingsimulator2-spiralhouseltd-g1a-10-1920x1080-5085fc260c37.jpg?h=720&resize=1&w=1280">
-                                <img src="" alt="">
-                            </div> --}}
+
                         </div>
                         <div class="swiper-button-next bb"></div>
                         <div class="swiper-button-prev bb"></div>
@@ -452,13 +373,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - custom js link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - custom js link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - ionicon link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - ionicon link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection

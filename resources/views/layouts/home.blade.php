@@ -10,7 +10,7 @@
     <!--
     - BoxGame Icon
   -->
-    <link rel="shortcut icon" href="assets_home/images/boxlogo1.png">
+    <link rel="shortcut icon" href="{{ asset('assets_home/images/boxlogo1.png') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
@@ -411,7 +411,7 @@
     <!--
     - custom js link
   -->
-    <script src="{{ asset('assets_home/js/script.js') }}"></script>
+    <script src="{{ asset('assets_home/js/scriptdetails.js') }}" defer></script>
 
     <!--
     - ionicon link
