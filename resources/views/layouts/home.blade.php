@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    @yield('header-specific')
+
 </head>
 
 <body id="top">
@@ -51,7 +51,7 @@
 
                 <div class="header-left">
                     <a href="#" class="logo">
-                        <img src="{{ asset('assets_home/images/boxlogo.png') }}" alt="">
+                        <img src="assets_home/images/boxlogo.png" alt="">
                     </a>
                     <ul class="header-left-list">
                         <li>
@@ -189,7 +189,7 @@
 
             <div class="wrapper">
                 <a href="#" class="logo">
-                    BOX<span>GAME</span>
+                    <img src="assets_home/images/boxlogo.png" alt="">
                 </a>
 
                 <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>

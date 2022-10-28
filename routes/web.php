@@ -18,7 +18,7 @@ use App\Http\Controllers\Payment\AddPaymentController;
 |
 */
 // //MAIN PAGE
-Route::get('/', 'UserHomeController@index');
+Route::get('/', 'UserHomeController@index')->name('homeuser');
 Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail');
 
