@@ -54,7 +54,11 @@
                                                 <td>{{ $cart->cartId }}</td>
                                                 <td>{{ $cart->userId }}</td>
                                                 <td>{{ round($cart->cartTotal, 2) }}$</td>
-                                                <td>{{ $cart->status }}</td>
+                                                @if ($cart->status != 0)
+                                                <td>Paid</td>
+                                                @else
+                                                <td>Processing</td>
+                                                @endif
                                                 <td>
                                                     <a href=""
                                                         class="btn btn-primary">View</a>

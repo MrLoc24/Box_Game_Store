@@ -116,341 +116,24 @@
 
         </div>
     </section>
-
-
-
-
-    <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #SHOP
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  -->
-
-    <section class="section shop" data-section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    <section class="section shop">
         <div class="container shop-container swiper">
-
+    
             <div class="title-wrapper">
                 <h3 class="h3">Games On Sale</h3>
             </div>
-
+    
             <div class="swiper-button-next swiper-btn"></div>
             <div class="swiper-button-prev swiper-btn"></div>
-
-            <div class="swiper-wrapper">
-                @foreach ($game as $key => $value)
-                    @if ($value->sale > 0)
-                        <div class="swiper-slide">
-                            <div class="shop-card">
-
-                                <div class="card-banner">
-                                    <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}" width="400" height="540" loading="lazy"
-                                        alt="Facial cleanser" class="img-cover"></a>
-
-                                    <span class="badge" aria-label="20% off">{{ $value->sale }}%</span>
-
-                                    <form action="/add-cart" method="post">    
-                                        <div class="card-actions">
-
-                                            <button class="action-btn" type="submit">
-                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                            </button>
-
-                                            <button class="action-btn">
-                                                <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                            </button>
-                                            <input type="hidden" name="gameId" value="{{ $value->gameId }}">
-                                            @csrf
-                                        </div>
-                                    </form>
-
-                                    {{-- <form>    
-                                        <div class="card-actions">
-                                            <input type="hidden" class="cart_game_id_{{ $value->gameId }}" value="{{ $value->gameId }}">
-                                            <input type="hidden" class="cart_game_icon_{{ $value->icon }}" value="{{ $value->icon }}">
-                                            <input type="hidden" class="cart_game_price_{{ $value->price }}" value="{{ $value->price }}">
-                                            <input type="hidden" class="cart_game_sale_{{ $value->sale }}" value="{{ $value->sale }}">
-
-                                            <button class="action-btn add-to-cart" type="button" data-id="{{ $value->gameId }}" name="add-to-cart" onclick="getData()">
-                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                            </button>
-                                        </div>
-                                    </form> --}}
-                                </div>
-
-                                <div class="card-content">
-
-                                    <span class="card-type">BASE GAME</span>
-
-                                    <h3>
-                                        <a href="/game/{{ $value->gameId }}"
-                                            class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
-                                    </h3>
-
-                                    <div class="price">
-                                        <del class="del">${{ $value->price }}</del>
-
-                                        <span
-                                            class="span">${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-                {{-- <div class="swiper-slide">
-                    <div class="shop-card">
-
-                        <a href="" class="card-banner">
-                            <img src="https://cdn1.epicgames.com/spt-assets/dc57439aac3c481aaa52ccb443a4d01a/download-unrailed-offer-11wt8.jpg?h=854&resize=1&w=640"
-                                width="540" height="720" loading="lazy" alt="Facial cleanser" class="img-cover">
-
-                            <span class="badge" aria-label="20% off">-40%</span>
-
-                            <div class="card-actions">
-
-                                <button class="action-btn">
-                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                                <button class="action-btn">
-                                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                            </div>
-                        </a>
-
-                        <div class="card-content">
-
-                            <span class="card-type">BASE GAME</span>
-
-                            <h3>
-                                <a href="#" class="card-title">Facial cleanser</a>
-                            </h3>
-
-                            <div class="price">
-                                <del class="del">$39.00</del>
-
-                                <span class="span">$29.00</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="shop-card">
-
-                        <a href="" class="card-banner">
-                            <img src="https://cdn1.epicgames.com/offer/65a9273ec61f4bb6b94461eb1ce8ec23/EGS_PCBuildingSimulator2_SpiralHouseLtd_S2_1200x1600-9d894c93110374afb5ff0f666a05c792?h=854&resize=1&w=640"
-                                width="540" height="720" loading="lazy" alt="Bio-shroom Rejuvenating Serum"
-                                class="img-cover">
-
-                            <span class="badge" aria-label="20% off">-10%</span>
-
-                            <div class="card-actions">
-
-                                <button class="action-btn">
-                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                                <button class="action-btn">
-                                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                            </div>
-                        </a>
-
-                        <div class="card-content">
-
-                            <span class="card-type">BASE GAME</span>
-
-                            <h3>
-                                <a href="#" class="card-title">Facial cleanser</a>
-                            </h3>
-
-                            <div class="price">
-                                <del class="del">$39.00</del>
-
-                                <span class="span">$29.00</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="shop-card">
-
-                        <a href="" class="card-banner">
-                            <img src="https://cdn1.epicgames.com/spt-assets/3c3669f30b2a437e85d9b5a9885ecfa8/download-source-of-madness-offer-1q10q.png?h=854&resize=1&w=640"
-                                width="540" height="720" loading="lazy" alt="Coffee Bean Caffeine Eye Cream"
-                                class="img-cover">
-
-                            <span class="badge" aria-label="20% off">-30%</span>
-
-                            <div class="card-actions">
-
-                                <button class="action-btn">
-                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                                <button class="action-btn">
-                                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                            </div>
-                        </a>
-
-                        <div class="card-content">
-
-                            <span class="card-type">BASE GAME</span>
-
-                            <h3>
-                                <a href="#" class="card-title">Facial cleanser</a>
-                            </h3>
-
-                            <div class="price">
-                                <del class="del">$39.00</del>
-
-                                <span class="span">$29.00</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="shop-card">
-
-                        <a href="" class="card-banner">
-                            <img src="https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_SuchArtGeniusArtistSimulator_Voolgi_S2_1200x1600-d51ac0f4a3d20ef478616438e37bb884?h=854&resize=1&w=640"
-                                width="540" height="720" loading="lazy" alt="Facial cleanser" class="img-cover">
-
-                            <span class="badge" aria-label="20% off">-50%</span>
-
-                            <div class="card-actions">
-
-                                <button class="action-btn">
-                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                                <button class="action-btn">
-                                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                            </div>
-                        </a>
-
-                        <div class="card-content">
-
-                            <span class="card-type">BASE GAME</span>
-
-                            <h3>
-                                <a href="#" class="card-title">Facial cleanser</a>
-                            </h3>
-
-                            <div class="price">
-                                <del class="del">$39.00</del>
-
-                                <span class="span">$29.00</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="shop-card">
-
-                        <a href="" class="card-banner">
-                            <img src="https://cdn1.epicgames.com/spt-assets/aa4e814e8db94167a3ca35871c75c846/download-jars-offer-13zfp.jpg?h=854&resize=1&w=640"
-                                width="540" height="720" loading="lazy" alt="Coffee Bean Caffeine Eye Cream"
-                                class="img-cover">
-
-                            <span class="badge" aria-label="20% off">-10%</span>
-
-                            <div class="card-actions">
-
-                                <button class="action-btn">
-                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                                <button class="action-btn">
-                                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                            </div>
-                        </a>
-
-                        <div class="card-content">
-
-                            <span class="card-type">BASE GAME</span>
-
-                            <h3>
-                                <a href="#" class="card-title">Facial cleanser</a>
-                            </h3>
-
-                            <div class="price">
-                                <del class="del">$39.00</del>
-
-                                <span class="span">$29.00</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="shop-card">
-
-                        <a href="" class="card-banner">
-                            <img src="https://cdn1.epicgames.com/spt-assets/d92266115f8d4d5680562d993435daa5/download-wildcat-gun-machine-offer-tg9yg.jpg?h=854&resize=1&w=640"
-                                width="540" height="720" loading="lazy" alt="Facial cleanser" class="img-cover">
-
-                            <span class="badge" aria-label="20% off">-70%</span>
-
-                            <div class="card-actions">
-
-                                <button class="action-btn">
-                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                                <button class="action-btn">
-                                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                </button>
-
-                            </div>
-                        </a>
-
-                        <div class="card-content">
-
-                            <span class="card-type">BASE GAME</span>
-
-                            <h3>
-                                <a href="#" class="card-title">Facial cleanser</a>
-                            </h3>
-
-                            <div class="price">
-                                <del class="del">$39.00</del>
-
-                                <span class="span">$29.00</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div> --}}
-
-            </div>
-
-
+    
+            @livewire('products-table')
+    
         </div>
+        
     </section>
+    
 
 
 
@@ -537,7 +220,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                     - #TOP LIST
                                                                                                                                                                                                                                                                                                                                                                                                                                                                   -->
 
-    <section class="section top-list" data-section>
+    <section class="section top-list">
 
         <div class="container">
 
@@ -949,5 +632,8 @@
 
         </div>
     </section>
+
+    
+
 
 @endsection

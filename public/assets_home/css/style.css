@@ -696,7 +696,7 @@ body {
 
 .shop-card .card-actions {
   position: absolute;
-  top: 50%;
+  top: 13%;
   right: 0;
   transform: translate(0, -50%);
   display: grid;
@@ -708,15 +708,12 @@ body {
 .shop-card .action-btn {
   background-color: var(--bg-silver);
   font-size: 15px;
-  padding: 12px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   transition: var(--transition-1);
   color: var(--text-white);
   border: 2px solid var(--text-white)
-}
-
-.shop-card .action-btn ion-icon {
-  --ionicon-stroke-width: 50px;
 }
 
 .shop-card .action-btn:is(:hover, :focus) {

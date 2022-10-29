@@ -14,7 +14,6 @@ class CheckoutController extends Controller
         $cart_data = array();
         $cart_data['userId'] = Auth::user()->userID;
         $cart_data['cartTotal'] = $cartTotal;
-        $cart_data['status'] = "Processing";
         $cartId = DB::table('cart_master')->insertGetId($cart_data);
 
         // insert order_cart

@@ -137,8 +137,8 @@ Route::middleware('auth')->group(function () {
 
     //start cart
     Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
+    // Route::get('/add-cart/{gameId}', 'CartController@addToCart')->name('addToCart');
     Route::get('/cart', 'CartController@show')->name('cart');
     Route::get('remove-cart/{rowId}', 'CartController@removeCart');
     Route::get('/checkoutCart/{cartTotal}', 'CheckoutController@checkout');
-    //end cart
 });

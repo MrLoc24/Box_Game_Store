@@ -29,6 +29,11 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
 
+    <!--
+    - livewire
+    -->
+    @livewireStyles
+
 </head>
 
 <body id="top">
@@ -160,13 +165,12 @@
                         </li>
                         <li class="cart-count-item">
                             <a href="{{ route('cart') }}" class="navbar-link">Cart</a>
-                            @if (count(Gloudemans\Shoppingcart\Facades\Cart::content()) != 0)
-                                <div class="change-cart-item">
-                                    <span
-                                        class="cart-count">{{ count(Gloudemans\Shoppingcart\Facades\Cart::content()) }}</span>
-                                </div>
-                            @else
-                            @endif
+                            {{-- @if (count(Gloudemans\Shoppingcart\Facades\Cart::content()) != 0) --}}
+                                {{-- <div class="change-cart-item"> --}}
+                                    @livewire('cart-counter')
+                                {{-- </div> --}}
+                            {{-- @else
+                            @endif --}}
                         </li>
                     </ul>
                 </nav>
@@ -419,18 +423,43 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+    {{-- jquery --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 
     <!--
     - sweet alert
      -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     @yield('footer-script')
-    {{-- <script>
-        function getData() {
-            let id = $(this).data('id');
-            swal("Hello world!");
-        };
-    </script> --}}
+
+
+    
+    <!--
+    - livewire
+    -->
+    @livewireScripts
+
+
+
+    <script>
+        function showSuccess() {
+            swal({
+                text: "This Game has been added to your cart !",
+                icon: "success",
+                button: false,
+            });
+        }
+
+        // function showError() {
+        //     swal({
+        //         text: "This Game was in your cart !",
+        //         icon: "warning",
+        //         button: false,
+        //     });
+        // }
+    </script>
 
 </body>
 

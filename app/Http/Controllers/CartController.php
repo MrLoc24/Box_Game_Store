@@ -13,29 +13,49 @@ class CartController extends Controller
     public function addToCart(Request $rq) 
     {
 
-        $gameId = $rq->gameId;
-        $count = count(Cart::content());
+        // $gameId = $rq->gameId;
 
-        $game = DB::table('game') 
-            ->where('gameId', $gameId)
-            ->first();
+        // $game = DB::table('game') 
+        //     ->where('gameId', $gameId)
+        //     ->first();
 
-        $data = array();    
-        $data['id'] = $game->gameId;
-        $data['qty'] = 1;
-        $data['name'] = $game->gameId;
-        $data['price'] = $game->price;
-        $data['weight'] = $game->sale;
-        $data['options']['image'] = $game->icon;
+        // $data = array();    
+        // $data['id'] = $game->gameId;
+        // $data['qty'] = 1;
+        // $data['name'] = $game->gameId;
+        // $data['price'] = $game->price;
+        // $data['weight'] = $game->sale;
+        // $data['options']['image'] = $game->icon;
 
-        Cart::add($data);
+        // Cart::add($data);
 
-        if ($count == count(Cart::content())) {
-            dd("This Game has been added to cart !");
-        }
-
-        return redirect('/home');
+        // return redirect('/home');
     }
+
+
+    // public function addToCart($gameId) 
+    // {
+    //     $count = count(Cart::content());
+
+    //     $game = DB::table('game') 
+    //         ->where('gameId', $gameId)
+    //         ->first();
+
+    //     $data = array();    
+    //     $data['id'] = $game->gameId;
+    //     $data['qty'] = 1;
+    //     $data['name'] = $game->gameId;
+    //     $data['price'] = $game->price;
+    //     $data['weight'] = $game->sale;
+    //     $data['options']['image'] = $game->icon;
+
+    //     Cart::add($data);
+
+    //     if ($count == count(Cart::content())) {
+    //         dd("This Game has been added to cart !");
+    //     }
+
+    // }
 
     public function show() 
     {
@@ -48,4 +68,16 @@ class CartController extends Controller
         Cart::remove($rowId);
         return redirect('cart');
     }
+
+    // public function countcart() 
+    // {
+    //     $count = count(Cart::content());
+    //     $output = "";
+    //     if ($count > 0) {
+    //         $output.= '<span class="'. 'cart-count' . '">' . $count . '</span>';
+    //     }
+
+    //     return $output;
+    //     dd($count);
+    // }
 }
