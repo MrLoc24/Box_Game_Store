@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class UpdateProfileController extends Controller
 {
-    public function profile() {
-        return view('user.profile.accountsettings');
-    }
 
     public function update(Request $request) {
         if ($request->name) {
@@ -29,6 +26,6 @@ class UpdateProfileController extends Controller
             ])->save();
         }
 
-        return redirect('profile');
+        return redirect('profile')->with('status', 'Update profile success!');
     }
 }

@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->integer('CardID')->primary('CardID');
             $table->string('userID');
-            $table->foreign('userID')->references('userID')->on('users');
+            $table->foreign('userID')->references('userID')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('card_number');
             $table->integer('cvv');
             $table->dateTime('payment_date');
             $table->string('card_name');
+            $table->string('image');
         });
     }
 

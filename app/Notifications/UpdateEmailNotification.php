@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class WelcomEmailNotification extends Notification
+class UpdateEmailNotification extends Notification
 {
     use Queueable;
 
@@ -41,8 +41,8 @@ class WelcomEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Welcome to BoxGame.')
-                    ->action('Go to home page', url('/login'))
+                    ->line('You just update your email')
+                    ->action('Contact us if you don\'t do this', url('/contactus'))
                     ->line('Thank you for using our application!');
     }
 

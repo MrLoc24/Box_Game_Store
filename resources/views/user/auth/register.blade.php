@@ -14,7 +14,7 @@
 <body>
     
     <div class="form-container">
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ route('handleregister') }}" method="post">
 
             @csrf
 
