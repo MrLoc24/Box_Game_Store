@@ -385,7 +385,7 @@
                     <img src="{{ asset('assets_home/images/boxlogo.png') }}" alt="">
                 </a>
 
-                <img src="{{ asset('/assets_home/images/pay.png') }}" width="313" height="28"
+                <img src="{{ asset('assets_home/images/pay.png') }}" width="313" height="28"
                     alt="available all payment method" class="w-100">
 
             </div>
@@ -411,7 +411,7 @@
     <!--
     - custom js link
   -->
-    <script src="{{ asset('assets_home/js/scriptdetails.js') }}" defer></script>
+    <script src="{{ asset('assets_home/js/script.js') }}" defer></script>
 
     <!--
     - ionicon link
@@ -424,7 +424,7 @@
     - sweet alert
      -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    @yield('footer-script')
     {{-- <script>
         function getData() {
             let id = $(this).data('id');
