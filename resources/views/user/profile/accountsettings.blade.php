@@ -38,20 +38,26 @@
 
             </div>
         </div>
-        <form action="" method="post">
+        <form action="{{ route('accountsettings') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="personal-details">
                 <p class="title-details title">{{ __('personal details') }}</p>
                 <p class="content-details1">{{ __('Manage your name and contact info. These personal details are private and will not be displayed to other users. View our Privacy Policy.') }}</p>
                 <div class="content-details2">
-                    <div class="firstname details-input">
-                        <label for="firstname">{{ __('full name') }}</label>
-                        <input id="firstname-details" type="text" name="firstname" class="@error('firstname') is-invalid @enderror" value="{{ Auth::user()->username }}" autocomplete="firstname">           
+                    <div class="details-input">
+                        <label for="name">{{ __('full name') }}</label>
+                        <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror" value="{{ Auth::user()->username }}">           
                     </div>
                     <div class="ava">
                         <label for="ava">{{ __('avatar') }}</label>           
                         <img src="{{ asset(Auth::user()->image) }}" alt="">
-                        <input type="file"></input>
+                        <input type="file" id="ava" name="ava"></input>
                     </div>
+                    @if (session()->has('status'))
+                        <div class="valid-feedback">
+                            {{ session()->get('status') }}
+                        </div>
+                    @endif
                     <input class="save" type="submit" value="save changes" name="">
                 </div>
             </div>
