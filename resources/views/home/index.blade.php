@@ -142,7 +142,7 @@
 <!--                                                                                                                                                                                                                                                                                                                                                                                                                   
 - #BLOG                                                                                                                                                                                                                                                                                                                                                                                                                     
 -->
-    {{-- <section class="section blog" data-section>
+    <section class="section blog" data-section>
         <div class="container">
 
             <ul class="flex-list">
@@ -210,7 +210,7 @@
             </ul>
 
         </div>
-    </section> --}}
+    </section> 
 
 
 
