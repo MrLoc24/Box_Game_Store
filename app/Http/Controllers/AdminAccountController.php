@@ -18,10 +18,19 @@ class AdminAccountController extends Controller
         DB::table('account_admin')->where(['adminId' => $id])->delete();
         return redirect('admin/manager')->with('message', "Delete successfully!");
     }
+    // public function resetPassword(Request $request, $id)
+    // {
+    //     $password = $request->input('password');
+    //     if ($password == $request->input('retypePassword')) {
+    //         DB::table('account_admin')->where(['adminId' => $id])->update(['password' => $password]);
+    //         return redirect('admin/manager')->with('message', "Reset password successfully!");
+    //     } else {
+    //         return redirect('admin/manager')->with('message', "Password and confirm password are not the same!");
+    //     }
+    // }
     public function resetPassword($id)
     {
-        $password = 12345678;
-        DB::table('account_admin')->where(['adminId' => $id])->update($password);
-        return redirect('admin/manager')->with('message', "Reset password to " . $password . "successfully!");
+        DB::table('account_admin')->where(['adminId' => $id])->update(['password' => '12345678']);
+        return redirect('admin/manager')->with('message', "Reset password successfully!");
     }
 }

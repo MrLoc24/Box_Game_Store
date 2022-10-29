@@ -28,11 +28,11 @@
                 <div class="row">
                     <div class="col">
 
-                        {{-- @if (isset($message))
+                        @if (isset($message))
                             <script>
                                 alert("{{ $message }}");
                             </script>
-                        @endif --}}
+                        @endif
                         <p class="login-box-msg">Sign in to start your session</p>
 
 

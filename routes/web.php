@@ -65,7 +65,7 @@ Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
 //ADMIN ACCOUNT MANAGEMENT
 Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function () {
     Route::get('/', 'AdminAccountController@index');
-    Route::post('resetPassword/{id}', 'AdminAccountController@resetPassword');
+    Route::get('resetPassword/{id}', 'AdminAccountController@resetPassword');
     Route::get('delete/{id}', 'AdminAccountController@delete');
 });
 //ADMIN CART MANAGEMENT

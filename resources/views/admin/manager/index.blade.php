@@ -14,7 +14,7 @@
                 <div class="row mb-2">
                     @if (isset($message))
                         <script>
-                            alert({{ $message }});
+                            alert("{{ $message }}");
                         </script>
                     @endif
                     <div class="col-sm-6">
@@ -81,9 +81,11 @@
                                                     <td>
                                                         <button type="button" class="btn btn-danger" data-toggle="modal"
                                                             data-target="#delete{{ $admin->adminId }}">FIRED</button>
+                                                        {{-- <button type="button" class="btn btn-success" data-toggle="modal"
+                                                            data-target="#reset{{ $admin->adminId }}">Reset
+                                                            Password</button> --}}
                                                         <a href="/admin/manager/resetPassword/{{ $admin->adminId }}"
-                                                            class="btn btn-success">Reset
-                                                            Password</a>
+                                                            class="btn btn-success">Reset Password</a>
                                                     </td>
                                                 </tr>
                                                 {{-- Popup delete message --}}
@@ -116,6 +118,54 @@
                                                         </div>
 
                                                     </div>
+                                                </div>
+                                                {{-- Popup reset password --}}
+                                                {{-- <div class="modal fade" id="reset{{ $admin->adminId }}" tabindex="-1"
+                                                    role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+                                                    <form method="post"
+                                                        action="/admin/manager/resetPassword/{{ $admin->adminId }}"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="text-center" style="color: red">So you want
+                                                                        to
+                                                                        reset
+                                                                        {{ $admin->adminId }} password huh?
+                                                                    </h3>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="form-group row">
+                                                                        <div class="col">
+                                                                            <input type="text" class="form-control"
+                                                                                id="password" placeholder="New Password"
+                                                                                name="password">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col">
+                                                                            <input type="password" class="form-control"
+                                                                                placeholder="Password Retype"
+                                                                                name="retypePassword">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="/admin/manager/resetPassword/{{ $admin->adminId }}"
+                                                                        class="btn btn-danger">Reset</a>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </form>
+                                                </div> --}}
                                             @endif
                                         @endforeach
                                     </tbody>
