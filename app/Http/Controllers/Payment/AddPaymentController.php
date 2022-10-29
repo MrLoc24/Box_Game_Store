@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AddPaymentController extends Controller
 {
-    public function add() {
-        $payments = Payment::all();
-        return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
-    }
-
     public function store(Request $request) {
         $userID = Auth::user()->userID;
 
@@ -26,6 +21,6 @@ class AddPaymentController extends Controller
             'image' => $request->paymentimage,
         ]);
 
-        return redirect('payment');
+        return redirect('payment')->with('status', 'Add payment successfully!');
     }
 }

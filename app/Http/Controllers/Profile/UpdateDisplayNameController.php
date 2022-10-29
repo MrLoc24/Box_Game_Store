@@ -12,7 +12,7 @@ class UpdateDisplayNameController extends Controller
     public function update(Request $request) {
 
         $newdisplayname = $request->new_displayname;
-        Auth::user()->fill([
+        Auth::user()->forceFill([
             'userID' => $newdisplayname,
         ])->save();
 
@@ -23,6 +23,6 @@ class UpdateDisplayNameController extends Controller
         //     ])->save();
         // }
 
-        return redirect('login')->with('status', 'Update displayname success!');
+        return redirect('login')->with('status', 'Update displayname successfully!');
     }
 }

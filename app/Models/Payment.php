@@ -10,7 +10,7 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'CardID',
+        'cardId',
         'userID',
         'card_number',
         'cvv',
@@ -18,4 +18,5 @@ class Payment extends Model
         'card_name',
         'image',
     ];
+
 }

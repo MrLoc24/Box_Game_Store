@@ -102,11 +102,11 @@ addEventOnElem(window, "scroll", scrollReveal);
 
 const paymenthide = document.querySelector("[data-payment-hide]");
 const rotateArrow = document.querySelector("[data-arrow]");
-const paymenthidehide = document.querySelector("[data-paymenthide-hide]");
 const paymenthidehide1 = document.querySelector("[data-paymenthide-hide1]");
 const paymenthidehide2 = document.querySelector("[data-paymenthide-hide2]");
 const paymenthidehide3 = document.querySelector("[data-paymenthide-hide3]");
 const paymenthidehide4 = document.querySelector("[data-paymenthide-hide4]");
+const paymenthidehide5 = document.querySelector("[data-paymenthide-hide5]");
 
 const showpayment = function () {
     rotateArrow.classList.toggle("active");
@@ -117,59 +117,59 @@ const showpayment = function () {
 //paypal
 
 
-const showpaymentdetails = function () {
-  paymenthidehide.classList.toggle("active");
-  paymenthidehide1.classList.remove("active");
+const showpaymentdetails1 = function () {
+  paymenthidehide1.classList.toggle("active");
   paymenthidehide2.classList.remove("active");
   paymenthidehide3.classList.remove("active");
   paymenthidehide4.classList.remove("active");
+  paymenthidehide5.classList.remove("active");
 }
 
 
 //visa
 
 
-const showpaymentdetails1 = function () {
-  paymenthidehide1.classList.toggle("active");
-  paymenthidehide.classList.remove("active");
-  paymenthidehide2.classList.remove("active");
+const showpaymentdetails2 = function () {
+  paymenthidehide2.classList.toggle("active");
+  paymenthidehide1.classList.remove("active");
   paymenthidehide3.classList.remove("active");
   paymenthidehide4.classList.remove("active");
+  paymenthidehide5.classList.remove("active");
 }
 
 //master
 
 
-const showpaymentdetails2 = function () {
-  paymenthidehide2.classList.toggle("active");
+const showpaymentdetails3 = function () {
+  paymenthidehide3.classList.toggle("active");
+  paymenthidehide2.classList.remove("active");
   paymenthidehide1.classList.remove("active");
-  paymenthidehide.classList.remove("active");
-  paymenthidehide3.classList.remove("active");
   paymenthidehide4.classList.remove("active");
+  paymenthidehide5.classList.remove("active");
 }
 
 
 //vnpay
 
 
-const showpaymentdetails3 = function () {
-  paymenthidehide3.classList.toggle("active");
-  paymenthidehide1.classList.remove("active");
+const showpaymentdetails4 = function () {
+  paymenthidehide4.classList.toggle("active");
   paymenthidehide2.classList.remove("active");
-  paymenthidehide.classList.remove("active");
-  paymenthidehide4.classList.remove("active");
+  paymenthidehide3.classList.remove("active");
+  paymenthidehide1.classList.remove("active");
+  paymenthidehide5.classList.remove("active");
 }
 
 
 //momo
 
 
-const showpaymentdetails4 = function () {
-  paymenthidehide4.classList.toggle("active");
-  paymenthidehide1.classList.remove("active");
+const showpaymentdetails5 = function () {
+  paymenthidehide5.classList.toggle("active");
   paymenthidehide2.classList.remove("active");
   paymenthidehide3.classList.remove("active");
-  paymenthidehide.classList.remove("active");
+  paymenthidehide4.classList.remove("active");
+  paymenthidehide1.classList.remove("active");
 }
 
 
@@ -179,11 +179,11 @@ const showpaymentdetails4 = function () {
 
  const paymenthide1 = document.querySelector("[data-payment-hide1]");
  const rotateArrow1 = document.querySelector("[data-arrow1]");
- const paymenthidehide5 = document.querySelector("[data-paymenthide-hide5]");
  const paymenthidehide6 = document.querySelector("[data-paymenthide-hide6]");
  const paymenthidehide7 = document.querySelector("[data-paymenthide-hide7]");
  const paymenthidehide8 = document.querySelector("[data-paymenthide-hide8]");
  const paymenthidehide9 = document.querySelector("[data-paymenthide-hide9]");
+ const paymenthidehide10 = document.querySelector("[data-paymenthide-hide10]");
  
  const showpayment1 = function () {
      rotateArrow1.classList.toggle("active");
@@ -194,57 +194,53 @@ const showpaymentdetails4 = function () {
  //paypal
  
  
- const showpaymentdetails5 = function () {
-   paymenthidehide.classList.toggle("active");
-   paymenthidehide1.classList.remove("active");
-   paymenthidehide2.classList.remove("active");
-   paymenthidehide3.classList.remove("active");
-   paymenthidehide4.classList.remove("active");
- }
- 
- 
- //visa
- 
- 
  const showpaymentdetails6 = function () {
-   paymenthidehide1.classList.toggle("active");
-   paymenthidehide.classList.remove("active");
-   paymenthidehide2.classList.remove("active");
-   paymenthidehide3.classList.remove("active");
-   paymenthidehide4.classList.remove("active");
+   paymenthidehide6.classList.toggle("active");
+   paymenthidehide7.classList.remove("active");
+   paymenthidehide8.classList.remove("active");
+   paymenthidehide9.classList.remove("active");
+   paymenthidehide10.classList.remove("active");
  }
- 
- //master
- 
- 
+
+
+ //visa
  const showpaymentdetails7 = function () {
-   paymenthidehide2.classList.toggle("active");
-   paymenthidehide1.classList.remove("active");
-   paymenthidehide.classList.remove("active");
-   paymenthidehide3.classList.remove("active");
-   paymenthidehide4.classList.remove("active");
- }
+  paymenthidehide7.classList.toggle("active");
+  paymenthidehide6.classList.remove("active");
+  paymenthidehide8.classList.remove("active");
+  paymenthidehide9.classList.remove("active");
+  paymenthidehide10.classList.remove("active");
+}
+
+
+//master
+const showpaymentdetails8 = function () {
+  paymenthidehide8.classList.toggle("active");
+  paymenthidehide7.classList.remove("active");
+  paymenthidehide6.classList.remove("active");
+  paymenthidehide9.classList.remove("active");
+  paymenthidehide10.classList.remove("active");
+}
+
+
+//vnpay
+const showpaymentdetails9 = function () {
+  paymenthidehide9.classList.toggle("active");
+  paymenthidehide7.classList.remove("active");
+  paymenthidehide8.classList.remove("active");
+  paymenthidehide6.classList.remove("active");
+  paymenthidehide10.classList.remove("active");
+}
+
+
+//momo
+const showpaymentdetails10 = function () {
+  paymenthidehide10.classList.toggle("active");
+  paymenthidehide7.classList.remove("active");
+  paymenthidehide8.classList.remove("active");
+  paymenthidehide9.classList.remove("active");
+  paymenthidehide6.classList.remove("active");
+}
  
  
- //vnpay
  
- 
- const showpaymentdetails8 = function () {
-   paymenthidehide3.classList.toggle("active");
-   paymenthidehide1.classList.remove("active");
-   paymenthidehide2.classList.remove("active");
-   paymenthidehide.classList.remove("active");
-   paymenthidehide4.classList.remove("active");
- }
- 
- 
- //momo
- 
- 
- const showpaymentdetails9 = function () {
-   paymenthidehide4.classList.toggle("active");
-   paymenthidehide1.classList.remove("active");
-   paymenthidehide2.classList.remove("active");
-   paymenthidehide3.classList.remove("active");
-   paymenthidehide.classList.remove("active");
- }

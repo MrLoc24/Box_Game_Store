@@ -9,6 +9,8 @@ use App\Http\Controllers\Payment\AddPaymentController;
 use App\Http\Controllers\Profile\UpdateProfileController;
 use App\Http\Controllers\Profile\UpdateDisplayNameController;
 use App\Http\Controllers\Profile\UpdateEmailController;
+use App\Models\Payment;
+use App\Http\Controllers\Payment\UpdatePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,20 +112,33 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    //start logout
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    //end logout
 
+    //start update profile
     Route::get('/profile', function () {
         return view('user.profile.accountsettings');
     })->name('accountsettings');
     Route::post('/profilesettings', [UpdateProfileController::class, 'update'])->name('handleaccountsettings')->middleware('checkupdateprofile');
     Route::post('/profilesettingss', [UpdateDisplayNameController::class, 'update'])->name('handleaccountsettingss')->middleware('checkupdatedisplayname');
     Route::post('/profilesettingsss', [UpdateEmailController::class, 'update'])->name('handleaccountsettingsss')->middleware('checkupdateemail');
+    //end update profile
 
-    Route::get('payment', [AddPaymentController::class, 'add'])->name('paymentmanagement');
-    Route::post('payment', [AddPaymentController::class, 'store'])->middleware('checkaddpayment');
+    //start update payment
+    Route::get('payment', function() {
+        $payments = Payment::all();
+        return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
+    })->name('paymentmanagement');
+    Route::post('paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
+    Route::post('payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
 
+    //end update payment
+
+    //start cart
     Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
     Route::get('/cart', 'CartController@show')->name('cart');
     Route::get('remove-cart/{rowId}', 'CartController@removeCart');
     Route::get('/checkoutCart/{cartTotal}', 'CheckoutController@checkout');
+    //end cart
 });

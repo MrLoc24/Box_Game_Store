@@ -19,6 +19,14 @@
     <p class="your_payment">{{ __('your payment methods') }}</p>
     
     <div class="add_or_manage">
+        @php
+            $i = 5;
+            $paypal = 0;
+            $visa = 0;
+            $master = 0;
+            $vnpay = 0;
+            $momo = 0;       
+        @endphp
         
         <p class="content_add_or_manage">{{ __('Add or manage payment methods associated with your Epic Games Account.') }}</p>
         
@@ -35,38 +43,72 @@
                 <ul>
                     @forelse ($payments as $payment)
                         @if ($payment->userID == Auth::user()->userID)
+                            @php
+                                $i++;
+                                $function = 'showpaymentdetails' . $i . '()';
+                                $data = 'data-paymenthide-hide' . $i;
+                            @endphp
                             <li class="payment-hide-item1">
-                                <div class="title_payment1" onclick="showpaymentdetails()">
+                                <div class="title_payment1" onclick="{{ $function }}">
                                     <input type="radio" name="payment">
                                     <img src="{{ asset($payment->image) }}" alt="">
                                     <label for="">{{ $payment->card_name }}</label>
                                 </div>
                                         
-                                <div class="content_payment1" data-paymenthide-hide>
+                                <div class="content_payment1" {{ $data }}>
                                     <div class="card_details1">card details</div>
-                                    <form class="detailspayment1" action="{{ route('paymentmanagement') }}" method="post">
+                                    <form class="detailspayment1" action="{{ url("payment/{$payment->cardId}") }}" method="post">
                                         @csrf
-                                        <input type="hidden" name="paymentname" value="paypal" id="">
                                         <div class="payment-form-item1 card_number1">
                                             <label for="card_number">{{ __('Card Number *') }}</label>
-                                            <input type="text" name="card_number" id="card_number">        
+                                            <input type="text" name="card_number" id="card_number" value="{{ $payment->card_number }}">        
                                         </div>
                                         <div class="payment-form-item1 card_expi1">
                                             <label for="expiration">{{ __('Expiration *') }}</label>
-                                            <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                            <input type="date" name="expiration" id="expiration" value="{{ $payment->payment_date }}">
                                         </div>
                                         <div class="payment-form-item1 card_cvv1">
                                             <label for="cvv">{{ __('CVV *') }}</label>
-                                            <input type="text" name="cvv" id="cvv">
+                                            <input type="text" name="cvv" id="cvv" value="{{ $payment->cvv }}">
                                         </div>
-                                        <input type="submit" class="submit1" value="{{ __('save') }}">
+                                        <input type="submit" class="submit1" value="{{ __('update') }}">
                                     </form>                        
                                 </div>
                             </li>
+                            @if ($payment->card_name == 'paypal')
+                                @php
+                                    $paypal++;
+                                @endphp
+                            @endif
+                            @if ($payment->card_name == 'visa')
+                                @php
+                                    $visa++;
+                                @endphp
+                            @endif
+                            @if ($payment->card_name == 'master')
+                                @php
+                                    $master++;
+                                @endphp
+                            @endif
+                            @if ($payment->card_name == 'vnpay')
+                                @php
+                                    $vnpay++;
+                                @endphp
+                            @endif
+                            @if ($payment->card_name == 'momo')
+                                @php
+                                    $momo++;
+                                @endphp
+                            @endif
                         @endif
-                        @empty
-                            <span>No payment moethods added.</span>
+                    @empty
+                        <span>No payment moethods added.</span>
                     @endforelse
+                    @if (session()->has('status'))
+                        <div class="valid-feedback">
+                            {{ session()->get('status') }}
+                        </div>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -82,16 +124,17 @@
 
             <div class="payment-hide" data-payment-hide>
                 <ul>
+                    @if($paypal == 0)
                     <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails()">
+                        <div class="title_payment" onclick="showpaymentdetails1()">
                             <input type="radio" name="payment">
                             <img src="{{ asset('assets_home/images/paypal.png') }}" alt="">
                             <label for="">PayPal</label>
                         </div>
                                 
-                        <div class="content_payment" data-paymenthide-hide>
+                        <div class="content_payment" data-paymenthide-hide1>
                             <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
+                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="paypal" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/paypal.png" id="">
@@ -111,16 +154,18 @@
                             </form>                        
                         </div>
                     </li>
+                    @endif
+                    @if($visa == 0)
                     <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails1()">
+                        <div class="title_payment" onclick="showpaymentdetails2()">
                             <input type="radio" name="payment">
                             <img src="{{ asset('assets_home/images/visa.jpg') }}" alt="">
                             <label for="">Visa</label>
                         </div>
 
-                        <div class="content_payment" data-paymenthide-hide1>
+                        <div class="content_payment" data-paymenthide-hide2>
                             <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
+                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="visa" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/visa.jpg" id="">
@@ -140,16 +185,18 @@
                             </form>                        
                         </div>
                     </li>
+                    @endif
+                    @if($master == 0)
                     <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails2()">
+                        <div class="title_payment" onclick="showpaymentdetails3()">
                             <input type="radio" name="payment">
                             <img src="{{ asset('assets_home/images/master.png') }}" alt="">
                             <label for="">Master Card</label>
                         </div>
 
-                        <div class="content_payment" data-paymenthide-hide2>
+                        <div class="content_payment" data-paymenthide-hide3>
                             <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
+                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="mastercard" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
@@ -169,16 +216,18 @@
                             </form>                        
                         </div>
                     </li>
+                    @endif
+                    @if($vnpay == 0)
                     <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails3()">
+                        <div class="title_payment" onclick="showpaymentdetails4()">
                             <input type="radio" name="payment">
                             <img src="{{ asset('assets_home/images/vnpay.png') }}" alt="">
                             <label for="">VN Pay</label>
                         </div>
 
-                        <div class="content_payment" data-paymenthide-hide3>
+                        <div class="content_payment" data-paymenthide-hide4>
                             <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
+                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="vnpay" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/vnpay.png" id="">
@@ -198,16 +247,18 @@
                             </form>                        
                         </div>
                     </li>
+                    @endif
+                    @if($momo == 0)
                     <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails4()">
+                        <div class="title_payment" onclick="showpaymentdetails5()">
                             <input type="radio" name="payment">
                             <img src="{{ asset('assets_home/images/momo.png') }}" alt="">
                             <label for="">Momo</label>
                         </div>
 
-                        <div class="content_payment" data-paymenthide-hide4>
+                        <div class="content_payment" data-paymenthide-hide5>
                             <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('paymentmanagement') }}" method="post">
+                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="momo" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/momo.png" id="">
@@ -242,6 +293,7 @@
                             </form>                        
                         </div>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>

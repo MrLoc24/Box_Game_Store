@@ -17,6 +17,6 @@ class UpdateEmailController extends Controller
 
         Auth::user()->notify(new UpdateEmailNotification());
 
-        return redirect('profile')->with('status', 'Update email success!');
+        return redirect('profile')->with('status', 'Update email successfully!');
     }
 }
