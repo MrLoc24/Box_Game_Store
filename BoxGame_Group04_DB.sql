@@ -170,7 +170,7 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `payment`
+-- Cấu trúc bảng cho bảng `payments`
 --
 
 CREATE TABLE `payments` (
@@ -181,8 +181,8 @@ CREATE TABLE `payments` (
   `payment_date` datetime NOT NULL,
   `card_name` varchar(255) NO NULL,
   `image` varchar(255) NO NULL,
-  `updated_at` timestamp,
-  `created_at` timestamp
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -330,7 +330,7 @@ ALTER TABLE `game`
   ADD PRIMARY KEY (`gameId`);
 
 --
--- Chỉ mục cho bảng `payment`
+-- Chỉ mục cho bảng `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`cardId`),
@@ -380,7 +380,7 @@ ALTER TABLE `category`
   MODIFY `category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
--- AUTO_INCREMENT cho bảng `payment`
+-- AUTO_INCREMENT cho bảng `payments`
 --
 ALTER TABLE `payments`
   MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
@@ -416,9 +416,9 @@ ALTER TABLE `category`
   ADD CONSTRAINT `type_cate` FOREIGN KEY (`type`) REFERENCES `type` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `payment`
+-- Các ràng buộc cho bảng `payments`
 --
-ALTER TABLE `payment`
+ALTER TABLE `payments`
   ADD CONSTRAINT `user_payment` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
