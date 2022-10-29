@@ -20,7 +20,7 @@ use App\Http\Controllers\Profile\UpdateEmailController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// //MAIN PAGE
+//MAIN PAGE
 Route::get('/', 'UserHomeController@index')->name('homeuser');
 Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail');
