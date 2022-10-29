@@ -41,7 +41,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Icon</th>
+                                            <th>Avatar</th>
                                             <th>Display Name</th>
                                             <th>Username</th>
                                             <th>Email</th>
@@ -56,6 +56,7 @@
                                                 </td>
 
                                                 <td>{{ $user->userID }}</td>
+                                                <td>{{ $user->username }}</td>
                                                 {{-- $game->column name!!!!!! --}}
                                                 <td>{{ $user->email }}</td>
                                                 <td>
@@ -108,9 +109,9 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Icon</th>
-                                            <th>Userame</th>
+                                            <th>Avatar</th>
                                             <th>Display Name</th>
+                                            <th>Username</th>
                                             <th>Email</th>
                                             <th>Status</th>
                                             <th>Function</th>

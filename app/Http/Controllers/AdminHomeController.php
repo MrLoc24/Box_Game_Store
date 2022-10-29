@@ -39,8 +39,13 @@ class AdminHomeController extends Controller
             session()->forget('adminImg');
             session()->push("adminImg", 'img/admin/default.png');
         }
-        session()->forget('admin');
-        session()->push("admin", $admin->name);
+        if ($admin->role == 'boss') {
+            session()->forget('boss');
+            session()->push('boss', $admin->name);
+        } else {
+            session()->forget('admin');
+            session()->push("admin", $admin->name);
+        }
         if ($request->all()) {
 
             return redirect()->route('home')->with('success', "Update product successfully!");

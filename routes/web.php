@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Payment\AddPaymentController;
 use App\Http\Controllers\Profile\UpdateProfileController;
+use App\Http\Controllers\Profile\UpdateDisplayNameController;
+use App\Http\Controllers\Profile\UpdateEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,12 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
 Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
     Route::get('/', 'AdminUserController@index');
 });
+//ADMIN ACCOUNT MANAGEMENT
+Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function () {
+    Route::get('/', 'AdminAccountController@index');
+    Route::post('resetPassword/{id}', 'AdminAccountController@resetPassword');
+    Route::get('delete/{id}', 'AdminAccountController@delete');
+});
 //ADMIN CART MANAGEMENT
 Route::prefix('admin/cart')->middleware('checkAdminLogin')->group(function () {
     Route::get('index', 'AdminCartController@index');
@@ -81,7 +89,7 @@ Route::middleware('guest')->group(function () {
 
     //start register
     Route::get('register', [RegisterController::class, 'register'])->name('register');
-    Route::post('register', [RegisterController::class, 'store'])->middleware('checkregister');
+    Route::post('register', [RegisterController::class, 'store'])->name('handleregister')->middleware('checkregister');
     //end register
 
     //start login
@@ -104,8 +112,12 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::get('/profile', [UpdateProfileController::class, 'profile'])->name('accountsettings');
-    Route::post('/profile', [UpdateProfileController::class, 'update'])->middleware('checkupdateprofile');
+    Route::get('/profile', function () {
+        return view('user.profile.accountsettings');
+    })->name('accountsettings');
+    Route::post('/profilesettings', [UpdateProfileController::class, 'update'])->name('handleaccountsettings')->middleware('checkupdateprofile');
+    Route::post('/profilesettingss', [UpdateDisplayNameController::class, 'update'])->name('handleaccountsettingss')->middleware('checkupdatedisplayname');
+    Route::post('/profilesettingsss', [UpdateEmailController::class, 'update'])->name('handleaccountsettingsss')->middleware('checkupdateemail');
 
     Route::get('payment', [AddPaymentController::class, 'add'])->name('paymentmanagement');
     Route::post('payment', [AddPaymentController::class, 'store'])->middleware('checkaddpayment');
@@ -115,4 +127,3 @@ Route::middleware('auth')->group(function () {
     Route::get('remove-cart/{rowId}', 'CartController@removeCart');
     Route::get('/checkoutCart/{cartTotal}', 'CheckoutController@checkout');
 });
-
