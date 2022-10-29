@@ -3400,7 +3400,7 @@ body {
  * changename
  */
 
-.changename-form-container{
+:is(.changename-form-container, .changeemail-form-container){
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3413,11 +3413,11 @@ body {
   padding: 2rem;
 }
 
-.changename-form-container.active{
+:is(.changename-form-container, .changeemail-form-container).active{
   right: 0;
 }
 
-.changename-form-container form{
+:is(.changename-form-container, .changeemail-form-container) form{
   /* position: fixed; */
   justify-content: center;
   text-align: center;
@@ -3429,14 +3429,14 @@ body {
   border-radius: .5rem;
 }
 
-.changename-form-container form img{
+:is(.changename-form-container, .changeemail-form-container) form img{
   margin-top: 2rem;
   width: 40px;
   height: 40px;
   display: unset;
 }
 
-.changename-form-container form h4{
+:is(.changename-form-container, .changeemail-form-container) form h4{
   font-size: 2rem;
   margin-bottom: 4rem;
   margin-top: 2rem;
@@ -3444,7 +3444,7 @@ body {
   color: var(--black);
 }
 
-.changename-form-container form .box{
+:is(.changename-form-container, .changeemail-form-container) form .box{
   height: 6rem;
   width: 90%;
   border-radius: .5rem;
@@ -3453,7 +3453,7 @@ body {
   margin: 2rem;
 }
 
-.changename-form-container form .box input{
+:is(.changename-form-container, .changeemail-form-container) form .box input{
   font-size: 1.4rem;
   height: 2.5rem;
   width: 100%;
@@ -3462,7 +3462,7 @@ body {
   outline: none;
 }
 
-.changename-form-container form .box label{
+:is(.changename-form-container, .changeemail-form-container) form .box label{
   font-size: 1.4rem;
   display: flex;
   width: 100%;
@@ -3470,11 +3470,11 @@ body {
   color: var(--text-silver2);
 }
 
-.changename-form-container form .box:focus-within {
+:is(.changename-form-container, .changeemail-form-container) form .box:focus-within {
   border: .2rem solid var(--black);
 }
 
-.changename-form-container form .checkbox{
+:is(.changename-form-container, .changeemail-form-container) form .checkbox{
   margin-left: 1.8rem;
   display: flex;
   align-items: center;
@@ -3482,7 +3482,7 @@ body {
   padding: 1.2rem 0;
 }
 
-.changename-form-container form .checkbox label{
+:is(.changename-form-container, .changeemail-form-container) form .checkbox label{
   text-align: left;
   font-weight: 550;
   font-size: 1.3rem;
@@ -3491,11 +3491,11 @@ body {
   margin: .5rem;
 }
 
-.changename-form-container form .checkbox input{
+:is(.changename-form-container, .changeemail-form-container) form .checkbox input{
   width: unset;
 }
 
-.changename-form-container form .btn{
+:is(.changename-form-container, .changeemail-form-container) form .btn{
   display: inline-block;
   margin-top: 1rem;
   padding: 1rem 3rem;
@@ -3507,7 +3507,7 @@ body {
   background-color: var(--blue);
 }
 
-.changename-form-container #close-changename-btn{
+:is(.changename-form-container, .changeemail-form-container) :is(#close-changename-btn, #close-changeemail-btn){
   position: absolute;
   top: 1.5rem; right: 1.5rem;
   font-size: 3rem;
@@ -3525,6 +3525,7 @@ body {
   font-size: 1.2rem;
   color: rgb(20, 202, 0);
   padding-top: .5rem;
+  margin-bottom: 1rem;
 }
 
 

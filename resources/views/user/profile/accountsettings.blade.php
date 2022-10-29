@@ -26,7 +26,7 @@
                         autocomplete="displayname" disabled>
                 </div>
 
-                <div class="changename change1 fa-solid fa-user-pen" id="login-btn" onclick="showchangenameForm()"></div>
+                <div class="changename change1 fa-solid fa-user-pen" onclick="showchangenameForm()"></div>
 
                 <div class="email change">
                     <label for="email">{{ __('email address') }}</label>
@@ -34,11 +34,16 @@
                         value="{{ Auth::user()->email }}" autocomplete="email" disabled>
                 </div>
 
-                <div class="changeemail change1 fa-solid fa-user-pen" role="button"></div>
+                <div class="changeemail change1 fa-solid fa-user-pen" onclick="showchangeemailForm()"></div>
 
+                @if (session()->has('status'))
+                    <div class="valid-feedback">
+                        {{ session()->get('status') }}
+                    </div>
+                @endif
             </div>
         </div>
-        <form action="{{ route('accountsettings') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('handleaccountsettings') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="personal-details">
                 <p class="title-details title">{{ __('personal details') }}</p>
@@ -78,40 +83,82 @@
 
 <div class="changename-form-container" data-changename>
 
-    <form action="" method="post">       
+    <form action="{{ route('handleaccountsettingss') }}" method="post">       
         @csrf
         <div id="close-changename-btn" class="fas fa-times" onclick="showchangenameForm()"></div>
         <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
         <h4>{{ __('Add Your New Display Name') }}</h4>
         <div class="box"> 
-            <label for="new_name">{{ __('New Name *') }}</label>
-            <input id="new_name" type="text" class="@error('new_name') is-invalid @enderror" name="new_name" value="{{ old('new_name') }}" autocomplete="new_name" autofocus>
+            <label for="new_displayname">{{ __('New Name *') }}</label>
+            <input id="new_displayname" type="text" class="@error('new_displayname') is-invalid @enderror" name="new_displayname" value="{{ old('new_displayname') }}" autocomplete="new_displayname" autofocus>
         </div>
 
-        @error('new_name')
+        @error('new_displayname')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>               
         @enderror
 
         <div class="box">
-            <label for="confirm_name">{{ __('Confirm Name *') }}</label>
-            <input id="confirm_name" type="text" class="@error('confirm_name') is-invalid @enderror" name="confirm_name" value="{{ old('confirm_name') }}" autocomplete="confirm_name" autofocus>
+            <label for="new_displayname_confirmation">{{ __('Confirm Name *') }}</label>
+            <input id="new_displayname_confirmation" type="text" class="@error('new_displayname_confirmation') is-invalid @enderror" name="new_displayname_confirmation" value="{{ old('new_displayname_confirmation') }}" autocomplete="new_displayname_confirmation" autofocus>
         </div>
 
-        @error('confirm_name')
+        @error('new_displayname_confirmation')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>               
         @enderror
+
         <div class="checkbox">
-            <input type="checkbox" name="receive_news" class="@error('receive_news') is-invalid @enderror" id="receive-news">
-            <label for="receive-news">{{ __('I agree to change my displayname.') }}</label>
+            <input type="checkbox" name="agree" class="@error('agree') is-invalid @enderror" id="agree">
+            <label for="agree">{{ __('I agree to change my displayname.') }}</label>
         </div>
+
+        @error('agree')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>               
+        @enderror
+
         <input type="submit" name="submit" value="{{ __('confirm') }}" class="register-btn btn">
     </form>
 
-    </div>
+</div>
+
+<div class="changeemail-form-container" data-changeemail>
+
+    <form action="{{ route('handleaccountsettingsss') }}" method="post">       
+        @csrf
+        <div id="close-changeemail-btn" class="fas fa-times" onclick="showchangeemailForm()"></div>
+        <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
+        <h4>{{ __('Add Your New Email') }}</h4>
+        <div class="box"> 
+            <label for="email">{{ __('New Email *') }}</label>
+            <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+        </div>
+
+        @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>               
+        @enderror
+
+        <div class="checkbox">
+            <input type="checkbox" name="agree" class="@error('agree') is-invalid @enderror" id="agree">
+            <label for="agree">{{ __('I agree to change my email.') }}</label>
+        </div>
+
+        @error('agree')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>               
+        @enderror
+
+        <input type="submit" name="submit" value="{{ __('confirm') }}" class="register-btn btn">
+    </form>
+
+</div>
 
     <script src="{{ asset('assets_home/js/scriptprofile.js') }}" defer></script>
 

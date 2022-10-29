@@ -102,3 +102,9 @@ let changenameForm = document.querySelector('[data-changename]');
 const showchangenameForm = function () {
   changenameForm.classList.toggle("active");
 }
+
+let changeemailForm = document.querySelector('[data-changeemail]');
+
+const showchangeemailForm = function () {
+  changeemailForm.classList.toggle("active");
+}

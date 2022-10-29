@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'CardID',
         'userID',
@@ -15,6 +16,6 @@ class Payment extends Model
         'cvv',
         'payment_date',
         'card_name',
-        'image'
+        'image',
     ];
 }
