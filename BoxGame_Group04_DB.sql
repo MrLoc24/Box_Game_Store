@@ -59,7 +59,7 @@ CREATE TABLE `cart_details` (
   `cart_details_id` int(11) NOT NULL,
   `cartId` int(11) NOT NULL,
   `gameId` varchar(45) NOT NULL,
-  `gamePrice` int(11) NOT NULL,
+  `gamePrice` float NOT NULL,
   `gameIcon` varchar(100) NOT NULL,
   `gameSale` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -277,7 +277,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
-  `status` bit(1) DEFAULT '1',
+  `status` bit(1) DEFAULT b'1',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `image` varchar(255) DEFAULT 'assets_home/images/useravatar/avatardefault.jpg'
