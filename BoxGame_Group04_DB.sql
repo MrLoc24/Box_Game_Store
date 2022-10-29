@@ -173,12 +173,16 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 -- Cấu trúc bảng cho bảng `payment`
 --
 
-CREATE TABLE `payment` (
-  `CardId` int(11) NOT NULL,
+CREATE TABLE `payments` (
+  `cardId` int(11) NOT NULL,
   `userID` varchar(255) NOT NULL,
   `card_number` int(12) NOT NULL,
   `cvv` int(3) NOT NULL,
-  `payment_date` datetime NOT NULL
+  `payment_date` datetime NOT NULL,
+  `card_name` varchar(255) NO NULL,
+  `image` varchar(255) NO NULL,
+  `updated_at` timestamp,
+  `created_at` timestamp
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -273,10 +277,10 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
-  `status` bit(1) DEFAULT b'1',
+  `status` bit(1) DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `image` varchar(255) DEFAULT NULL
+  `image` varchar(255) DEFAULT 'assets_home/images/useravatar/avatardefault.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -328,8 +332,8 @@ ALTER TABLE `game`
 --
 -- Chỉ mục cho bảng `payment`
 --
-ALTER TABLE `payment`
-  ADD PRIMARY KEY (`CardId`),
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`cardId`),
   ADD KEY `user_payment` (`userID`);
 
 --
@@ -378,8 +382,8 @@ ALTER TABLE `category`
 --
 -- AUTO_INCREMENT cho bảng `payment`
 --
-ALTER TABLE `payment`
-  MODIFY `CardId` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `payments`
+  MODIFY `cardId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `system_requirement`
