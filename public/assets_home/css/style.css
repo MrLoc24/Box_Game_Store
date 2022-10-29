@@ -716,9 +716,21 @@ body {
   border: 2px solid var(--text-white)
 }
 
-.shop-card .action-btn:is(:hover, :focus) {
+.shop-card :is(.action-btn, .action-btn-login):is(:hover, :focus) {
   color: var(--blue);
   border: 2px solid var(--blue)
+}
+
+.shop-card .action-btn-login {
+  background-color: var(--bg-silver);
+  text-align: center;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: var(--transition-1);
+  color: var(--text-white);
+  border: 2px solid var(--text-white)
 }
 
 .shop-card:is(:hover, :focus-within) .card-actions {

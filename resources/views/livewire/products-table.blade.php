@@ -19,10 +19,16 @@
                                     +
                                 </button> --}}
                                 @else
-                                <button class="action-btn" type="button" wire:click.prevent="addToCart('{{ $value->gameId }}')" onclick="showSuccess()">
-                                    {{-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> --}}
-                                    +
-                                </button>
+                                    @if (Auth::check())
+                                    <button class="action-btn" type="button" wire:click.prevent="addToCart('{{ $value->gameId }}')" onclick="showSuccess()">
+                                        {{-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> --}}
+                                        +
+                                    </button>
+                                    @else
+                                    <a href="{{ route('login') }}" class="action-btn-login" type="button" >
+                                        +
+                                    </a>
+                                    @endif
                                 @endif
 
                                 {{-- <button class="action-btn">
