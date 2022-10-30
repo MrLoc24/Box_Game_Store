@@ -13,8 +13,8 @@ This is our 2nd semester project. Please follow those steps to run the website:
    `MAIL_MAILER=smtp`
    `MAIL_HOST=smtp.gmail.com`
    `MAIL_PORT=465`
-   `MAIL_USERNAME= your email`
-   `MAIL_PASSWORD= your application password`
+   `MAIL_USERNAME= "your email"`
+   `MAIL_PASSWORD= "your application password"`
    `MAIL_ENCRYPTION=null`
    `MAIL_FROM_ADDRESS="your email"`
    `MAIL_FROM_NAME="${APP_NAME}"`
