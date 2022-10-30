@@ -179,8 +179,8 @@ CREATE TABLE `payments` (
   `card_number` int(12) NOT NULL,
   `cvv` int(3) NOT NULL,
   `payment_date` datetime NOT NULL,
-  `card_name` varchar(255) NO NULL,
-  `image` varchar(255) NO NULL,
+  `card_name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
