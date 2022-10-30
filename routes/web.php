@@ -11,6 +11,7 @@ use App\Http\Controllers\Profile\UpdateDisplayNameController;
 use App\Http\Controllers\Profile\UpdateEmailController;
 use App\Models\Payment;
 use App\Http\Controllers\Payment\UpdatePaymentController;
+use App\Http\Controllers\Profile\DeleteUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,6 +125,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profilesettings', [UpdateProfileController::class, 'update'])->name('handleaccountsettings')->middleware('checkupdateprofile');
     Route::post('/profilesettingss', [UpdateDisplayNameController::class, 'update'])->name('handleaccountsettingss')->middleware('checkupdatedisplayname');
     Route::post('/profilesettingsss', [UpdateEmailController::class, 'update'])->name('handleaccountsettingsss')->middleware('checkupdateemail');
+    Route::get('/profiledelete', [DeleteUserController::class, 'delete'])->name('deleteuser');
     //end update profile
 
     //start update payment
@@ -133,8 +135,8 @@ Route::middleware('auth')->group(function () {
     })->name('paymentmanagement');
     Route::post('paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
     Route::post('payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
-
     //end update payment
+
 
     //start cart
     Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');

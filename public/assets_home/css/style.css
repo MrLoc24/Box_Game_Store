@@ -3397,7 +3397,7 @@ body {
   margin-top: 1rem;
 }
 
-.profile .informations .information .delete .content-delete input{
+.profile .informations .information .delete .content-delete .delete_account{
   width: 40%;
   font-size: 14px;
   height: 50px;
@@ -3405,9 +3405,11 @@ body {
   background-color: #f14545;
   border: var(--bg-silver) solid 1px;
   color: var(--white);
-  cursor: pointer;
   text-align: center;
+  padding-block: 1.2rem 1.4rem;
   text-transform: uppercase;
+  display: block;
+  cursor: pointer;
 }
 
 
@@ -3415,7 +3417,7 @@ body {
  * changename
  */
 
-:is(.changename-form-container, .changeemail-form-container){
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container){
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3428,11 +3430,11 @@ body {
   padding: 2rem;
 }
 
-:is(.changename-form-container, .changeemail-form-container).active{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container).active{
   right: 0;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form{
   /* position: fixed; */
   justify-content: center;
   text-align: center;
@@ -3444,15 +3446,16 @@ body {
   border-radius: .5rem;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form img{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form img{
   margin-top: 2rem;
   width: 40px;
   height: 40px;
   display: unset;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form h4{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form h4{
   font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 4rem;
   margin-top: 2rem;
   text-transform: uppercase;
@@ -3522,13 +3525,59 @@ body {
   background-color: var(--blue);
 }
 
-:is(.changename-form-container, .changeemail-form-container) :is(#close-changename-btn, #close-changeemail-btn){
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) :is(#close-changename-btn, #close-changeemail-btn, #close-delete-btn){
   position: absolute;
   top: 1.5rem; right: 1.5rem;
   font-size: 3rem;
   color: var(--black);
   animation: rotate .4s linear .4s backwards;
   cursor: pointer;
+}
+
+.delete-form-container :is(.span1, .span2){
+  text-align: left;
+  font-weight: normal;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.delete-form-container a{
+  width: 90%;
+  font-size: 14px;
+  height: 50px;
+  border-radius: .5rem;
+  background-color: #ff6060;
+  border: var(--bg-silver) solid 1px;
+  color: var(--white);
+  text-align: center;
+  justify-content: center;
+  padding-block: 1.2rem 1.4rem;
+  max-width: unset;
+  text-transform: uppercase;
+  display: block;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.delete-form-container .cancel{
+  width: 90%;
+  font-size: 14px;
+  height: 50px;
+  border-radius: .5rem;
+  background-color: var(--text-silver);
+  border: var(--bg-silver) solid 1px;
+  color: var(--black);
+  text-align: center;
+  padding-block: 1.2rem 1.4rem;
+  text-transform: uppercase;
+  display: block;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.delete-form-container .cancel:hover{
+  background-color: var(--text-silver2);
+}
+
+.delete-form-container a:hover{
+  background-color: #ff0000;
 }
 
 .invalid-feedback{

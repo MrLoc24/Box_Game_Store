@@ -72,9 +72,11 @@
             <p class="title-delete title">{{ __('delete account') }}</p>
             <div class="content-delete">
                 <p class="content-delete1">
-                    {{ __('Delete your Epic Games account including all personal information, purchases, game progress, in-game content, and Unreal projects. Your account will be permanently deleted in 14 days.') }}
+                    {{ __('Delete your Box Game account including all personal information, purchases, game progress, in-game content, and Unreal projects. Your account will be permanently deleted in 14 days.') }}
                 </p>
-                <input type="submit" value="delete account" name="">
+                <div class="delete_account" onclick="showdeleteForm()">
+                    delete account
+                </div>
             </div>
         </div>
 
@@ -160,6 +162,30 @@
 
 </div>
 
+
+<div class="delete-form-container" data-delete>
+
+    <form action="{{ route('handleaccountsettingsss') }}" method="post">       
+        @csrf
+        <div id="close-delete-btn" class="fas fa-times" onclick="showdeleteForm()"></div>
+        <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
+        <h4>{{ __('Delete Your Account') }}</h4>
+        <span class="span1">
+            {{ __('Are you sure you want to delete your Box Game account? If you’re having problems, please contact player support who can help.') }}
+        </span>
+        <span class="span2">
+            {{ __('Deleting your account will remove access to Box Game like Fortnite. Personal information, purchases, game progress, in-game content, and Unreal projects will also be permanently deleted.') }}
+        </span>
+
+        <a href="{{ route('deleteuser') }}" class="register-btn btn">
+            {{ __('delete') }}
+        </a>
+        <div class="cancel" onclick="showdeleteForm()">
+            {{ __('cancel') }}
+        </div>
+    </form>
+
+</div>
     <script src="{{ asset('assets_home/js/scriptprofile.js') }}" defer></script>
 
 @endsection
