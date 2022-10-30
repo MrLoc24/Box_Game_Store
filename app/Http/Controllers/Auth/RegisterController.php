@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
         $user->notify(new WelcomEmailNotification());
 
-        return redirect('login');
+        return redirect('login')->with('status', 'Register user successfully');
     }
 
 }
