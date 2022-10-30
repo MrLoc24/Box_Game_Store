@@ -52,7 +52,7 @@
                                     <tbody>
                                         @foreach ($users as $key => $user)
                                             <tr>
-                                                <td><img src="{{ asset("$user->image") }}" width="50px" height="50px">
+                                                <td><img src="{{ asset($user->image) }}" width="50px" height="50px">
                                                 </td>
 
                                                 <td>{{ $user->userID }}</td>
@@ -67,18 +67,19 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($user->status == 1)
+                                                    {{--sao delete tinh sau--}}
+                                                    {{--@if ($user->status == 1)--}}
                                                         <button type="button" class="btn btn-danger" data-toggle="modal"
                                                             data-target="#deactive{{ $user->userID }}">Deactive</button>
-                                                    @else
+                                                    {{--@else
                                                         <button type="button" class="btn btn-success" data-toggle="modal"
                                                             data-target="#active{{ $user->userID }}">Active</button>
-                                                    @endif
+                                                    @endif--}}
 
                                                 </td>
                                             </tr>
                                             {{-- Popup delete message --}}
-                                            {{-- <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"
+                                            <div class="modal fade" id="deactive{{ $user->userID }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -90,13 +91,13 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h4>Wanna delete this game? There is no
+                                                            <h4>Wanna delete this user? There is no
                                                                 turning back from here !!!!</h4>
                                                             <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
                                                                 class="rounded mx-auto d-block" alt="...">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                            <a href="/admin/user/delete/{{ $user->userID }}"
                                                                 class="btn btn-danger">I'm the boss</a>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">No, I'm scared</button>
@@ -104,9 +105,14 @@
                                                     </div>
 
                                                 </div>
-                                            </div> --}}
+                                            </div> 
                                         @endforeach
                                     </tbody>
+                                    <!-- @if (session()->has('success'))
+                                        <div class="valid-feedback" style="color: green;">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif -->
                                     <tfoot>
                                         <tr>
                                             <th>Avatar</th>

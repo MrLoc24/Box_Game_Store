@@ -20,9 +20,9 @@ class UpdateProfileController extends Controller
         if ($request->file('ava')) {
             $file = $request->file('ava');
             $filename = Auth::user()->userID . 'avatar.' . $file->extension();
-            $file->move("assets_home/images/useravatar", $filename);
+            $file->move("assets_home\images\useravatar", $filename);
             Auth::user()->forceFill([
-                'image' => "assets_home/images/useravatar/".$filename,
+                'image' => "assets_home\images\useravatar\\".$filename,
             ])->save();
         }
 

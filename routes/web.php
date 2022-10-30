@@ -65,6 +65,7 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
 //ADMIN USER MANAGEMENT
 Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
     Route::get('/', 'AdminUserController@index');
+    Route::get('delete/{id}', 'AdminUserController@delete');
 });
 //ADMIN ACCOUNT MANAGEMENT
 Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function () {
