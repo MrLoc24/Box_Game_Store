@@ -20,7 +20,7 @@
    * colors
    */
 
-  --blue: #0074e4;
+  --blue: #70b1ee;
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --bg-black: #121212;
@@ -3042,11 +3042,11 @@ body {
   height: 6rem;
   border-radius: .5rem;
   padding: 2px 10px;
-  border: 1px solid var(--bg-silver);
+  border: 1px solid var(--text-silver2);
 }
 
-.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item:focus-within{
-  border: .2rem solid var(--black);
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item:is(:focus-within, :hover){
+  border: .2rem solid rgb(123, 123, 123);
   padding-left: .4rem;
 }
 
@@ -3084,6 +3084,10 @@ body {
   color: white;
   height: 4rem;
 } 
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .submit:hover{
+  background: rgb(79, 142, 230);
+}
 
 .profile .informations .information .add_or_manage .manage{
   margin-top: 3rem;
@@ -3187,11 +3191,11 @@ body {
   height: 6rem;
   border-radius: .5rem;
   padding: 2px 10px;
-  border: 1px solid var(--bg-silver);
+  border: 1px solid var(--text-silver2);
 }
 
-.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1:focus-within{
-  border: .2rem solid var(--black);
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1:is(:focus-within, :hover){
+  border: .2rem solid rgb(123, 123, 123);
   padding-left: .4rem;
 }
 
@@ -3220,16 +3224,6 @@ body {
   width: 48%;
 }
 
-/* .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .submit1{
-  margin-left: 80%;
-  margin-top: 2rem;
-  background: var(--blue);
-  text-transform: uppercase;
-  width: 20%;
-  color: white;
-  height: 4rem;
-} */
-
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn{
   display: flex;
   margin-left: 60%;
@@ -3250,6 +3244,14 @@ body {
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a{
   padding: .65rem;
   background: rgb(255, 104, 104);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn input:hover{
+  background: rgb(79, 142, 230);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a:hover{
+  background: rgb(255, 62, 62);
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 span{
