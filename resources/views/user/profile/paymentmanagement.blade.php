@@ -71,7 +71,10 @@
                                             <label for="cvv">{{ __('CVV *') }}</label>
                                             <input type="text" name="cvv" id="cvv" value="{{ $payment->cvv }}">
                                         </div>
-                                        <input type="submit" class="submit1" value="{{ __('update') }}">
+                                        <div class="payment_btn">
+                                            <a href="{{ url("paymentdelete/{$payment->cardId}") }}">delete</a>
+                                            <input type="submit" class="submit1" value="{{ __('update') }}">
+                                        </div>                                  
                                     </form>                        
                                 </div>
                             </li>

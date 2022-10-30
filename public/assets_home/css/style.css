@@ -3220,7 +3220,7 @@ body {
   width: 48%;
 }
 
-.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .submit1{
+/* .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .submit1{
   margin-left: 80%;
   margin-top: 2rem;
   background: var(--blue);
@@ -3228,6 +3228,28 @@ body {
   width: 20%;
   color: white;
   height: 4rem;
+} */
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn{
+  display: flex;
+  margin-left: 60%;
+  justify-content: space-between;
+  width: 40%;
+  height: 4rem;
+  margin-block: 2rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn :is(a, input){
+  background: var(--blue);
+  text-transform: uppercase;
+  color: white;
+  height: 4rem;
+  width: 49%;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a{
+  padding: .65rem;
+  background: rgb(255, 104, 104);
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 span{
