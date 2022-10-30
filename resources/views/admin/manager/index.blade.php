@@ -36,10 +36,13 @@
                 <div class="row">
                     <div class="col-12">
                         <!-- /.card -->
-
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNew">
+                            Add Manager</button>
+                        <hr>
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Details</h3>
+
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -189,6 +192,67 @@
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
+                <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria- labelledby="demoModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <form method="POST" action="/admin/manager/addNew">
+                            @csrf
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Add New Manager</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="adminId" placeholder="Admin ID"
+                                                name="adminId">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="Name" placeholder="Name"
+                                                name="name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <div class="col">
+                                            <input type="email" class="form-control" placeholder="Email"
+                                                name="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Phone"
+                                                name="phone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Role"
+                                                name="role">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <input type="password" class="form-control" placeholder="Password"
+                                                name="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Add New</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <!-- /.container-fluid -->
         </section>

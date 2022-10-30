@@ -69,6 +69,7 @@ Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function ()
     Route::get('/', 'AdminAccountController@index');
     Route::get('resetPassword/{id}', 'AdminAccountController@resetPassword');
     Route::get('delete/{id}', 'AdminAccountController@delete');
+    Route::post('addNew', 'AdminAccountController@store');
 });
 //ADMIN CART MANAGEMENT
 Route::prefix('admin/cart')->middleware('checkAdminLogin')->group(function () {
@@ -126,7 +127,7 @@ Route::middleware('auth')->group(function () {
     //end update profile
 
     //start update payment
-    Route::get('payment', function() {
+    Route::get('payment', function () {
         $payments = Payment::all();
         return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
     })->name('paymentmanagement');
