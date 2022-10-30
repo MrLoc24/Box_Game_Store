@@ -2964,6 +2964,12 @@ body {
   display: none;
 }
 
+.profile .informations .information .add_or_manage .add .payment-hide span{
+  font-size: 1.8rem;
+  color: var(--black);
+  text-align: center;
+}
+
 .profile .informations .information .add_or_manage .add .payment-hide.active{
   display: block;
 }

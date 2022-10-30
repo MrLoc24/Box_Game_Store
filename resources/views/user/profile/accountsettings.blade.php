@@ -58,9 +58,9 @@
                         <img src="{{ asset(Auth::user()->image) }}" alt="">
                         <input type="file" id="ava" name="ava"></input>
                     </div>
-                    @if (session()->has('status'))
+                    @if (session()->has('status1'))
                         <div class="valid-feedback">
-                            {{ session()->get('status') }}
+                            {{ session()->get('status1') }}
                         </div>
                     @endif
                     <input class="save" type="submit" value="save changes" name="">

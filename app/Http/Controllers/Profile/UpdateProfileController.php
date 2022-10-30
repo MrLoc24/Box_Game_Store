@@ -26,6 +26,6 @@ class UpdateProfileController extends Controller
             ])->save();
         }
 
-        return redirect('profile')->with('status', 'Update profile successfully!');
+        return redirect('profile')->with('status1', 'Update profile successfully!');
     }
 }

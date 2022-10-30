@@ -102,7 +102,7 @@
                             @endif
                         @endif
                     @empty
-                        <span>No payment moethods added.</span>
+                        <span>No payment methods added.</span>
                     @endforelse
                     @if (session()->has('status'))
                         <div class="valid-feedback">
@@ -124,7 +124,11 @@
 
             <div class="payment-hide" data-payment-hide>
                 <ul>
-                    @if($paypal == 0)
+                    @if (count($payments) == 5)
+                        <span>You already have 5 payment methods we support.</span>
+                    @endif
+
+                    @if ($paypal == 0)
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails1()">
                             <input type="radio" name="payment">
@@ -155,7 +159,8 @@
                         </div>
                     </li>
                     @endif
-                    @if($visa == 0)
+
+                    @if ($visa == 0)
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails2()">
                             <input type="radio" name="payment">
@@ -186,7 +191,8 @@
                         </div>
                     </li>
                     @endif
-                    @if($master == 0)
+
+                    @if ($master == 0)
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails3()">
                             <input type="radio" name="payment">
@@ -198,7 +204,7 @@
                             <div class="card_details">card details</div>
                             <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
                                 @csrf
-                                <input type="hidden" name="paymentname" value="mastercard" id="">
+                                <input type="hidden" name="paymentname" value="master" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
                                 <div class="payment-form-item card_number">
                                     <label for="card_number">{{ __('Card Number *') }}</label>
@@ -217,7 +223,8 @@
                         </div>
                     </li>
                     @endif
-                    @if($vnpay == 0)
+
+                    @if ($vnpay == 0)
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails4()">
                             <input type="radio" name="payment">
@@ -248,7 +255,8 @@
                         </div>
                     </li>
                     @endif
-                    @if($momo == 0)
+
+                    @if ($momo == 0)
                     <li class="payment-hide-item">
                         <div class="title_payment" onclick="showpaymentdetails5()">
                             <input type="radio" name="payment">
