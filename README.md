@@ -23,3 +23,4 @@ This is our 2nd semester project. Please follow those steps to run the website:
 10. Run `composer require livewire/livewire`.
 11. Run `php artisan key:generate`.
 12. Finally, run `php artisan serve`.
+    Warning: Don't click the link in footer :))))
