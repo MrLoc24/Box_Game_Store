@@ -1,43 +1,48 @@
 <div class="swiper-wrapper">
+    <?php $count = 0; ?>
     @foreach ($game as $key => $value)
+        <?php if ($count == 7) {
+            break;
+        } ?>
         @if ($value->sale > 0)
             <div class="swiper-slide" wire:ignore.self>
                 <div class="shop-card">
 
                     <div class="card-banner">
 
-                        <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}" width="400" height="540" loading="lazy"
-                            alt="Facial cleanser" class="img-cover"></a>
+                        <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}" width="400"
+                                height="540" loading="lazy" alt="Facial cleanser" class="img-cover"></a>
 
                         <span class="badge" aria-label="20% off">{{ $value->sale }}%</span>
 
                         {{-- <form wire:submit.prevent="addToCart('{{ $value->gameId }}')" action="{{ route('addToCart') }}" method="post">     --}}
-                            <div class="card-actions" wire:init>
+                        <div class="card-actions" wire:init>
 
-                                @if (Cart::content()->where('id', $value->gameId)->count())
+                            @if (Cart::content()->where('id', $value->gameId)->count())
                                 {{-- <button class="action-btn" type="button" onclick="showError()">
                                     +
                                 </button> --}}
-                                @else
-                                    @if (Auth::check())
-                                    <button class="action-btn" type="button" wire:click.prevent="addToCart('{{ $value->gameId }}')" onclick="showSuccess()">
+                            @else
+                                @if (Auth::check())
+                                    <button class="action-btn" type="button"
+                                        wire:click.prevent="addToCart('{{ $value->gameId }}')" onclick="showSuccess()">
                                         {{-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> --}}
                                         +
                                     </button>
-                                    @else
-                                    <a href="{{ route('login') }}" class="action-btn-login" type="button" >
+                                @else
+                                    <a href="{{ route('login') }}" class="action-btn-login" type="button">
                                         +
                                     </a>
-                                    @endif
                                 @endif
+                            @endif
 
-                                {{-- <button class="action-btn">
+                            {{-- <button class="action-btn">
                                     <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
                                 </button> --}}
-                                {{-- <input type="hidden" name="gameId" value="{{ $value->gameId }}"> --}}
-                        
-                                {{-- @csrf --}}
-                            </div>
+                            {{-- <input type="hidden" name="gameId" value="{{ $value->gameId }}"> --}}
+
+                            {{-- @csrf --}}
+                        </div>
                         {{-- </form> --}}
 
                     </div>
@@ -63,11 +68,9 @@
                 </div>
 
             </div>
-
+            <?php $count++; ?>
         @endif
 
     @endforeach
 
 </div>
-
- 

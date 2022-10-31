@@ -10,8 +10,9 @@ class UserHomeController extends Controller
 {
     public function index()
     {
+        $mostSold = DB::table('game')->orderBy('number_sold', 'desc')->take(5)->get();
         $game = DB::table('game')->get();
-        return view('home.index')->with('game', $game);
+        return view('home.index', compact('game', 'mostSold'));
     }
     public function detail($id)
     {

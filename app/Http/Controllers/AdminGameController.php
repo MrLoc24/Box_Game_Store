@@ -59,11 +59,11 @@ class AdminGameController extends Controller
         } else {
             $data_game['most_played'] = 1;
         }
-        if ($request->input('comingSoon') == null) {
-            $data_game['coming_soon'] = 0;
-        } else {
-            $data_game['coming_soon'] = 1;
-        }
+        // if ($request->input('comingSoon') == null) {
+        //     $data_game['coming_soon'] = 0;
+        // } else {
+        //     $data_game['coming_soon'] = 1;
+        // }
 
         $getIcon = $request->file('icon');
 

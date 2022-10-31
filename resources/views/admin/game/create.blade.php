@@ -129,11 +129,11 @@
                                                 name="topPage">
                                             <label for="topPage" class="custom-control-label">Top Page</label>
                                         </div>
-                                        <div class="custom-control custom-checkbox">
+                                        {{-- <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" type="checkbox" id="comingSoon" value=1
                                                 name="comingSoon">
                                             <label for="comingSoon" class="custom-control-label">Comming Soon</label>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <!-- /.card-body -->
 
