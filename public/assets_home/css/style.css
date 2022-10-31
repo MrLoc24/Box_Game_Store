@@ -20,7 +20,7 @@
    * colors
    */
 
-  --blue: #70b1ee;
+  --blue: #1c81e0;
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --bg-black: #121212;
@@ -3223,6 +3223,7 @@ body {
   width: 20%;
   color: white;
   height: 4rem;
+  border-radius: .5rem;
 } 
 
 .profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .submit:hover{
@@ -3379,6 +3380,7 @@ body {
   color: white;
   height: 4rem;
   width: 49%;
+  border-radius: .5rem;
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a{
@@ -3592,6 +3594,8 @@ body {
   height: 100%;
   width: 100%;
   padding: 2rem;
+  transition:all .1s linear;
+  transition:width none;
 }
 
 :is(.changename-form-container, .changeemail-form-container, .delete-form-container).active{
