@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2022 lúc 02:43 PM
+-- Thời gian đã tạo: Th10 31, 2022 lúc 05:21 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -98,8 +98,8 @@ INSERT INTO `category` (`category`, `type`, `gameId`) VALUES
 (39, 'PvE', 'War_Thunder'),
 (40, 'PvP', 'War_Thunder'),
 (41, 'Strategic', 'War_Thunder'),
-(42, 'Crafting', 'PC_Building_Simulator_3'),
-(43, 'Family', 'PC_Building_Simulator_3'),
+(42, 'Crafting', 'PC_Building_Simulator_2'),
+(43, 'Family', 'PC_Building_Simulator_2'),
 (45, 'Crafting', 'SuchArt___Genius_Artist_Simulator'),
 (46, 'Family', 'SuchArt___Genius_Artist_Simulator'),
 (47, 'Adventure', 'JARS'),
@@ -125,7 +125,20 @@ INSERT INTO `category` (`category`, `type`, `gameId`) VALUES
 (89, 'Adventure', 'Uncharted___Legacy_of_Thieves'),
 (90, 'FPS-Shooter', 'Uncharted___Legacy_of_Thieves'),
 (91, 'PvP', 'Uncharted___Legacy_of_Thieves'),
-(92, 'Strategic', 'Uncharted___Legacy_of_Thieves');
+(92, 'Strategic', 'Uncharted___Legacy_of_Thieves'),
+(93, 'Adventure', 'Dying_Light_2_Stay_Human'),
+(94, 'Crafting', 'Dying_Light_2_Stay_Human'),
+(95, 'Horror', 'Dying_Light_2_Stay_Human'),
+(96, 'PvE', 'Dying_Light_2_Stay_Human'),
+(97, 'PvP', 'Dying_Light_2_Stay_Human'),
+(98, 'Sandbox', 'Dying_Light_2_Stay_Human'),
+(99, 'PvP', 'Rocket_League'),
+(100, 'Simulator', 'Rocket_League'),
+(101, 'Strategic', 'Rocket_League'),
+(102, 'Adventure', 'Goat_Simulator_3'),
+(103, 'Family', 'Goat_Simulator_3'),
+(104, 'PvE', 'Goat_Simulator_3'),
+(105, 'Simulator', 'Goat_Simulator_3');
 
 -- --------------------------------------------------------
 
@@ -216,7 +229,8 @@ CREATE TABLE `system_requirement` (
   `storage` varchar(45) NOT NULL,
   `ram` varchar(45) NOT NULL,
   `chip` varchar(100) NOT NULL,
-  `graphic` varchar(200) DEFAULT NULL
+  `graphic` varchar(200) DEFAULT NULL,
+  `internet` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -226,15 +240,18 @@ CREATE TABLE `system_requirement` (
 INSERT INTO `system_requirement` (`sysId`, `gameId`, `version`, `os`, `storage`, `ram`, `chip`, `graphic`, `internet`) VALUES
 (9, 'Uncharted___Legacy_of_Thieves', '10', 'Window', '100GB', '12GB', 'i7', '1050Ti', NULL),
 (10, 'War_Thunder', '10', 'Window', '50GB', '12GB', 'i7', '1080Ti', NULL),
-(11, 'PC_Building_Simulator_3', '10', 'Window', '40GB', '12 GB', 'Intel Core i5-10400 or AMD Ryzen 5 3600', 'NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB', NULL),
+(11, 'PC_Building_Simulator_2', '10', 'Window', '40GB', '12 GB', 'Intel Core i5-10400 or AMD Ryzen 5 3600', 'NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB', NULL),
 (12, 'SuchArt___Genius_Artist_Simulator', '64-Bit Windows 7/8/10', 'Window', '20GB', '8GB', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'GTX 770 2GB or higher', NULL),
 (13, 'JARS', '10', 'Window', '10GB', '4GB', 'Intel i5 +', 'Nvidia GTX 460 / Radeon HD 7800 or better', NULL),
 (14, 'Source_of_Madness', '7+', 'Window', '1GB', '4GB', 'Intel i5+', 'Nvidia GTX 460 / Radeon HD 7800 or better', NULL),
 (15, 'Railway_Empire', '7, 8, 10 64bit', 'Window', '7GB', '8GB', 'Intel Core i5 2400s @ 2.5 GHz or AMD FX 4100 @ 3.6', 'nVidia GeForce GTX 680 or AMD Radeon HD7970 or better (2048MB VRAM or more, with Shader Model 5.0)', NULL),
-(16, 'PC_Building_Simulator_3', '15', 'MAC', '20GB', '8Gb', 'A15', '1050Ti', NULL),
+(16, 'PC_Building_Simulator_2', '15', 'MAC', '20GB', '8Gb', 'A15', '1050Ti', NULL),
 (17, 'A_Plague_Tale_Requiem', '10', 'window', '200GB', '12GB', 'i5', '1050Ti', NULL),
 (19, 'Unrail', '7', 'window', '2GB', '2GB', '2Ghz', 'R7 200', NULL),
-(20, 'Unrail', '15', 'mac', '2GB', '2GB', 'A12', 'Apple GPU', NULL);
+(20, 'Unrail', '15', 'mac', '2GB', '2GB', 'A12', 'Apple GPU', NULL),
+(21, 'Dying_Light_2_Stay_Human', '10', 'window', '60GB', '16GB', 'Intel Core i3-9100 / AMD Ryzen 3 2300X', 'NVIDIA® GeForce RTX™ 2060 6GB or AMD RX Vega 56 8GB or newer.', NULL),
+(22, 'Rocket_League', '7', 'window', '20GB', '6GB', 'i5', '1060Ti', NULL),
+(23, 'Goat_Simulator_3', '10', 'window', '50GB', '12GB', 'i5 9400F', '1070Ti 8GB', NULL);
 
 -- --------------------------------------------------------
 
@@ -281,7 +298,7 @@ CREATE TABLE `users` (
   `status` bit(1) DEFAULT b'1',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `image` varchar(255) DEFAULT 'assets_home\images\useravatar\avatardefault.jpg'
+  `image` varchar(255) DEFAULT 'assets_home/images/useravatar/avatardefault.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -378,7 +395,7 @@ ALTER TABLE `cart_master`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT cho bảng `payments`
@@ -390,7 +407,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT cho bảng `system_requirement`
 --
 ALTER TABLE `system_requirement`
-  MODIFY `sysId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `sysId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
