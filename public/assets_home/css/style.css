@@ -20,7 +20,7 @@
    * colors
    */
 
-  --blue: #0074e4;
+  --blue: #70b1ee;
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --bg-black: #121212;
@@ -2964,6 +2964,12 @@ body {
   display: none;
 }
 
+.profile .informations .information .add_or_manage .add .payment-hide span{
+  font-size: 1.8rem;
+  color: var(--black);
+  text-align: center;
+}
+
 .profile .informations .information .add_or_manage .add .payment-hide.active{
   display: block;
 }
@@ -3036,11 +3042,11 @@ body {
   height: 6rem;
   border-radius: .5rem;
   padding: 2px 10px;
-  border: 1px solid var(--bg-silver);
+  border: 1px solid var(--text-silver2);
 }
 
-.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item:focus-within{
-  border: .2rem solid var(--black);
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item:is(:focus-within, :hover){
+  border: .2rem solid rgb(123, 123, 123);
   padding-left: .4rem;
 }
 
@@ -3078,6 +3084,10 @@ body {
   color: white;
   height: 4rem;
 } 
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .submit:hover{
+  background: rgb(79, 142, 230);
+}
 
 .profile .informations .information .add_or_manage .manage{
   margin-top: 3rem;
@@ -3181,11 +3191,11 @@ body {
   height: 6rem;
   border-radius: .5rem;
   padding: 2px 10px;
-  border: 1px solid var(--bg-silver);
+  border: 1px solid var(--text-silver2);
 }
 
-.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1:focus-within{
-  border: .2rem solid var(--black);
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1:is(:focus-within, :hover){
+  border: .2rem solid rgb(123, 123, 123);
   padding-left: .4rem;
 }
 
@@ -3214,14 +3224,34 @@ body {
   width: 48%;
 }
 
-.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .submit1{
-  margin-left: 80%;
-  margin-top: 2rem;
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn{
+  display: flex;
+  margin-left: 60%;
+  justify-content: space-between;
+  width: 40%;
+  height: 4rem;
+  margin-block: 2rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn :is(a, input){
   background: var(--blue);
   text-transform: uppercase;
-  width: 20%;
   color: white;
   height: 4rem;
+  width: 49%;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a{
+  padding: .65rem;
+  background: rgb(255, 104, 104);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn input:hover{
+  background: rgb(79, 142, 230);
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a:hover{
+  background: rgb(255, 62, 62);
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 span{
@@ -3391,7 +3421,7 @@ body {
   margin-top: 1rem;
 }
 
-.profile .informations .information .delete .content-delete input{
+.profile .informations .information .delete .content-delete .delete_account{
   width: 40%;
   font-size: 14px;
   height: 50px;
@@ -3399,9 +3429,11 @@ body {
   background-color: #f14545;
   border: var(--bg-silver) solid 1px;
   color: var(--white);
-  cursor: pointer;
   text-align: center;
+  padding-block: 1.2rem 1.4rem;
   text-transform: uppercase;
+  display: block;
+  cursor: pointer;
 }
 
 
@@ -3409,7 +3441,7 @@ body {
  * changename
  */
 
-:is(.changename-form-container, .changeemail-form-container){
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container){
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3422,11 +3454,11 @@ body {
   padding: 2rem;
 }
 
-:is(.changename-form-container, .changeemail-form-container).active{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container).active{
   right: 0;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form{
   /* position: fixed; */
   justify-content: center;
   text-align: center;
@@ -3438,15 +3470,16 @@ body {
   border-radius: .5rem;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form img{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form img{
   margin-top: 2rem;
   width: 40px;
   height: 40px;
   display: unset;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form h4{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form h4{
   font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 4rem;
   margin-top: 2rem;
   text-transform: uppercase;
@@ -3516,13 +3549,59 @@ body {
   background-color: var(--blue);
 }
 
-:is(.changename-form-container, .changeemail-form-container) :is(#close-changename-btn, #close-changeemail-btn){
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container) :is(#close-changename-btn, #close-changeemail-btn, #close-delete-btn){
   position: absolute;
   top: 1.5rem; right: 1.5rem;
   font-size: 3rem;
   color: var(--black);
   animation: rotate .4s linear .4s backwards;
   cursor: pointer;
+}
+
+.delete-form-container :is(.span1, .span2){
+  text-align: left;
+  font-weight: normal;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.delete-form-container a{
+  width: 90%;
+  font-size: 14px;
+  height: 50px;
+  border-radius: .5rem;
+  background-color: #ff6060;
+  border: var(--bg-silver) solid 1px;
+  color: var(--white);
+  text-align: center;
+  justify-content: center;
+  padding-block: 1.2rem 1.4rem;
+  max-width: unset;
+  text-transform: uppercase;
+  display: block;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.delete-form-container .cancel{
+  width: 90%;
+  font-size: 14px;
+  height: 50px;
+  border-radius: .5rem;
+  background-color: var(--text-silver);
+  border: var(--bg-silver) solid 1px;
+  color: var(--black);
+  text-align: center;
+  padding-block: 1.2rem 1.4rem;
+  text-transform: uppercase;
+  display: block;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.delete-form-container .cancel:hover{
+  background-color: var(--text-silver2);
+}
+
+.delete-form-container a:hover{
+  background-color: #ff0000;
 }
 
 .invalid-feedback{

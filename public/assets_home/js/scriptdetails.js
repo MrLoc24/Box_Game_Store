@@ -94,10 +94,10 @@ addEventOnElem(window, "scroll", scrollReveal);
 
 var swiper = new Swiper(".mySwiper", {
     // grabCursor: true,
-    spaceBetween: 15,
+    spaceBetween: 10,
     slidesPerView: 6,
-    // freeMode: true,
-    watchSlidesProgress: true,
+    freeMode: true,
+    // watchSlidesProgress: true,
     loop: true,
     navigation: {
         nextEl: ".swiper-button-next",

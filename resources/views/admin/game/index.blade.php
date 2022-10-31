@@ -96,7 +96,7 @@
                                                                 class="rounded mx-auto d-block" alt="...">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="/admin/game/delete/{{ $game->gameId }}"
+                                                            <a href="/admin/user/delete/{{ $game->gameId }}"
                                                                 class="btn btn-danger">I'm the boss</a>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">No, I'm scared</button>

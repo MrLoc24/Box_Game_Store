@@ -11,6 +11,8 @@ use App\Http\Controllers\Profile\UpdateDisplayNameController;
 use App\Http\Controllers\Profile\UpdateEmailController;
 use App\Models\Payment;
 use App\Http\Controllers\Payment\UpdatePaymentController;
+use App\Http\Controllers\Profile\DeleteUserController;
+use App\Http\Controllers\Payment\DeletePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,7 @@ Route::prefix('admin/category')->middleware('checkAdminLogin')->group(function (
 //ADMIN USER MANAGEMENT
 Route::prefix('admin/user')->middleware('checkAdminLogin')->group(function () {
     Route::get('/', 'AdminUserController@index');
+    Route::get('delete/{id}', 'AdminUserController@delete');
 });
 //ADMIN ACCOUNT MANAGEMENT
 Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function () {
@@ -117,24 +120,26 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     //end logout
 
-    //start update profile
+    //start update and delete user
     Route::get('/profile', function () {
         return view('user.profile.accountsettings');
     })->name('accountsettings');
     Route::post('/profilesettings', [UpdateProfileController::class, 'update'])->name('handleaccountsettings')->middleware('checkupdateprofile');
     Route::post('/profilesettingss', [UpdateDisplayNameController::class, 'update'])->name('handleaccountsettingss')->middleware('checkupdatedisplayname');
     Route::post('/profilesettingsss', [UpdateEmailController::class, 'update'])->name('handleaccountsettingsss')->middleware('checkupdateemail');
-    //end update profile
+    Route::get('/profiledelete', [DeleteUserController::class, 'delete'])->name('deleteuser');
+    //end update and delete user
 
-    //start update payment
+    //start update and delete payment
     Route::get('payment', function () {
         $payments = Payment::all();
         return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
     })->name('paymentmanagement');
     Route::post('paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
     Route::post('payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
+    Route::get('paymentdelete/{id}', [DeletePaymentController::class, 'delete'])->name('deletepayment');
+    //end update and delete payment
 
-    //end update payment
 
     //start cart
     Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
