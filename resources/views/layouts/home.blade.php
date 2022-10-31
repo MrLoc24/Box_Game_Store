@@ -163,15 +163,10 @@
                         <li>
                             <a href="" class="navbar-link">Wishlist</a>
                         </li>
-                        <li class="cart-count-item">
-                            <a href="{{ route('cart') }}" class="navbar-link">Cart</a>
-                            {{-- @if (count(Gloudemans\Shoppingcart\Facades\Cart::content()) != 0) --}}
-                                {{-- <div class="change-cart-item"> --}}
-                                    @livewire('cart-counter')
-                                {{-- </div> --}}
-                            {{-- @else
-                            @endif --}}
-                        </li>
+                        {{-- <li class="cart-count-item">
+                            <a href="{{ route('cart') }}" class="navbar-link">Cart</a> --}}
+                        @livewire('cart-counter')
+                        {{-- </li> --}}
                     </ul>
                 </nav>
 

@@ -1429,6 +1429,142 @@ body {
   color: var(--text-white);
 }
 
+.checkout { z-index: 5; }
+
+.checkout-container {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 13%;
+  right: 13%;
+  bottom: 0;
+  z-index: 6;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: 0.1s var(--cubic-in);
+  /* visibility: visible;
+  transform: translateX(0);
+  transition: 0.4s var(--cubic-out); */
+  display: grid;
+  gap: 30px;
+}
+
+.checkout-container.active {
+  visibility: visible;
+  transform: translateX(0);
+  transition: .1s var(--cubic-out);
+}
+
+.order-summary {
+  height: 100vh;
+  position: relative;
+}
+
+.summary-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 36px 15px 16px;
+}
+
+.checkout-title {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 15px;
+  border-block-end: 1px solid rgba(20,20,20,0.16);
+}
+
+:is(.summary-title, .checkout-title) .title {
+  font-weight: 630;
+}
+
+.checkout-title .title {
+  width: 50%;
+  padding-block: 36px 16px;
+  border-block-end: 3px solid var(--blue);
+}
+
+.checkout-title .title-user {
+  display: flex;
+  padding-block: 36px 16px;
+  gap: 5px;
+  color: var(--blue);
+  font-size: var(--fs-9);
+}
+
+.checkout-title .title-user ion-icon {
+  font-size: var(--fs-6);
+}
+
+.summary-title .close-checkout ion-icon{
+  font-size: var(--fs-4);
+}
+
+.order-summary .order-list {
+  height: 81.5vh;
+  overflow: auto;
+  padding-bottom: 200px;
+  padding-inline: 15px;
+}
+
+.order-summary .place-order {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 20px 15px;
+  background: #fff;
+  box-shadow: 0 -4px 4px rgb(0 0 0 / 10%);
+}
+
+.order-summary .place-order .btn-po {
+  padding: 15px 30px;
+  width: 100%;
+  background: var(--blue);
+  border-radius: 4px;
+  color: var(--text-white);
+  font-size: var(--fs-9);
+  font-weight: 700;
+  height: 60px;
+}
+
+.order-list .order-item .order-img img {
+  width: 90px;
+  height: 120px;
+  border-radius: 5px;
+}
+
+.order-list .order-item {
+  display: flex;
+  gap: 10px;
+  margin-block-start: 5px;
+}
+
+.order-item .oi-details {
+  padding-block: 25px;
+}
+
+.order-item .item-name {
+  font-size: var(--fs-6);
+  letter-spacing: .2px;
+  font-weight: 700;
+}
+
+.order-item .badge {
+  padding: 1px 5px;
+  font-size: 9px;
+  border-radius: 3px;
+}
+
+.order-item .item-price {
+  display: flex;
+  gap: 5px;
+  font-size: var(--fs-9);
+}
+
+.order-item .item-price .del {
+  color: #141414b8;
+}
+
 
 /*-----------------------------------*\
   #FOOTER
@@ -2164,6 +2300,10 @@ body {
 
   .cart-container {
     grid-template-columns: 2fr 0.7fr;
+  }
+
+  .checkout-container {
+    grid-template-columns: 2fr 1fr;
   }
 
   /**
