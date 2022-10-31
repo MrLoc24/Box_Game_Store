@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 31, 2022 lúc 05:21 AM
+-- Thời gian đã tạo: Th10 31, 2022 lúc 08:58 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -229,29 +229,28 @@ CREATE TABLE `system_requirement` (
   `storage` varchar(45) NOT NULL,
   `ram` varchar(45) NOT NULL,
   `chip` varchar(100) NOT NULL,
-  `graphic` varchar(200) DEFAULT NULL,
-  `internet` varchar(45) DEFAULT NULL
+  `graphic` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `system_requirement`
 --
 
-INSERT INTO `system_requirement` (`sysId`, `gameId`, `version`, `os`, `storage`, `ram`, `chip`, `graphic`, `internet`) VALUES
-(9, 'Uncharted___Legacy_of_Thieves', '10', 'Window', '100GB', '12GB', 'i7', '1050Ti', NULL),
-(10, 'War_Thunder', '10', 'Window', '50GB', '12GB', 'i7', '1080Ti', NULL),
-(11, 'PC_Building_Simulator_2', '10', 'Window', '40GB', '12 GB', 'Intel Core i5-10400 or AMD Ryzen 5 3600', 'NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB', NULL),
-(12, 'SuchArt___Genius_Artist_Simulator', '64-Bit Windows 7/8/10', 'Window', '20GB', '8GB', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'GTX 770 2GB or higher', NULL),
-(13, 'JARS', '10', 'Window', '10GB', '4GB', 'Intel i5 +', 'Nvidia GTX 460 / Radeon HD 7800 or better', NULL),
-(14, 'Source_of_Madness', '7+', 'Window', '1GB', '4GB', 'Intel i5+', 'Nvidia GTX 460 / Radeon HD 7800 or better', NULL),
-(15, 'Railway_Empire', '7, 8, 10 64bit', 'Window', '7GB', '8GB', 'Intel Core i5 2400s @ 2.5 GHz or AMD FX 4100 @ 3.6', 'nVidia GeForce GTX 680 or AMD Radeon HD7970 or better (2048MB VRAM or more, with Shader Model 5.0)', NULL),
-(16, 'PC_Building_Simulator_2', '15', 'MAC', '20GB', '8Gb', 'A15', '1050Ti', NULL),
-(17, 'A_Plague_Tale_Requiem', '10', 'window', '200GB', '12GB', 'i5', '1050Ti', NULL),
-(19, 'Unrail', '7', 'window', '2GB', '2GB', '2Ghz', 'R7 200', NULL),
-(20, 'Unrail', '15', 'mac', '2GB', '2GB', 'A12', 'Apple GPU', NULL),
-(21, 'Dying_Light_2_Stay_Human', '10', 'window', '60GB', '16GB', 'Intel Core i3-9100 / AMD Ryzen 3 2300X', 'NVIDIA® GeForce RTX™ 2060 6GB or AMD RX Vega 56 8GB or newer.', NULL),
-(22, 'Rocket_League', '7', 'window', '20GB', '6GB', 'i5', '1060Ti', NULL),
-(23, 'Goat_Simulator_3', '10', 'window', '50GB', '12GB', 'i5 9400F', '1070Ti 8GB', NULL);
+INSERT INTO `system_requirement` (`sysId`, `gameId`, `version`, `os`, `storage`, `ram`, `chip`, `graphic`) VALUES
+(9, 'Uncharted___Legacy_of_Thieves', '10', 'Window', '100GB', '12GB', 'i7', '1050Ti'),
+(10, 'War_Thunder', '10', 'Window', '50GB', '12GB', 'i7', '1080Ti'),
+(11, 'PC_Building_Simulator_2', '10', 'Window', '40GB', '12 GB', 'Intel Core i5-10400 or AMD Ryzen 5 3600', 'NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB'),
+(12, 'SuchArt___Genius_Artist_Simulator', '64-Bit Windows 7/8/10', 'Window', '20GB', '8GB', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'GTX 770 2GB or higher'),
+(13, 'JARS', '10', 'Window', '10GB', '4GB', 'Intel i5 +', 'Nvidia GTX 460 / Radeon HD 7800 or better'),
+(14, 'Source_of_Madness', '7+', 'Window', '1GB', '4GB', 'Intel i5+', 'Nvidia GTX 460 / Radeon HD 7800 or better'),
+(15, 'Railway_Empire', '7, 8, 10 64bit', 'Window', '7GB', '8GB', 'Intel Core i5 2400s @ 2.5 GHz or AMD FX 4100 @ 3.6', 'nVidia GeForce GTX 680 or AMD Radeon HD7970 or better (2048MB VRAM or more, with Shader Model 5.0)'),
+(16, 'PC_Building_Simulator_2', '15', 'MAC', '20GB', '8Gb', 'A15', '1050Ti'),
+(17, 'A_Plague_Tale_Requiem', '10', 'window', '200GB', '12GB', 'i5', '1050Ti'),
+(19, 'Unrail', '7', 'window', '2GB', '2GB', '2Ghz', 'R7 200'),
+(20, 'Unrail', '15', 'mac', '2GB', '2GB', 'A12', 'Apple GPU'),
+(21, 'Dying_Light_2_Stay_Human', '10', 'window', '60GB', '16GB', 'Intel Core i3-9100 / AMD Ryzen 3 2300X', 'NVIDIA® GeForce RTX™ 2060 6GB or AMD RX Vega 56 8GB or newer.'),
+(22, 'Rocket_League', '7', 'window', '20GB', '6GB', 'i5', '1060Ti'),
+(23, 'Goat_Simulator_3', '10', 'window', '50GB', '12GB', 'i5 9400F', '1070Ti 8GB');
 
 -- --------------------------------------------------------
 
