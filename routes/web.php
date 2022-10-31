@@ -147,4 +147,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', 'CartController@show')->name('cart');
     // Route::get('remove-cart/{rowId}', 'CartController@removeCart');
     // Route::get('/checkoutCart/{cartTotal}', 'CheckoutController@checkout');
+    Route::get('/updateCart/{cartId}', 'CheckoutController@update');
 });

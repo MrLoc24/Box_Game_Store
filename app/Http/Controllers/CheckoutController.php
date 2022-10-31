@@ -29,4 +29,10 @@ class CheckoutController extends Controller
     //     }   
     //     return redirect('cart');
     // }
+    public function update($cartId) 
+    {
+        DB::table('cart_master')->where('cartId', $cartId)->update(['status' => 1]);
+        Cart::destroy();
+        return redirect('cart');
+    }
 }

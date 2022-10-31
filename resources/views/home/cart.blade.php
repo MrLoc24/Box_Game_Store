@@ -161,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            <div class="order-summary">
+            {{-- <div class="order-summary">
                 <div class="summary-title">
                     <span class="title">ORDER SUMMARY</span>
                     <button class="close-checkout" onclick="showCheckOut()">
@@ -189,22 +189,56 @@
                         </div>
                         <div class="oi-details">
                             <span class="item-name">{{ str_replace('_', ' ', str_replace('__', ': ', $v_content->id)) }}</span>
+                            @if ($v_content->weight != 0)
                             <span class="badge">-{{ $v_content->weight }}%</span>
+                            @else
+                            @endif
                             <div class="item-price">
+                                @if ($v_content->weight != 0)
                                 <del class="del">${{ $v_content->price }}</del>
+                                @else
+                                @endif
                                 <span class="price">${{ number_format($v_content->price * (1 - $v_content->weight / 100), 2, '.', '') }}</span>
                             </div>
                         </div>
                     </div>
 
                     @endforeach
+
+                    <div class="payment-summary">
+                        <div class="order-price">
+                            <span class="title">Price</span>
+                            <span class="price">${{ $totalPrice }}</span>
+                        </div>
+                        <div class="order-price">
+                            <span class="title">Sale Discount</span>
+                            <span class="price">-${{ number_format($discount, 2, '.', '') }}</span>
+                        </div>
+                        <hr>
+                        <div class="order-total">
+                            <span class="title">Total</span>
+                            <span class="price">${{ number_format($totalPrice - $discount, 2, '.', '') }}</span>
+                        </div>
+                        <div class="order-contact">
+                            Need Help?
+                            <a href="" class="contact">Contact Us</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="place-order">
-                    <button class="btn-po">PLACE ORDER</button>
+                    <a href="{{ URL::to('updateCart/' . session()->get('cartId') + 1 ) }}">
+                        <button class="btn-po">PLACE ORDER</button>
+                    </a>
                 </div>
-            </div>
+                
+            </div> --}}
+            @livewire('check-out-form')
         </div>
+
+        
+
+        <div class="overlay-checkout" data-overlay-checkout></div>
     </div>
 
     <script src="{{ asset('assets_home/js/cart.js') }}" defer></script>
