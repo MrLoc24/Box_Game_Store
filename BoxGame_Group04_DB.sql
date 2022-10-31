@@ -383,7 +383,8 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
-
+-- AUTO_INCREMENT cho bảng `cart_details`
+ALTER TABLE `cart_details` CHANGE `cart_details_id` `cart_details_id` INT(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT cho bảng `cart_master`
 --
