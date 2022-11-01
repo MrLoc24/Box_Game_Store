@@ -37,9 +37,11 @@
                             </div>
 
                             <div class="item-info-price">
+                                @if ($v_content->weight != 0)
                                 <span class="badge">-{{ $v_content->weight }}%</span>
 
                                 <del class="del">${{ $v_content->price }}</del>
+                                @endif
 
                                 <span class="price">${{ number_format($v_content->price * (1 - $v_content->weight / 100), 2, '.', '') }}</span>
                             </div>

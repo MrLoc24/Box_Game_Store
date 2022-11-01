@@ -7,11 +7,17 @@ use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 
-class ProductsTable extends Component
+class DetailsAddCart extends Component
 {
+    public $gameId;
+
+    public function mount($gameId) 
+    {
+        $this->gameId = $gameId;
+    }
+
     public function render()
     {
-        $game = DB::table('game')->get();
         $gameIds = array();
         if (Auth::check()) {
             $cartMs = DB::table('cart_master')->where('userID', Auth::user()->userID)->where('status', 1)->get();
@@ -22,7 +28,7 @@ class ProductsTable extends Component
                 } 
             }
         }    
-        return view('livewire.products-table', compact('game', 'gameIds'));
+        return view('livewire.details-add-cart', compact('gameIds'));
     }
 
     public function addToCart($gameId) 

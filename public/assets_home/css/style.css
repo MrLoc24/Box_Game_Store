@@ -716,7 +716,18 @@ body {
   border: 2px solid var(--text-white)
 }
 
-.shop-card :is(.action-btn, .action-btn-login):is(:hover, :focus) {
+.shop-card .action-btn-owned {
+  background-color: var(--bg-silver);
+  font-size: 15px;
+  width: 55px;
+  height: 30px;
+  transition: var(--transition-1);
+  color: var(--text-white);
+  border: 2px solid var(--text-white);
+  border-radius: 5px;
+}
+
+.shop-card :is(.action-btn, .action-btn-login, .action-btn-owned):is(:hover, :focus) {
   color: var(--blue);
   border: 2px solid var(--blue)
 }
