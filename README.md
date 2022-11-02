@@ -23,5 +23,18 @@ Documentation can be found here BoxGame_Group04_MidtermSubmit.pdf
 9. Next, run `php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"`.
 10. Run `composer require livewire/livewire`.
 11. Run `php artisan key:generate`.
-12. Finally, run `php artisan serve`.
+12. In terminal, run `composer require srmklive/paypal:~3.0`.
+13. Run `php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"`
+14. In .env, add:
+    `#PayPal API Mode`
+    `#Values: sandbox or live (Default: live)`
+    `PAYPAL_MODE=sandbox`
+
+    `#PayPal Setting & API Credentials - sandbox`
+    `PAYPAL_SANDBOX_CLIENT_ID=AfhvgFWMucHa47s_kR3z6YG-4m2cVW3CGcr1rEMlCyZUEXnydt0IevhjjayttiDOmsRK74ptUMRpRoan`
+    `PAYPAL_SANDBOX_CLIENT_SECRET=EMadAb9_BwyNpMqnMPzk6e85VpJYc5xn5iWVn7j9VsWNpuIx7f3NV4eByFJMGN-iwttC0WkevQXrl5Ib`
+15. Account and password paypal to use
+    `customerboxgame@personal.example.com`
+    `12345678`
+16. Finally, run `php artisan serve`.
     Warning: Don't click the link in footer :))))
