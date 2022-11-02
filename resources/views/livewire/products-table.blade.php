@@ -18,10 +18,15 @@
                         {{-- <form wire:submit.prevent="addToCart('{{ $value->gameId }}')" action="{{ route('addToCart') }}" method="post">     --}}
                         <div class="card-actions" wire:init>
 
+                        @if (in_array($value->gameId, $gameIds))
+                        <button class="action-btn-owned" type="button">
+                            owned
+                        </button>
+                        @else
                             @if (Cart::content()->where('id', $value->gameId)->count())
-                                {{-- <button class="action-btn" type="button" onclick="showError()">
-                                    +
-                                </button> --}}
+                            <button class="action-btn-owned" type="button">
+                                in cart
+                            </button>
                             @else
                                 @if (Auth::check())
                                     <button class="action-btn" type="button"
@@ -35,7 +40,7 @@
                                     </a>
                                 @endif
                             @endif
-
+                        @endif
                             {{-- <button class="action-btn">
                                     <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
                                 </button> --}}

@@ -158,13 +158,14 @@
                         @endif
                     </div>
                     @if ($game->price != 0)
-                        <div class="deal">
-                            <input type="submit" name="buynow" value="{{ __('buy now') }}" class="buy">
-                            <input type="submit" name="addtocard" value="{{ __('add to cart') }}" class="addtocart">
-                        </div>
+                        {{-- <div class="deal">
+                            <button type="button" class="buy">buy now</button>
+                            <div><button type="button" class="addtocart">Add To Cart</button></div>
+                        </div> --}}
+                        <livewire:details-add-cart :gameId="$game->gameId">
                     @else
                         <div class="deal">
-                            <input type="submit" name="buynow" value="{{ __('download now') }}" class="buy">
+                            <button type="button" class="buy">download now</button>
                         </div>
                     @endif
                     <div class="refund">

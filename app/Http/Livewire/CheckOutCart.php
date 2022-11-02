@@ -21,8 +21,10 @@ class CheckOutCart extends Component
         $cart_data['userId'] = Auth::user()->userID;
         $cart_data['cartTotal'] = $cartTotal;
         $cartId = DB::table('cart_master')->insertGetId($cart_data);
-
-        // insert order_cart
+        // session()->flush();
+        session()->forget('cartId');
+        session()->put('cartId', $cartId);
+        session()->save();
         $content = Cart::content();
         foreach ($content as $v_content) {
             DB::table('cart_details') -> insert([
@@ -32,7 +34,9 @@ class CheckOutCart extends Component
                 'gameIcon' => $v_content->options->image,
                 'gameSale' => $v_content->weight
             ]);  
-        }   
+        } 
+
+        $this->emit('form_updated');
     }
 
     public function removeCart($rowId) 

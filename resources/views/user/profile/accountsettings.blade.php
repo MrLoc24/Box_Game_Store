@@ -55,8 +55,8 @@
                     </div>
                     <div class="ava">
                         <label for="ava">{{ __('avatar') }}</label>           
-                        <img src="{{ asset(Auth::user()->image) }}" alt="">
-                        <input type="file" id="ava" name="ava"></input>
+                        <img id="previewImage" src="{{ asset(Auth::user()->image) }}" alt="">
+                        <input type="file" onchange="previewFile(this);" id="ava" name="ava" class="image_preview"></input>
                     </div>
                     @if (session()->has('status1'))
                         <div class="valid-feedback">

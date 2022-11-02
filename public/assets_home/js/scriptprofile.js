@@ -114,3 +114,14 @@ let deleteForm = document.querySelector('[data-delete]');
 const showdeleteForm = function () {
   deleteForm.classList.toggle("active");
 }
+
+function previewFile(input) {
+  var file = $(".image_preview").get(0).files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      $("#previewImage").attr('src', reader.result);
+    }
+    reader.readAsDataURL(file);
+  }
+}

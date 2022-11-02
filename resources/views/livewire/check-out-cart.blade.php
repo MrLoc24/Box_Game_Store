@@ -37,9 +37,11 @@
                             </div>
 
                             <div class="item-info-price">
+                                @if ($v_content->weight != 0)
                                 <span class="badge">-{{ $v_content->weight }}%</span>
 
                                 <del class="del">${{ $v_content->price }}</del>
+                                @endif
 
                                 <span class="price">${{ number_format($v_content->price * (1 - $v_content->weight / 100), 2, '.', '') }}</span>
                             </div>
@@ -64,7 +66,7 @@
                                     <ion-icon name="add-circle-outline"></ion-icon>Move to wishlist
                                 </a>
 
-                                <button type="button" class="remove" wire:click.prevent="removeCart('{{ $v_content->rowId }}')">Remove</button>
+                                <button wire:click.prevent="removeCart('{{ $v_content->rowId }}')" class="remove">Remove</a>
                             </div>
                         </div>
                     </div>
@@ -114,10 +116,8 @@
 
             </div>
 
-            {{-- <a href="{{ URL::to('checkoutCart/' . $totalPrice - $discount) }}"> --}}
-                {{-- <button class="btn-checkout" onclick="showCheckOut()" wire:click.prevent="checkout({{ $totalPrice - $discount }})">CHECK OUT</button> --}}
-                <button class="btn-checkout" onclick="showCheckOut()">CHECK OUT</button>
-            {{-- </a> --}}
+            <button class="btn-checkout" onclick="showCheckOut()" wire:click.prevent="checkout({{ $totalPrice - $discount }})">CHECK OUT</button>
+            
 
         </div>
 
@@ -133,3 +133,13 @@
     @endif
 
 </div>
+        
+
+
+
+
+
+    
+
+
+

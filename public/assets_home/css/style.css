@@ -20,7 +20,7 @@
    * colors
    */
 
-  --blue: #70b1ee;
+  --blue: #1c81e0;
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --bg-black: #121212;
@@ -716,7 +716,18 @@ body {
   border: 2px solid var(--text-white)
 }
 
-.shop-card :is(.action-btn, .action-btn-login):is(:hover, :focus) {
+.shop-card .action-btn-owned {
+  background-color: var(--bg-silver);
+  font-size: 15px;
+  width: 55px;
+  height: 30px;
+  transition: var(--transition-1);
+  color: var(--text-white);
+  border: 2px solid var(--text-white);
+  border-radius: 5px;
+}
+
+.shop-card :is(.action-btn, .action-btn-login, .action-btn-owned):is(:hover, :focus) {
   color: var(--blue);
   border: 2px solid var(--blue)
 }
@@ -1455,9 +1466,29 @@ body {
   transition: .1s var(--cubic-out);
 }
 
+.overlay-checkout {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  transition: var(--transition-1);
+}
+
+.overlay-checkout.active {
+  background-color: var(--black_50);
+  pointer-events: all;
+}
+
 .order-summary {
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 auto;
 }
 
 .summary-title {
@@ -1495,14 +1526,14 @@ body {
   font-size: var(--fs-6);
 }
 
-.summary-title .close-checkout ion-icon{
+.summary-title .close-checkout i{
   font-size: var(--fs-4);
 }
 
 .order-summary .order-list {
   height: 81.5vh;
   overflow: auto;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   padding-inline: 15px;
 }
 
@@ -1565,6 +1596,40 @@ body {
   color: #141414b8;
 }
 
+.payment-summary :is(.order-price, .order-total) {
+  display: flex;
+  justify-content: space-between;
+  color: #141414b8;
+  font-size: var(--fs-7);
+}
+
+.payment-summary .order-price:first-child {
+  margin-block-start: 20px;
+}
+
+.payment-summary hr {
+  margin: 10px 0;
+  border: none;
+  border-block-start: 1px solid rgba(20,20,20,0.16);
+}
+
+.payment-summary .order-total {
+  font-weight: 800;
+  margin-block-end: 20px;
+}
+
+.payment-summary .order-contact {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  font-size: var(--fs-8);
+  color: #141414b8;
+}
+
+.payment-summary .order-contact .contact {
+  color: var(--blue);
+  text-decoration: underline;
+}
 
 /*-----------------------------------*\
   #FOOTER
@@ -3223,6 +3288,7 @@ body {
   width: 20%;
   color: white;
   height: 4rem;
+  border-radius: .5rem;
 } 
 
 .profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .submit:hover{
@@ -3379,6 +3445,7 @@ body {
   color: white;
   height: 4rem;
   width: 49%;
+  border-radius: .5rem;
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn a{
@@ -3592,6 +3659,8 @@ body {
   height: 100%;
   width: 100%;
   padding: 2rem;
+  transition:all .1s linear;
+  transition:width none;
 }
 
 :is(.changename-form-container, .changeemail-form-container, .delete-form-container).active{

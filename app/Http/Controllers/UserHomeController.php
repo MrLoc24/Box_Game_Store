@@ -12,6 +12,7 @@ class UserHomeController extends Controller
     {
         $mostSold = DB::table('game')->orderBy('number_sold', 'desc')->take(5)->get();
         $game = DB::table('game')->get();
+        
         return view('home.index', compact('game', 'mostSold'));
     }
     public function detail($id)
