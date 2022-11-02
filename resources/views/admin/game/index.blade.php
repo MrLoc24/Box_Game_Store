@@ -52,8 +52,11 @@
                                         @foreach ($games as $key => $game)
                                             <tr>
                                                 <td><img src="{{ asset("$game->icon") }}" width="50px" height="50px">
+
                                                 </td>
-                                                <td>{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}</td>
+                                                <td><a
+                                                        href="/admin/game/view/{{ $game->gameId }}">{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}</a>
+                                                </td>
                                                 {{-- $game->column name!!!!!! --}}
                                                 <td>{{ $game->price }}</td>
                                                 <td>
