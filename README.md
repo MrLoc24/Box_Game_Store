@@ -2,6 +2,7 @@
 
 Please read before start!!!!!
 This is our 2nd semester project. Please follow those steps to run the website:
+Documentation can be found here BoxGame_Group04_MidtermSubmit.pdf
 
 1. Using XAMPP to run the website.
 2. Run server and MySQL, database script is in `BoxGame_Group04_DB.sql`.
