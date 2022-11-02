@@ -436,6 +436,13 @@
                                     </div>
                                     <div class="tab-pane fade" id="product-rating" role="tabpanel"
                                         aria-labelledby="product-rating-tab">
+                                        @foreach ($rating as $rates)
+                                            @if ($rates)
+                                                {{ $rates->star }}
+                                            @else
+                                                No rating yet!!! Cyka Blyat !!!
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

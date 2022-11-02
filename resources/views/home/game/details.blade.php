@@ -19,19 +19,21 @@
                     @if ($avg_star == 0)
                         <p>Not rated yet</p>
                     @else
+                        @php $star =  $avg_star @endphp
                         @foreach (range(1, 5) as $i)
                             <span class="fa-stack" style="width:1em">
                                 <i class="far fa-star fa-stack-1x"></i>
-                                @if ($avg_star > 0)
-                                    @if ($avg_star > 0.5)
+                                @if ($star > 0)
+                                    @if ($star > 0.5)
                                         <i class="fas fa-star fa-stack-1x"></i>
                                     @else
                                         <i class="fas fa-star-half fa-stack-1x"></i>
                                     @endif
                                 @endif
-                                {{ $avg_star-- }}
+                                @php $star--; @endphp
                             </span>
                         @endforeach
+                        <span style="margin-left: 1px">{{ $avg_star }}</span>
                     @endif
                 </div>
             </div>
@@ -163,10 +165,10 @@
                             <div><button type="button" class="addtocart">Add To Cart</button></div>
                         </div> --}}
                         <livewire:details-add-cart :gameId="$game->gameId">
-                    @else
-                        <div class="deal">
-                            <button type="button" class="buy">download now</button>
-                        </div>
+                        @else
+                            <div class="deal">
+                                <button type="button" class="buy">download now</button>
+                            </div>
                     @endif
                     <div class="refund">
                         <span class="title">Refund Type</span>
@@ -275,17 +277,18 @@
                             @if ($avg_star == 0)
                                 <p>Not rated yet, be the first one to review</p>
                             @else
+                                @php $star =  $avg_star @endphp
                                 @foreach (range(1, 5) as $i)
                                     <span class="fa-stack" style="width:1em">
                                         <i class="far fa-star fa-stack-1x"></i>
-                                        @if ($avg_star > 0)
-                                            @if ($avg_star > 0.5)
+                                        @if ($star > 0)
+                                            @if ($star > 0.5)
                                                 <i class="fas fa-star fa-stack-1x"></i>
                                             @else
                                                 <i class="fas fa-star-half fa-stack-1x"></i>
                                             @endif
                                         @endif
-                                        {{ $avg_star-- }}
+                                        @php $star--; @endphp
                                     </span>
                                 @endforeach
                                 {{ $avg_star }}
@@ -374,13 +377,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - custom js link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - custom js link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - ionicon link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - ionicon link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @endsection
