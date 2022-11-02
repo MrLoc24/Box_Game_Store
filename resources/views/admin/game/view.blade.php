@@ -98,7 +98,6 @@
                                     {{-- Edit Details Game --}}
                                     <button type="button" class="btn btn-primary btn-lg btn-flat" data-toggle="modal"
                                         data-target="#detailModal">
-                                        <i class="fas fa-cart-plus fa-lg mr-2"></i>
                                         Edit Details
                                     </button>
                                     <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-
@@ -437,9 +436,6 @@
                                     </div>
                                     <div class="tab-pane fade" id="product-rating" role="tabpanel"
                                         aria-labelledby="product-rating-tab">
-
-                                        <h3>No rating yet!!! Cyka Blyat!!!!</h3>
-
                                     </div>
                                 </div>
                             </div>
