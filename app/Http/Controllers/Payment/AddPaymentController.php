@@ -23,4 +23,19 @@ class AddPaymentController extends Controller
 
         return redirect('payment')->with('status', 'Add payment successfully!');
     }
+
+    public function storepaypal(Request $request) {
+        $userID = Auth::user()->userID;
+
+        $payment = Payment::create([
+            'userID' => $userID,
+            'card_number' => 0,
+            'cvv' => 0,
+            'payment_date' => now(),
+            'card_name' => $request->paymentname,
+            'image' => $request->paymentimage,
+        ]);
+
+        return redirect('payment')->with('status', 'Add payment successfully!');
+    }
 }

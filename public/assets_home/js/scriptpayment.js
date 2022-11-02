@@ -96,6 +96,7 @@ scrollReveal();
 
 addEventOnElem(window, "scroll", scrollReveal);
 
+
 /**
  * show-addpayment
  */
@@ -241,6 +242,8 @@ const showpaymentdetails10 = function () {
   paymenthidehide9.classList.remove("active");
   paymenthidehide6.classList.remove("active");
 }
+
+
  
  
  

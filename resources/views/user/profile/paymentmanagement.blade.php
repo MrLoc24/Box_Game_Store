@@ -48,36 +48,56 @@
                                 $function = 'showpaymentdetails' . $i . '()';
                                 $data = 'data-paymenthide-hide' . $i;
                             @endphp
-                            <li class="payment-hide-item1">
-                                <div class="title_payment1" onclick="{{ $function }}">
-                                    <input type="radio" name="payment">
-                                    <img src="{{ asset($payment->image) }}" alt="">
-                                    <label for="">{{ $payment->card_name }}</label>
-                                </div>
-                                        
-                                <div class="content_payment1" {{ $data }}>
-                                    <div class="card_details1">card details</div>
-                                    <form class="detailspayment1" action="{{ url("payment/{$payment->cardId}") }}" method="post">
-                                        @csrf
-                                        <div class="payment-form-item1 card_number1">
-                                            <label for="card_number">{{ __('Card Number *') }}</label>
-                                            <input type="text" name="card_number" id="card_number" value="{{ $payment->card_number }}">        
-                                        </div>
-                                        <div class="payment-form-item1 card_expi1">
-                                            <label for="expiration">{{ __('Expiration *') }}</label>
-                                            <input type="date" name="expiration" id="expiration" value="{{ $payment->payment_date }}">
-                                        </div>
-                                        <div class="payment-form-item1 card_cvv1">
-                                            <label for="cvv">{{ __('CVV *') }}</label>
-                                            <input type="text" name="cvv" id="cvv" value="{{ $payment->cvv }}">
-                                        </div>
-                                        <div class="payment_btn">
-                                            <a href="{{ url("paymentdelete/{$payment->cardId}") }}">delete</a>
-                                            <input type="submit" class="submit1" value="{{ __('update') }}">
-                                        </div>                                  
-                                    </form>                        
-                                </div>
-                            </li>
+                            @if ($payment->card_name == 'paypal')
+                                <li class="payment-hide-item1">
+                                    <div class="title_payment1" onclick="{{ $function }}">
+                                        <input type="radio" name="payment1">
+                                        <img src="{{ asset($payment->image) }}" alt="">
+                                        <label for="">{{ $payment->card_name }}</label>
+                                    </div>
+                                            
+                                    <div class="content_payment1" {{ $data }}>
+                                        <form class="detailspayment1" action="{{ url("paymentdelete/{$payment->cardId}") }}" method="get">
+                                            @csrf
+                                            <span>You don't want to use paypal ?</span>
+                                            <div class="payment_btn1">
+                                                <input type="submit" class="submit1" value="{{ __('delete') }}">
+                                            </div>                                  
+                                        </form>                        
+                                    </div>
+                                </li>
+                            @else
+                                <li class="payment-hide-item1">
+                                    <div class="title_payment1" onclick="{{ $function }}">
+                                        <input type="radio" name="payment1">
+                                        <img src="{{ asset($payment->image) }}" alt="">
+                                        <label for="">{{ $payment->card_name }}</label>
+                                    </div>
+                                            
+                                    <div class="content_payment1" {{ $data }}>
+                                        <div class="card_details1">card details</div>
+                                        <form class="detailspayment1" action="{{ url("payment/{$payment->cardId}") }}" method="post">
+                                            @csrf
+                                            <div class="payment-form-item1 card_number1">
+                                                <label for="card_number">{{ __('Card Number *') }}</label>
+                                                <input type="text" name="card_number" id="card_number" value="{{ $payment->card_number }}">        
+                                            </div>
+                                            <div class="payment-form-item1 card_expi1">
+                                                <label for="expiration">{{ __('Expiration *') }}</label>
+                                                <input type="date" name="expiration" id="expiration" value="{{ $payment->payment_date }}">
+                                            </div>
+                                            <div class="payment-form-item1 card_cvv1">
+                                                <label for="cvv">{{ __('CVV *') }}</label>
+                                                <input type="text" name="cvv" id="cvv" value="{{ $payment->cvv }}">
+                                            </div>
+                                            <div class="payment_btn">
+                                                <a href="{{ url("paymentdelete/{$payment->cardId}") }}">delete</a>
+                                                <input type="submit" class="submit1" value="{{ __('update') }}">
+                                            </div>                                  
+                                        </form>                        
+                                    </div>
+                                </li>
+                            @endif
                             @if ($payment->card_name == 'paypal')
                                 @php
                                     $paypal++;
@@ -140,23 +160,11 @@
                         </div>
                                 
                         <div class="content_payment" data-paymenthide-hide1>
-                            <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
+                            <form class="detailspayment" action="{{ route('addpaypal') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="paymentname" value="paypal" id="">
                                 <input type="hidden" name="paymentimage" value="assets_home/images/paypal.png" id="">
-                                <div class="payment-form-item card_number">
-                                    <label for="card_number">{{ __('Card Number *') }}</label>
-                                    <input type="text" name="card_number" id="card_number">        
-                                </div>
-                                <div class="payment-form-item card_expi">
-                                    <label for="expiration">{{ __('Expiration *') }}</label>
-                                    <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
-                                </div>
-                                <div class="payment-form-item card_cvv">
-                                    <label for="cvv">{{ __('CVV *') }}</label>
-                                    <input type="text" name="cvv" id="cvv">
-                                </div>
+                                <span>You will be directed to PayPal to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
                                 <input type="submit" class="submit" value="{{ __('save') }}">
                             </form>                        
                         </div>

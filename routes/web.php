@@ -13,6 +13,7 @@ use App\Models\Payment;
 use App\Http\Controllers\Payment\UpdatePaymentController;
 use App\Http\Controllers\Profile\DeleteUserController;
 use App\Http\Controllers\Payment\DeletePaymentController;
+use App\Http\Controllers\Payment\PayPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,13 +137,18 @@ Route::middleware('auth')->group(function () {
         return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
     })->name('paymentmanagement');
     Route::post('paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
+    Route::post('paymentsettingss', [AddPaymentController::class, 'storepaypal'])->name('addpaypal');
     Route::post('payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
     Route::get('paymentdelete/{id}', [DeletePaymentController::class, 'delete'])->name('deletepayment');
+    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+    Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+    Route::get('success-transaction/{id}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
     //end update and delete payment
 
 
     //start cart
-    Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
+    // Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
     // Route::get('/add-cart/{gameId}', 'CartController@addToCart')->name('addToCart');
     Route::get('/cart', 'CartController@show')->name('cart');
     // Route::get('remove-cart/{rowId}', 'CartController@removeCart');

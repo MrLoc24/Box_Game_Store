@@ -117,19 +117,29 @@
             </div>
 
             <button class="btn-checkout" onclick="showCheckOut()" wire:click.prevent="checkout({{ $totalPrice - $discount }})">CHECK OUT</button>
-            
+            @php
+                \Session::put('total_after', $totalPrice - $discount);
+            @endphp
 
         </div>
 
     </div>
 
     @else
-        <div class="cart-empty">
-            <svg xmlns="http://www.w3.org/2000/svg" class="svg css-uwwqev" viewBox="0 0 45 52"><g fill="none" fill-rule="evenodd">
-                <path d="M4.058 0C1.094 0 0 1.098 0 4.075v35.922c0 .338.013.65.043.94.068.65-.043 1.934 2.285 2.96 1.553.683 7.62 3.208 18.203 7.573 1.024.428 1.313.529 2.081.529.685.013 1.137-.099 2.072-.53 10.59-4.227 16.66-6.752 18.213-7.573 2.327-1.23 2.097-3.561 2.097-3.899V4.075C44.994 1.098 44.13 0 41.166 0H4.058z" fill="currentColor"></path><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 18l4.91 2.545-2.455 4M25.544 28.705c-1.056-.131-1.806-.14-2.25-.025-.444.115-1.209.514-2.294 1.197M29.09 21.727L25 19.5l2.045-3.5"></path></g></svg>
-            <h2 class="h2">Your cart is empty</h2>   
-            <a href="{{ route('homeuser') }}">Shop for Game & Apps</a>
-        </div>
+        @if(\Session::has('error'))
+            <div class="invalid-feedback">{{ \Session::get('error') }}</div>
+            {{ \Session::forget('error') }}
+        @elseif(\Session::has('success'))
+            <div class="valid-feedback">{{ \Session::get('success') }}</div>
+            {{ \Session::forget('success') }}
+        @else
+            <div class="cart-empty">
+                <svg xmlns="http://www.w3.org/2000/svg" class="svg css-uwwqev" viewBox="0 0 45 52"><g fill="none" fill-rule="evenodd">
+                    <path d="M4.058 0C1.094 0 0 1.098 0 4.075v35.922c0 .338.013.65.043.94.068.65-.043 1.934 2.285 2.96 1.553.683 7.62 3.208 18.203 7.573 1.024.428 1.313.529 2.081.529.685.013 1.137-.099 2.072-.53 10.59-4.227 16.66-6.752 18.213-7.573 2.327-1.23 2.097-3.561 2.097-3.899V4.075C44.994 1.098 44.13 0 41.166 0H4.058z" fill="currentColor"></path><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 18l4.91 2.545-2.455 4M25.544 28.705c-1.056-.131-1.806-.14-2.25-.025-.444.115-1.209.514-2.294 1.197M29.09 21.727L25 19.5l2.045-3.5"></path></g></svg>
+                <h2 class="h2">Your cart is empty</h2>   
+                <a href="{{ route('homeuser') }}">Shop for Game & Apps</a>
+            </div>
+        @endif
     @endif
 
 </div>
