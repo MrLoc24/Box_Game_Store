@@ -3690,6 +3690,7 @@ body {
   margin-left: 3rem;
   width: 10rem;
   height: fit-content;
+  cursor: pointer;
 }
 
 .profile .informations .information .personal-details .content-details2 .save{
