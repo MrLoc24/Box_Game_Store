@@ -18,29 +18,29 @@
                         {{-- <form wire:submit.prevent="addToCart('{{ $value->gameId }}')" action="{{ route('addToCart') }}" method="post">     --}}
                         <div class="card-actions" wire:init>
 
-                        @if (in_array($value->gameId, $gameIds))
-                        <button class="action-btn-owned" type="button">
-                            owned
-                        </button>
-                        @else
-                            @if (Cart::content()->where('id', $value->gameId)->count())
-                            <button class="action-btn-owned" type="button">
-                                in cart
-                            </button>
+                        @if (Auth::check())
+                            @if (in_array($value->gameId, $gameIds))
+                                <button class="action-btn-owned" type="button">
+                                    owned
+                                </button>
                             @else
-                                @if (Auth::check())
-                                    <button class="action-btn" type="button"
-                                        wire:click.prevent="addToCart('{{ $value->gameId }}')" onclick="showSuccess()">
-                                        {{-- <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon> --}}
-                                        +
+                                @if (Cart::content()->where('id', $value->gameId)->count())
+                                    <button class="action-btn-owned" type="button">
+                                        in cart
                                     </button>
-                                @else
-                                    <a href="{{ route('login') }}" class="action-btn-login" type="button">
-                                        +
-                                    </a>
+                                @else    
+                                    <button class="action-btn" type="button"
+                                    wire:click.prevent="addToCart('{{ $value->gameId }}')" onclick="showSuccess()">
+                                    +
+                                    </button>
                                 @endif
-                            @endif
-                        @endif
+                            @endif    
+                        @else
+                            <a href="{{ route('login') }}" class="action-btn-login" type="button">
+                                +
+                            </a>
+                        @endif    
+
                             {{-- <button class="action-btn">
                                     <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
                                 </button> --}}

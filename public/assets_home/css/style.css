@@ -20,7 +20,7 @@
    * colors
    */
 
-  --blue: #1c81e0;
+  --blue: #2790f9;
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --bg-black: #121212;
@@ -1456,6 +1456,10 @@ body {
   /* visibility: visible;
   transform: translateX(0);
   transition: 0.4s var(--cubic-out); */
+  
+}
+
+.checkout-container .payment_container{
   display: grid;
   gap: 30px;
 }
@@ -1484,6 +1488,7 @@ body {
 }
 
 .order-summary {
+  background: #f2f2f2;
   height: 100vh;
   position: relative;
   display: flex;
@@ -1526,6 +1531,86 @@ body {
   font-size: var(--fs-6);
 }
 
+.checkout .checkout-container .checkout-method .cart_payment{
+  margin-top: 1.5rem;
+  padding-left: 15px;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .title{
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1{
+  background: #f2f2f2;
+  border-radius: .6rem;
+  margin-bottom: 1rem;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment{
+  padding-block: 2px;
+  padding-left: 2rem;
+  font-size: var(--fs-7);
+  margin-block-end: 7px;
+  color: var(--black);
+  height: 6rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment input{
+  width: fit-content;
+  cursor: pointer;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment img{
+  border: 1px solid var(--text-silver2);
+  border-radius: .5rem;
+  width: 6.5rem;
+  height: 4.5rem;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment label::first-letter{
+  text-transform: uppercase;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1:has(> .content_cart_payment.active){
+  border: 1px solid var(--blue);
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment{
+  padding-left: 50px;
+  width: 95%;
+  padding-bottom: 1.5rem;
+  display: none;
+}
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment.active{
+  display: block;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment span{
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment .btn_payment{
+  background: var(--blue);
+  text-transform: uppercase;
+  color: white;
+  height: 3rem;
+  border-radius: .5rem;
+  margin-left: 90%;
+  justify-content: right;
+  width: 10%;
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-top: 6px;
+  font-size: 1.1rem;
+}
+
 .summary-title .close-checkout i{
   font-size: var(--fs-4);
 }
@@ -1543,7 +1628,7 @@ body {
   width: 100%;
   height: 100px;
   padding: 20px 15px;
-  background: #fff;
+  background: #f2f2f2;
   box-shadow: 0 -4px 4px rgb(0 0 0 / 10%);
 }
 
@@ -2367,7 +2452,7 @@ body {
     grid-template-columns: 2fr 0.7fr;
   }
 
-  .checkout-container {
+  .checkout-container .payment_container {
     grid-template-columns: 2fr 1fr;
   }
 
@@ -3171,6 +3256,7 @@ body {
 
 .profile .informations .information .add_or_manage .add .payment-hide span{
   font-size: 1.8rem;
+  font-weight: 400;
   color: var(--black);
   text-align: center;
 }
@@ -3180,7 +3266,7 @@ body {
 }
 
 .profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item{
-  background: var(--text-silver);
+  background: #f2f2f2;
   border-radius: .6rem;
   margin-bottom: 1rem;
 }
@@ -3240,6 +3326,12 @@ body {
   border: var(--border);
   text-align: center;
   display: flex;
+}
+
+.profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment span{
+  text-align: left;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .profile .informations .information .add_or_manage .add .payment-hide .payment-hide-item .content_payment .detailspayment .payment-form-item{
@@ -3326,7 +3418,7 @@ body {
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1{
-  background: var(--text-silver);
+  background: #f2f2f2;
   border-radius: .6rem;
   margin-bottom: 1rem;
 }
@@ -3351,7 +3443,6 @@ body {
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .title_payment1 input{
   width: fit-content;
-  font-size: 5rem;
   cursor: pointer;
 }
 
@@ -3390,6 +3481,12 @@ body {
   border: var(--border);
   text-align: center;
   display: flex;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 span{
+  text-align: left;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment-form-item1{
@@ -3439,6 +3536,23 @@ body {
   margin-block: 2rem;
 }
 
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn1{
+  display: flex;
+  margin-left: 60%;
+  justify-content: right;
+  width: 40%;
+  height: 4rem;
+}
+
+.profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn1 input{
+  background: var(--blue);
+  text-transform: uppercase;
+  color: white;
+  height: 4rem;
+  width: 49%;
+  border-radius: .5rem;
+}
+
 .profile .informations .information .add_or_manage .manage .payment-hide1 .payment-hide-item1 .content_payment1 .detailspayment1 .payment_btn :is(a, input){
   background: var(--blue);
   text-transform: uppercase;
@@ -3463,6 +3577,7 @@ body {
 
 .profile .informations .information .add_or_manage .manage .payment-hide1 span{
   font-size: 1.8rem;
+  font-weight: 400;
   color: var(--black);
   text-align: center;
 }
@@ -3820,6 +3935,20 @@ body {
 
 .valid-feedback {
   font-size: 1.2rem;
+  color: rgb(20, 202, 0);
+  padding-top: .5rem;
+  margin-bottom: 1rem;
+}
+
+.invalid-feedback1{
+  font-size: 2rem;
+  color: red;
+  padding-top: .5rem;
+  margin-bottom: 1rem;
+}
+
+.valid-feedback1{
+  font-size: 2rem;
   color: rgb(20, 202, 0);
   padding-top: .5rem;
   margin-bottom: 1rem;

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use App\Models\Payment;
 
 class CheckOutForm extends Component
 {
@@ -12,7 +13,8 @@ class CheckOutForm extends Component
     public function render()
     {
         $cartId = session('cartId');
-        return view('livewire.check-out-form',compact('cartId'));
+        $payments = Payment::all();
+        return view('livewire.check-out-form',compact('cartId', 'payments'));
     }
 
     public function removeCartM($cartId)

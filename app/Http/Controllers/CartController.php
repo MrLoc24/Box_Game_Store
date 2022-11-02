@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Payment;
 
 
 class CartController extends Controller
 {
-    public function addToCart(Request $rq) 
-    {
+    // public function addToCart(Request $rq) 
+    // {
 
         // $gameId = $rq->gameId;
 
@@ -30,7 +31,7 @@ class CartController extends Controller
         // Cart::add($data);
 
         // return redirect('/home');
-    }
+    // }
 
 
     // public function addToCart($gameId) 
@@ -60,14 +61,16 @@ class CartController extends Controller
     public function show() 
     {
         // $carts = session()->get('carts');
+        // $payments = Payment::all();
         return view('home.cart');
+        // ->with('payments', $payments);
     }
 
-    public function removeCart($rowId) 
-    {
-        Cart::remove($rowId);
-        return redirect('cart');
-    }
+    // public function removeCart($rowId) 
+    // {
+    //     Cart::remove($rowId);
+    //     return redirect('cart');
+    // }
 
     // public function countcart() 
     // {
