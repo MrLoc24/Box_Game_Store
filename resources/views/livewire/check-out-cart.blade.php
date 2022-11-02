@@ -127,10 +127,10 @@
 
     @else
         @if(\Session::has('error'))
-            <div class="invalid-feedback">{{ \Session::get('error') }}</div>
+            <div class="invalid-feedback1">{{ \Session::get('error') }}</div>
             {{ \Session::forget('error') }}
         @elseif(\Session::has('success'))
-            <div class="valid-feedback">{{ \Session::get('success') }}</div>
+            <div class="valid-feedback1">{{ \Session::get('success') }}</div>
             {{ \Session::forget('success') }}
         @else
             <div class="cart-empty">
