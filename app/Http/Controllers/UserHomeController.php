@@ -15,6 +15,12 @@ class UserHomeController extends Controller
 
         return view('home.index', compact('game', 'mostSold'));
     }
+    public function browse()
+    {
+        $game = DB::table('game')->get();
+        $type = DB::table('type')->get();
+        return view('home.browse.index', compact('game', 'type'));
+    }
     public function detail($id)
     {
         $rating = DB::table('rating')->where('gameId', $id)->get();

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-
+    @yield('header-specific')
     <!--
     - BoxGame Icon
   -->
@@ -33,7 +33,11 @@
     - livewire
     -->
     @livewireStyles
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- jQuery UI 1.11.4 -->
 
+    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 </head>
 
 <body id="top">
@@ -151,7 +155,7 @@
                         </li>
 
                         <li>
-                            <a href="#collection" class="navbar-link">Browse</a>
+                            <a href="/browse" class="navbar-link">Browse</a>
                         </li>
 
                         <li>
@@ -187,8 +191,8 @@
         <div class="mobile-navbar" data-navbar>
 
             <div class="wrapper">
-                <a href="#" class="logo">
-                    <img src="assets_home/images/boxlogo.png" alt="">
+                <a href="/home" class="logo">
+                    <img src="{{ asset('assets_home/images/boxlogo.png') }}" alt="">
                 </a>
 
                 <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
@@ -210,7 +214,7 @@
                             <a href="#discover" class="store-list-link" data-nav-link>Discover</a>
                         </li>
                         <li>
-                            <a href="#browse" class="store-list-link" data-nav-link>Browse</a>
+                            <a href="/browse" class="store-list-link" data-nav-link>Browse</a>
                         </li>
                         <li>
                             <a href="news" class="store-list-link" data-nav-link>News</a>
@@ -421,7 +425,8 @@
     {{-- jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!--
     - sweet alert
      -->
@@ -430,7 +435,7 @@
     @yield('footer-script')
 
 
-    
+
     <!--
     - livewire
     -->

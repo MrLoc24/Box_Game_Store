@@ -1,8 +1,12 @@
 @extends('layouts.home')
 @section('title')
     @if (isset($game))
-        {{ $gameName }}
+        Box Game | {{ $gameName }}
     @endif
+@endsection
+@section('header-specific')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets_home/css/tabs.css') }}">
 @endsection
 @section('content')
     <section class="section" data-section>
@@ -299,59 +303,43 @@
                     <div class="specifications">
                         <h3>Specifications</h3>
                         <div class="specifications1">
-                            <h5 class="type">Windows</h5>
-                            <div class="specifications1a">
-                                <div class="left">
-                                    <h5 class="title">Minimum</h5>
-                                    <div class="os">
-                                        <h5>OS</h5>
-                                        <p>Windows 10</p>
+                            <div class="tabs">
+                                @foreach ($sys_req as $key => $value)
+                                    <input type="radio" name="tabs" id="{{ $value->os }}"
+                                        @if ($key == 0) @checked(true) @endif>
+                                    <label for="{{ $value->os }}">{{ strtoupper($value->os) }}</label>
+                                    <div class="tab">
+                                        <h5 class="title">System Requirements for {{ strtoupper($value->os) }}</h5>
+                                        <hr>
+                                        <br>
+                                        <div class="os">
+                                            <h5>Version</h5>
+                                            <p>{{ $value->version }}</p>
+                                        </div>
+                                        <div class="processor">
+                                            <h5>Processor</h5>
+                                            <p>{{ $value->chip }}</p>
+                                        </div>
+                                        <div class="memory">
+                                            <h5>Memory</h5>
+                                            <p>{{ $value->ram }}</p>
+                                        </div>
+                                        <div class="graphics">
+                                            <h5>Graphics</h5>
+                                            <p>{{ $value->graphic }}</p>
+                                        </div>
+                                        <div class="other">
+                                            <h5>Storage</h5>
+                                            <p>{{ $value->storage }}</p>
+                                        </div>
+                                        <div class="logins">
+                                            <h5>Logins</h5>
+                                            <p>Requires Box Game account</p>
+                                        </div>
                                     </div>
-                                    <div class="processor">
-                                        <h5>Processor</h5>
-                                        <p>Intel Core i5-3570 or AMD FX-8350</p>
-                                    </div>
-                                    <div class="memory">
-                                        <h5>Memory</h5>
-                                        <p>8 GB</p>
-                                    </div>
-                                    <div class="graphics">
-                                        <h5>Graphics</h5>
-                                        <p>NVIDIA GeForce GTX 1050 Ti, 4 GB or AMD Radeon R9 380X, 4 GB</p>
-                                    </div>
-                                    <div class="other">
-                                        <h5>Other</h5>
-                                        <p>Details: 1080p @ 30 FPS w/o MSAA</p>
-                                    </div>
-                                    <div class="logins">
-                                        <h5>Logins</h5>
-                                        <p>Requires Box Game account</p>
-                                    </div>
-                                </div>
-                                <div class="right">
-                                    <h5 class="title">Recommended</h5>
-                                    <div class="os">
-                                        <h5>OS</h5>
-                                        <p>Windows 10</p>
-                                    </div>
-                                    <div class="processor">
-                                        <h5>Processor</h5>
-                                        <p>Intel Core i5-10400 or AMD Ryzen 5 3600</p>
-                                    </div>
-                                    <div class="memory">
-                                        <h5>Memory</h5>
-                                        <p>12 GB</p>
-                                    </div>
-                                    <div class="graphics">
-                                        <h5>Graphics</h5>
-                                        <p>NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB</p>
-                                    </div>
-                                    <div class="other">
-                                        <h5>Other</h5>
-                                        <p>Details: 1080p @ 60 FPS w/ 2x MSAA</p>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
+
                             <div class="languagessupported">
                                 <h5>Languages Supported</h5>
                                 <p>AUDIO: English | TEXT: English, French, German, Japanese, Korean, Polish, Portuguese
@@ -363,6 +351,7 @@
                                     other countries.</p>
                                 <a href="">Privacy Policy</a>
                             </div>
+
                         </div>
                     </div>
 
@@ -377,404 +366,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - custom js link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - custom js link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - ionicon link
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - ionicon link
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 @endsection
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>| Download and Buy Today - BoxGame Store</title>
-
-    <!--
-                    - BoxGame Icon
-                  -->
-    <link rel="shortcut icon" href="{{ asset('img/boxlogo1.png') }}">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
-    <!--
-                    - custom css link
-                  -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-    <!--
-                    - google font link
-                  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-</head>
-
-<body id="top">
-
-    <!--
-                    - #HEADER
-                  -->
-
-    <header class="header">
-
-        <div class="header-top" data-header>
-            <div class="container">
-
-                <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-                    <span class="line line-1"></span>
-                    <span class="line line-2"></span>
-                    <span class="line line-3"></span>
-                </button>
-
-
-
-                <div class="header-left">
-                    <a href="#" class="logo">
-                        <img src="{{ asset('img/boxlogo.png') }}" alt="">
-                    </a>
-                    <ul class="header-left-list">
-                        <li>
-                            <a href="#store" class="hll-link">STORE</a>
-                        </li>
-                        <li>
-                            <a href="#faq" class="hll-link">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="#help" class="hll-link">HELP</a>
-                        </li>
-                        <li>
-                            <a href="#contactus" class="hll-link">CONTACT US</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="header-actions">
-
-                    <button class="header-action-btn btn-language">
-                        <ion-icon name="earth"></ion-icon>
-                        <ul class="languages-list">
-                            <li>
-                                <a href="" class="laguages-list-link first">Vietnamese</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Enghlish</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Español (Spain)</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Italiano</a>
-                            </li>
-                            <li>
-                                <a href="" class="laguages-list-link">Français (French)</a>
-                            </li>
-                        </ul>
-                    </button>
-
-                    <button class="header-action-btn btn-user-login">
-                        <ion-icon name="person"></ion-icon>
-                        <span>sign in</span>
-                        <ul class="user-list">
-                            <li>
-                                <a href="" class="user-list-link first">account</a>
-                            </li>
-                            <li>
-                                <a href="" class="user-list-link">wish list</a>
-                            </li>
-                            <li>
-                                <a href="" class="user-list-link">sign out</a>
-                            </li>
-                        </ul>
-                    </button>
-
-                    <button class="header-action-btn btn-user-register">
-                        REGISTER
-                    </button>
-
-                </div>
-
-
-
-                <nav class="navbar">
-                    <ul class="navbar-list">
-                        <li>
-                            <form class="input-wrapper">
-                                <input type="search" name="search" placeholder="Search a game ..."
-                                    class="search-field">
-
-                                <button class="search-submit" aria-label="search">
-                                    <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-                                </button>
-                            </form>
-                        </li>
-                        <li>
-                            <a href="#discover" class="navbar-link">Discover</a>
-                        </li>
-
-                        <li>
-                            <a href="#collection" class="navbar-link">Browse</a>
-                        </li>
-
-                        <li>
-                            <a href="#shop" class="navbar-link">News</a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-list">
-                        <li>
-                            <a href="" class="navbar-link">Wishlist</a>
-                        </li>
-                        <li>
-                            <a href="" class="navbar-link">Cart</a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </div>
-        </div>
-
-    </header>
-
-
-
-
-
-    <!--
-                    - #MOBILE NAVBAR
-                  -->
-
-    <div class="sidebar">
-        <div class="mobile-navbar" data-navbar>
-
-            <div class="wrapper">
-                <a href="#" class="logo">
-                    BOX<span>GAME</span>
-                </a>
-
-                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-                    <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-                </button>
-            </div>
-
-            <ul class="navbar-list">
-
-                <li>
-                    <div class="btn-store" onclick="showstorelist()">
-                        <span class="store-title">Store</span>
-
-                        <ion-icon name="chevron-down-outline" data-arrow6 class="arrow-genre"></ion-icon>
-                    </div>
-
-                    <ul class="store-list" data-store-hide>
-                        <li>
-                            <a href="#discover" class="store-list-link" data-nav-link>Discover</a>
-                        </li>
-                        <li>
-                            <a href="#browse" class="store-list-link" data-nav-link>Browse</a>
-                        </li>
-                        <li>
-                            <a href="news" class="store-list-link" data-nav-link>News</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#faq" class="navbar-link" data-nav-link>FAQ</a>
-                </li>
-
-                <li>
-                    <a href="#help" class="navbar-link" data-nav-link>Help</a>
-                </li>
-
-                <li>
-                    <a href="#contactus" class="navbar-link" data-nav-link>Contact Us</a>
-                </li>
-
-                <li class="search-form">
-                    <form class="input-wrapper-sidebar">
-                        <input type="search" name="search" placeholder="Search a game ..."
-                            class="search-field-sidebar">
-
-                        <button class="search-submit-sidebar" aria-label="search">
-                            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-                        </button>
-                    </form>
-                </li>
-
-            </ul>
-
-        </div>
-
-        <div class="overlay" data-nav-toggler data-overlay></div>
-    </div>
-
-
-
-
-    <!--
-                    - #DETAILS
-                  -->
-
-
-
-
-
-
-    <!--
-                    - #FOOTER
-                  -->
-
-    <footer class="section footer">
-        <div class="container">
-
-            <div class="footer-top">
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Contact Us</p>
-                    </li>
-
-                    <li>
-                        <a href="" class="footer-link">+0123 - 456 - 789</a>
-                    </li>
-
-                    <li>
-                        <a href="" class="footer-link">Group4-2112E0@gmail.com</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Useful links</p>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Browse</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">News</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Top Sellers</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Free Game</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Infomation</p>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Need a Help</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">FAQ</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Terms of Service</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Privacy Policy</a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="footer-link">Store Refund Policy </a>
-                    </li>
-
-                </ul>
-
-                <div class="footer-list">
-
-                    <p class="newsletter-title">Send emails.</p>
-
-                    <p class="newsletter-text">
-                        Enter your email below to be the first to know about new collections and games.
-                    </p>
-
-                    <form action="" class="newsletter-form">
-                        <input type="email" name="email_address" placeholder="Enter your email address" required
-                            class="email-field">
-
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-
-                </div>
-
-            </div>
-
-            <div class="footer-bottom">
-
-                <div class="wrapper">
-                    <p class="copyright">
-                        &copy; 2022 BoxGame
-                    </p>
-
-                    <ul class="social-list">
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-twitter"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="social-link">
-                                <ion-icon name="logo-youtube"></ion-icon>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <a href="#" class="logo">
-                    <img src="{{ asset('img/boxlogo.png') }}" alt="">
-                </a>
-
-                <img src="{{ asset('img/pay.png') }}" width="313" height="28"
-                    alt="available all payment method" class="w-100">
-
-            </div>
-
-        </div>
-    </footer>
-
-
-
-</body>
-
-</html> --}}

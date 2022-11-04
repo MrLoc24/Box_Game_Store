@@ -437,10 +437,12 @@
                                     <div class="tab-pane fade" id="product-rating" role="tabpanel"
                                         aria-labelledby="product-rating-tab">
                                         @foreach ($rating as $rates)
-                                            @if ($rates)
+                                            @if ($rates != null)
                                                 {{ $rates->star }}
                                             @else
-                                                No rating yet!!! Cyka Blyat !!!
+                                                @php
+                                                    echo 'No Rating';
+                                                @endphp
                                             @endif
                                         @endforeach
                                     </div>

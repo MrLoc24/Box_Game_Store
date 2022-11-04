@@ -29,6 +29,7 @@ use App\Http\Controllers\Payment\PayPalController;
 Route::get('/', 'UserHomeController@index')->name('homeuser');
 Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail');
+Route::get('/browse', 'UserHomeController@browse');
 
 
 //ADMIN LOGGING
