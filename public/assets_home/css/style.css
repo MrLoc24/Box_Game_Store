@@ -3195,22 +3195,13 @@ body {
   color: var(--text-silver);
 }
 
-.bottom .bottom1 .specifications .specifications1 .specifications1a{
-  display: flex;
-  padding-bottom: 2rem;
+.bottom .bottom1 .specifications .specifications1 .tabs label{
+  padding: unset;
+  margin-bottom: 2rem;
 }
 
-.bottom .bottom1 .specifications .specifications1 .specifications1a .right,
-.bottom .bottom1 .specifications .specifications1 .specifications1a .left{
-  width: 49%;
-}
-
-.bottom .bottom1 .specifications .specifications1 .specifications1a .left{
-  margin-right: 30px;
-}
-
-.bottom .bottom1 .specifications .specifications1 .specifications1a .title{
-  margin-bottom: 3.5rem;
+.bottom .bottom1 .specifications .specifications1 .tabs .tab{
+  padding: unset;
 }
 
 .os, 
