@@ -121,6 +121,11 @@
                 \Session::put('total_after', $totalPrice - $discount);
             @endphp
 
+            @if(\Session::has('error'))
+                <div class="invalid-feedback1">{{ \Session::get('error') }}</div>
+                {{ \Session::forget('error') }}
+            @endif
+
         </div>
 
     </div>

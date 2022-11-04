@@ -12,15 +12,6 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class PayPalController extends Controller
 {
-    /**
-     * create transaction.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createTransaction()
-    {
-        return view('user.profile.test');
-    }
 
     /**
      * process transaction.

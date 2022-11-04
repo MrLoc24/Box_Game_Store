@@ -14,6 +14,8 @@ use App\Http\Controllers\Payment\UpdatePaymentController;
 use App\Http\Controllers\Profile\DeleteUserController;
 use App\Http\Controllers\Payment\DeletePaymentController;
 use App\Http\Controllers\Payment\PayPalController;
+use App\Http\Controllers\Payment\VnPayController;
+use App\Http\Controllers\Payment\MomoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,13 +140,16 @@ Route::middleware('auth')->group(function () {
         return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
     })->name('paymentmanagement');
     Route::post('paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
-    Route::post('paymentsettingss', [AddPaymentController::class, 'storepaypal'])->name('addpaypal');
+    Route::post('paymentsettingss', [AddPaymentController::class, 'store1'])->name('addpayment1');
     Route::post('payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
     Route::get('paymentdelete/{id}', [DeletePaymentController::class, 'delete'])->name('deletepayment');
-    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
     Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
     Route::get('success-transaction/{id}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
     Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+    Route::post('vnpay-payment', [VnPayController::class, 'processTransaction'])->name('vnpayPayment');
+    Route::get('vnpay-success', [VnPayController::class, 'successTransaction'])->name('vnpaySuccess');
+    Route::post('momo-payment', [MomoController::class, 'processTransaction'])->name('momoPayment');
+    Route::get('momo-success/{id}', [MomoController::class, 'successTransaction'])->name('momoSuccess');
     //end update and delete payment
 
 

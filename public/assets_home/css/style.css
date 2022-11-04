@@ -1527,27 +1527,79 @@ body {
   font-size: var(--fs-9);
 }
 
-.checkout-title .title-user ion-icon {
+.checkout-title .title-user i {
   font-size: var(--fs-6);
 }
 
-.checkout .checkout-container .checkout-method .cart_payment{
-  margin-top: 1.5rem;
+.checkout .checkout-container .checkout-method{
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 auto;
+}
+
+.checkout .checkout-container .checkout-method .redirect{
+  margin-top: 3rem; 
+  margin-left: 15px; 
+  text-decoration: underline;
+}
+
+.checkout .checkout-container .checkout-method .redirect:hover{
+  color: var(--blue);
+}
+
+.checkout .checkout-container .checkout-method .checkout_content{
+  overflow: auto;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment){
+  margin-top: 1.7rem;
   padding-left: 15px;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .title{
+.checkout .checkout-container .checkout-method .other_payment .other_payment_show{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkout .checkout-container .checkout-method .other_payment .other_payment_show:hover{
+  color: var(--blue);
+}
+
+.checkout .checkout-container .checkout-method .other_payment .other_payment_show .title{
+  align-items: center;
+  margin-bottom: unset;
+  margin-right: 1.5rem;
+}
+
+.checkout .checkout-container .checkout-method .other_payment .other_payment_hide{
+  margin-top: 2rem;
+  display: none;
+}
+
+.checkout .checkout-container .checkout-method .other_payment .other_payment_hide{
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.checkout .checkout-container .checkout-method .other_payment .other_payment_hide.active{
+  display: block;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) .title{
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1){
   background: #f2f2f2;
   border-radius: .6rem;
   margin-bottom: 1rem;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.title_cart_payment, .title_other_payment){
   padding-block: 2px;
   padding-left: 2rem;
   font-size: var(--fs-7);
@@ -1561,42 +1613,137 @@ body {
   cursor: pointer;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment input{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.title_cart_payment, .title_other_payment) input{
   width: fit-content;
   cursor: pointer;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment img{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.title_cart_payment, .title_other_payment) img{
   border: 1px solid var(--text-silver2);
   border-radius: .5rem;
   width: 6.5rem;
   height: 4.5rem;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .title_cart_payment label::first-letter{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.title_cart_payment, .title_other_payment) label::first-letter{
   text-transform: uppercase;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1:has(> .content_cart_payment.active){
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1):has(> :is(.content_cart_payment, .content_other_payment).active){
   border: 1px solid var(--blue);
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment){
   padding-left: 50px;
   width: 95%;
   padding-bottom: 1.5rem;
   display: none;
 }
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment.active{
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .saveandpay{
+  display: flex;
+  margin-left: 60%;
+  justify-content: space-between;
+  width: 40%;
+  height: 4rem;
+  margin-block: .5rem;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .saveandpay :is(.detailspayment1, .detailspayment2){
+  width: 49%;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .saveandpay :is(.detailspayment1, .detailspayment2) :is(button, input, a){
+  color: white;
+  background: var(--blue);
+  text-transform: uppercase;
+  cursor: pointer;
+  height: 3rem;
+  border-radius: .5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .card_details{
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment{
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-block: 1rem;
+  padding-left: 0;
+  border-radius: .5rem; 
+  border: var(--border);
+  text-align: center;
+  display: flex;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .payment-form-item{
+  margin-bottom: 10px;
+  height: 6rem;
+  border-radius: .5rem;
+  padding: 2px 10px;
+  border: 1px solid var(--text-silver2);
+}
+
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .payment-form-item:is(:focus-within, :hover){
+  border: .2rem solid rgb(123, 123, 123);
+  padding-left: .4rem;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .payment-form-item label{
+  font-size: 1.3rem;
+  display: flex;
+  width: 100%;
+  padding: .2rem 1rem;
+  color: var(--black);
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .payment-form-item input{
+  font-size: 1.4rem;
+  height: 3rem;
+  width: 100%;
+  padding: .1rem 1rem;
+  color: var(--black);
+  outline: none;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .card_number{
+  width: 100%;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment :is(.card_expi, .card_cvv){
+  width: 48%;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .submit{
+  margin-left: 80%;
+  margin-top: 1rem;
+  background: var(--blue);
+  text-transform: uppercase;
+  width: 20%;
+  color: white;
+  height: 3rem;
+  border-radius: .5rem;
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .detailspayment .submit:hover{
+  background: rgb(79, 142, 230);
+}
+
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment).active{
   display: block;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment span{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) span{
   font-weight: 400;
   font-size: 1.5rem;
 }
 
-.checkout .checkout-container .checkout-method .cart_payment .cart_payment1 .content_cart_payment .btn_payment{
+.checkout .checkout-container .checkout-method :is(.cart_payment, .other_payment) :is(.cart_payment1, .other_payment1) :is(.content_cart_payment, .content_other_payment) .btn_payment{
   background: var(--blue);
   text-transform: uppercase;
   color: white;

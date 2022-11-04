@@ -48,7 +48,7 @@
                                 $function = 'showpaymentdetails' . $i . '()';
                                 $data = 'data-paymenthide-hide' . $i;
                             @endphp
-                            @if ($payment->card_name == 'paypal')
+                            @if ($payment->card_name == 'paypal' || $payment->card_name == 'vnpay' || $payment->card_name == 'momo')
                                 <li class="payment-hide-item1">
                                     <div class="title_payment1" onclick="{{ $function }}">
                                         <input type="radio" name="payment1">
@@ -59,7 +59,7 @@
                                     <div class="content_payment1" {{ $data }}>
                                         <form class="detailspayment1" action="{{ url("paymentdelete/{$payment->cardId}") }}" method="get">
                                             @csrf
-                                            <span>You don't want to use paypal ?</span>
+                                            <span>You don't want to use {{ $payment->card_name }} ?</span>
                                             <div class="payment_btn1">
                                                 <input type="submit" class="submit1" value="{{ __('delete') }}">
                                             </div>                                  
@@ -147,171 +147,144 @@
 
             <div class="payment-hide" data-payment-hide>
                 <ul>
-                    @if (count($payments) == 5)
+                    @php 
+                        $count = 0;  
+                    @endphp
+                    @foreach ($payments as $payment)      
+                        @if ($payment->userID == Auth::user()->userID)
+                            @php
+                                $count++;
+                            @endphp
+                        @endif
+                    @endforeach
+                    @if ($count == 5) 
                         <span>You already have 5 payment methods we support.</span>
-                    @endif
+                    @else
+                        @if ($paypal == 0)
+                        <li class="payment-hide-item">
+                            <div class="title_payment" onclick="showpaymentdetails1()">
+                                <input type="radio" name="payment">
+                                <img src="{{ asset('assets_home/images/paypal.png') }}" alt="">
+                                <label for="">PayPal</label>
+                            </div>
+                                    
+                            <div class="content_payment" data-paymenthide-hide1>
+                                <form class="detailspayment" action="{{ route('addpayment1') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="paymentname" value="paypal" id="">
+                                    <input type="hidden" name="paymentimage" value="assets_home/images/paypal.png" id="">
+                                    <span>You will be directed to PayPal to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
+                                    <input type="submit" class="submit" value="{{ __('save') }}">
+                                </form>                        
+                            </div>
+                        </li>
+                        @endif
 
-                    @if ($paypal == 0)
-                    <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails1()">
-                            <input type="radio" name="payment">
-                            <img src="{{ asset('assets_home/images/paypal.png') }}" alt="">
-                            <label for="">PayPal</label>
-                        </div>
-                                
-                        <div class="content_payment" data-paymenthide-hide1>
-                            <form class="detailspayment" action="{{ route('addpaypal') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="paymentname" value="paypal" id="">
-                                <input type="hidden" name="paymentimage" value="assets_home/images/paypal.png" id="">
-                                <span>You will be directed to PayPal to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
-                                <input type="submit" class="submit" value="{{ __('save') }}">
-                            </form>                        
-                        </div>
-                    </li>
-                    @endif
+                        @if ($vnpay == 0)
+                        <li class="payment-hide-item">
+                            <div class="title_payment" onclick="showpaymentdetails4()">
+                                <input type="radio" name="payment">
+                                <img src="{{ asset('assets_home/images/vnpay.png') }}" alt="">
+                                <label for="">VN Pay</label>
+                            </div>
 
-                    @if ($visa == 0)
-                    <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails2()">
-                            <input type="radio" name="payment">
-                            <img src="{{ asset('assets_home/images/visa.jpg') }}" alt="">
-                            <label for="">Visa</label>
-                        </div>
+                            <div class="content_payment" data-paymenthide-hide4>
+                                <div class="card_details">card details</div>
+                                <form class="detailspayment" action="{{ route('addpayment1') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="paymentname" value="vnpay" id="">
+                                    <input type="hidden" name="paymentimage" value="assets_home/images/vnpay.png" id="">
+                                    <span>You will be directed to VNPay to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
+                                    <input type="submit" class="submit" value="{{ __('save') }}">
+                                </form>                        
+                            </div>
+                        </li>
+                        @endif
 
-                        <div class="content_payment" data-paymenthide-hide2>
-                            <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="paymentname" value="visa" id="">
-                                <input type="hidden" name="paymentimage" value="assets_home/images/visa.jpg" id="">
-                                <div class="payment-form-item card_number">
-                                    <label for="card_number">{{ __('Card Number *') }}</label>
-                                    <input type="text" name="card_number" id="card_number">        
-                                </div>
-                                <div class="payment-form-item card_expi">
-                                    <label for="expiration">{{ __('Expiration *') }}</label>
-                                    <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
-                                </div>
-                                <div class="payment-form-item card_cvv">
-                                    <label for="cvv">{{ __('CVV *') }}</label>
-                                    <input type="text" name="cvv" id="cvv">
-                                </div>
-                                <input type="submit" class="submit" value="{{ __('save') }}">
-                            </form>                        
-                        </div>
-                    </li>
-                    @endif
+                        @if ($momo == 0)
+                        <li class="payment-hide-item">
+                            <div class="title_payment" onclick="showpaymentdetails5()">
+                                <input type="radio" name="payment">
+                                <img src="{{ asset('assets_home/images/momo.png') }}" alt="">
+                                <label for="">Momo</label>
+                            </div>
 
-                    @if ($master == 0)
-                    <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails3()">
-                            <input type="radio" name="payment">
-                            <img src="{{ asset('assets_home/images/master.png') }}" alt="">
-                            <label for="">Master Card</label>
-                        </div>
+                            <div class="content_payment" data-paymenthide-hide5>
+                                <div class="card_details">card details</div>
+                                <form class="detailspayment" action="{{ route('addpayment1') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="paymentname" value="momo" id="">
+                                    <input type="hidden" name="paymentimage" value="assets_home/images/momo.png" id="">
+                                    <span>You will be directed to Momo to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
+                                    <input type="submit" name="submit" class="submit" value="{{ __('save') }}">
+                                </form>                        
+                            </div>
+                        </li>
+                        @endif
 
-                        <div class="content_payment" data-paymenthide-hide3>
-                            <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="paymentname" value="master" id="">
-                                <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
-                                <div class="payment-form-item card_number">
-                                    <label for="card_number">{{ __('Card Number *') }}</label>
-                                    <input type="text" name="card_number" id="card_number">        
-                                </div>
-                                <div class="payment-form-item card_expi">
-                                    <label for="expiration">{{ __('Expiration *') }}</label>
-                                    <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
-                                </div>
-                                <div class="payment-form-item card_cvv">
-                                    <label for="cvv">{{ __('CVV *') }}</label>
-                                    <input type="text" name="cvv" id="cvv">
-                                </div>
-                                <input type="submit" class="submit" value="{{ __('save') }}">
-                            </form>                        
-                        </div>
-                    </li>
-                    @endif
+                        @if ($visa == 0)
+                        <li class="payment-hide-item">
+                            <div class="title_payment" onclick="showpaymentdetails2()">
+                                <input type="radio" name="payment">
+                                <img src="{{ asset('assets_home/images/visa.jpg') }}" alt="">
+                                <label for="">Visa</label>
+                            </div>
 
-                    @if ($vnpay == 0)
-                    <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails4()">
-                            <input type="radio" name="payment">
-                            <img src="{{ asset('assets_home/images/vnpay.png') }}" alt="">
-                            <label for="">VN Pay</label>
-                        </div>
+                            <div class="content_payment" data-paymenthide-hide2>
+                                <div class="card_details">card details</div>
+                                <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="paymentname" value="visa" id="">
+                                    <input type="hidden" name="paymentimage" value="assets_home/images/visa.jpg" id="">
+                                    <div class="payment-form-item card_number">
+                                        <label for="card_number">{{ __('Card Number *') }}</label>
+                                        <input type="text" name="card_number" id="card_number">        
+                                    </div>
+                                    <div class="payment-form-item card_expi">
+                                        <label for="expiration">{{ __('Expiration *') }}</label>
+                                        <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                    </div>
+                                    <div class="payment-form-item card_cvv">
+                                        <label for="cvv">{{ __('CVV *') }}</label>
+                                        <input type="text" name="cvv" id="cvv">
+                                    </div>
+                                    <input type="submit" class="submit" value="{{ __('save') }}">
+                                </form>                        
+                            </div>
+                        </li>
+                        @endif
 
-                        <div class="content_payment" data-paymenthide-hide4>
-                            <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="paymentname" value="vnpay" id="">
-                                <input type="hidden" name="paymentimage" value="assets_home/images/vnpay.png" id="">
-                                <div class="payment-form-item card_number">
-                                    <label for="card_number">{{ __('Card Number *') }}</label>
-                                    <input type="text" name="card_number" id="card_number">        
-                                </div>
-                                <div class="payment-form-item card_expi">
-                                    <label for="expiration">{{ __('Expiration *') }}</label>
-                                    <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
-                                </div>
-                                <div class="payment-form-item card_cvv">
-                                    <label for="cvv">{{ __('CVV *') }}</label>
-                                    <input type="text" name="cvv" id="cvv">
-                                </div>
-                                <input type="submit" class="submit" value="{{ __('save') }}">
-                            </form>                        
-                        </div>
-                    </li>
-                    @endif
+                        @if ($master == 0)
+                        <li class="payment-hide-item">
+                            <div class="title_payment" onclick="showpaymentdetails3()">
+                                <input type="radio" name="payment">
+                                <img src="{{ asset('assets_home/images/master.png') }}" alt="">
+                                <label for="">Master Card</label>
+                            </div>
 
-                    @if ($momo == 0)
-                    <li class="payment-hide-item">
-                        <div class="title_payment" onclick="showpaymentdetails5()">
-                            <input type="radio" name="payment">
-                            <img src="{{ asset('assets_home/images/momo.png') }}" alt="">
-                            <label for="">Momo</label>
-                        </div>
-
-                        <div class="content_payment" data-paymenthide-hide5>
-                            <div class="card_details">card details</div>
-                            <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="paymentname" value="momo" id="">
-                                <input type="hidden" name="paymentimage" value="assets_home/images/momo.png" id="">
-                                <div class="payment-form-item card_number">
-                                    <label for="card_number">{{ __('Card Number *') }}</label>
-                                    <input type="text" name="card_number" id="card_number" class="@error('card_number') is-invalid @enderror" value="{{ old('card_number') }}" autocomplete="card_number">        
-                                </div>
-                                @error('card_number')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>               
-                                @enderror
-                                <div class="payment-form-item card_expi">
-                                    <label for="expiration">{{ __('Expiration *') }}</label>
-                                    <input type="date" placeholder="mm/yy" name="expiration" id="expiration" class="@error('expiration') is-invalid @enderror" value="{{ old('expiration') }}" autocomplete="expiration">
-                                </div>
-                                @error('expiration')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>               
-                                @enderror
-                                <div class="payment-form-item card_cvv">
-                                    <label for="cvv">{{ __('CVV *') }}</label>
-                                    <input type="text" name="cvv" id="cvv" class="@error('cvv') is-invalid @enderror" value="{{ old('cvv') }}" autocomplete="cvv">
-                                </div>
-                                @error('cvv')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>               
-                                @enderror
-                                <input type="submit" name="submit" class="submit" value="{{ __('save') }}">
-                            </form>                        
-                        </div>
-                    </li>
+                            <div class="content_payment" data-paymenthide-hide3>
+                                <div class="card_details">card details</div>
+                                <form class="detailspayment" action="{{ route('addpayment') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="paymentname" value="master" id="">
+                                    <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
+                                    <div class="payment-form-item card_number">
+                                        <label for="card_number">{{ __('Card Number *') }}</label>
+                                        <input type="text" name="card_number" id="card_number">        
+                                    </div>
+                                    <div class="payment-form-item card_expi">
+                                        <label for="expiration">{{ __('Expiration *') }}</label>
+                                        <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                    </div>
+                                    <div class="payment-form-item card_cvv">
+                                        <label for="cvv">{{ __('CVV *') }}</label>
+                                        <input type="text" name="cvv" id="cvv">
+                                    </div>
+                                    <input type="submit" class="submit" value="{{ __('save') }}">
+                                </form>                        
+                            </div>
+                        </li>
+                        @endif
                     @endif
                 </ul>
             </div>
