@@ -3340,12 +3340,110 @@ body {
   margin-bottom: 1rem;
 }
 
-.profile .informations .information .payment{
+.profile .informations .information .payment .content-payment{
   font-size: 14px;
 }
 
-.profile .informations .information .payment .content-payment{
+.profile .informations .information .password{
+  margin-bottom: 3rem;
+}
+
+.profile .informations .information .password .content-password{
   font-size: 14px;
+}
+
+.profile .informations .information .form{
+  display: flex;
+  margin-top: 6rem;
+}
+.profile .informations .information .btn_change_pass{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.profile .informations .information .btn_change_pass :is(.discard, .save){
+  width: 49%;
+  height: 5rem;
+}
+
+.profile .informations .information .btn_change_pass :is(button, input){
+  border: var(--black) solid 1px;
+  border-radius: .5rem;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.profile .informations .information .btn_change_pass .discard button{
+  background: var(--text-silver);
+  color: var(--black);
+}
+
+.profile .informations .information .btn_change_pass .save input{
+  color: var(--white);
+  background: var(--blue);
+}
+
+.profile .informations .information .form .action{
+  width: 50%;
+  border-right: 1px solid var(--text-silver2);
+  padding-right: 3rem;
+}
+
+.profile .informations .information .form .rules{
+  width: 50%;
+  padding-left: 3rem;
+}
+
+.profile .informations .information .form .rules span{
+  color: var(--text-silver2);
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  font-size: 14px;
+}
+
+.profile .informations .information .form :is(.action, .rules) .title{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.profile .informations .information .form .action .box{
+  height: 6rem;
+  width: 90%;
+  border-radius: .5rem;
+  padding: .5rem 1.4rem;
+  border: .1rem solid var(--text-silver2);
+  margin-bottom: 3.5rem;
+  box-sizing: unset;
+  margin-top: 1.5rem;
+}
+
+.profile .informations .information .form .action .box:focus-within{
+  padding-left: 1rem
+}
+
+.profile .informations .information .form .action .box input{
+  font-size: 1.4rem;
+  height: 3rem;
+  width: 100%;
+  padding-inline: 1.2rem;
+  margin-top: .1rem;
+  color: var(--black);
+  outline: none;
+}
+
+.profile .informations .information .form .action .box label{
+  font-size: 1.4rem;
+  font-weight: 400;
+  display: flex;
+  width: 100%;
+  padding: .2rem 1.4rem;
+  color: var(--black);
 }
 
 .profile .informations .information .your_payment{
@@ -3831,17 +3929,29 @@ body {
   cursor: pointer;
 }
 
-.profile .informations .information .personal-details .content-details2 .save{
-  height: 50px;
+.profile .informations .information .personal-details .content-details2 .discardorsave{
+  display: flex;
   width: 46.5%;
-  font-size: 14px;
-  text-align: center;
-  color: var(--white);
+  justify-content: space-between;
+}
+
+.profile .informations .information .personal-details .content-details2 .discardorsave :is(button, .save){
   text-transform: uppercase;
   border-radius: .5rem;
   border: var(--bg-silver) solid 1px;
-  background: var(--blue);
+  height: 50px;
+  width: 49%;
+  font-size: 13px;
+}
 
+.profile .informations .information .personal-details .content-details2 button{ 
+  color: var(--black);
+  background: var(--text-silver);
+}
+
+.profile .informations .information .personal-details .content-details2 .save{ 
+  color: var(--white);
+  background: var(--blue);
 }
 
 .profile .informations .information .personal-details .content-details2 .details-input label{
