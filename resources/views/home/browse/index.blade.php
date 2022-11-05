@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                            - #GENRES
-                                                                                                            -->
+                                                                                                                                                                                                - #GENRES
+                                                                                                                                                                                                -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -17,134 +17,25 @@
                 <div class="swiper-button-prev swiper-btn"></div>
 
                 <div class="swiper-wrapper">
+                    @foreach ($type as $key => $value)
+                        <a href="" class="swiper-slide">
+                            <div class="shop-card">
 
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
+                                <div class="card-banner">
+                                    <img src="{{ asset($value->image) }}" class="img-cover">
 
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/rpg?cc=us&l=english"
-                                    class="img-cover">
+                                    <div class="gradient"
+                                        style="background: linear-gradient(rgba(0,0,0,0), rgb(0,0,0) 100%)">
+                                    </div>
 
-                                <div class="gradient" style="background: linear-gradient(rgba(0,0,0,0), rgb(139,0,0) 100%)">
+                                    <span class="genre-title">{{ $value->type }}</span>
                                 </div>
 
-                                <span class="genre-title">ROLE-PLAYING</span>
                             </div>
+                        </a>
+                    @endforeach
 
-                        </div>
-                    </a>
 
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/story_rich?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient" style="background: linear-gradient(rgba(0,0,0,0), rgb(0,0,139) 100%)">
-                                </div>
-
-                                <span class="genre-title">STORY-RICH</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/horror?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient"
-                                    style="background: linear-gradient(rgba(0,0,0,0), rgb(184,134,11) 100%)"></div>
-
-                                <span class="genre-title">HORROR</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/visual_novel?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient" style="background: linear-gradient(rgba(0,0,0,0), rgb(0,100,0) 100%)">
-                                </div>
-
-                                <span class="genre-title">VISUAL NOVEL</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/strategy_cities_settlements?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient"
-                                    style="background: linear-gradient(rgba(0,0,0,0), rgb(0,139,139) 100%)"></div>
-
-                                <span class="genre-title">CITY & SETTLEMENT</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/survival?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient"
-                                    style="background: linear-gradient(rgba(0,0,0,0), rgb(139,0,139) 100%)"></div>
-
-                                <span class="genre-title">SURVIVAL</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/vr?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient"
-                                    style="background: linear-gradient(rgba(0,0,0,0), rgb(233,144,0) 100%)"></div>
-
-                                <span class="genre-title">VIRTUAL REALITY TITLES</span>
-                            </div>
-
-                        </div>
-                    </a>
-
-                    <a href="" class="swiper-slide">
-                        <div class="shop-card">
-
-                            <div class="card-banner">
-                                <img src="https://store.steampowered.com/categories/homepageimage/category/science_fiction?cc=us&l=english"
-                                    class="img-cover">
-
-                                <div class="gradient" style="background: linear-gradient(rgba(0,0,0,0), rgb(139,0,0) 100%)">
-                                </div>
-
-                                <span class="genre-title">SCIFI & CYBERPUNK</span>
-                            </div>
-
-                        </div>
-                    </a>
 
                 </div>
 
@@ -153,8 +44,8 @@
 
 
         <!--
-                                                                                                            - #GAME-LIST
-                                                                                                            -->
+                                                                                                                                                                                                - #GAME-LIST
+                                                                                                                                                                                                -->
 
         <section class="section game-list">
 
@@ -179,8 +70,8 @@
                                 <div class="shop-card">
 
                                     <a href="/game/{{ $value->gameId }}" class="card-banner">
-                                        <img src="{{ $value->icon }}" style="min-height: 290px !important" width="540"
-                                            height="720" loading="lazy" alt="{{ $value->gameId }}" class="img-cover">
+                                        <img src="{{ $value->icon }}" width="540" height="720" loading="lazy"
+                                            alt="{{ $value->gameId }}" class="img-cover">
                                         @if ($value->sale != 0)
                                             <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
                                         @endif
@@ -315,12 +206,11 @@
 
                             <div class="platform-hide" data-filter-hide2>
                                 <ul>
-                                    <li class="filter-hide-item">
-                                        <a href="">Mac OS</a>
-                                    </li>
-                                    <li class="filter-hide-item">
-                                        <a href="">Windows</a>
-                                    </li>
+                                    @foreach ($platform as $value)
+                                        <li class="filter-hide-item">
+                                            <a href="">{{ strtoupper($value->os) }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -335,8 +225,8 @@
 
 
         <!--
-                                                                                                            - #FILTER-SIDEBAR
-                                                                                                            -->
+                                                                                                                                                                                                - #FILTER-SIDEBAR
+                                                                                                                                                                                                -->
 
         <div class="filterbar">
 
@@ -443,12 +333,11 @@
 
                     <div class="platform-hide" data-filter-hide5>
                         <ul>
-                            <li class="filter-hide-item">
-                                <a href="">Mac OS</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Windows</a>
-                            </li>
+                            @foreach ($platform as $value)
+                                <li class="filter-hide-item">
+                                    <a href="">{{ $value->os }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

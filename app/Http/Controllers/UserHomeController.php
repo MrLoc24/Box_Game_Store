@@ -19,7 +19,8 @@ class UserHomeController extends Controller
     {
         $game = DB::table('game')->get();
         $type = DB::table('type')->get();
-        return view('home.browse.index', compact('game', 'type'));
+        $platform = DB::table('system_requirement')->groupBy('os')->get();
+        return view('home.browse.index', compact('game', 'type', 'platform'));
     }
     public function detail($id)
     {
