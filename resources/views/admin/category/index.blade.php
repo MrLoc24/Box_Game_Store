@@ -164,23 +164,24 @@
                                                             class="btn btn-outline-primary">Add Type</button>
                                                     </div>
                                                     <div class="form-group row">
-
-                                                        <label for="type[0]" class="col-sm-2 col-form-label">Type</label>
                                                         @error('type.*')
                                                             <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                            <br>
                                                         @enderror
+                                                        <label for="type[0]" class="col-sm-2 col-form-label">Type</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="type[0]"
                                                                 placeholder="Type of Game" name="type[0]">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-
-                                                        <label for="image[0]"
-                                                            class="col-sm-2 col-form-label">Image</label>
                                                         @error('image')
                                                             <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                            <br>
                                                         @enderror
+                                                        <label for="image[0]"
+                                                            class="col-sm-2 col-form-label">Image</label>
+
                                                         <div class="col-sm-10">
                                                             <input type="file" class="form-control" id="image[0]"
                                                                 placeholder="Type's Image" name="image[0]">

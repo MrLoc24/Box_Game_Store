@@ -26,7 +26,7 @@ class AdminCategory extends FormRequest
 
         return [
             'type.*' => 'required|bail',
-            'image' => 'required|bail|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
     public function messages()
@@ -34,6 +34,9 @@ class AdminCategory extends FormRequest
         return [
             'type.*.required' => '* Type cannot blank and must be unique',
             'image.required' => '* Image cannot blank',
+            'image.image' => '* File must be image',
+            'image.mimes' => '* File must be jpeg, png, jpg or gif',
+            'image.max' => '* Image must be less than 2MB',
         ];
     }
 }
