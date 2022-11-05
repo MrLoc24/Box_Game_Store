@@ -33,8 +33,27 @@ Documentation can be found here BoxGame_Group04_MidtermSubmit.pdf
     `#PayPal Setting & API Credentials - sandbox`
     `PAYPAL_SANDBOX_CLIENT_ID=AfhvgFWMucHa47s_kR3z6YG-4m2cVW3CGcr1rEMlCyZUEXnydt0IevhjjayttiDOmsRK74ptUMRpRoan`
     `PAYPAL_SANDBOX_CLIENT_SECRET=EMadAb9_BwyNpMqnMPzk6e85VpJYc5xn5iWVn7j9VsWNpuIx7f3NV4eByFJMGN-iwttC0WkevQXrl5Ib`
-15. Account and password paypal to use
+
+    `VNPAY_TMN_CODE=QLIY8QLG`
+    `VNPAY_HASH_SECRET=BNQYNROOVGJDENRXJTZRVVUKHDBIQVDY`
+    `VNPAY_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html`
+
+    `MOMO_PARTNER_CODE=MOMOBKUN20180529`
+    `MOMO_ACCESS_KEY=klm05TvNBzhg7h7j`
+    `MOMO_SECRET_KEY=at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa`
+15. Paypal account and password to use
     `customerboxgame@personal.example.com`
     `12345678`
+15. VNPay 
+    bank: `NCB`
+    card number: `9704198526191432198`
+    card holder: `NGUYEN VAN A`
+    issuing date: `07/15`
+    otp password: `123456`
+15. Momo 
+    card number: `9704 0000 0000 0018`
+    card holder: `NGUYEN VAN A`
+    issuing date: `03/07`
+    otp password: `OTP`
 16. Finally, run `php artisan serve`.
     Warning: Don't click the link in footer :))))

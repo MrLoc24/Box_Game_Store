@@ -32,7 +32,7 @@
           </div>
           <div class="password">
             <ion-icon name="key"></ion-icon>
-            <a href="#">password & security</a>
+            <a href="{{ route('passwordandsecurity') }}">{{ __('password & security') }}</a>
           </div>
           <div class="redeem">
             <ion-icon name="gift"></ion-icon>

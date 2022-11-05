@@ -14,6 +14,9 @@ use App\Http\Controllers\Payment\UpdatePaymentController;
 use App\Http\Controllers\Profile\DeleteUserController;
 use App\Http\Controllers\Payment\DeletePaymentController;
 use App\Http\Controllers\Payment\PayPalController;
+use App\Http\Controllers\Payment\VnPayController;
+use App\Http\Controllers\Payment\MomoController;
+use App\Http\Controllers\Profile\UpdateUserPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,23 +99,23 @@ Route::prefix('admin/cart')->middleware('checkAdminLogin')->group(function () {
 Route::middleware('guest')->group(function () {
 
     //start register
-    Route::get('register', [RegisterController::class, 'register'])->name('register');
-    Route::post('register', [RegisterController::class, 'store'])->name('handleregister')->middleware('checkregister');
+    Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store'])->name('handleregister')->middleware('checkregister');
     //end register
 
     //start login
-    Route::get('login', [LoginController::class, 'login'])->name('login');
-    Route::post('login', [LoginController::class, 'authenticate'])->middleware('checklogin');
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
     //end login
 
     //start forgot password
-    Route::get('forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
-    Route::post('forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
+    Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
+    Route::post('/forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
     //end forgot password
 
     //start reset password
-    Route::get('reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
-    Route::post('reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
     //end reset password
 
 });
@@ -133,20 +136,29 @@ Route::middleware('auth')->group(function () {
     //end update and delete user
 
     //start update and delete payment
-    Route::get('payment', function () {
+    Route::get('/payment', function () {
         $payments = Payment::all();
         return view('user.profile.paymentmanagement')->with(['payments' => $payments]);
     })->name('paymentmanagement');
-    Route::post('paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
-    Route::post('paymentsettingss', [AddPaymentController::class, 'storepaypal'])->name('addpaypal');
-    Route::post('payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
-    Route::get('paymentdelete/{id}', [DeletePaymentController::class, 'delete'])->name('deletepayment');
-    Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-    Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
-    Route::get('success-transaction/{id}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
-    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+    Route::post('/paymentsettings', [AddPaymentController::class, 'store'])->name('addpayment')->middleware('checkaddpayment');
+    Route::post('/paymentsettingss', [AddPaymentController::class, 'store1'])->name('addpayment1');
+    Route::post('/payment/{id}', [UpdatePaymentController::class, 'store'])->name('updatepayment')->middleware('checkupdatepayment');
+    Route::get('/paymentdelete/{id}', [DeletePaymentController::class, 'delete'])->name('deletepayment');
+    Route::get('/process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+    Route::get('/success-transaction/{id}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+    Route::get('/cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+    Route::post('/vnpay-payment', [VnPayController::class, 'processTransaction'])->name('vnpayPayment');
+    Route::get('/vnpay-success', [VnPayController::class, 'successTransaction'])->name('vnpaySuccess');
+    Route::post('/momo-payment', [MomoController::class, 'processTransaction'])->name('momoPayment');
+    Route::get('/momo-success/{id}', [MomoController::class, 'successTransaction'])->name('momoSuccess');
     //end update and delete payment
 
+    //start password and security
+    Route::get('/password', function () {
+        return view('user.profile.passwordandsecurity');
+    })->name('passwordandsecurity');
+    Route::post('/updatepassword', [UpdateUserPasswordController::class, 'update'])->name('updatepassword')->middleware('checkupdateuserpassword');
+    //end password and security
 
     //start cart
     // Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');
