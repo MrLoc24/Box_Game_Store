@@ -3,7 +3,33 @@
 @section('content')
     <section>
         <!-- Content Wrapper. Contains page content -->
+
         <div class="content-wrapper">
+            {{-- Message if success --}}
+            @if ($message = Session::get('success'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <span>{{ $message }}</span>
+                </div>
+            @endif
+            {{-- Message if error --}}
+            @if (count($errors) > 0)
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
@@ -138,15 +164,23 @@
                                                             class="btn btn-outline-primary">Add Type</button>
                                                     </div>
                                                     <div class="form-group row">
+
                                                         <label for="type[0]" class="col-sm-2 col-form-label">Type</label>
+                                                        @error('type.*')
+                                                            <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                        @enderror
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="type[0]"
                                                                 placeholder="Type of Game" name="type[0]">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
+
                                                         <label for="image[0]"
                                                             class="col-sm-2 col-form-label">Image</label>
+                                                        @error('image')
+                                                            <p class="text-danger"><strong>{{ $message }}</strong></p>
+                                                        @enderror
                                                         <div class="col-sm-10">
                                                             <input type="file" class="form-control" id="image[0]"
                                                                 placeholder="Type's Image" name="image[0]">

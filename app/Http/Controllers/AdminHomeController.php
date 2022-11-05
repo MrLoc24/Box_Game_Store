@@ -48,9 +48,9 @@ class AdminHomeController extends Controller
         }
         if ($request->all()) {
 
-            return redirect()->route('home')->with('success', "Update product successfully!");
+            return redirect()->route('home')->with('success', "Update successfully!");
         } else {
-            return redirect()->route('home')->with('error', "Update product failed!");
+            return redirect()->route('home')->with('error', "Update failed!");
         }
     }
     // Change password
@@ -65,7 +65,7 @@ class AdminHomeController extends Controller
                 DB::table('account_admin')->where(['adminId' => $id])->update(
                     $data
                 );
-                $request->session()->forget('admin');
+                $request->session()->invalidate();
                 return redirect('/admin');
             }
             return redirect()->route('home')->with('error', "Retype password incorrect!");

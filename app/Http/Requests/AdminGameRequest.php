@@ -27,17 +27,15 @@ class AdminGameRequest extends FormRequest
             'loginName' => 'required|bail',
             'adminEmail' => 'required|bail|email',
             'adminName' => 'required|bail',
-            'adminPassword' => 'required|bail|min:4',
             // 'picture'=> 'required|bail',
         ];
     }
     public function messages()
     {
         return [
-            'loginName.required' => '* Lo Name cannot blank',
-            'adminName.required' => '* Manufacturer cannot blank',
-            'adminEmail.required' => '* Sale Price must be numeric',
-            'adminPassword.required' => '* Password cannot blank',
+            'loginName.required' => '* Login name cannot blank',
+            'adminName.required' => '* Admin name cannot blank',
+            'adminEmail.required' => '* Admin email must be numeric',
         ];
     }
 }
