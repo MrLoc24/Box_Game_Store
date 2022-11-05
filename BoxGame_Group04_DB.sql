@@ -46,8 +46,8 @@ CREATE TABLE `account_admin` (
 --
 
 INSERT INTO `account_admin` (`adminId`, `name`, `email`, `password`, `role`, `status`, `phone`, `created_at`, `update_at`, `image`) VALUES
-('admin', 'admin', 'admin@gmail.com', '1234', 'manager', b'1', NULL, NULL, NULL, NULL),
-('loc', 'Mr. Clown', 'loclongla1999@gmail.com', '1234', 'boss', b'1', NULL, NULL, NULL, 'img/admin/adminloc.jpg');
+('admin', 'admin', 'admin@gmail.com', '12345678', 'manager', b'1', NULL, NULL, NULL, NULL),
+('loc', 'Mr. Clown', 'loclongla1999@gmail.com', '12345678', 'boss', b'1', NULL, NULL, NULL, 'img/admin/adminloc.jpg');
 
 -- --------------------------------------------------------
 
@@ -95,50 +95,54 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category`, `type`, `gameId`) VALUES
-(39, 'PvE', 'War_Thunder'),
+(39, 'Racing', 'War_Thunder'),
 (40, 'PvP', 'War_Thunder'),
-(41, 'Strategic', 'War_Thunder'),
-(42, 'Crafting', 'PC_Building_Simulator_2'),
+(41, 'Strategy', 'War_Thunder'),
+(42, 'Anime', 'PC_Building_Simulator_2'),
 (43, 'Family', 'PC_Building_Simulator_2'),
-(45, 'Crafting', 'SuchArt___Genius_Artist_Simulator'),
+(45, 'Anime', 'SuchArt___Genius_Artist_Simulator'),
 (46, 'Family', 'SuchArt___Genius_Artist_Simulator'),
 (47, 'Adventure', 'JARS'),
-(48, 'PvE', 'JARS'),
-(49, 'Strategic', 'JARS'),
+(48, 'Racing', 'JARS'),
+(49, 'Strategy', 'JARS'),
 (50, 'Adventure', 'Source_of_Madness'),
 (51, 'MOBA', 'Source_of_Madness'),
-(52, 'Sandbox', 'Source_of_Madness'),
-(53, 'Strategic', 'Source_of_Madness'),
+(52, 'Survivals', 'Source_of_Madness'),
+(53, 'Strategy', 'Source_of_Madness'),
 (54, 'Adventure', 'Railway_Empire'),
-(55, 'Crafting', 'Railway_Empire'),
-(56, 'Sandbox', 'Railway_Empire'),
+(55, 'Anime', 'Railway_Empire'),
+(56, 'Survivals', 'Railway_Empire'),
 (65, 'Adventure', 'A_Plague_Tale_Requiem'),
 (66, 'Horror', 'A_Plague_Tale_Requiem'),
-(67, 'PvE', 'A_Plague_Tale_Requiem'),
-(68, 'Sandbox', 'A_Plague_Tale_Requiem'),
-(69, 'Strategic', 'A_Plague_Tale_Requiem'),
+(67, 'Racing', 'A_Plague_Tale_Requiem'),
+(68, 'Survivals', 'A_Plague_Tale_Requiem'),
+(69, 'Strategy', 'A_Plague_Tale_Requiem'),
 (76, 'Adventure', 'Unrail'),
-(77, 'Crafting', 'Unrail'),
+(77, 'Anime', 'Unrail'),
 (78, 'MOBA', 'Unrail'),
-(79, 'Sandbox', 'Unrail'),
-(80, 'Strategic', 'Unrail'),
+(79, 'Survivals', 'Unrail'),
+(80, 'Strategy', 'Unrail'),
 (89, 'Adventure', 'Uncharted___Legacy_of_Thieves'),
 (90, 'FPS-Shooter', 'Uncharted___Legacy_of_Thieves'),
 (91, 'PvP', 'Uncharted___Legacy_of_Thieves'),
-(92, 'Strategic', 'Uncharted___Legacy_of_Thieves'),
+(92, 'Strategy', 'Uncharted___Legacy_of_Thieves'),
 (93, 'Adventure', 'Dying_Light_2_Stay_Human'),
-(94, 'Crafting', 'Dying_Light_2_Stay_Human'),
+(94, 'Anime', 'Dying_Light_2_Stay_Human'),
 (95, 'Horror', 'Dying_Light_2_Stay_Human'),
-(96, 'PvE', 'Dying_Light_2_Stay_Human'),
+(96, 'Racing', 'Dying_Light_2_Stay_Human'),
 (97, 'PvP', 'Dying_Light_2_Stay_Human'),
-(98, 'Sandbox', 'Dying_Light_2_Stay_Human'),
+(98, 'Survivals', 'Dying_Light_2_Stay_Human'),
 (99, 'PvP', 'Rocket_League'),
-(100, 'Simulator', 'Rocket_League'),
-(101, 'Strategic', 'Rocket_League'),
+(100, 'Simulation', 'Rocket_League'),
+(101, 'Strategy', 'Rocket_League'),
 (102, 'Adventure', 'Goat_Simulator_3'),
 (103, 'Family', 'Goat_Simulator_3'),
-(104, 'PvE', 'Goat_Simulator_3'),
-(105, 'Simulator', 'Goat_Simulator_3');
+(104, 'Racing', 'Goat_Simulator_3'),
+(105, 'Simulation', 'Goat_Simulator_3'),
+(106, 'Adventure', 'Titanfall_2'),
+(107, 'FPS-Shooter', 'Titanfall_2'),
+(108, 'Racing', 'Titanfall_2'),
+(109, 'PvP', 'Titanfall_2');
 
 -- --------------------------------------------------------
 
@@ -169,7 +173,7 @@ CREATE TABLE `game` (
 --
 
 INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`, `gameplay`, `release_date`, `developer`, `developer_web`, `create_time`, `sale`, `number_sold`, `top_page`, `most_played`) VALUES
-('A_Plague_Tale_Requiem', 59.99, 'Embark on a heartrending journey into a brutal, breathtaking world, and discover the cost of saving those you love in a desperate struggle for survival. Strike from the shadows or unleash hell with a variety of weapons, tools and unearthly powers.', NULL, 'img/game/A_Plague_Tale_Requiem/icon/icon.jpg', 'img/game/A_Plague_Tale_Requiem/banner/banner.jpg', 'img/game/A_Plague_Tale_Requiem/gameplay/', '2020-10-18 00:00:00', 'Focus Entertaiment', 'https://www.focus-entmt.com', '2022-10-23 13:44:32', 0, NULL, b'1', b'1'),
+('A_Plague_Tale_Requiem', 59.99, 'Embark on a heartrending journey into a brutal, breathtaking world, and discover the cost of saving those you love in a desperate struggle for survival. Strike from the shadows or unleash hell with a variety of weapons, tools and unearthly powers.', 'Far across the sea, an island calls…\r\nEmbark on a heartrending journey into a brutal, breathtaking world twisted by supernatural forces.\r\nAfter escaping their devastated homeland, Amicia and Hugo travel far south, to new regions and vibrant cities. There, they attempt to start a new life and control Hugo’s curse.\r\nBut, when Hugo’s powers reawaken, death and destruction return in a flood of devouring rats. Forced to flee once more, the siblings place their hopes in a prophesized island that may hold the key to saving Hugo.\r\nDiscover the cost of saving those you love in a desperate struggle for survival. Strike from the shadows or unleash hell, overcoming foes and challenges with a variety of weapons, tools and unearthly powers.', 'img/game/A_Plague_Tale_Requiem/icon/icon.jpg', 'img/game/A_Plague_Tale_Requiem/banner/banner.jpg', 'img/game/A_Plague_Tale_Requiem/gameplay/', '2020-10-18 00:00:00', 'Focus Entertaiment', 'https://www.focus-entmt.com', '2022-10-23 13:44:32', 0, NULL, b'1', b'1'),
 ('Dying_Light_2_Stay_Human', 45.99, 'The virus won and civilization has fallen back to the Dark Ages. The City, one of the last human settlements, is on the brink of collapse. Use your agility and combat skills to survive, and reshape the world. Your choices matter.', 'Over twenty years ago in Harran, we fought the virus—and lost. Now, we’re losing again. The City, one of the last large human settlements, is torn by conflict. Civilization has fallen back into the Dark Ages. And yet, we still have hope.\r\nYou are a wanderer with the power to change the fate of The City. But your exceptional abilities come at a price. Haunted by memories you cannot decipher, you set out to learn the truth… and find yourself in a combat zone. Hone your skills, as to defeat your enemies and make allies, you’ll need both fists and wits. Unravel the dark secrets behind the wielders of power, choose sides and decide your destiny. But wherever your actions take you, there\'s one thing you can never forget—stay human.', 'img/game/Dying_Light_2_Stay_Human/icon/icon.jpg', 'img/game/Dying_Light_2_Stay_Human/banner/banner.jpg', 'img/game/Dying_Light_2_Stay_Human/gameplay/', '2023-02-20 00:00:00', 'Techland', 'https://store.epicgames.com/en-US/p/dying-light-2-stay-human', '2022-10-31 03:19:30', 50, NULL, b'0', b'0'),
 ('Goat_Simulator_3', 19.99, 'Pilgor’s baaack! Gather your herd and venture forth into Goat Simulator 3; an all-new, totally realistic, multiplayer sandbox farmyard experience. Pre-purchase now and get your own jiggly in-game Pre-Udder!', 'Pilgor’s baaack!\r\nOrder the Standard Edition early and you’ll get your very own in-game Pre-udder. It’s exactly what you think it is.\r\nGather your herd and venture forth into Goat Simulator 3; an all-new, totally realistic, sandbox farmyard experience that puts you back in the hooves of no one\'s favourite female protagonist.\r\nThat’s right – we’re doing this again. The baa has been raised, and Pilgor is joined by other goats too. You can invite up to three friends in local or online co-op, create carnage as a team, or compete in mini-games and then not be friends anymore.\r\nGet ready for another round of udder mayhem. Lick, headbutt, and ruin your way through a brand new open world in the biggest waste of your time since Goat Simulator! We won’t tell you how to play (except in the tutorial), but merely provide the means to be the goats of your dreams.', 'img/game/Goat_Simulator_3/icon/icon.jpg', 'img/game/Goat_Simulator_3/banner/banner.jpg', 'img/game/Goat_Simulator_3/gameplay/', '2022-11-18 00:00:00', 'Coffee Stain North AB', 'https://store.epicgames.com/en-US/p/goat-simulator-3', '2022-10-31 03:57:02', NULL, NULL, b'0', b'0'),
 ('JARS', 9.99, 'JARS is a strategy game featuring puzzles and elements of tower defense. Join Victor in his spooky yet endearing world and prepare for a quest to uncover the secrets of his family’s basement. Will you save the world or get grounded by mother?', NULL, 'img/game/JARS/icon/icon.jpg', NULL, 'img/game/JARS/gameplay/', '2021-10-20 00:00:00', 'Mousetrap Games', 'https://store.epicgames.com/en-US/p/jars-e39063', '2022-10-24 03:30:27', 10, NULL, b'0', b'0'),
@@ -178,6 +182,7 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 ('Rocket_League', 19.99, 'Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition.', 'Download and compete in the high-octane hybrid of arcade-style soccer and vehicular mayhem! customize your car, hit the field, and compete in one of the most critically acclaimed sports games of all time! Download and take your shot!\r\nHit the field by yourself or with friends in 1v1, 2v2, and 3v3 Online Modes, or enjoy Extra Modes like Rumble, Snow Day, or Hoops. Unlock items in Rocket Pass, climb the Competitive Ranks, compete in Competitive Tournaments, complete Challenges, enjoy cross-platform progression and more! The field is waiting. Take your shot!', 'img/game/Rocket_League/icon/icon.jpg', 'img/game/Rocket_League/banner/banner.jpg', 'img/game/Rocket_League/gameplay/', '2018-02-10 00:00:00', 'Psyonix LLC', 'https://store.epicgames.com/en-US/p/rocket-league', '2022-10-31 03:41:00', NULL, NULL, b'0', b'0'),
 ('Source_of_Madness', 29.99, 'Source of Madness is a side-scrolling dark action roguelite set in a twisted Lovecraftian inspired world powered by procedural generation and AI machine learning. Take on the role of a new Acolyte as they embark on a nightmarish odyssey.', NULL, 'img/game/Source_of_Madness/icon/icon.jpg', NULL, 'img/game/Source_of_Madness/gameplay/', '2020-10-11 00:00:00', 'Carry Castle', 'https://store.epicgames.com/en-US/p/source-of-madness-287857', '2022-10-24 03:35:33', 20, 23, b'0', b'1'),
 ('SuchArt___Genius_Artist_Simulator', 19.99, 'A unique artist sim game with realistic paint mixing, physics and numerous painting tools. Upgrade and customize your studio, complete tasks, sell and expose art, buy instruments and get famous!', NULL, 'img/game/SuchArt___Genius_Artist_Simulator/icon/icon.jpg', NULL, 'img/game/SuchArt___Genius_Artist_Simulator/gameplay/', '2022-10-10 00:00:00', 'Voolgi', 'https://store.epicgames.com/en-US/p/suchart-genius-artist-simulator', '2022-10-24 03:20:45', 20, 34, b'0', b'1'),
+('Titanfall_2', 49.99, 'Respawn Entertainment gives you the most advanced titan technology in its new, single player campaign & multiplayer experience. Combine & conquer with new titans & pilots, deadlier weapons, & customization and progression systems that help you and your titan flow as one unstoppable killing force.', 'Call down your Titan and get ready for an exhilarating first-person shooter experience in Titanfall® 2! The sequel introduces a new single player campaign that explores the bond between Pilot and Titan. Or blast your way through an even more innovative and intense multiplayer experience - featuring 6 new Titans, deadly new Pilot abilities, expanded customization, new maps, modes, and much more.', 'img/game/Titanfall_2/icon/icon.jpg', 'img/game/Titanfall_2/banner/banner.jpg', 'img/game/Titanfall_2/gameplay/', '2016-10-28 00:00:00', 'Respawn Entertainment', 'https://store.steampowered.com/app/1237970/Titanfall_2/', '2022-11-04 04:34:41', NULL, NULL, b'1', b'0'),
 ('Uncharted___Legacy_of_Thieves', 59.99, 'Play as Nathan Drake and Chloe Frazer in their own standalone adventures as they confront their pasts and forge their own legacies. This game includes the critically acclaimed single-player stories from both UNCHARTED 4: A Thief’s End and UNCHARTED: The Lost Legacy.', '', 'img/game/Uncharted___Legacy_of_Thieves/icon/icon.jpg', 'img/game/Uncharted___Legacy_of_Thieves/banner/banner.jpg', 'img/game/Uncharted___Legacy_of_Thieves/gameplay/', '2022-10-19 00:00:00', 'Naghty Dog', 'https://www.naughtydog.com/', '2022-10-23 15:44:36', 0, NULL, b'1', b'1'),
 ('Unrail', 19.99, 'Unrailed! is a co-op multiplayer game where you have to work together with your friends to build a train track across endless procedurally generated worlds. Master random encounters with its inhabitants, upgrade your train and keep it from derailing!', 'Gather resources and craft tracks to extend your railroad to prevent your train from reaching the end. But watch out - there is only one tool of each type. Co-operation and co-ordination of your team is essential to survive this increasingly challenging journey!\r\nEvery world is unique! You and your team will have to master ever new challenges to stay on track!', 'img/game/Unrail/icon/icon.jpg', 'img/game/Unrail/banner/banner.jpg', 'img/game/Unrail/gameplay/', '2020-09-24 00:00:00', 'Daedalic Entertainment', 'https://store.steampowered.com/franchise/daedalic?snr=1_5_9__408', '2022-10-26 07:59:58', 20, 45, b'0', b'1'),
 ('War_Thunder', 0, 'War Thunder is the most comprehensive free-to-play, cross-platform, MMO military game dedicated to aviation, armoured vehicles, and naval craft, from the early 20th century to the most advanced modern combat units. Join now and take part in major battles on land, in the air, and at sea.', NULL, 'img/game/War_Thunder/icon/icon.jpg', 'img/game/War_Thunder/banner/banner.jpg', 'img/game/War_Thunder/gameplay/', '2013-08-15 00:00:00', 'Gaijin Entertaiment', 'https://gaijin.net/', '2022-10-23 15:56:06', 0, 12, b'1', b'1');
@@ -215,6 +220,13 @@ CREATE TABLE `rating` (
   `update_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `rating`
+--
+
+INSERT INTO `rating` (`userID`, `gameId`, `message`, `star`, `created_at`, `update_at`) VALUES
+('loc', 'JARS', 'Very good game', 4.3, '2022-11-02 12:53:12', '2022-11-02 12:53:12');
+
 -- --------------------------------------------------------
 
 --
@@ -237,20 +249,23 @@ CREATE TABLE `system_requirement` (
 --
 
 INSERT INTO `system_requirement` (`sysId`, `gameId`, `version`, `os`, `storage`, `ram`, `chip`, `graphic`) VALUES
-(9, 'Uncharted___Legacy_of_Thieves', '10', 'Window', '100GB', '12GB', 'i7', '1050Ti'),
+(9, 'Uncharted___Legacy_of_Thieves', '10', 'window', '100GB', '12GB', 'i7', '1050Ti'),
 (10, 'War_Thunder', '10', 'Window', '50GB', '12GB', 'i7', '1080Ti'),
-(11, 'PC_Building_Simulator_2', '10', 'Window', '40GB', '12 GB', 'Intel Core i5-10400 or AMD Ryzen 5 3600', 'NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB'),
-(12, 'SuchArt___Genius_Artist_Simulator', '64-Bit Windows 7/8/10', 'Window', '20GB', '8GB', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'GTX 770 2GB or higher'),
-(13, 'JARS', '10', 'Window', '10GB', '4GB', 'Intel i5 +', 'Nvidia GTX 460 / Radeon HD 7800 or better'),
-(14, 'Source_of_Madness', '7+', 'Window', '1GB', '4GB', 'Intel i5+', 'Nvidia GTX 460 / Radeon HD 7800 or better'),
-(15, 'Railway_Empire', '7, 8, 10 64bit', 'Window', '7GB', '8GB', 'Intel Core i5 2400s @ 2.5 GHz or AMD FX 4100 @ 3.6', 'nVidia GeForce GTX 680 or AMD Radeon HD7970 or better (2048MB VRAM or more, with Shader Model 5.0)'),
-(16, 'PC_Building_Simulator_2', '15', 'MAC', '20GB', '8Gb', 'A15', '1050Ti'),
+(11, 'PC_Building_Simulator_2', '10', 'window', '40GB', '12 GB', 'Intel Core i5-10400 or AMD Ryzen 5 3600', 'NVIDIA GeForce GTX 1660 Super, 6 GB or AMD Radeon RX 5600 XT, 6 GB'),
+(12, 'SuchArt___Genius_Artist_Simulator', '64-Bit Windows 7/8/10', 'window', '20GB', '8GB', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'GTX 770 2GB or higher'),
+(13, 'JARS', '10', 'window', '10GB', '4GB', 'Intel i5 +', 'Nvidia GTX 460 / Radeon HD 7800 or better'),
+(14, 'Source_of_Madness', '7+', 'window', '1GB', '4GB', 'Intel i5+', 'Nvidia GTX 460 / Radeon HD 7800 or better'),
+(15, 'Railway_Empire', '7, 8, 10 64bit', 'window', '7GB', '8GB', 'Intel Core i5 2400s @ 2.5 GHz or AMD FX 4100 @ 3.6', 'nVidia GeForce GTX 680 or AMD Radeon HD7970 or better (2048MB VRAM or more, with Shader Model 5.0)'),
+(16, 'PC_Building_Simulator_2', '15', 'mac', '20GB', '8Gb', 'A15', '1050Ti'),
 (17, 'A_Plague_Tale_Requiem', '10', 'window', '200GB', '12GB', 'i5', '1050Ti'),
 (19, 'Unrail', '7', 'window', '2GB', '2GB', '2Ghz', 'R7 200'),
 (20, 'Unrail', '15', 'mac', '2GB', '2GB', 'A12', 'Apple GPU'),
 (21, 'Dying_Light_2_Stay_Human', '10', 'window', '60GB', '16GB', 'Intel Core i3-9100 / AMD Ryzen 3 2300X', 'NVIDIA® GeForce RTX™ 2060 6GB or AMD RX Vega 56 8GB or newer.'),
 (22, 'Rocket_League', '7', 'window', '20GB', '6GB', 'i5', '1060Ti'),
-(23, 'Goat_Simulator_3', '10', 'window', '50GB', '12GB', 'i5 9400F', '1070Ti 8GB');
+(23, 'Goat_Simulator_3', '10', 'window', '50GB', '12GB', 'i5 9400F', '1070Ti 8GB'),
+(24, 'Titanfall_2', 'Win 7/8/8.1/10 64bit', 'window', '45GB', '16GB', 'Intel Core i5-6600 or equivalent', 'NVIDIA Geforce GTX 1060 6GB or AMD Radeon RX 480 8GB'),
+(25, 'Titanfall_2', 'Apple OS 16', 'mac', '45GB', '16GB', 'M1', '1060Ti or higher'),
+(26, 'Titanfall_2', 'S, 360, One', 'xbox', '45GB', '16GB', 'N/A', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -268,19 +283,20 @@ CREATE TABLE `type` (
 --
 
 INSERT INTO `type` (`type`, `image`) VALUES
-('Adventure', NULL),
-('Crafting', NULL),
-('Family', NULL),
-('FPS-Shooter', NULL),
-('Garden', NULL),
-('Horror', NULL),
-('MOBA', NULL),
-('Puzzle', NULL),
-('PvE', NULL),
-('PvP', NULL),
-('Sandbox', NULL),
-('Simulator', NULL),
-('Strategic', NULL);
+('3D', 'img/type/type_3D.jpg'),
+('Adventure', 'img/type/type_Adventure.jpg'),
+('Anime', 'img/type/type_Anime.jpg'),
+('Casual', 'img/type/type_Casual.jpg'),
+('Family', 'img/type/type_Family.jpg'),
+('FPS-Shooter', 'img/type/type_FPS-Shooter.jpg'),
+('Horror', 'img/type/type_Horror.jpg'),
+('MOBA', 'img/type/type_MOBA.jpg'),
+('PvP', 'img/type/type_PvP.jpg'),
+('Racing', 'img/type/type_Racing.jpg'),
+('Simulation', 'img/type/type_Simulation.jpg'),
+('Sports', 'img/type/type_Sports.jpg'),
+('Strategy', 'img/type/type_Strategy.jpg'),
+('Survivals', 'img/type/type_Survivals.jpg');
 
 -- --------------------------------------------------------
 
@@ -383,9 +399,13 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
 -- AUTO_INCREMENT cho bảng `cart_details`
+--
 ALTER TABLE `cart_details`
-  CHANGE `cart_details_id` `cart_details_id` INT(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_details_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT cho bảng `cart_master`
 --
@@ -396,7 +416,7 @@ ALTER TABLE `cart_master`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT cho bảng `payments`
@@ -408,7 +428,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT cho bảng `system_requirement`
 --
 ALTER TABLE `system_requirement`
-  MODIFY `sysId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `sysId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
