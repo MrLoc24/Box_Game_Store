@@ -26,17 +26,17 @@ class AdminCategory extends FormRequest
 
         return [
             'type.*' => 'required|bail',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image.*' => 'required|image|mimes:jpeg, gif, png, jpg|max:2048',
         ];
     }
     public function messages()
     {
         return [
             'type.*.required' => '* Type cannot blank and must be unique',
-            'image.required' => '* Image cannot blank',
-            'image.image' => '* File must be image',
-            'image.mimes' => '* File must be jpeg, png, jpg or gif',
-            'image.max' => '* Image must be less than 2MB',
+            'image.*.required' => '* Image cannot blank',
+            'image.*.mimes' => '* File must be jpeg, gif, png or jpg',
+            'image.*.image' => '* File must be image',
+            'image.*.max' => '* Image must be less than 2MB',
         ];
     }
 }

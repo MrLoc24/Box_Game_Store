@@ -61,83 +61,101 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <!-- Type of game -->
-                                    @foreach ($type as $key => $value)
-                                        <div class="form-group row">
-                                            <div clas="col">
-                                                <img src="{{ asset("$value->image") }}" width="50px" height="50px"
-                                                    alt="{{ $value->type }}">
-                                            </div>
-                                            <div class="col">
-                                                <p>{{ str_replace('_', ' ', $value->type) }}</p>
-                                            </div>
-
-                                            <div class="col-md-auto">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#demoModal{{ $key }}">Edit</button>
-
-                                            </div>
-                                            <div class="col col-lg-2">
-                                                <a href="/admin/category/delete/{{ $value->type }}" class="btn btn-danger"
-                                                    float="left">Delete</a>
-                                            </div>
-                                        </div>
-                                        <!-- Modal Form Popup Start-->
-                                        <div class="modal fade" id="demoModal{{ $key }}" tabindex="-1"
-                                            role="dialog" aria- labelledby="demoModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <form action="/admin/category/edit/{{ $value->type }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="demoModalLabel{{ $key }}">
-                                                                Change Game Type</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-
-                                                                label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="form-group row">
-                                                                <label for="typeEdit{{ $key }}"
-                                                                    class="col-sm-2 col-form-label">Type</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control"
-                                                                        id="typeEdit{{ $key }}"
-                                                                        placeholder="Type of Game" name="typeEdit"
-                                                                        value="{{ str_replace('_', ' ', $value->type) }}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label for="typeEditImage{{ $key }}"
-                                                                    class="col-sm-2 col-form-label">Image</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="file" class="form-control"
-                                                                        id="typeEditImage{{ $key }}"
-                                                                        placeholder="Type's Image" name="typeEditImage">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary">Save
-                                                                change</button>
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <!-- Modal Popup Example End-->
-                                    @endforeach
 
 
-                                </div>
                                 <!-- /.card-body -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Type</th>
+                                                <th>Function</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($type as $key => $value)
+                                                <tr>
+                                                    <td>
+                                                        <img src="{{ asset("$value->image") }}" width="50px"
+                                                            height="50px" alt="{{ $value->type }}">
+                                                    </td>
+                                                    <td>
+                                                        <p>{{ str_replace('_', ' ', $value->type) }}</p>
+                                                    </td>
 
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#demoModal{{ $key }}">Edit</button>
+                                                        <a href="/admin/category/delete/{{ $value->type }}"
+                                                            class="btn btn-danger" float="left">Delete</a>
+                                                    </td>
+                                                </tr>
+                                                <!-- Modal Form Popup Start-->
+                                                <div class="modal fade" id="demoModal{{ $key }}" tabindex="-1"
+                                                    role="dialog" aria- labelledby="demoModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <form action="/admin/category/edit/{{ $value->type }}"
+                                                            method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="demoModalLabel{{ $key }}">
+                                                                        Change Game Type</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria- label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="form-group row">
+                                                                        <label for="typeEdit{{ $key }}"
+                                                                            class="col-sm-2 col-form-label">Type</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control"
+                                                                                id="typeEdit{{ $key }}"
+                                                                                placeholder="Type of Game" name="typeEdit"
+                                                                                value="{{ str_replace('_', ' ', $value->type) }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="typeEditImage{{ $key }}"
+                                                                            class="col-sm-2 col-form-label">Image</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="file" class="form-control"
+                                                                                id="typeEditImage{{ $key }}"
+                                                                                placeholder="Type's Image"
+                                                                                name="typeEditImage">
+                                                                            <input type="hidden" name="prev_pic"
+                                                                                value="{{ $value->image }}">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="btn btn-primary">Save
+                                                                        change</button>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal Popup Example End-->
+                                            @endforeach
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Type</th>
+                                                <th>Function</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                             <!-- /.card -->
 
@@ -175,7 +193,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        @error('image')
+                                                        @error('image.*')
                                                             <p class="text-danger"><strong>{{ $message }}</strong></p>
                                                             <br>
                                                         @enderror
@@ -256,10 +274,42 @@
     </section>
 @endsection
 @section('footer-script')
+
     <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
         $(function() {
             bsCustomFileInput.init();
+        });
+    </script>
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
     </script>
 @endsection
