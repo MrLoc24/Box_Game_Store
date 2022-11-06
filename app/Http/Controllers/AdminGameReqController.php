@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminSystemRequirement;
 use DB;
-use File;
+
 
 class AdminGameReqController extends Controller
 {
     //Update game requirements
-    public function update($id, $os, Request $request)
+    public function update($id, $os, AdminSystemRequirement $request)
     {
         $data_system_req = array();
         $data_system_req['os'] = $request->input('os');
@@ -21,13 +22,13 @@ class AdminGameReqController extends Controller
         $data_system_req['storage'] = $request->input('storage');
         DB::table('system_requirement')->where('gameId', $id)->where('os', $os)->update($data_system_req);
         if ($request->all()) {
-            return redirect('admin/game/view/' . $id);
+            return redirect('admin/game/view/' . $id)->with('success', 'Platform updated');
         } else {
-            return redirect('admin/game/editReq/' . $id . '/' . $os);
+            return redirect('admin/game/view/' . $id)->with('errors', 'Something went wrong');
         }
     }
     //Add game requirements
-    public function addNew($id, Request $request)
+    public function addNew($id, AdminSystemRequirement $request)
     {
         $data_system_req_add = array();
         $data_system_req_add['gameId'] = $id;
@@ -39,9 +40,9 @@ class AdminGameReqController extends Controller
         $data_system_req_add['storage'] = $request->input('storage');
         DB::table('system_requirement')->where('gameId', $id)->insert($data_system_req_add);
         if ($request->all()) {
-            return redirect('admin/game/view/' . $id);
+            return redirect('admin/game/view/' . $id)->with('success', 'Platform added');
         } else {
-            return redirect('admin/game/addReq/' . $id);
+            return redirect('admin/game/view/' . $id)->with('errors', 'Something went wrong');
         }
     }
     //Delete game requirements

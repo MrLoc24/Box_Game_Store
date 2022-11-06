@@ -32,12 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
     <!-- icon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets_home/images/boxlogo1.png') }}">
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- jQuery UI 1.11.4 -->
 
-    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <style>
         .fixed-ratio-resize {
             max-width: 100%;
@@ -260,52 +255,52 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                        <li class="nav-header">GAME</li>
+
                         <li class="nav-item">
-                            <a class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
-                                    Detail
+                                    GAME
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/game/index" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="nav-icon fas fa-table"></i>
                                         <p>View All</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/game/create" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="nav-icon fas fa-edit"></i>
                                         <p>Add New Game</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/category/view" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Category</p>
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>Categories</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="nav-header">CUSTOMER</li>
+
 
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Detail
+                                    CUSTOMER
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/user" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-table nav-icon"></i>
                                         <p>View All</p>
                                     </a>
                                 </li>
@@ -313,25 +308,25 @@
                         </li>
 
                         {{-- ORDER nav bar start --}}
-                        <li class="nav-header">ORDERS</li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cart-plus"></i>
                                 <p>
-                                    Detail
+                                    ORDERS
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="/admin/cart/index" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-table nav-icon"></i>
                                         <p>View Cart</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/cart/index/cartDetails" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-edit nav-icon"></i>
                                         <p>View Cart Details</p>
                                     </a>
                                 </li>
@@ -339,19 +334,18 @@
                         </li>
                         {{-- ORDER nav bar end --}}
                         @if (Session::has('boss'))
-                            <li class="nav-header">MANAGER</li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-database"></i>
                                     <p>
-                                        Detail
+                                        MANAGER
                                         <i class="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="/admin/manager" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
+                                            <i class="fas fa-table nav-icon"></i>
                                             <p>View All</p>
                                         </a>
                                     </li>
@@ -384,6 +378,12 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -409,9 +409,10 @@
     <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
-    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-    <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script> --}}
     @yield('footer-script')
+
+
 
 </body>
 

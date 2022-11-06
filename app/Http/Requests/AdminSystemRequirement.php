@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminGameRequest extends FormRequest
+class AdminSystemRequirement extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,12 +19,11 @@ class AdminGameRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            //System Requirement form
             'os' => 'required|bail|in:window,mac,linux,ps,xbox',
             'version' => 'required',
             'chipset' => 'required',
@@ -36,7 +35,6 @@ class AdminGameRequest extends FormRequest
     public function messages()
     {
         return [
-            // Message for System Requirement form
             'os.required' => 'OS is required',
             'os.in' => 'OS must be window, mac, linux, ps or xbox',
             'version.required' => 'Version is required',

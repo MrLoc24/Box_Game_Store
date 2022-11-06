@@ -165,7 +165,8 @@
                                                         <label for="os" class="col-sm-2 col-form-label">OS</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="os[0]"
-                                                                placeholder="Type of Os" name="os[0]">
+                                                                placeholder="window, mac, linux, xbox or ps"
+                                                                name="os[0]">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -280,7 +281,7 @@
                         <label for="os" class="col-sm-2 col-form-label">OS</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="os[` + i + `]"
-                                placeholder="Type of Os" name="os[` + i + `]">
+                                placeholder="window, mac, linux, xbox or ps" name="os[` + i + `]">
                         </div>
                     </div>
                     <div class="form-group row">

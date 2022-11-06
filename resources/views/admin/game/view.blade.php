@@ -11,6 +11,31 @@
 
 
         <div class="content-wrapper">
+            {{-- Message if success --}}
+            @if ($message = Session::get('success'))
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <span>{{ $message }}</span>
+                </div>
+            @endif
+            {{-- Message if error --}}
+            @if (count($errors) > 0)
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
@@ -475,8 +500,8 @@
                         <div class="form-group row">
                             <label for="os" class="col-sm-2 col-form-label">OS</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="os" placeholder="Type of Os"
-                                    name="os">
+                                <input type="text" class="form-control" id="os"
+                                    placeholder="window, mac, linux, xbox or ps" name="os">
                             </div>
                         </div>
                         <div class="form-group row">
