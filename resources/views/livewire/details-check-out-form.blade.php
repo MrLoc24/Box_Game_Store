@@ -258,15 +258,15 @@
                                             <input type="hidden" name="paymentimage" value="assets_home/images/visa.jpg" id="">
                                             <div class="payment-form-item card_number">
                                                 <label for="card_number">{{ __('Card Number *') }}</label>
-                                                <input type="text" name="card_number" id="card_number">        
+                                                <input type="text" class="@error('card_number') is-invalid @enderror" minlength="17" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" name="card_number" id="card_number">        
                                             </div>
                                             <div class="payment-form-item card_expi">
                                                 <label for="expiration">{{ __('Expiration *') }}</label>
-                                                <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                                <input type="text" class="@error('expiration') is-invalid @enderror" minlength="5" maxlength="5" placeholder="xx/xx" name="expiration" id="expiration">
                                             </div>
                                             <div class="payment-form-item card_cvv">
                                                 <label for="cvv">{{ __('CVV *') }}</label>
-                                                <input type="text" name="cvv" id="cvv">
+                                                <input type="text" minlength="3" maxlength="3" placeholder="xxx" name="cvv" id="cvv">
                                             </div>
                                             <input type="submit" class="submit" value="{{ __('save') }}">
                                         </form>                        
@@ -289,16 +289,16 @@
                                             <input type="hidden" name="paymentname" value="master" id="">
                                             <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
                                             <div class="payment-form-item card_number">
-                                                <label for="card_number">{{ __('Card Number *') }}</label>
-                                                <input type="text" name="card_number" id="card_number">        
+                                                <label for="card_number1">{{ __('Card Number *') }}</label>
+                                                <input type="text" class="@error('card_number') is-invalid @enderror" minlength="17" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" name="card_number" id="card_number1">        
                                             </div>
                                             <div class="payment-form-item card_expi">
-                                                <label for="expiration">{{ __('Expiration *') }}</label>
-                                                <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                                <label for="expiration1">{{ __('Expiration *') }}</label>
+                                                <input type="text" class="@error('expiration') is-invalid @enderror" minlength="5" maxlength="5" placeholder="xx/xx" name="expiration" id="expiration1">
                                             </div>
                                             <div class="payment-form-item card_cvv">
-                                                <label for="cvv">{{ __('CVV *') }}</label>
-                                                <input type="text" name="cvv" id="cvv">
+                                                <label for="cvv1">{{ __('CVV *') }}</label>
+                                                <input type="text" class="@error('cvv') is-invalid @enderror" minlength="3" maxlength="3" placeholder="xxx" name="cvv" id="cvv1">
                                             </div>
                                             <input type="submit" class="submit" value="{{ __('save') }}">
                                         </form>                        
@@ -307,6 +307,21 @@
                             @endif
                         @endif
                     </ul>
+                    @error('card_number')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('expiration')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('cvv')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
         </div>

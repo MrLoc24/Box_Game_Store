@@ -294,3 +294,31 @@ const showpaymentdetails5 = function () {
   paymenthidehide1.classList.remove("active");
 }
 
+const cleaveCC = new Cleave("#card_number", {
+    creditCard: true,
+    delimiter: "-"
+  });
+  
+  const cleaveDate = new Cleave("#expiration", {
+    date: true, 
+    datePattern: ["m", "y"]
+  });
+   
+  const cleaveCVV = new Cleave("#cvv", {
+    blocks: [3]
+  });
+  
+  const cleaveCC1 = new Cleave("#card_number1", {
+    creditCard: true,
+    delimiter: "-"
+  });
+  
+  const cleaveDate1 = new Cleave("#expiration1", {
+    date: true, 
+    datePattern: ["m", "y"]
+  });
+   
+  const cleaveCVV1 = new Cleave("#cvv1", {
+    blocks: [3]
+  });
+
