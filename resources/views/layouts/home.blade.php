@@ -441,26 +441,6 @@
     -->
     @livewireScripts
 
-
-
-    <script>
-        function showSuccess() {
-            swal({
-                text: "This Game has been added to your cart !",
-                icon: "success",
-                button: false,
-            });
-        }
-
-        // function showError() {
-        //     swal({
-        //         text: "This Game was in your cart !",
-        //         icon: "warning",
-        //         button: false,
-        //     });
-        // }
-    </script>
-
 </body>
 
 </html>

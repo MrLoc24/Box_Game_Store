@@ -312,8 +312,8 @@ body {
   background-color: var(--blue);
   color: var(--white);
   font-weight: var(--fw-700);
-  padding-inline: 12px;
-  border-radius: var(3px);
+  padding-inline: 8px;
+  border-radius: 3px;
 }
 
 .flex-list {
@@ -692,6 +692,7 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
+  font-size: var(--fs-8);
 }
 
 .shop-card .card-actions {
@@ -705,8 +706,33 @@ body {
   transition: var(--transition-2);
 }
 
-.shop-card .action-btn {
+.shop-card .card-actions .tooltip {
+  position: relative;
+}
+
+.shop-card .card-actions .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 70px;
   background-color: var(--bg-silver);
+  color: var(--text-white);
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 10px;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1000;
+  top: 140%;
+  right: 0;
+}
+
+.shop-card .card-actions .tooltip:hover .tooltiptext {
+  visibility: visible;
+}  
+
+.shop-card .action-btn {
+  background-color: rgb(18, 18, 18);
   font-size: 15px;
   width: 30px;
   height: 30px;
@@ -717,7 +743,7 @@ body {
 }
 
 .shop-card .action-btn-owned {
-  background-color: var(--bg-silver);
+  background-color: rgb(18, 18, 18);
   font-size: 15px;
   width: 55px;
   height: 30px;
@@ -725,11 +751,6 @@ body {
   color: var(--text-white);
   border: 2px solid var(--text-white);
   border-radius: 5px;
-}
-
-.shop-card :is(.action-btn, .action-btn-login, .action-btn-owned):is(:hover, :focus) {
-  color: var(--blue);
-  border: 2px solid var(--blue)
 }
 
 .shop-card .action-btn-login {

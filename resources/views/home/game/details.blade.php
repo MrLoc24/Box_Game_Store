@@ -361,6 +361,16 @@
         </div>
 
     </section>
+
+    <div class="checkout">
+        <div class="checkout-container" data-checkout>
+            <livewire:details-check-out-form :game="$game">
+        </div>
+
+        
+
+        <div class="overlay-checkout" data-overlay-checkout></div>
+    </div>
 @endsection
 @section('footer-script')
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>

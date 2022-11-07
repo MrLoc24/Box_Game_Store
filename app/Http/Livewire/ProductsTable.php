@@ -44,4 +44,15 @@ class ProductsTable extends Component
 
         $this->emit('cart_updated');
     }
+
+    public function removeCart($gameId) 
+    {
+        foreach(Cart::content() as $cart) {
+            if($cart->id == $gameId) {
+                $rowId = $cart->rowId;
+            }
+        }
+        Cart::remove($rowId);
+        $this->emit('cart_updated');
+    }
 }

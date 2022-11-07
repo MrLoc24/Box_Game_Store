@@ -50,4 +50,30 @@ class DetailsAddCart extends Component
 
         $this->emit('cart_updated');
     }
+
+    public function checkout($gameId)
+    {
+        $game = DB::table('game') 
+            ->where('gameId', $gameId)
+            ->first();
+
+        // insert order_cart
+        $cart_data = array();
+        $cart_data['userId'] = Auth::user()->userID;
+        $cart_data['cartTotal'] = $game->price * (1 - $game->sale / 100);
+        $cartId = DB::table('cart_master')->insertGetId($cart_data);
+        // session()->flush();
+        session()->forget('cartId');
+        session()->put('cartId', $cartId);
+        session()->save();
+        DB::table('cart_details') -> insert([
+            'cartId' => $cartId,
+            'gameId' => $game->gameId,
+            'gamePrice' => $game->price,
+            'gameIcon' => $game->icon,
+            'gameSale' => $game->sale
+        ]);  
+
+        $this->emit('details_form_updated');
+    }
 }

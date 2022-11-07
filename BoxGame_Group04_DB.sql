@@ -81,6 +81,17 @@ CREATE TABLE `cart_master` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `cart_master`
+--
+
+CREATE TABLE `store_cart` (
+  `userID` varchar(255) NOT NULL,
+  `gameId` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `category`
 --
 
@@ -349,6 +360,14 @@ ALTER TABLE `cart_master`
   ADD KEY `name_cart` (`userID`);
 
 --
+-- Chỉ mục cho bảng `store_cart`
+--
+ALTER TABLE `store_cart`
+  ADD PRIMARY KEY (`userID`,`gameId`),
+  ADD KEY `user_name` (`userID`),
+  ADD KEY `game_name` (`gameId`);
+
+--
 -- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
@@ -446,6 +465,13 @@ ALTER TABLE `cart_details`
 --
 ALTER TABLE `cart_master`
   ADD CONSTRAINT `name_cart` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `store_cart`
+--
+ALTER TABLE `store_cart`
+  ADD CONSTRAINT `user_name` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `game_name` FOREIGN KEY (`gameId`) REFERENCES `game` (`gameId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `category`
