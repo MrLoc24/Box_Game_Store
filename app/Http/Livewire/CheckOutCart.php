@@ -32,7 +32,7 @@ class CheckOutCart extends Component
                 'gameId' => $v_content->id,
                 'gamePrice' => $v_content->price,
                 'gameIcon' => $v_content->options->image,
-                'gameSale' => $v_content->weight
+                'gameSale' => (int)$v_content->options->sale
             ]);  
         } 
 

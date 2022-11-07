@@ -331,7 +331,7 @@
 
             @php 
                 $totalPrice += $v_content->price;
-                $discount += $v_content->price * $v_content->weight / 100;
+                $discount += $v_content->price * (int)$v_content->options->sale / 100;
                 $imageLink = $v_content->options->image;
             @endphp
 
@@ -341,16 +341,16 @@
                 </div>
                 <div class="oi-details">
                     <span class="item-name">{{ str_replace('_', ' ', str_replace('__', ': ', $v_content->id)) }}</span>
-                    @if ($v_content->weight != 0)
-                    <span class="badge">-{{ $v_content->weight }}%</span>
+                    @if ((int)$v_content->options->sale != 0)
+                    <span class="badge">-{{ $v_content->options->sale }}%</span>
                     @else
                     @endif
                     <div class="item-price">
-                        @if ($v_content->weight != 0)
+                        @if ((int)$v_content->options->sale != 0)
                         <del class="del">${{ $v_content->price }}</del>
                         @else
                         @endif
-                        <span class="price">${{ number_format($v_content->price * (1 - $v_content->weight / 100), 2, '.', '') }}</span>
+                        <span class="price">${{ number_format($v_content->price * (1 - (int)$v_content->options->sale / 100), 2, '.', '') }}</span>
                     </div>
                 </div>
             </div>

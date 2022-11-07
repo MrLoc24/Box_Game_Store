@@ -36,8 +36,9 @@ class ProductsTable extends Component
         $data['qty'] = 1;
         $data['name'] = $game->gameId;
         $data['price'] = $game->price;
-        $data['weight'] = $game->sale;
+        $data['weight'] = 1;
         $data['options']['image'] = $game->icon;
+        $data['options']['sale'] = "$game->sale";
 
         Cart::add($data);
 
