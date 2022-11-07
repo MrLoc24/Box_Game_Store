@@ -66,7 +66,7 @@
                                         </form>                        
                                     </div>
                                 </li>
-                            @else
+                            @elseif ($payment->card_name == 'visa')
                                 <li class="payment-hide-item1">
                                     <div class="title_payment1" onclick="{{ $function }}">
                                         <input type="radio" name="payment1">
@@ -80,15 +80,46 @@
                                             @csrf
                                             <div class="payment-form-item1 card_number1">
                                                 <label for="card_number">{{ __('Card Number *') }}</label>
-                                                <input type="text" name="card_number" id="card_number" value="{{ $payment->card_number }}">        
+                                                <input type="text" class="@error('card_number') is-invalid @enderror" minlength="17" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" name="card_number" id="card_number" value="{{ $payment->card_number }}">        
                                             </div>
                                             <div class="payment-form-item1 card_expi1">
                                                 <label for="expiration">{{ __('Expiration *') }}</label>
-                                                <input type="date" name="expiration" id="expiration" value="{{ $payment->payment_date }}">
+                                                <input type="text" class="@error('expiration') is-invalid @enderror" maxlength="5" placeholder="xx/xx" name="expiration" id="expiration" value="{{ $payment->payment_date }}">
                                             </div>
                                             <div class="payment-form-item1 card_cvv1">
                                                 <label for="cvv">{{ __('CVV *') }}</label>
-                                                <input type="text" name="cvv" id="cvv" value="{{ $payment->cvv }}">
+                                                <input type="text" class="@error('cvv') is-invalid @enderror" minlength="3" maxlength="3" placeholder="xxx" name="cvv" id="cvv" value="{{ $payment->cvv }}">
+                                            </div>
+                                            <div class="payment_btn">
+                                                <a href="{{ url("paymentdelete/{$payment->cardId}") }}">delete</a>
+                                                <input type="submit" class="submit1" value="{{ __('update') }}">
+                                            </div>                                  
+                                        </form>                        
+                                    </div>
+                                </li>
+                            @else
+                                <li class="payment-hide-item1">
+                                    <div class="title_payment1" onclick="{{ $function }}">
+                                        <input type="radio" name="payment1">
+                                        <img src="{{ asset($payment->image) }}" alt="">
+                                        <label for="">{{ $payment->card_name }}</label>
+                                    </div>
+                                            
+                                    <div class="content_payment1" {{ $data }}>
+                                        <div class="card_details1">card details</div>
+                                        <form class="detailspayment1" action="{{ url("payment/{$payment->cardId}") }}" method="post">
+                                            @csrf
+                                            <div class="payment-form-item1 card_number1">
+                                                <label for="card_number1">{{ __('Card Number *') }}</label>
+                                                <input type="text" class="@error('card_number') is-invalid @enderror" minlength="17" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" name="card_number" id="card_number1" value="{{ $payment->card_number }}">        
+                                            </div>
+                                            <div class="payment-form-item1 card_expi1">
+                                                <label for="expiration1">{{ __('Expiration *') }}</label>
+                                                <input type="text" class="@error('expiration') is-invalid @enderror" maxlength="5" placeholder="xx/xx" name="expiration" id="expiration1" value="{{ $payment->payment_date }}">
+                                            </div>
+                                            <div class="payment-form-item1 card_cvv1">
+                                                <label for="cvv1">{{ __('CVV *') }}</label>
+                                                <input type="text" class="@error('cvv') is-invalid @enderror" minlength="3" maxlength="3" placeholder="xxx" name="cvv" id="cvv1" value="{{ $payment->cvv }}">
                                             </div>
                                             <div class="payment_btn">
                                                 <a href="{{ url("paymentdelete/{$payment->cardId}") }}">delete</a>
@@ -132,6 +163,26 @@
                             {{ session()->get('status') }}
                         </div>
                     @endif
+                    @if (session()->has('status2'))
+                        <div class="invalid-feedback">
+                            {{ session()->get('status2') }}
+                        </div>
+                    @endif
+                    @error('card_number')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('expiration')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('cvv')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </ul>
             </div>
         </div>
@@ -238,15 +289,15 @@
                                     <input type="hidden" name="paymentimage" value="assets_home/images/visa.jpg" id="">
                                     <div class="payment-form-item card_number">
                                         <label for="card_number">{{ __('Card Number *') }}</label>
-                                        <input type="text" name="card_number" id="card_number">        
+                                        <input type="text" class="@error('card_number') is-invalid @enderror" minlength="17" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" name="card_number" id="card_number">        
                                     </div>
                                     <div class="payment-form-item card_expi">
                                         <label for="expiration">{{ __('Expiration *') }}</label>
-                                        <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                        <input type="text" class="@error('expiration') is-invalid @enderror" minlength="5" maxlength="5" placeholder="xx/xx" name="expiration" id="expiration">
                                     </div>
                                     <div class="payment-form-item card_cvv">
                                         <label for="cvv">{{ __('CVV *') }}</label>
-                                        <input type="text" name="cvv" id="cvv">
+                                        <input type="text" class="@error('cvv') is-invalid @enderror" minlength="3" maxlength="3" placeholder="xxx" name="cvv" id="cvv">
                                     </div>
                                     <input type="submit" class="submit" value="{{ __('save') }}">
                                 </form>                        
@@ -269,16 +320,16 @@
                                     <input type="hidden" name="paymentname" value="master" id="">
                                     <input type="hidden" name="paymentimage" value="assets_home/images/master.png" id="">
                                     <div class="payment-form-item card_number">
-                                        <label for="card_number">{{ __('Card Number *') }}</label>
-                                        <input type="text" name="card_number" id="card_number">        
+                                        <label for="card_number1">{{ __('Card Number *') }}</label>
+                                        <input type="text" class="@error('card_number') is-invalid @enderror" minlength="17" maxlength="19" placeholder="xxxx-xxxx-xxxx-xxxx" name="card_number" id="card_number1">        
                                     </div>
                                     <div class="payment-form-item card_expi">
-                                        <label for="expiration">{{ __('Expiration *') }}</label>
-                                        <input type="date" placeholder="mm/yy" name="expiration" id="expiration">
+                                        <label for="expiration1">{{ __('Expiration *') }}</label>
+                                        <input type="text" class="@error('expiration') is-invalid @enderror" minlength="5" maxlength="5" placeholder="xx/xx" name="expiration" id="expiration1">
                                     </div>
                                     <div class="payment-form-item card_cvv">
-                                        <label for="cvv">{{ __('CVV *') }}</label>
-                                        <input type="text" name="cvv" id="cvv">
+                                        <label for="cvv1">{{ __('CVV *') }}</label>
+                                        <input type="text" class="@error('cvv') is-invalid @enderror" minlength="3" maxlength="3" placeholder="xxx" name="cvv" id="cvv1">
                                     </div>
                                     <input type="submit" class="submit" value="{{ __('save') }}">
                                 </form>                        
@@ -287,12 +338,33 @@
                         @endif
                     @endif
                 </ul>
+                @if (session()->has('status1'))
+                    <div class="invalid-feedback">
+                        {{ session()->get('status1') }}
+                    </div>
+                @endif
+                @error('card_number')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+                @error('expiration')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+                @error('cvv')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
     </div>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script src="{{ asset('assets_home/js/scriptpayment.js') }}" defer></script>
 
 @endsection

@@ -17,7 +17,7 @@ class CheckUpdateProfile
     public function handle(Request $request, Closure $next)
     {
         $request->validate([
-            'name' => 'string',
+            'name' => 'string|max:255',
             'photo' => 'image',
         ]);  
         return $next($request);

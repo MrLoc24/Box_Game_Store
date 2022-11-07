@@ -38,6 +38,18 @@
                 {{ session()->get('status') }}
             </div>
             @endif
+
+            @error('display_name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>               
+            @enderror
+
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
     <form action="{{ route('handleaccountsettings') }}" method="post" enctype="multipart/form-data" id="evaluationForm">
@@ -50,16 +62,25 @@
                     <label for="name">{{ __('full name') }}</label>
                     <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror" value="{{ Auth::user()->username }}">
                 </div>
+
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>      
+
+                @enderror
                 <div class="ava">
                     <label for="ava">{{ __('avatar') }}</label>
                     <img id="previewImage" src="{{ asset(Auth::user()->image) }}" alt="">
                     <input type="file" onchange="previewFile(this);" id="ava" name="ava" class="image_preview"></input>
                 </div>
+
                 @if (session()->has('status1'))
                 <div class="valid-feedback">
                     {{ session()->get('status1') }}
                 </div>
                 @endif
+                
                 <div class="discardorsave">
                     <button type="button" id="evaluationFormEditCancel">discard changes</button>
                     <input class="save" type="submit" value="save changes" name="" id="evaluationFormEdit">

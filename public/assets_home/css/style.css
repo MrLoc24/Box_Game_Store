@@ -1564,9 +1564,6 @@ body {
   margin-top: 3rem; 
   margin-left: 15px; 
   text-decoration: underline;
-}
-
-.checkout .checkout-container .checkout-method .redirect:hover{
   color: var(--blue);
 }
 

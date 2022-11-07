@@ -209,7 +209,7 @@ CREATE TABLE `payments` (
   `userID` varchar(255) NOT NULL,
   `card_number` int(12) NOT NULL,
   `cvv` int(3) NOT NULL,
-  `payment_date` datetime NOT NULL,
+  `payment_date` char(5) NOT NULL,
   `card_name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),

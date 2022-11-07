@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('cardId')->autoIncrement('cardId')->primary('cardId');
             $table->string('userID');
             $table->foreign('userID')->references('userID')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('card_number');
+            $table->string('card_number');
             $table->integer('cvv');
-            $table->dateTime('payment_date');
+            $table->char('payment_date', 5);
             $table->string('card_name');
             $table->string('image');
             $table->timestamp('updated_at')->nullable();

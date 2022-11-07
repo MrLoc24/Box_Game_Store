@@ -240,6 +240,7 @@
         <div class="overlay-checkout" data-overlay-checkout></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
     <script src="{{ asset('assets_home/js/cart.js') }}" defer></script>
 
 
