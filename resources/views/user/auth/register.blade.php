@@ -42,7 +42,7 @@
                 </div>
                 <div class="rules">
                     <i class="fa-regular fa-circle-question">
-                        <span class="tooltiptext">Your display name must be between 3 and 15 characters, and no space(s)</span>
+                        <span class="tooltiptext">Your display name must be between 3 and 15 characters, no special characters and no space(s)</span>
                     </i>               
                 </div>
             </div>

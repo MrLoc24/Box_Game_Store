@@ -4042,7 +4042,7 @@ body {
   width: 100%;
   padding: 2rem;
   transition:all .1s linear;
-  transition:width none;
+  transition: none;
 }
 
 :is(.changename-form-container, .changeemail-form-container, .delete-form-container).active{
@@ -4084,14 +4084,61 @@ body {
   padding: .5rem 1.4rem;
   border: .1rem solid var(--bg-silver);
   margin: 2rem;
+  justify-content: left;
+}
+
+:is(.changename-form-container, .changeemail-form-container) form .box1{
+  display: flex;
+  justify-content: space-between;
+}
+
+:is(.changename-form-container, .changeemail-form-container) form .box .input{
+  width: 90%;
+  margin-left: .8rem;
+}
+
+:is(.changename-form-container, .changeemail-form-container) form .box .rules{
+  color: var(--white);
+  width: 5%;
+}
+
+:is(.changename-form-container, .changeemail-form-container) form .box .rules i{
+  margin-top: 12px;
+  font-size: 2rem;;
+  position: relative;
+  display: inline-block;
+  color: var(--black);
+}
+
+:is(.changename-form-container, .changeemail-form-container) form .box .rules i .tooltiptext{
+  visibility: hidden;
+  width: 30rem;
+  background-color: rgb(67, 67, 67);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 1.5rem;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+  left: -300%;
+  margin-left: -70px;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+:is(.changename-form-container, .changeemail-form-container) form .box .rules i:hover .tooltiptext{
+  visibility: visible;
 }
 
 :is(.changename-form-container, .changeemail-form-container) form .box input{
   font-size: 1.4rem;
-  height: 2.5rem;
-  width: 100%;
-  padding: .1rem 1.2rem;
-  color: var(--text-silver2);
+  height: 3rem;
+  width: 90%;
+  /* padding-inline: .4rem; */
+  color: var(--black);
   outline: none;
 }
 
@@ -4099,12 +4146,12 @@ body {
   font-size: 1.4rem;
   display: flex;
   width: 100%;
-  padding-inline: 1.4rem;
   color: var(--text-silver2);
 }
 
 :is(.changename-form-container, .changeemail-form-container) form .box:focus-within {
   border: .2rem solid var(--black);
+  padding: .4rem 1.2rem .4rem .4rem;
 }
 
 :is(.changename-form-container, .changeemail-form-container) form .checkbox{
