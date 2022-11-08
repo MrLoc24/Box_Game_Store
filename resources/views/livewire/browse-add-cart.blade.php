@@ -3,7 +3,8 @@
         <div class="shop-card">
 
             <div class="card-banner">
-                <a href="/game/{{ $value->gameId }}"><img src="{{ $value->icon }}" class="img-cover" style="height: 282px"></a>
+                <a href="/game/{{ $value->gameId }}"><img src="{{ $value->icon }}" class="img-cover"
+                        style="height: 282px"></a>
                 @if ($value->sale != 0)
                     <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
                 @endif
@@ -20,24 +21,25 @@
                                 <span class="tooltiptext">Owned</span>
                             @else
                                 @if (Cart::content()->where('id', $value->gameId)->count())
-                                    <button class="action-btn" type="button" wire:click.prevent="removeCart('{{ $value->gameId }}')">
+                                    <button class="action-btn" type="button"
+                                        wire:click.prevent="removeCart('{{ $value->gameId }}')">
                                         -
                                     </button>
                                     <span class="tooltiptext">Remove</span>
-                                @else    
+                                @else
                                     <button class="action-btn" type="button"
-                                    wire:click.prevent="addToCart('{{ $value->gameId }}')">
-                                    +
+                                        wire:click.prevent="addToCart('{{ $value->gameId }}')">
+                                        +
                                     </button>
                                     <span class="tooltiptext">Add to Cart</span>
                                 @endif
-                            @endif    
+                            @endif
                         @else
                             <a href="{{ route('login') }}" class="action-btn-login" type="button">
                                 +
                             </a>
                             <span class="tooltiptext">Add to Cart</span>
-                        @endif 
+                        @endif
                     </div>
 
                 </div>

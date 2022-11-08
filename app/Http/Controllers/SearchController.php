@@ -24,11 +24,11 @@ class SearchController extends Controller
                     $output .=
                         '<div class="shop-card">
                                     <a href="/game/' . $value->gameId . '" class="card-banner">
-                                        <img src="' . $value->icon . '" width="540" height="720" loading="lazy"
+                                        <img src="' . $value->icon . '" style="height:282px" loading="lazy"
                                             alt="' . $value->gameId . '" class="img-cover">
                                          ';
                     if ($value->sale) {
-                        $output .= '"<span class="badge" aria-label="20% off">-' . $value->sale . '%</span>"';
+                        $output .= '<span class="badge" aria-label="20% off">-' . $value->sale . '%</span>';
                     }
                     $output .= '<div class="card-actions">
                                         <button class="action-btn">
@@ -45,11 +45,7 @@ class SearchController extends Controller
                                     <span class="card-type">BASE GAME</span>
 
                                     <h3>
-                                        <a href="/game/' . $value->gameId . '" class="card-title">' . str_replace('_', ' ', str_replace(
-                        '__',
-                        ': ',
-                        $value->gameId
-                    )) . '</a>
+                                        <a href="/game/' . $value->gameId . '" class="card-title">' . str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) . '</a>
                                     </h3>
 
                                     <div class="price">';

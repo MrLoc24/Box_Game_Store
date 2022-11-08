@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -18,7 +18,7 @@
 
                 <div class="swiper-wrapper">
                     @foreach ($type as $key => $value)
-                        <a href="" class="swiper-slide">
+                        <a href="/browse/{{ $value->type }}" class="swiper-slide">
                             <div class="shop-card">
 
                                 <div class="card-banner">
@@ -44,8 +44,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 
         <section class="section game-list">
 
@@ -99,7 +99,7 @@
                             <div class="custom-hide" data-filter-hide>
                                 <ul>
                                     <li class="filter-hide-item">
-                                        <a href="">All</a>
+                                        <a href="/browse">All</a>
                                     </li>
                                     <li class="filter-hide-item">
                                         <a href="">New Release</a>
@@ -171,8 +171,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 
         <div class="filterbar">
 
@@ -208,7 +208,7 @@
                     <div class="custom-hide" data-filter-hide3>
                         <ul>
                             <li class="filter-hide-item">
-                                <a href="">All</a>
+                                <a href="/browse">All</a>
                             </li>
                             <li class="filter-hide-item">
                                 <a href="">New Release</a>
@@ -301,7 +301,7 @@
                         },
                         success: function(data) {
                             $('.list-game').html(data);
-                            console.log(data);
+                            // console.log(data);
                         },
                         error: function(data) {
                             var errors = data.responseJSON;
