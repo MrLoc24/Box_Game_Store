@@ -3356,6 +3356,28 @@ body {
 
 .profile .informations .information .settings .content-settings{
   margin-bottom: 1rem;
+  color: var(--text-silver2);
+}
+
+.profile .informations .information .purchase-history {
+  border-block-start: 1px solid #ebebeb;
+  margin-block-start: 40px;
+  padding-block: 40px;
+}
+
+.profile .informations .information .purchase-history .ph-title th {
+  padding-block-end: 20px;
+  font-size: var(--fs-7);
+  font-weight: 800;
+}
+
+.profile .informations .information .purchase-history .ph-list td {
+  padding-block-end: 10px;
+  font-size: var(--fs-8);
+}
+
+.profile .informations .information .purchase-history .ph-list td a {
+  color: var(--blue);
 }
 
 .profile .informations .information .payment .content-payment{

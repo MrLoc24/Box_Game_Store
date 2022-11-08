@@ -73,7 +73,7 @@ CREATE TABLE `cart_details` (
 CREATE TABLE `cart_master` (
   `cartId` int(11) NOT NULL,
   `userID` varchar(255) NOT NULL,
-  `created_at` timestamp GENERATED ALWAYS AS (current_timestamp()) VIRTUAL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` bit(1) NOT NULL DEFAULT b'0',
   `cartTotal` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class DetailsCheckOutForm extends Component
 {
@@ -32,5 +33,18 @@ class DetailsCheckOutForm extends Component
     public function removeCartM($cartId)
     {
         DB::table('cart_master')->where('cartId', $cartId)->delete();
+    }
+
+    public function update($cartId) 
+    {
+        DB::table('cart_master')->where('cartId', $cartId)->update(['status' => 1]);
+        $gameId = DB::table('cart_details')->where('cartId', $cartId)->first()->gameId;
+        foreach(Cart::content() as $cart) {
+            if($cart->id == $gameId) {
+                $rowId = $cart->rowId;
+                Cart::remove($rowId);
+            }
+        }
+        return redirect()->route('details', ['id' => $gameId]);
     }
 }
