@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -44,8 +44,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 
         <section class="section game-list">
 
@@ -171,8 +171,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
 
         <div class="filterbar">
 
@@ -240,30 +240,11 @@
 
                     <div class="genre-hide" data-filter-hide4>
                         <ul>
-                            <li class="filter-hide-item">
-                                <a href="">Role-Playing</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Story-Rich</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Horror</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Visual Novel</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">City & Settlement</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Survival</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Virtual Reality Titles</a>
-                            </li>
-                            <li class="filter-hide-item">
-                                <a href="">Scifi & Cyberpunk</a>
-                            </li>
+                            @foreach ($type as $genre)
+                                <li class="filter-hide-item">
+                                    <a href="">{{ str_replace('_', ' ', $genre->type) }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

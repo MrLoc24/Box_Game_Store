@@ -44,7 +44,11 @@ class AdminGameController extends Controller
         $data_game['description'] = $request->input('gameDescription');
         $data_game['about'] = $request->input('gameAbout');
         $data_game['price'] = $request->input('gamePrice');
-        $data_game['sale'] = $request->input('sale');
+        if ($request->input('sale') == null) {
+            $data_game['sale'] = 0;
+        } else {
+            $data_game['sale'] = $request->input('sale');
+        }
         $data_game['release_date'] = $request->input('gameDate');
         $data_game['developer'] = $request->input('gameDeveloper');
         $data_game['developer_web'] = $request->input('developerWebsite');
