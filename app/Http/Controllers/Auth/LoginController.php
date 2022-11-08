@@ -65,19 +65,6 @@ class LoginController extends Controller
             'status' => 0,
         ])->save(); 
         
-        $userID = Auth::user()->userID;
-
-        $carts = Cart::content();
-
-        DB::table('store_cart')->where('userID', $userID)->delete();
-
-        foreach($carts as $cart) {
-            DB::table('store_cart')->insert([
-                'userID' => $userID,
-                'gameId' => $cart->id
-            ]);
-        }
-        
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

@@ -33,6 +33,8 @@ class CheckoutController extends Controller
     {
         DB::table('cart_master')->where('cartId', $cartId)->update(['status' => 1]);
         Cart::destroy();
+        $userID = Auth::user()->userID;
+        DB::table('store_cart')->where('userID', $userID)->delete();
         return redirect('cart');
     }
 }

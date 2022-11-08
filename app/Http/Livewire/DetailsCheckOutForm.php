@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class DetailsCheckOutForm extends Component
 {
@@ -43,6 +44,8 @@ class DetailsCheckOutForm extends Component
             if($cart->id == $gameId) {
                 $rowId = $cart->rowId;
                 Cart::remove($rowId);
+                $userID = Auth::user()->userID;
+                DB::table('store_cart')->where('userID', $userID)->where('gameId', $gameId)->delete();
             }
         }
         return redirect()->route('details', ['id' => $gameId]);

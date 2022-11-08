@@ -41,6 +41,9 @@ class CheckOutCart extends Component
 
     public function removeCart($rowId) 
     {
+        $gameId = Cart::get($rowId)->id;
+        $userID = Auth::user()->userID;
+        DB::table('store_cart')->where('userID', $userID)->where('gameId', $gameId)->delete();
         Cart::remove($rowId);
         $this->emit('cart_updated');
     }

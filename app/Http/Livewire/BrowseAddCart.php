@@ -42,6 +42,13 @@ class BrowseAddCart extends Component
 
         Cart::add($data);
 
+        $userID = Auth::user()->userID;
+
+        DB::table('store_cart')->insert([
+            'userID' => $userID,
+            'gameId' => $gameId
+        ]);
+
         $this->emit('cart_updated');
     }
 
@@ -51,6 +58,8 @@ class BrowseAddCart extends Component
             if($cart->id == $gameId) {
                 $rowId = $cart->rowId;
                 Cart::remove($rowId);
+                $userID = Auth::user()->userID;
+                DB::table('store_cart')->where('userID', $userID)->where('gameId', $gameId)->delete();
             }
         }
         $this->emit('cart_updated');

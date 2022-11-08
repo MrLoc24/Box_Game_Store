@@ -42,6 +42,13 @@ class ProductsTable extends Component
 
         Cart::add($data);
 
+        $userID = Auth::user()->userID;
+
+        DB::table('store_cart')->insert([
+            'userID' => $userID,
+            'gameId' => $gameId
+        ]);
+
         $this->emit('cart_updated');
     }
 
@@ -53,6 +60,11 @@ class ProductsTable extends Component
             }
         }
         Cart::remove($rowId);
+
+        $userID = Auth::user()->userID;
+
+        DB::table('store_cart')->where('userID', $userID)->where('gameId', $gameId)->delete();
+
         $this->emit('cart_updated');
     }
 }

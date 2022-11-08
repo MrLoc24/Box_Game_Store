@@ -48,6 +48,13 @@ class DetailsAddCart extends Component
 
         Cart::add($data);
 
+        $userID = Auth::user()->userID;
+
+        DB::table('store_cart')->insert([
+            'userID' => $userID,
+            'gameId' => $gameId
+        ]);
+
         $this->emit('cart_updated');
     }
 
