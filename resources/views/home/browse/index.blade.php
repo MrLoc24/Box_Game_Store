@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -44,8 +44,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <section class="section game-list">
 
@@ -65,62 +65,7 @@
                             </button>
 
                         </div>
-
-                        <div class="list-game">
-                            @foreach ($game as $key => $value)
-                                <div class="shop-card">
-
-                                    <a href="/game/{{ $value->gameId }}" class="card-banner">
-                                        <img src="{{ $value->icon }}" width="540" height="720" loading="lazy"
-                                            alt="{{ $value->gameId }}" class="img-cover">
-                                        @if ($value->sale != 0)
-                                            <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
-                                        @endif
-
-
-                                        <div class="card-actions">
-
-                                            <button class="action-btn">
-                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                            </button>
-
-                                            <button class="action-btn">
-                                                <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                                            </button>
-
-
-                                        </div>
-                                    </a>
-
-                                    <div class="card-content">
-
-                                        <span class="card-type">BASE GAME</span>
-
-                                        <h3>
-                                            <a href="/game/{{ $value->gameId }}"
-                                                class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
-                                        </h3>
-
-                                        <div class="price">
-                                            @if ($value->price)
-                                                @if ($value->sale)
-                                                    <del class="del">${{ $value->price }}</del>
-
-                                                    <span
-                                                        class="span">${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}</span>
-                                                @else
-                                                    <span class="span">${{ $value->price }}</span>
-                                                @endif
-                                            @else
-                                                <span class="span">FREE</span>
-                                            @endif
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            @endforeach
-                        </div>
+                        @livewire('browse-add-cart')
 
                     </div>
 
@@ -226,8 +171,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <div class="filterbar">
 
