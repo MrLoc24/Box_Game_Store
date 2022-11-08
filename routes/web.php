@@ -153,6 +153,14 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::get('/vnpay-success', [VnPayController::class, 'successTransaction'])->name('vnpaySuccess');
     Route::post('/momo-payment', [MomoController::class, 'processTransaction'])->name('momoPayment');
     Route::get('/momo-success/{id}', [MomoController::class, 'successTransaction'])->name('momoSuccess');
+
+    Route::get('/process-transaction1', [PayPalController::class, 'processTransaction1'])->name('processTransaction1');
+    Route::get('/success-transaction1/{id}', [PayPalController::class, 'successTransaction1'])->name('successTransaction1');
+    Route::get('/cancel-transaction1', [PayPalController::class, 'cancelTransaction1'])->name('cancelTransaction1');
+    Route::post('/vnpay-payment1', [VnPayController::class, 'processTransaction1'])->name('vnpayPayment1');
+    Route::get('/vnpay-success1', [VnPayController::class, 'successTransaction1'])->name('vnpaySuccess1');
+    Route::post('/momo-payment1', [MomoController::class, 'processTransaction1'])->name('momoPayment1');
+    Route::get('/momo-success1/{id}', [MomoController::class, 'successTransaction1'])->name('momoSuccess1');
     //end update and delete payment
 
     //start password and security

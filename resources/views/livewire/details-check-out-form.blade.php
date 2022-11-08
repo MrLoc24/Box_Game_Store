@@ -38,7 +38,7 @@
                                             
                                     <div class="content_cart_payment" {{ $data }}>
                                         <span>You will be directed to PayPal to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
-                                        <a href="{{ route('processTransaction') }}" class="btn_payment">pay</a>                                                   
+                                        <a href="{{ route('processTransaction1') }}" class="btn_payment">pay</a>                                                   
                                     </div>
                                 </li>
                             @elseif ($payment->card_name == 'vnpay')
@@ -51,7 +51,7 @@
                                             
                                     <div class="content_cart_payment" {{ $data }}>
                                         <span>You will be directed to VNPay to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
-                                        <form action="{{ route('vnpayPayment') }}" method="post">
+                                        <form action="{{ route('vnpayPayment1') }}" method="post">
                                             @csrf
                                             <button type="submit" name="redirect" class="btn_payment">pay</button>
                                         </form>                                                   
@@ -67,7 +67,7 @@
                                             
                                     <div class="content_cart_payment" {{ $data }}>
                                         <span>You will be directed to Momo to authorize your payment method, then you will be returned to Box Game to complete this purchase.</span>
-                                        <form action="{{ route('momoPayment') }}" method="post">
+                                        <form action="{{ route('momoPayment1') }}" method="post">
                                             @csrf
                                             <button type="submit" name="payUrl" class="btn_payment">pay</button>
                                         </form>                                                   
@@ -183,7 +183,7 @@
                                                 <input type="submit" class="submit" value="{{ __('save') }}">
                                             </form> 
                                             <div class="detailspayment2">
-                                                <a href="{{ route('processTransaction') }}">pay</a>
+                                                <a href="{{ route('processTransaction1') }}">pay</a>
                                             </div>      
                                         </div>                 
                                     </div>
@@ -207,7 +207,7 @@
                                                 <input type="hidden" name="paymentimage" value="assets_home/images/vnpay.png" id="">
                                                 <input type="submit" class="submit" value="{{ __('save') }}">
                                             </form>
-                                            <form class="detailspayment2" action="{{ route('vnpayPayment') }}" method="post">
+                                            <form class="detailspayment2" action="{{ route('vnpayPayment1') }}" method="post">
                                                 @csrf
                                                 <button type="submit" name="redirect">pay</button>
                                             </form>
@@ -233,7 +233,7 @@
                                                 <input type="hidden" name="paymentimage" value="assets_home/images/momo.png" id="">                                            
                                                 <input type="submit" name="submit" class="submit" value="{{ __('save') }}">
                                             </form> 
-                                            <form class="detailspayment2" action="{{ route('momoPayment') }}" method="post">
+                                            <form class="detailspayment2" action="{{ route('momoPayment1') }}" method="post">
                                                 @csrf
                                                 <button type="submit" name="payUrl">pay</button>
                                             </form>
