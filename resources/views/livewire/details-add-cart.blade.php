@@ -1,7 +1,7 @@
 <div class="deal">    
     @if (Auth::check())
         @if (in_array($gameId, $gameIds))
-            <button type="button" class="addtocart">owned</button>
+            <button type="button" class="addtocart">purchased</button>
         @else
             @if (Cart::content()->where('id', $gameId)->count())
                 <button type="button" class="buy" wire:click.prevent="checkout('{{ $gameId }}')" onclick="showCheckOut()">buy now</button>

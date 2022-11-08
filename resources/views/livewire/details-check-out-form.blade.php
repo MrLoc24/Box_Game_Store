@@ -382,9 +382,7 @@
         </div>
 
         <div class="place-order">
-            <a href="{{ URL::to('updateCart/' . $cartId ) }}">
-                <button class="btn-po">PLACE ORDER</button>
-            </a>
+            <button class="btn-po" wire:click.prevent="update({{ $cartId }})">PLACE ORDER</button>
             @php
                 \Session::put('cart_Id', $cartId)
             @endphp

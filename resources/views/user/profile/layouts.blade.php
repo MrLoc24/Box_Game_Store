@@ -28,7 +28,7 @@
           </div>
           <div class="transaction">
             <ion-icon name="timer"></ion-icon>
-            <a href="#">transactions</a>
+            <a href="{{ route('transactions') }}">transactions</a>
           </div>
           <div class="password">
             <ion-icon name="key"></ion-icon>

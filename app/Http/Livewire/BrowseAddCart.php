@@ -50,9 +50,9 @@ class BrowseAddCart extends Component
         foreach(Cart::content() as $cart) {
             if($cart->id == $gameId) {
                 $rowId = $cart->rowId;
+                Cart::remove($rowId);
             }
         }
-        Cart::remove($rowId);
         $this->emit('cart_updated');
     }
 }

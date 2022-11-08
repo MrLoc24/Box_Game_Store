@@ -17,6 +17,8 @@ use App\Http\Controllers\Payment\PayPalController;
 use App\Http\Controllers\Payment\VnPayController;
 use App\Http\Controllers\Payment\MomoController;
 use App\Http\Controllers\Profile\UpdateUserPasswordController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,7 @@ use App\Http\Controllers\Profile\UpdateUserPasswordController;
 //MAIN PAGE
 Route::get('/', 'UserHomeController@index')->name('homeuser');
 Route::get('/home', 'UserHomeController@index');
-Route::get('/game/{id}', 'UserHomeController@detail');
+Route::get('/game/{id}', 'UserHomeController@detail')->name('details');
 Route::get('/browse', 'UserHomeController@browse');
 Route::get('/search', 'SearchController@search')->name('search');
 
@@ -120,7 +122,7 @@ Route::middleware('guest')->group(function () {
 
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'auth.session'])->group(function () {
     //start logout
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     //end logout
@@ -158,7 +160,25 @@ Route::middleware('auth')->group(function () {
         return view('user.profile.passwordandsecurity');
     })->name('passwordandsecurity');
     Route::post('/updatepassword', [UpdateUserPasswordController::class, 'update'])->name('updatepassword')->middleware('checkupdateuserpassword');
+    Route::post('/logouteverywhere', [LoginController::class, 'logoutEverywhere'])->name('logoutEverywhere');
     //end password and security
+
+    //purchase history
+    Route::get('/transactions', function () {
+        $cartMs = DB::table('cart_master')->where('userID', Auth::user()->userID)->get();
+        $trans = array();
+        foreach ($cartMs as $cartM) {
+            $date = date_format(date_create($cartM->created_at), "d/m/Y");
+            $status = $cartM->status;
+            $cartDs = DB::table('cart_details')->where('cartId', $cartM->cartId)->get();
+            foreach ($cartDs as $cartD) {
+                $cartD->date = $date;
+                $cartD->status = $status;
+                array_push($trans, $cartD);
+            }
+        }
+        return view('user.profile.transactions')->with(['trans' => $trans]);
+    })->name('transactions');
 
     //start cart
     // Route::post('/add-cart', 'CartController@addToCart')->name('addToCart');

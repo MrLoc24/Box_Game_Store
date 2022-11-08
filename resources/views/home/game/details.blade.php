@@ -364,7 +364,9 @@
 
     <div class="checkout">
         <div class="checkout-container" data-checkout>
-            <livewire:details-check-out-form :game="$game">
+            @if (Auth::check())
+                <livewire:details-check-out-form :game="$game">
+            @endif
         </div>
 
 

@@ -73,7 +73,7 @@ CREATE TABLE `cart_details` (
 CREATE TABLE `cart_master` (
   `cartId` int(11) NOT NULL,
   `userID` varchar(255) NOT NULL,
-  `created_at` timestamp GENERATED ALWAYS AS (current_timestamp()) VIRTUAL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` bit(1) NOT NULL DEFAULT b'0',
   `cartTotal` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -207,7 +207,7 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 CREATE TABLE `payments` (
   `cardId` int(11) NOT NULL,
   `userID` varchar(255) NOT NULL,
-  `card_number` int(12) NOT NULL,
+  `card_number` varchar(255) NOT NULL,
   `cvv` int(3) NOT NULL,
   `payment_date` char(5) NOT NULL,
   `card_name` varchar(255) NOT NULL,

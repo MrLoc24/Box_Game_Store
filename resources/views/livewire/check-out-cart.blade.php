@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="item-title">
-                            <a href="" class="item-name">{{ str_replace('_', ' ', str_replace('__', ': ', $v_content->id)) }}</a>
+                            <a href="/game/{{ $v_content->id }}" class="item-name">{{ str_replace('_', ' ', str_replace('__', ': ', $v_content->id)) }}</a>
                         </div>
 
                         <div class="refund">

@@ -55,7 +55,7 @@
                                                 <td>{{ $cart->userID }}</td>
                                                 <td>{{ round($cart->cartTotal, 2) }}$</td>
                                                 @if ($cart->status != 0)
-                                                <td>Paid</td>
+                                                <td>Purchased</td>
                                                 @else
                                                 <td>Processing</td>
                                                 @endif

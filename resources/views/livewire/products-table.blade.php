@@ -23,7 +23,7 @@
                                         <button class="action-btn" type="button">
                                             <i class="fa-sharp fa-solid fa-check"></i>
                                         </button>
-                                        <span class="tooltiptext">Owned</span>
+                                        <span class="tooltiptext">Purchased</span>
                                     @else
                                         @if (Cart::content()->where('id', $value->gameId)->count())
                                             <button class="action-btn" type="button" wire:click.prevent="removeCart('{{ $value->gameId }}')">

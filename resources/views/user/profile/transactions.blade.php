@@ -1,9 +1,9 @@
 @extends('user.profile.layouts')
-@section('title', 'Personal Details')
+@section('title', 'Purchase History')
 @section('content1')
 
 <style>
-    .profile .options .accountsettings {
+    .profile .options .transaction {
         border-left: var(--blue) solid .5rem;
         color: var(--black);
     }
@@ -12,99 +12,44 @@
 <div class="information">
 
     <div class="settings">
-        <p class="title-settings title">{{ __('account settings') }}</p>
-        <p class="content-settings">{{ __('Manage your account’s details.') }}</p>
+        <p class="title-settings title">{{ __('purchase history') }}</p>
+        <p class="content-settings">{{ __('View your account payment details and transactions.') }}</p>
     </div>
 
-    <div class="info">
-        <p class="title-info title">{{ __('account information') }}</p>
-        <div class="content-info">
-            <div class="displayname change">
-                <label for="displayname">{{ __('display name') }}</label>
-                <input id="name-info" type="text" name="displayname" class="@error('displayname') is-invalid @enderror" value="{{ Auth::user()->userID }}" autocomplete="displayname" disabled>
-            </div>
+    @if (empty($trans))
+    <div class="purchase-history" style="text-align: center; font-weight: 400">No charges have been made to your account yet</div>
+    @else
 
-            <div class="changename change1 fa-solid fa-user-pen" onclick="showchangenameForm()"></div>
-
-            <div class="email change">
-                <label for="email">{{ __('email address') }}</label>
-                <input id="email-info" type="text" name="email" class="@error('email') is-invalid @enderror" value="{{ Auth::user()->email }}" autocomplete="email" disabled>
-            </div>
-
-            <div class="changeemail change1 fa-solid fa-user-pen" onclick="showchangeemailForm()"></div>
-
-            @if (session()->has('status'))
-            <div class="valid-feedback">
-                {{ session()->get('status') }}
-            </div>
-            @endif
-
-            @error('display_name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>               
-            @enderror
-
-            @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
+    <div class="purchase-history">
+        <table style="width: 100%; text-align: center">
+            <tr class="ph-title">
+                <th>DATE</th>
+                <th>DESCRIPTION</th>
+                <th>PRICE</th>
+                <th>STATUS</th>
+            </tr>
+        @foreach ($trans as $tran)
+            <tr class="ph-list">
+                <td>{{ $tran->date }}</td>
+                <td><a href="/game/{{ $tran->gameId }}">{{ str_replace('_', ' ', str_replace('__', ': ', $tran->gameId)) }}</a></td>
+                <td>-${{ round($tran->gamePrice * (1 - $tran->gameSale / 100), 2) }}</td>
+                <td>
+                    @if ($tran->status != 0) 
+                    Purchased
+                    @else
+                    Processing
+                    @endif
+                </td>
+            </tr>
+        @endforeach
+        </table>
     </div>
-    <form action="{{ route('handleaccountsettings') }}" method="post" enctype="multipart/form-data" id="evaluationForm">
-        @csrf
-        <div class="personal-details">
-            <p class="title-details title">{{ __('personal details') }}</p>
-            <p class="content-details1">{{ __('Manage your name and contact info. These personal details are private and will not be displayed to other users. View our Privacy Policy.') }}</p>
-            <div class="content-details2">
-                <div class="details-input">
-                    <label for="name">{{ __('full name') }}</label>
-                    <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror" value="{{ Auth::user()->username }}">
-                </div>
 
-                @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>      
-
-                @enderror
-                <div class="ava">
-                    <label for="ava">{{ __('avatar') }}</label>
-                    <img id="previewImage" src="{{ asset(Auth::user()->image) }}" alt="">
-                    <input type="file" onchange="previewFile(this);" id="ava" name="ava" class="image_preview"></input>
-                </div>
-
-                @if (session()->has('status1'))
-                <div class="valid-feedback">
-                    {{ session()->get('status1') }}
-                </div>
-                @endif
-                
-                <div class="discardorsave">
-                    <button type="button" id="evaluationFormEditCancel">discard changes</button>
-                    <input class="save" type="submit" value="save changes" name="" id="evaluationFormEdit">
-                </div>
-                
-            </div>
-        </div>
-    </form>
-
-    <div class="delete">
-        <p class="title-delete title">{{ __('delete account') }}</p>
-        <div class="content-delete">
-            <p class="content-delete1">
-                {{ __('Delete your Box Game account including all personal information, purchases, game progress, in-game content, and Unreal projects. Your account will be permanently deleted in 14 days.') }}
-            </p>
-            <div class="delete_account" onclick="showdeleteForm()">
-                delete account
-            </div>
-        </div>
-    </div>
+    @endif
 
 </div>
 
-<div class="changename-form-container" data-changename>
+{{-- <div class="changename-form-container" data-changename>
 
     <form action="{{ route('handleaccountsettingss') }}" method="post">
         @csrf
@@ -197,7 +142,7 @@
 
 <div class="delete-form-container" data-delete>
 
-    <form action="{{ route('deleteuser') }}" method="post">
+    <form action="{{ route('handleaccountsettingsss') }}" method="post">
         @csrf
         <div id="close-delete-btn" class="fas fa-times" onclick="showdeleteForm()"></div>
         <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
@@ -217,7 +162,7 @@
         </div>
     </form>
 
-</div>
+</div> --}}
 <script src="{{ asset('assets_home/js/scriptprofile.js') }}" defer></script>
 
 @endsection
