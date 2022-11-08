@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                                                                                                                - #GENRES
-                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -44,8 +44,8 @@
 
 
         <!--
-                                                                                                                                                                                                - #GAME-LIST
-                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <section class="section game-list">
 
@@ -63,8 +63,8 @@
                                 <span class="line line-2"></span>
                                 <span class="line line-3"></span>
                             </button>
-                        </div>
 
+                        </div>
                         <div class="list-game">
                             @foreach ($game as $key => $value)
                                 <div class="shop-card">
@@ -120,7 +120,6 @@
                                 </div>
                             @endforeach
                         </div>
-
                     </div>
 
                     <div class="filter-list">
@@ -133,7 +132,7 @@
 
                             <form class="input-wrapper-sidebar">
                                 <input type="search" name="search" placeholder="Search a game ..."
-                                    class="search-field-sidebar">
+                                    class="search-field-sidebar" id="search">
 
                                 <button class="search-submit-sidebar" aria-label="search">
                                     <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
@@ -225,8 +224,8 @@
 
 
         <!--
-                                                                                                                                                                                                - #FILTER-SIDEBAR
-                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <div class="filterbar">
 
@@ -240,14 +239,14 @@
                         </button>
                     </div>
 
-                    <form class="input-wrapper-sidebar">
-                        <input type="search" name="search" placeholder="Search a game ..."
+                    <div class="input-wrapper-sidebar">
+                        <input type="search" name="search" id="search" placeholder="Search a game ..."
                             class="search-field-sidebar">
 
                         <button class="search-submit-sidebar" aria-label="search">
                             <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
                         </button>
-                    </form>
+                    </div>
                 </div>
 
                 <div class="filter">
@@ -352,6 +351,45 @@
 
             <div class="overlay1" data-filter-sidebar data-overlay1 onclick="closeFilter()"></div>
         </div>
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        </script>
+
+
+        <script>
+            $(document).ready(function() {
+                $('#search').on('keyup', function(e) {
+                    e.preventDefault();
+                    var value = $(this).val();
+                    $.ajax({
+                        type: "get",
+                        url: '/search',
+                        data: {
+                            'search': value
+                        },
+                        success: function(data) {
+                            $('.list-game').html(data);
+                            console.log(data);
+                        },
+                        error: function(data) {
+                            var errors = data.responseJSON;
+                            console.log(errors);
+                        }
+                    });
+                    $.ajaxSetup({
+                        headers: {
+                            'csrftoken': '{{ csrf_token() }}'
+                        }
+                    });
+
+                });
+            });
+        </script>
+
     </section>
 @endsection
 @section('footer-script')
