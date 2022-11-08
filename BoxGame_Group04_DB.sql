@@ -207,7 +207,7 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 CREATE TABLE `payments` (
   `cardId` int(11) NOT NULL,
   `userID` varchar(255) NOT NULL,
-  `card_number` int(12) NOT NULL,
+  `card_number` varchar(255) NOT NULL,
   `cvv` int(3) NOT NULL,
   `payment_date` char(5) NOT NULL,
   `card_name` varchar(255) NOT NULL,
