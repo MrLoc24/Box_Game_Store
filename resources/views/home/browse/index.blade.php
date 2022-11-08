@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -44,8 +44,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
 
         <section class="section game-list">
 
@@ -65,6 +65,7 @@
                             </button>
 
                         </div>
+
                         <div class="list-game">
                             @foreach ($game as $key => $value)
                                 <div class="shop-card">
@@ -120,6 +121,7 @@
                                 </div>
                             @endforeach
                         </div>
+
                     </div>
 
                     <div class="filter-list">
@@ -224,8 +226,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
 
         <div class="filterbar">
 

@@ -17,7 +17,7 @@ class CheckUpdateEmail
     public function handle(Request $request, Closure $next)
     {
         $request->validate([
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email:filter|max:255|unique:users',
             'agree' => 'required',
         ]);
 

@@ -18,7 +18,7 @@ class CheckUpdateUserPassword
     {
         $request->validate([
             'current_password' => 'required|string|min:8',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|min:8|max:15|confirmed|regex:/^(?=.*[A-Za-z])(?=.*\d)(?!.*\s)[A-Za-z\d]{8,15}$/',
             'password_confirmation' => 'required',
         ]);
         return $next($request);

@@ -19,9 +19,9 @@ class CheckRegister
         
         $request->validate([
             'name' => 'required|string',
-            'display_name' => 'bail|required|string|unique:users,userID',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'display_name' => 'bail|required|min:3|max:15|string|unique:users,userID|regex:/^\S{3,15}$/',
+            'email' => 'required|string|email:filter|max:255|unique:users',
+            'password' => 'required|min:8|max:15|confirmed|regex:/^(?=.*[A-Za-z])(?=.*\d)(?!.*\s)[A-Za-z\d]{8,15}$/',
             'password_confirmation' => 'required',
             'receive_news' => 'required',
             'terms_of_service' => 'required',

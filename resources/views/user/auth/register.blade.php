@@ -23,10 +23,10 @@
             <h4>{{ __('Sign Up') }}</h4>
 
             <div class="box"> 
-
-                <label for="name">{{ __('Full Name *') }}</label>
-                <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
-
+                <div class="input">
+                    <label for="name">{{ __('Full Name *') }}</label>
+                    <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                </div>
             </div>
 
             @error('name')
@@ -35,11 +35,16 @@
             </span>               
             @enderror
 
-            <div class="box">
-
-                <label for="display_name">{{ __('Display Name *') }}</label>
-                <input id="display_name" type="text" class="@error('display_name') is-invalid @enderror" name="display_name" value="{{ old('display_name') }}" autocomplete="display_name" autofocus>
-
+            <div class="box box1">
+                <div class="input">
+                    <label for="display_name">{{ __('Display Name *') }}</label>
+                    <input id="display_name" type="text" class="@error('display_name') is-invalid @enderror" name="display_name" value="{{ old('display_name') }}" autocomplete="display_name" autofocus>
+                </div>
+                <div class="rules">
+                    <i class="fa-regular fa-circle-question">
+                        <span class="tooltiptext">Your display name must be between 3 and 15 characters, no special characters and no space(s)</span>
+                    </i>               
+                </div>
             </div>
 
             @error('display_name')
@@ -61,11 +66,16 @@
             </span>
             @enderror
 
-            <div class="box">
-                
-                <label for="password">{{ __('Password *') }}</label>
-                <input id="password" type="password" name="password" class="@error('password') is-invalid @enderror" autocomplete="new-password">
-                
+            <div class="box box1">
+                <div class="input">
+                    <label for="password">{{ __('Password *') }}</label>
+                    <input id="password" type="password" name="password" class="@error('password') is-invalid @enderror" autocomplete="new-password">
+                </div>             
+                <div class="rules">
+                    <i class="fa-regular fa-circle-question">
+                        <span class="tooltiptext">Your password must be between 8 and 15 characters, at least 1 number, at least 1 letter, no special characters and no space(s)</span>
+                    </i>               
+                </div>
             </div>
 
             @error('password')

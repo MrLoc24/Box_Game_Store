@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 
-class ProductsTable extends Component
+class BrowseAddCart extends Component
 {
     public function render()
     {
@@ -22,7 +22,7 @@ class ProductsTable extends Component
                 } 
             }
         }    
-        return view('livewire.products-table', compact('game', 'gameIds'));
+        return view('livewire.browse-add-cart', compact('game', 'gameIds'));
     }
 
     public function addToCart($gameId) 

@@ -60,9 +60,9 @@
             </div>
             <div class="rules">
                 <label class="title" for="">your password</label>
-                <span>Your password must have 7+ characters</span>
-                <span>Your password must have at least 1 number</span>
-                <span>Your password must contain no space(s)</span>
+                <span>Your password must have 8+ characters and maxinum 15 characters</span>
+                <span>Your password must have at least 1 number and 1 letter</span>
+                <span>Your password must contain no special characters and no space(s)</span>
                 @if (session()->has('status'))
                     <div class="valid-feedback">
                         {{ session()->get('status') }}

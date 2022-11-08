@@ -38,6 +38,18 @@
                 {{ session()->get('status') }}
             </div>
             @endif
+
+            @error('display_name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>               
+            @enderror
+
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
     <form action="{{ route('handleaccountsettings') }}" method="post" enctype="multipart/form-data" id="evaluationForm">
@@ -50,16 +62,25 @@
                     <label for="name">{{ __('full name') }}</label>
                     <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror" value="{{ Auth::user()->username }}">
                 </div>
+
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>      
+
+                @enderror
                 <div class="ava">
                     <label for="ava">{{ __('avatar') }}</label>
                     <img id="previewImage" src="{{ asset(Auth::user()->image) }}" alt="">
                     <input type="file" onchange="previewFile(this);" id="ava" name="ava" class="image_preview"></input>
                 </div>
+
                 @if (session()->has('status1'))
                 <div class="valid-feedback">
                     {{ session()->get('status1') }}
                 </div>
                 @endif
+                
                 <div class="discardorsave">
                     <button type="button" id="evaluationFormEditCancel">discard changes</button>
                     <input class="save" type="submit" value="save changes" name="" id="evaluationFormEdit">
@@ -90,9 +111,16 @@
         <div id="close-changename-btn" class="fas fa-times" onclick="showchangenameForm()"></div>
         <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
         <h4>{{ __('Add Your New Display Name') }}</h4>
-        <div class="box">
-            <label for="new_displayname">{{ __('New Name *') }}</label>
-            <input id="new_displayname" type="text" class="@error('new_displayname') is-invalid @enderror" name="new_displayname" value="{{ old('new_displayname') }}" autocomplete="new_displayname" autofocus>
+        <div class="box box1">
+            <div class="input">
+                <label for="new_displayname">{{ __('New Name *') }}</label>
+                <input id="new_displayname" type="text" class="@error('new_displayname') is-invalid @enderror" name="new_displayname" value="{{ old('new_displayname') }}" autocomplete="new_displayname" autofocus>
+            </div>
+            <div class="rules">
+                <i class="fa-regular fa-circle-question">
+                    <span class="tooltiptext">{{ __('Your display name must be between 3 and 15 characters, no special characters and no space(s)') }}</span>
+                </i>               
+            </div>
         </div>
 
         @error('new_displayname')
@@ -102,8 +130,10 @@
         @enderror
 
         <div class="box">
-            <label for="new_displayname_confirmation">{{ __('Confirm Name *') }}</label>
-            <input id="new_displayname_confirmation" type="text" class="@error('new_displayname_confirmation') is-invalid @enderror" name="new_displayname_confirmation" value="{{ old('new_displayname_confirmation') }}" autocomplete="new_displayname_confirmation" autofocus>
+            <div class="input">
+                <label for="new_displayname_confirmation">{{ __('Confirm Name *') }}</label>
+                <input id="new_displayname_confirmation" type="text" class="@error('new_displayname_confirmation') is-invalid @enderror" name="new_displayname_confirmation" value="{{ old('new_displayname_confirmation') }}" autocomplete="new_displayname_confirmation" autofocus>
+            </div>
         </div>
 
         @error('new_displayname_confirmation')
@@ -136,8 +166,10 @@
         <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
         <h4>{{ __('Add Your New Email') }}</h4>
         <div class="box">
-            <label for="email">{{ __('New Email *') }}</label>
-            <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+            <div class="input">
+                <label for="email">{{ __('New Email *') }}</label>
+                <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+            </div>
         </div>
 
         @error('email')

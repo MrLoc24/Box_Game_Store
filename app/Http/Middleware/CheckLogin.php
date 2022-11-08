@@ -17,8 +17,8 @@ class CheckLogin
     public function handle(Request $request, Closure $next)
     {
         $request->validate([
-            'display_name' => 'bail|required|string',
-            'password' => 'bail|required|string|min:8',
+            'display_name' => 'bail|required|min:3|max:15|string|regex:/^\S{3,15}$/',
+            'password' => 'required|min:8|max:15|regex:/^(?=.*[A-Za-z])(?=.*\d)(?!.*\s)[A-Za-z\d]{8,15}$/',
         ]);
         
         return $next($request);

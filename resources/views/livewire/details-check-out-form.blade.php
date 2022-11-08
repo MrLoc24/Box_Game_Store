@@ -336,57 +336,42 @@
             </button>
         </div>
         <div class="order-list">
-            @php
-                $content = Cart::content();
-                $totalPrice = 0;
-                $discount = 0;
-            @endphp
-
-            @foreach ($content as $v_content)
-
-            @php 
-                $totalPrice += $v_content->price;
-                $discount += $v_content->price * (int)$v_content->options->sale / 100;
-                $imageLink = $v_content->options->image;
-            @endphp
 
             <div class="order-item">
                 <div class="order-img">
-                    <img src="{{ asset("$imageLink") }}" alt="">
+                    <img src="{{ asset("$gameIcon") }}" alt="">
                 </div>
                 <div class="oi-details">
-                    <span class="item-name">{{ str_replace('_', ' ', str_replace('__', ': ', $v_content->id)) }}</span>
-                    @if ((int)$v_content->options->sale != 0)
-                    <span class="badge">-{{ $v_content->options->sale }}%</span>
+                    <span class="item-name">{{ str_replace('_', ' ', str_replace('__', ': ', $gameId)) }}</span>
+                    @if ($gameSale != 0)
+                    <span class="badge">-{{ $gameSale }}%</span>
                     @else
                     @endif
                     <div class="item-price">
-                        @if ((int)$v_content->options->sale != 0)
-                        <del class="del">${{ $v_content->price }}</del>
+                        @if ($gameSale != 0)
+                        <del class="del">${{ $gamePrice }}</del>
                         @else
                         @endif
-                        <span class="price">${{ number_format($v_content->price * (1 - (int)$v_content->options->sale / 100), 2, '.', '') }}</span>
+                        <span class="price">${{ number_format($gamePrice * (1 - $gameSale / 100), 2, '.', '') }}</span>
                     </div>
                 </div>
             </div>
 
-            @endforeach
-
             <div class="payment-summary">
                 <div class="order-price">
                     <span class="title">Price</span>
-                    <span class="price">${{ $totalPrice }}</span>
+                    <span class="price">${{ $gamePrice }}</span>
                 </div>
                 <div class="order-price">
                     <span class="title">Sale Discount</span>
-                    <span class="price">-${{ number_format($discount, 2, '.', '') }}</span>
+                    <span class="price">-${{ number_format($gamePrice * $gameSale / 100, 2, '.', '') }}</span>
                 </div>
                 <hr>
                 <div class="order-total">
                     <span class="title">Total</span>
-                    <span class="price">${{ number_format($totalPrice - $discount, 2, '.', '') }}</span>
+                    <span class="price">${{ number_format($gamePrice * (1 - $gameSale / 100), 2, '.', '') }}</span>
                     @php
-                        \Session::put('total_after', round($totalPrice - $discount, 2))
+                        \Session::put('total_after', round($gamePrice * (1 - $gameSale / 100), 2))
                     @endphp
                 </div>
                 <div class="order-contact">
@@ -407,3 +392,4 @@
         
     </div>
 </div>
+

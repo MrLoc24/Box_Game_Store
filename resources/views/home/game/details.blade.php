@@ -361,6 +361,16 @@
         </div>
 
     </section>
+
+    <div class="checkout">
+        <div class="checkout-container" data-checkout>
+            <livewire:details-check-out-form :game="$game">
+        </div>
+
+        
+
+        <div class="overlay-checkout" data-overlay-checkout></div>
+    </div>
 @endsection
 @section('footer-script')
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
@@ -368,6 +378,7 @@
     <!--
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 - custom js link
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 -->
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     <script src="{{ asset('assets_home/js/scriptdetails.js') }}"></script>
 
     <!--

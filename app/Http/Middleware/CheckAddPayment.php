@@ -17,9 +17,9 @@ class CheckAddPayment
     public function handle(Request $request, Closure $next)
     {
         $request->validate([
-            'card_number' => 'bail|required',
-            'expiration' => 'bail|required',
-            'cvv' => 'required|max:3',
+            'card_number' => 'bail|min:17|max:19|required',
+            'expiration' => 'bail|min:5|max:5|required',
+            'cvv' => 'bail|min:3|max:3|required',
         ]);
         return $next($request);
     }

@@ -17,7 +17,7 @@ class CheckUpdateDisplayName
     public function handle(Request $request, Closure $next)
     {
         $request->validate([
-            'new_displayname' => 'bail|required|string|confirmed|unique:users,userID',
+            'new_displayname' => 'bail|required|min:3|max:15|string|unique:users,userID|confirmed|regex:/^\S{3,15}$/',
             'new_displayname_confirmation' => 'required',
             'agree' => 'required',
         ]);

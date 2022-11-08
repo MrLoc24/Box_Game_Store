@@ -17,7 +17,7 @@
 
             @php 
             $totalPrice += $v_content->price;
-            $discount += $v_content->price * $v_content->weight / 100;
+            $discount += $v_content->price * (int)$v_content->options->sale / 100;
             $imageLink = $v_content->options->image;
             @endphp
 
@@ -37,13 +37,13 @@
                             </div>
 
                             <div class="item-info-price">
-                                @if ($v_content->weight != 0)
-                                <span class="badge">-{{ $v_content->weight }}%</span>
+                                @if ((int)$v_content->options->sale != 0)
+                                <span class="badge">-{{ $v_content->options->sale }}%</span>
 
                                 <del class="del">${{ $v_content->price }}</del>
                                 @endif
 
-                                <span class="price">${{ number_format($v_content->price * (1 - $v_content->weight / 100), 2, '.', '') }}</span>
+                                <span class="price">${{ number_format($v_content->price * (1 - (int)$v_content->options->sale / 100), 2, '.', '') }}</span>
                             </div>
                         </div>
 

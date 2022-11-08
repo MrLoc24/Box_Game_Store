@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -30,6 +31,27 @@ class LoginController extends Controller
             Auth::user()->forceFill([
                 'status' => 1,
             ])->save();
+
+            $userID = Auth::user()->userID;
+            $store_cart = DB::table('store_cart')->where('userID', $userID)->get();
+
+            foreach($store_cart as $key => $value) {
+                $gameId = $value->gameId;
+                $game = DB::table('game') 
+                    ->where('gameId', $gameId)
+                    ->first();
+
+                $data = array();    
+                $data['id'] = $game->gameId;
+                $data['qty'] = 1;
+                $data['name'] = $game->gameId;
+                $data['price'] = $game->price;
+                $data['weight'] = 1;
+                $data['options']['image'] = $game->icon;
+                $data['options']['sale'] = "$game->sale";
+
+                Cart::add($data);
+            }
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
@@ -43,24 +65,24 @@ class LoginController extends Controller
             'status' => 0,
         ])->save(); 
         
-        // $datas =  Cart::content();
+        $userID = Auth::user()->userID;
+
+        $carts = Cart::content();
+
+        DB::table('store_cart')->where('userID', $userID)->delete();
+
+        foreach($carts as $cart) {
+            DB::table('store_cart')->insert([
+                'userID' => $userID,
+                'gameId' => $cart->id
+            ]);
+        }
         
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        // foreach ($datas as $data) {
-        //     Cart::add([
-        //         'id' => $data->id,
-        //         'qty' => $data->qty,
-        //         'name' => $data->name,
-        //         'price' => $data->price,
-        //         'weight' => $data->weight,
-        //         'options' => ['image' => $data->options->image] ,
-        //     ]);
-        // }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
