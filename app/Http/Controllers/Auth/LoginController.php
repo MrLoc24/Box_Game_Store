@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
@@ -85,5 +85,13 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function logoutEverywhere(Request $request) {
+        if (! Hash::check($request->password, Auth::user()->password)) {
+            return redirect()->route('passwordandsecurity')->with('error1', 'The provided password does not match your current password.');
+        }
+        Auth::logoutOtherDevices($request->password);
+        return redirect()->route('passwordandsecurity')->with('status1', 'Signout successfully !');
     }
 }

@@ -85,7 +85,50 @@
         </div>
     </form>
 
+    <div class="signout_container">
+        <div class="infor_signout">
+            <p class="title">{{ __('signout everywhere') }}</p>
+            <span>Sign out everywhere else your Box Game account is being used, including all other browsers, phones, consoles, or any other devices</span>
+        </div>
+        <div class="btn_signout" onclick="showsignoutForm()">
+            signout other sessions
+        </div>
+    </div>
+    @if (session()->has('status1'))
+        <div class="valid-feedback">
+            {{ session()->get('status1') }}
+        </div>
+    @endif
+    @if (session()->has('error1'))
+        <div class="invalid-feedback">
+            {{ session()->get('error1') }}
+        </div>
+    @endif
 </div>
+
+<div class="signout-form-container" data-signout>
+
+    <form action="{{ route('logoutEverywhere') }}" method="post">
+        @csrf
+        <div id="close-signout-btn" class="fas fa-times" onclick="showsignoutForm()"></div>
+        <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">
+        <h4>{{ __('Log Out Other Browser Sessions') }}</h4>
+        <span>
+            {{ __('Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.') }}
+        </span>
+
+        <div class="box">
+            <div class="input">
+                <label for="password">{{ __('Current Password *') }}</label>
+                <input id="password" type="password" name="password" autocomplete="password" autofocus>
+            </div>
+        </div>
+
+        <input type="submit" name="submit" value="{{ __('signout') }}" class="btn">
+    </form>
+
+</div>
+
 <script>
     $(document).ready(function() {
 
@@ -107,5 +150,12 @@
             restore();
         });
     });
+
+    let signoutForm = document.querySelector('[data-signout]');
+
+    const showsignoutForm = function () {
+        signoutForm.classList.toggle("active");
+    }
+
 </script>
 @endsection

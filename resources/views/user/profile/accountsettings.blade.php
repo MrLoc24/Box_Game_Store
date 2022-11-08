@@ -197,7 +197,7 @@
 
 <div class="delete-form-container" data-delete>
 
-    <form action="{{ route('handleaccountsettingsss') }}" method="post">
+    <form action="{{ route('deleteuser') }}" method="post">
         @csrf
         <div id="close-delete-btn" class="fas fa-times" onclick="showdeleteForm()"></div>
         <img src=" {{ asset('assets_home/images/boxlogo1.png') }} " alt="">

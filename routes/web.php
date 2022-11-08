@@ -120,7 +120,7 @@ Route::middleware('guest')->group(function () {
 
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'auth.session'])->group(function () {
     //start logout
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     //end logout
@@ -158,6 +158,7 @@ Route::middleware('auth')->group(function () {
         return view('user.profile.passwordandsecurity');
     })->name('passwordandsecurity');
     Route::post('/updatepassword', [UpdateUserPasswordController::class, 'update'])->name('updatepassword')->middleware('checkupdateuserpassword');
+    Route::post('/logouteverywhere', [LoginController::class, 'logoutEverywhere'])->name('logoutEverywhere');
     //end password and security
 
     //start cart

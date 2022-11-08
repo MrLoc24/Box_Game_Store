@@ -3374,6 +3374,42 @@ body {
   display: flex;
   margin-top: 6rem;
 }
+
+.profile .informations .information #evaluationForm{
+  padding-bottom: 5rem;
+  border-bottom: 1px solid var(--text-silver2);
+}
+
+.profile .informations .information .signout_container{
+  display: flex;
+  justify-content: space-between;
+  margin-block: 3rem;
+  align-items: center;
+}
+
+.profile .informations .information .signout_container span{
+  font-size: 14px;
+}
+
+.profile .informations .information .signout_container .infor_signout{
+  width: 51%;
+}
+
+.profile .informations .information .signout_container .btn_signout{
+  width: 40%;
+  font-size: 14px;
+  height: 50px;
+  border-radius: 0.5rem;
+  background-color: var(--blue);
+  border: var(--bg-silver) solid 1px;
+  color: var(--white);
+  text-align: center;
+  padding-block: 1.2rem 1.4rem;
+  text-transform: uppercase;
+  display: block;
+  cursor: pointer;
+}
+
 .profile .informations .information .btn_change_pass{
   display: flex;
   width: 50%;
@@ -4030,7 +4066,7 @@ body {
  * changename
  */
 
-:is(.changename-form-container, .changeemail-form-container, .delete-form-container){
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container, .signout-form-container){
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4045,11 +4081,11 @@ body {
   transition: none;
 }
 
-:is(.changename-form-container, .changeemail-form-container, .delete-form-container).active{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container, .signout-form-container).active{
   right: 0;
 }
 
-:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container, .signout-form-container) form{
   /* position: fixed; */
   justify-content: center;
   text-align: center;
@@ -4061,14 +4097,14 @@ body {
   border-radius: .5rem;
 }
 
-:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form img{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container, .signout-form-container) form img{
   margin-top: 2rem;
   width: 40px;
   height: 40px;
   display: unset;
 }
 
-:is(.changename-form-container, .changeemail-form-container, .delete-form-container) form h4{
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container, .signout-form-container) form h4{
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 4rem;
@@ -4077,7 +4113,7 @@ body {
   color: var(--black);
 }
 
-:is(.changename-form-container, .changeemail-form-container) form .box{
+:is(.changename-form-container, .changeemail-form-container, .signout-form-container) form .box{
   height: 6rem;
   width: 90%;
   border-radius: .5rem;
@@ -4092,7 +4128,7 @@ body {
   justify-content: space-between;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form .box .input{
+:is(.changename-form-container, .changeemail-form-container, .signout-form-container) form .box .input{
   width: 90%;
   margin-left: .8rem;
 }
@@ -4133,7 +4169,7 @@ body {
   visibility: visible;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form .box input{
+:is(.changename-form-container, .changeemail-form-container, .signout-form-container) form .box input{
   font-size: 1.4rem;
   height: 3rem;
   width: 90%;
@@ -4142,14 +4178,14 @@ body {
   outline: none;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form .box label{
+:is(.changename-form-container, .changeemail-form-container, .signout-form-container) form .box label{
   font-size: 1.4rem;
   display: flex;
   width: 100%;
   color: var(--text-silver2);
 }
 
-:is(.changename-form-container, .changeemail-form-container) form .box:focus-within {
+:is(.changename-form-container, .changeemail-form-container, .signout-form-container) form .box:focus-within {
   border: .2rem solid var(--black);
   padding: .4rem 1.2rem .4rem .4rem;
 }
@@ -4175,7 +4211,7 @@ body {
   width: unset;
 }
 
-:is(.changename-form-container, .changeemail-form-container) form .btn{
+:is(.changename-form-container, .changeemail-form-container, .signout-form-container) form .btn{
   display: inline-block;
   margin-top: 1rem;
   padding: 1rem 3rem;
@@ -4187,13 +4223,17 @@ body {
   background-color: var(--blue);
 }
 
-:is(.changename-form-container, .changeemail-form-container, .delete-form-container) :is(#close-changename-btn, #close-changeemail-btn, #close-delete-btn){
+:is(.changename-form-container, .changeemail-form-container, .delete-form-container, .signout-form-container) :is(#close-changename-btn, #close-changeemail-btn, #close-delete-btn, #close-signout-btn){
   position: absolute;
   top: 1.5rem; right: 1.5rem;
   font-size: 3rem;
   color: var(--black);
   animation: rotate .4s linear .4s backwards;
   cursor: pointer;
+}
+
+.signout-form-container span{
+  text-align: left;
 }
 
 .delete-form-container :is(.span1, .span2){
