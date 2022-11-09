@@ -36,6 +36,7 @@ Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail')->name('details');
 Route::get('/browse', 'UserHomeController@browse');
 Route::get('/search', 'SearchController@search')->name('search');
+Route::get('/browse/{id}', 'UserBrowseController@type')->name('type');
 
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {
@@ -85,17 +86,6 @@ Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function ()
 Route::prefix('admin/cart')->middleware('checkAdminLogin')->group(function () {
     Route::get('index', 'AdminCartController@index');
     Route::get('index/cartDetails', 'AdminCartController@indexCartDetails');
-    // Route::get('view/{id}', 'AdminGameController@view');
-    // Route::get('create', 'AdminGameController@create');
-    // Route::post('create', 'AdminGameController@store');
-    // Route::get('delete/{id}', 'AdminGameController@delete');
-    // Route::post('editDetail/{id}', 'AdminGameDetailController@update');
-    // Route::post('editType/{id}', 'AdminGameDetailController@updateType');
-
-    //CRUD for system requirements
-    // Route::post('editReq/{id}/{os}', 'AdminGameReqController@update');
-    // Route::post('addReq/{id}', 'AdminGameReqController@addNew');
-    // Route::get('deleteReq/{id}/{os}', 'AdminGameReqController@delete');
 });
 
 Route::middleware('guest')->group(function () {

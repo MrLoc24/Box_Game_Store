@@ -1,11 +1,11 @@
 @extends('layouts.home')
-@section('title', 'Browse')
+@section('title', 'Browse by Genre')
 @section('content')
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -45,8 +45,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
 
         <section class="section game-list">
 
@@ -66,7 +66,61 @@
                             </button>
 
                         </div>
-                        @livewire('browse-add-cart')
+                        <div class="list-game">
+                            @foreach ($game as $key => $value)
+                                <div class="shop-card">
+
+                                    <a href="/game/{{ $value->gameId }}" class="card-banner">
+                                        <img src="{{ asset("$value->icon") }}" style="height: 282px" loading="lazy"
+                                            alt="{{ $value->gameId }}" class="img-cover">
+                                        @if ($value->sale != 0)
+                                            <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
+                                        @endif
+
+
+                                        <div class="card-actions">
+
+                                            <button class="action-btn">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+
+                                            <button class="action-btn">
+                                                <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+
+
+                                        </div>
+                                    </a>
+
+                                    <div class="card-content">
+
+                                        <span class="card-type">BASE GAME</span>
+
+                                        <h3>
+                                            <a href="/game/{{ $value->gameId }}"
+                                                class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
+                                        </h3>
+
+                                        <div class="price">
+                                            @if ($value->price)
+                                                @if ($value->sale)
+                                                    <del class="del">${{ $value->price }}</del>
+
+                                                    <span
+                                                        class="span">${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}</span>
+                                                @else
+                                                    <span class="span">${{ $value->price }}</span>
+                                                @endif
+                                            @else
+                                                <span class="span">FREE</span>
+                                            @endif
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            @endforeach
+                        </div>
 
                     </div>
 
@@ -134,7 +188,8 @@
                                 <ul>
                                     @foreach ($type as $genre)
                                         <li class="filter-hide-item">
-                                            <a href="">{{ str_replace('_', ' ', $genre->type) }}</a>
+                                            <a
+                                                href="/browse/{{ $genre->type }}">{{ str_replace('_', ' ', $genre->type) }}</a>
                                         </li>
                                     @endforeach
 
@@ -172,8 +227,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
 
         <div class="filterbar">
 
@@ -243,7 +298,7 @@
                         <ul>
                             @foreach ($type as $genre)
                                 <li class="filter-hide-item">
-                                    <a href="">{{ str_replace('_', ' ', $genre->type) }}</a>
+                                    <a href="/browse/{{ $genre->type }}">{{ str_replace('_', ' ', $genre->type) }}</a>
                                 </li>
                             @endforeach
                         </ul>

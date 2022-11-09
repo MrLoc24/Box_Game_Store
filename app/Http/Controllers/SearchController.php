@@ -14,9 +14,7 @@ class SearchController extends Controller
         if ($request->ajax()) {
 
             $output = "";
-            if ($request->search == null) {
-                $results = DB::table('game')->get();
-            } else {
+            if ($request->search != null) {
                 $results = DB::table('game')->where('gameId', 'LIKE', '%' . $request->input('search') . '%')->get();
             }
             if ($results) {
