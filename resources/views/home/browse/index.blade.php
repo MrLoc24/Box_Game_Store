@@ -3,8 +3,8 @@
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -44,8 +44,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
 
         <section class="section game-list">
 
@@ -171,8 +171,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
 
         <div class="filterbar">
 
@@ -306,11 +306,6 @@
                         error: function(data) {
                             var errors = data.responseJSON;
                             console.log(errors);
-                        }
-                    });
-                    $.ajaxSetup({
-                        headers: {
-                            'csrftoken': '{{ csrf_token() }}'
                         }
                     });
 
