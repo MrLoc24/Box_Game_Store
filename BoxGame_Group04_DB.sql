@@ -324,7 +324,8 @@ CREATE TABLE `users` (
   `status` bit(1) DEFAULT b'1',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `image` varchar(255) DEFAULT 'assets_home/images/useravatar/avatardefault.jpg'
+  `image` varchar(255) DEFAULT 'assets_home/images/useravatar/avatardefault.jpg',
+  `blocked_at` timestamp DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

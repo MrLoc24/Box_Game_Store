@@ -11,17 +11,18 @@ class AdminUserController extends Controller
     //View All Users
     public function index()
     {
-        $users = User::all();
-        return view('admin.user.index')->with(['users' => $users]);
+        return view('admin.user.index');
     }
 
     public function delete($id)
     {
-        User::destroy(Auth::user()->userID);
-        if (Auth::user()->image == 'assets_home\images\useravatar\avatardefault.jpg') {
+        $user = User::where('userID', $id)->first();
+        if ($user->image == 'assets_home/images/useravatar/avatardefault.jpg') {
+            User::destroy($id);
             return redirect('admin/user/')->with('success', "Delete user successfully!");
         } else {
-            $image_path = public_path().'\\'.Auth::user()->image; 
+            User::destroy($id);
+            $image_path = public_path().'\\'.$user->image; 
             unlink($image_path);
         }
 

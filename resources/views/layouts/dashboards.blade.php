@@ -34,6 +34,11 @@
     <!-- icon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets_home/images/boxlogo1.png') }}">
 
+    <!--
+    - livewire
+    -->
+    @livewireStyles
+
     <style>
         .fixed-ratio-resize {
             max-width: 100%;
@@ -412,6 +417,11 @@
     <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
     {{-- <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script> --}}
     @yield('footer-script')
+
+    <!--
+    - livewire
+    -->
+    @livewireScripts
 
 
 

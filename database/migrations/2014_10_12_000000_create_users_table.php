@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image');
             $table->rememberToken();
             $table->timestamps();
+            $table->timestamp('blocked_at')->nullable();
         });
     }
 

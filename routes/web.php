@@ -95,24 +95,26 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisterController::class, 'store'])->name('handleregister')->middleware('checkregister');
     //end register
 
-    //start login
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
-    //end login
+    Route::middleware('active_user')->group(function () {
+        //start login
+        Route::get('/login', [LoginController::class, 'login'])->name('login');
+        Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
+        //end login
 
-    //start forgot password
-    Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
-    Route::post('/forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
-    //end forgot password
+        //start forgot password
+        Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
+        Route::post('/forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
+        //end forgot password
 
-    //start reset password
-    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
-    Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
-    //end reset password
+        //start reset password
+        Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
+        Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
+        //end reset password
+    });
 
 });
 
-Route::middleware(['auth', 'auth.session'])->group(function () {
+Route::middleware(['auth', 'auth.session', 'active_user'])->group(function () {
     //start logout
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     //end logout

@@ -73,5 +73,6 @@ class Kernel extends HttpKernel
         'checkupdateemail' => \App\Http\Middleware\CheckUpdateEmail::class,
         'checkupdatepayment' => \App\Http\Middleware\CheckUpdatePayment::class,
         'checkupdateuserpassword' => \App\Http\Middleware\CheckUpdateUserPassword::class,
+        'active_user' => \App\Http\Middleware\ActiveUser::class,
     ];
 }
