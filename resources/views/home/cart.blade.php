@@ -1,5 +1,5 @@
 @extends('layouts.home')
-@section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
+@section('title', 'Cart')
 @section('content')   
     
     

@@ -95,7 +95,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisterController::class, 'store'])->name('handleregister')->middleware('checkregister');
     //end register
 
-    Route::middleware('active_user')->group(function () {
+    // Route::middleware('active_user')->group(function () {
         //start login
         Route::get('/login', [LoginController::class, 'login'])->name('login');
         Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
@@ -110,7 +110,7 @@ Route::middleware('guest')->group(function () {
         Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
         Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
         //end reset password
-    });
+    // });
 
 });
 
