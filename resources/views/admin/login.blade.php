@@ -56,28 +56,22 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-8">
-                                    <div class="icheck-primary">
-                                        <input type="checkbox" id="remember" name="checkRemember" value="1">
-                                        <label for="remember">
-                                            Remember Me
-                                        </label>
-                                    </div>
-                                </div>
+                                <p class="mb-1">
+                                    <a href="forgot-password.html">I forgot my password</a>
+                                </p>
                                 <!-- /.col -->
-                                <div class="col-4">
+                                <div class="col">
                                     <input type="submit" class="btn btn-primary btn-block" value="Login"></input>
                                 </div>
                                 <!-- /.col -->
+
                             </div>
                         </form>
 
 
                         <!-- /.social-auth-links -->
 
-                        <p class="mb-1">
-                            <a href="forgot-password.html">I forgot my password</a>
-                        </p>
+
 
                     </div>
 

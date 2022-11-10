@@ -3,7 +3,7 @@
         <div class="shop-card">
 
             <div class="card-banner">
-                <a href="/game/{{ $value->gameId }}"><img src="{{ $value->icon }}" class="img-cover"
+                <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}" class="img-cover"
                         style="height: 282px"></a>
                 @if ($value->sale != 0)
                     <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
@@ -11,7 +11,6 @@
 
 
                 <div class="card-actions">
-
                     <div class="tooltip">
                         @if (Auth::check())
                             @if (in_array($value->gameId, $gameIds))

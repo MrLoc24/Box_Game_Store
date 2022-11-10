@@ -37,6 +37,7 @@ Route::get('/game/{id}', 'UserHomeController@detail')->name('details');
 Route::get('/browse', 'UserHomeController@browse');
 Route::get('/search', 'SearchController@search')->name('search');
 Route::get('/browse/{id}', 'UserBrowseController@type')->name('type');
+Route::get('/browse/platform/{id}', 'UserBrowseController@platform')->name('platform');
 
 //ADMIN LOGGING
 Route::prefix('admin')->group(function () {
@@ -96,20 +97,20 @@ Route::middleware('guest')->group(function () {
     //end register
 
     // Route::middleware('active_user')->group(function () {
-        //start login
-        Route::get('/login', [LoginController::class, 'login'])->name('login');
-        Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
-        //end login
+    //start login
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
+    //end login
 
-        //start forgot password
-        Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
-        Route::post('/forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
-        //end forgot password
+    //start forgot password
+    Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password.request');
+    Route::post('/forget-password', [ForgotPasswordController::class, 'postEmail'])->name('password.email');
+    //end forgot password
 
-        //start reset password
-        Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
-        Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
-        //end reset password
+    //start reset password
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassword'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
+    //end reset password
     // });
 
 });

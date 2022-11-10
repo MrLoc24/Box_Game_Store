@@ -1,11 +1,15 @@
 @extends('layouts.home')
-@section('title', 'Browse by Genre')
+@section('title')
+    @if (isset($genre))
+        Browse by Genre | {{ strtoupper($genre) }}
+    @endif
+@endsection
 @section('content')
     <section>
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GENRES
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GENRES
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <section class="section genre" data-section>
             <div class="container genre-container swiper">
@@ -45,8 +49,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #GAME-LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #GAME-LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <section class="section game-list">
 
@@ -57,7 +61,7 @@
                     <div>
 
                         <div class="game-list-title">
-                            <h3 class="h3">Games List</h3>
+                            <h3 class="h3">{{ $genre }} Game</h3>
                             <button class="nav-open-btn" aria-label="open menu" data-filter-toggler
                                 onclick="toggleFilter()">
                                 <span class="line line-1"></span>
@@ -227,8 +231,8 @@
 
 
         <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    - #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    -->
 
         <div class="filterbar">
 
