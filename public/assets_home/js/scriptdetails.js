@@ -161,12 +161,7 @@ const datacartpayment3 = document.querySelector("[data-cart-payment3]");
 const datacartpayment4 = document.querySelector("[data-cart-payment4]");
 const datacartpayment5 = document.querySelector("[data-cart-payment5]");
 
-// document.getElementById("credit1").onclick = function () {
-//   document.getElementById("check1").checked = true;
-// };
-// document.getElementById("credit2").onclick = function () {
-//   document.getElementById("check2").checked = true;
-// };
+
 
 
  
@@ -245,6 +240,7 @@ const showpaymentdetails1 = function () {
   paymenthidehide3.classList.remove("active");
   paymenthidehide4.classList.remove("active");
   paymenthidehide5.classList.remove("active");
+  document.getElementById("check1").checked = true;
 }
 
 
@@ -257,6 +253,7 @@ const showpaymentdetails2 = function () {
   paymenthidehide3.classList.remove("active");
   paymenthidehide4.classList.remove("active");
   paymenthidehide5.classList.remove("active");
+  document.getElementById("check2").checked = true;
 }
 
 //master
@@ -268,6 +265,7 @@ const showpaymentdetails3 = function () {
   paymenthidehide1.classList.remove("active");
   paymenthidehide4.classList.remove("active");
   paymenthidehide5.classList.remove("active");
+  document.getElementById("check3").checked = true;
 }
 
 
@@ -280,6 +278,7 @@ const showpaymentdetails4 = function () {
   paymenthidehide3.classList.remove("active");
   paymenthidehide1.classList.remove("active");
   paymenthidehide5.classList.remove("active");
+  document.getElementById("check4").checked = true;
 }
 
 
@@ -292,6 +291,7 @@ const showpaymentdetails5 = function () {
   paymenthidehide3.classList.remove("active");
   paymenthidehide4.classList.remove("active");
   paymenthidehide1.classList.remove("active");
+  document.getElementById("check5").checked = true;
 }
 
 const cleaveCC = new Cleave("#card_number", {
@@ -321,4 +321,3 @@ const cleaveCC = new Cleave("#card_number", {
   const cleaveCVV1 = new Cleave("#cvv1", {
     blocks: [3]
   });
-

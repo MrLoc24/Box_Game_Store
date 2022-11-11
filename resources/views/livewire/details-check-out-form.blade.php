@@ -25,13 +25,12 @@
                                 $i++;
                                 $function = 'showcartpayment' . $i . '()';
                                 $data = 'data-cart-payment' . $i;
-                                $credit = 'credit' . $i;
-                                $check = 'check' . $i;
+                                $checkbox = 'checkbox' . $i;
                             @endphp
                             @if ($payment->card_name == 'paypal')
                                 <li class="cart_payment1">
                                     <div class="title_cart_payment" onclick="{{ $function }}">
-                                        <input type="radio" name="payment">
+                                        <input type="radio" id="check6" name="payment">
                                         <img src="{{ asset($payment->image) }}" alt="">
                                         <label for="">{{ $payment->card_name }}</label>
                                     </div>
@@ -76,7 +75,7 @@
                             @else
                                 <li class="cart_payment1">
                                     <div class="title_cart_payment" id="btn1">
-                                        <input type="radio" id="checkbox1" name="payment">
+                                        <input type="radio" oninput="document.getElementById('btn-po').disabled = document.getElementById('{{ $checkbox }}').checked ? false : true" id="{{ $checkbox }}" name="payment"  class="cdc">
                                         <img src="{{ asset($payment->image) }}" alt="">
                                         <label for="">{{ $payment->card_name }}</label>
                                     </div>
@@ -132,7 +131,7 @@
                             @endif                  
                         @endif
                     @empty
-                        <span>No payment methods added.</span>
+                        <span style="margin-left: 2rem; color: var(--text-silver2);">No payment methods added.</span>
                     @endforelse
                     @if (session()->has('status'))
                         <div class="valid-feedback">
@@ -168,7 +167,7 @@
                             @if ($paypal == 0)
                                 <li class="other_payment1">
                                     <div class="title_other_payment" onclick="showpaymentdetails1()">
-                                        <input type="radio" name="payment">
+                                        <input type="radio" id="check1" name="payment">
                                         <img src="{{ asset('assets_home/images/paypal.png') }}" alt="">
                                         <label for="">PayPal</label>
                                     </div>
@@ -193,7 +192,7 @@
                                 @if ($vnpay == 0)
                                 <li class="other_payment1">
                                     <div class="title_other_payment" onclick="showpaymentdetails4()">
-                                        <input type="radio" name="payment">
+                                        <input type="radio" id="check4" name="payment">
                                         <img src="{{ asset('assets_home/images/vnpay.png') }}" alt="">
                                         <label for="">VN Pay</label>
                                     </div>
@@ -219,7 +218,7 @@
                                 @if ($momo == 0)
                                 <li class="other_payment1">
                                     <div class="title_other_payment" onclick="showpaymentdetails5()">
-                                        <input type="radio" name="payment">
+                                        <input type="radio" id="check5" name="payment">
                                         <img src="{{ asset('assets_home/images/momo.png') }}" alt="">
                                         <label for="">Momo</label>
                                     </div>
@@ -245,7 +244,7 @@
                                 @if ($visa == 0)
                                 <li class="other_payment1">
                                     <div class="title_other_payment" onclick="showpaymentdetails2()">
-                                        <input type="radio" name="payment">
+                                        <input type="radio" oninput="document.getElementById('btn-po').disabled = document.getElementById('check2').checked ? false : true" id="check2" class="cdc" name="payment">
                                         <img src="{{ asset('assets_home/images/visa.jpg') }}" alt="">
                                         <label for="">Visa</label>
                                     </div>
@@ -277,7 +276,7 @@
                                 @if ($master == 0)
                                 <li class="other_payment1">
                                     <div class="title_other_payment" onclick="showpaymentdetails3()">
-                                        <input type="radio" name="payment">
+                                        <input type="radio" oninput="document.getElementById('btn-po').disabled = document.getElementById('check3').checked ? false : true" id="check3" class="cdc" name="payment">
                                         <img src="{{ asset('assets_home/images/master.png') }}" alt="">
                                         <label for="">Master Card</label>
                                     </div>
@@ -381,8 +380,9 @@
             </div>
         </div>
 
-        <div class="place-order">
-            <button class="btn-po" wire:click.prevent="update({{ $cartId }})">PLACE ORDER</button>
+        <div class="place-order tooltip">
+            <button class="btn-po" wire:click.prevent="update({{ $cartId }})" disabled="disabled" id="btn-po">PLACE ORDER</button>
+            <span class="tooltiptext">Choose your payment</span>
             @php
                 \Session::put('cart_Id', $cartId)
             @endphp
@@ -390,4 +390,6 @@
         
     </div>
 </div>
+
+
 

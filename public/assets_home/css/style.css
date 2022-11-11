@@ -142,6 +142,11 @@ body {
   line-height: 1.6;
 }
 
+body:has(input[class="cdc"]:checked) .btn-po{
+  cursor: pointer;
+  background: var(--blue);
+}
+
 :focus-visible { outline-offset: 4px; }
 
 ::-webkit-scrollbar {
@@ -1517,6 +1522,29 @@ body {
   flex: 1 0 auto;
 }
 
+.order-summary .tooltip .tooltiptext{
+  visibility: hidden;
+  width: fit-content;
+  background-color: rgb(67, 67, 67);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 1.5rem;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 90%;
+  left: 50%;
+  margin-left: -70px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.order-summary .tooltip:hover .tooltiptext{
+  visibility: visible;
+}
+
 .summary-title {
   display: flex;
   justify-content: space-between;
@@ -1797,15 +1825,16 @@ body {
   box-shadow: 0 -4px 4px rgb(0 0 0 / 10%);
 }
 
-.order-summary .place-order .btn-po {
+.order-summary .place-order .btn-po{
   padding: 15px 30px;
   width: 100%;
-  background: var(--blue);
+  background: rgb(163, 184, 255);
   border-radius: 4px;
   color: var(--text-white);
   font-size: var(--fs-9);
   font-weight: 700;
   height: 60px;
+  cursor: not-allowed;
 }
 
 .order-list .order-item .order-img img {
@@ -2116,6 +2145,11 @@ body {
     padding-inline: 30px;
   }
 
+  .content-info .change1{
+    padding-top: 15px;
+    padding-left: 8px;
+  }
+
 
 
   /**
@@ -2218,6 +2252,11 @@ body {
     
   }
 
+  .content-info .change1{
+    padding-top: 15px;
+    padding-left: 13px;
+  }
+
   .flex-item { max-width: calc(50% - 15px); }
 
 
@@ -2307,7 +2346,18 @@ body {
 
   .flex-item { max-width: calc(33.33% - 20px); }
 
+  .section1{
+    padding-inline: 50px;
+  }
 
+  .section1 .container1{
+    max-width: unset;
+  }
+
+  .content-info .change1{
+    padding-top: 15px;
+    padding-left: 13px;
+  }
 
   /**
    * HEADER
@@ -2669,7 +2719,18 @@ body {
     padding-inline: 200px;
   }
 
+  /* .section1{
+    padding-inline: 30px;
+  } */
 
+  .section1 .container1{
+    max-width: unset;
+  }
+
+  .content-info .change1{
+    padding-top: 15px;
+    padding-left: 19px;
+  }
 
   /**
    * HERO
@@ -3278,6 +3339,7 @@ body {
 .profile{
   display: flex;
   background: #f8f8f8;
+  width: 100%;
 }
 
 .profile .options{
@@ -4007,19 +4069,9 @@ body {
   border-radius: .5rem;
   background-color: var(--blue);
   border: var(--bg-silver) solid 1px;
-  padding-top: 13px;
-  padding-left: 16px;
   cursor: pointer;
-  font-size: 1.8rem;
   color: var(--white);
-}
-
-.profile .informations .information .info .content-info .fa-user-pen{
   font-size: 1.5rem;
-  color: var(--white);
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
 }
 
 .profile .informations .information .personal-details{
