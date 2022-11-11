@@ -16,17 +16,17 @@ class AdminHomeController extends Controller
     }
     public function update(AdminRequestForm $request, $id)
     {
+        $previousPic = $request->input('pre_pic');
         $data = array();
         $data['adminId'] = $request->input('loginName');
         $data['email'] = $request->input('adminEmail');
         $data['name'] = $request->input('adminName');
         $get_image = $request->file('adminPicture');
         if ($get_image) {
+            unlink($previousPic);
             $get_name_picture = 'admin' . $id . '.jpg';
             $data['image'] = 'img/admin/' . $get_name_picture;
             $get_image->move('img/admin/', $get_name_picture);
-        } else { //
-            $data['image'] = null;
         }
         DB::table('account_admin')->where(['adminId' => $id])->update(
             $data

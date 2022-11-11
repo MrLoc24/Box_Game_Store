@@ -168,6 +168,7 @@
                                             <div class="form-group row">
                                                 <input type="submit" class="btn btn-success float-left"
                                                     value="Submit"></input>
+                                                <input type="hidden" name="prev_pic" value="{{ $admin->image }}">
                                                 <button type="reset" class="btn btn-danger float-left"
                                                     style="margin-left: 3px">Reset</button>
 

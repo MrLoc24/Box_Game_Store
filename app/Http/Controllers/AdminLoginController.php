@@ -4,8 +4,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccountRequest;
-use App\Statistical;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +20,6 @@ class AdminLoginController extends Controller
     {
         $userName = $request->input('txtName');
         $password = $request->input('txtPassword');
-        $checkbox = $request->has('checkRemember');
         $admin = DB::table('account_admin')->where('adminId', $userName)->orWhere('email', $userName)->first();
         if ($admin != null && $admin->password == $password) {
             if ($admin->role == 'boss') {
