@@ -3365,19 +3365,77 @@ body {
   padding-block: 40px;
 }
 
-.profile .informations .information .purchase-history .ph-title th {
-  padding-block-end: 20px;
+.profile .informations .information .purchase-history .ph-title td {
+  padding-block-end: 15px;
   font-size: var(--fs-7);
   font-weight: 800;
 }
 
+.profile .informations .information .purchase-history .ph-list-hide {
+  display: none;
+  margin-block-end: 10px;
+  margin-block-start: 5px;
+}
+
+.profile .informations .information .purchase-history .ph-list-hide.active {
+  display: block;
+}
+
 .profile .informations .information .purchase-history .ph-list td {
-  padding-block-end: 10px;
+  padding-block-end: 5px;
   font-size: var(--fs-8);
 }
 
 .profile .informations .information .purchase-history .ph-list td a {
   color: var(--blue);
+}
+
+.order-details { z-index: 5; }
+
+.od-container {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 13%;
+  right: 13%;
+  bottom: 0;
+  z-index: 6;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: 0.1s var(--cubic-in);
+  /* visibility: visible;
+  transform: translateX(0);
+  transition: 0.4s var(--cubic-out); */
+  
+}
+
+.od-container .close-details-form {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.od-container.active {
+  visibility: visible;
+  transform: translateX(0);
+  transition: .1s var(--cubic-out);
+}
+
+.overlay-transactions {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  transition: var(--transition-1);
+}
+
+.overlay-transactions.active {
+  background-color: var(--black_50);
+  pointer-events: all;
 }
 
 .profile .informations .information .payment .content-payment{

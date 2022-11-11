@@ -1,5 +1,5 @@
 @extends('layouts.dashboards')
-@section('title', 'View Cart')
+@section('title', 'View Each Cart Details')
 @section('header-specific')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -13,12 +13,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Order List</h1>
+                        <h1>Cart ID {{ $cartId }} List</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
-                            <li class="breadcrumb-item active">Order List</li>
+                            <li class="breadcrumb-item active">Cart ID : {{ $cartId }}</li>
                         </ol>
                     </div>
                 </div>
@@ -34,39 +34,36 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Cart</h3>
+                                <h3 class="card-title">Cart ID {{ $cartId }} Details</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th>Cart Details ID</th>
                                             <th>CartID</th>
-                                            <th>UserName</th>
-                                            <th>Order Total</th>
-                                            <th>Status</th>
-                                            <th>Function</th>
+                                            <th>Game Name</th>
+                                            <th>Game Icon</th>
+                                            <th>Game Price</th>
+                                            <th>Sale</th>
+                                            <th>SubTotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($carts as $key => $cart)
+                                        @foreach ($cartDs as $key => $cartD)
                                             <tr>
-                                                <td>{{ $cart->cartId }}</td>
-                                                <td>{{ $cart->userID }}</td>
-                                                <td>{{ round($cart->cartTotal, 2) }}$</td>
-                                                @if ($cart->status != 0)
-                                                <td>Purchased</td>
-                                                @else
-                                                <td>Processing</td>
-                                                @endif
+                                                <td>{{ $cartD->cart_details_id }}</td>
+                                                <td>{{ $cartD->cartId }}</td>
+                                                <td>{{ $cartD->gameId }}</td>
+                                                <td><img src="{{ asset("$cartD->gameIcon") }}" width="50px" height="50px"></td>
+                                                <td>{{ $cartD->gamePrice }}$</td>
                                                 <td>
-                                                    <a href="/admin/cart/view/{{ $cart->cartId }}"
-                                                        class="btn btn-primary">View</a>
-                                                    {{-- <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                        class="btn btn-danger">Delete</a> --}}
-                                                    <a href="/admin/cart/delete/{{ $cart->cartId }}" class="btn btn-danger"
-                                                        >Delete</a>
+                                                    <button aria-disabled="true" class="btn btn-primary">
+                                                        -{{ $cartD->gameSale }}%
+                                                    </button>
                                                 </td>
+                                                <td>{{ round($cartD->gamePrice * (100 - $cartD->gameSale) / 100, 2) }}$</td>
                                             </tr>
                                             {{-- Popup delete message --}}
                                             {{-- <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"
@@ -100,11 +97,13 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <th>Cart Details ID</th>
                                             <th>CartID</th>
-                                            <th>UserName</th>
-                                            <th>Order Total</th>
-                                            <th>Status</th>
-                                            <th>Function</th>
+                                            <th>Game Name</th>
+                                            <th>Game Icon</th>
+                                            <th>Game Price</th>
+                                            <th>Sale</th>
+                                            <th>SubTotal</th>
                                         </tr>
                                     </tfoot>
                                 </table>

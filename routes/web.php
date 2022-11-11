@@ -86,6 +86,8 @@ Route::prefix('admin/manager')->middleware('checkAdminLogin')->group(function ()
 //ADMIN CART MANAGEMENT
 Route::prefix('admin/cart')->middleware('checkAdminLogin')->group(function () {
     Route::get('index', 'AdminCartController@index');
+    Route::get('view/{cartId}', 'AdminCartController@view');
+    Route::get('delete/{cartId}', 'AdminCartController@delete');
     Route::get('index/cartDetails', 'AdminCartController@indexCartDetails');
 });
 
@@ -169,12 +171,16 @@ Route::middleware(['auth', 'auth.session', 'active_user'])->group(function () {
         $cartMs = DB::table('cart_master')->where('userID', Auth::user()->userID)->get();
         $trans = array();
         foreach ($cartMs as $cartM) {
-            $date = date_format(date_create($cartM->created_at), "d/m/Y");
+            // $date = date_format(date_create($cartM->created_at), "d/m/Y");
+            // $date = date_format(date_create($cartM->created_at), "Y-m-d H:i:s");
+            $date = $cartM->created_at;
             $status = $cartM->status;
+            $orderId = $cartM->cartId;
             $cartDs = DB::table('cart_details')->where('cartId', $cartM->cartId)->get();
             foreach ($cartDs as $cartD) {
                 $cartD->date = $date;
                 $cartD->status = $status;
+                $cartD->orderId = $orderId;
                 array_push($trans, $cartD);
             }
         }
@@ -188,4 +194,5 @@ Route::middleware(['auth', 'auth.session', 'active_user'])->group(function () {
     // Route::get('remove-cart/{rowId}', 'CartController@removeCart');
     // Route::get('/checkoutCart/{cartTotal}', 'CheckoutController@checkout');
     Route::get('/updateCart/{cartId}', 'CheckoutController@update');
+    Route::get('/refund/{cartId}/{gameId}', 'CheckoutController@refund');
 });

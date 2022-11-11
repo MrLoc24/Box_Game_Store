@@ -16,12 +16,12 @@ class CheckOutCart extends Component
 
     public function checkout($cartTotal)
     {
+        DB::table('cart_master')->where('status', 0)->delete();
         // insert order_cart
         $cart_data = array();
         $cart_data['userId'] = Auth::user()->userID;
         $cart_data['cartTotal'] = $cartTotal;
         $cartId = DB::table('cart_master')->insertGetId($cart_data);
-        // session()->flush();
         session()->forget('cartId');
         session()->put('cartId', $cartId);
         session()->save();

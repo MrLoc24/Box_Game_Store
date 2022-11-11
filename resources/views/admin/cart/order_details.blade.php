@@ -1,5 +1,5 @@
 @extends('layouts.dashboards')
-@section('title', 'View Game')
+@section('title', 'View Cart Details')
 @section('header-specific')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -47,8 +47,7 @@
                                             <th>Game Icon</th>
                                             <th>Game Price</th>
                                             <th>Sale</th>
-                                            <th>Price On Sale</th>
-                                            <th>Function</th>
+                                            <th>SubTotal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,14 +64,6 @@
                                                     </button>
                                                 </td>
                                                 <td>{{ round($cartD->gamePrice * (100 - $cartD->gameSale) / 100, 2) }}$</td>
-                                                <td>
-                                                    <a href=""
-                                                        class="btn btn-primary">View</a>
-                                                    {{-- <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                        class="btn btn-danger">Delete</a> --}}
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                        >Delete</button>
-                                                </td>
                                             </tr>
                                             {{-- Popup delete message --}}
                                             {{-- <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"
@@ -112,8 +103,7 @@
                                             <th>Game Icon</th>
                                             <th>Game Price</th>
                                             <th>Sale</th>
-                                            <th>Price On Sale</th>
-                                            <th>Function</th>
+                                            <th>SubTotal</th>
                                         </tr>
                                     </tfoot>
                                 </table>

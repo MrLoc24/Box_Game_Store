@@ -60,6 +60,7 @@ class DetailsAddCart extends Component
 
     public function checkout($gameId)
     {
+        DB::table('cart_master')->where('status', 0)->delete();
         $game = DB::table('game') 
             ->where('gameId', $gameId)
             ->first();
