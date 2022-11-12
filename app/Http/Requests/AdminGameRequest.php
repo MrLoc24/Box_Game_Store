@@ -31,8 +31,8 @@ class AdminGameRequest extends FormRequest
             'ram.*' => 'required',
             'vga.*' => 'required',
             'storage.*' => 'required',
-            'icon.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'banner.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'gameplay.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
