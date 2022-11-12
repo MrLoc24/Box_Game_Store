@@ -10,6 +10,8 @@ class CheckOutForm extends Component
 {
     protected $listeners = ['form_updated' => 'render'];
 
+    public $payment;
+
     public function render()
     {
         $cartId = session('cartId');

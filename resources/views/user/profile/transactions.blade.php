@@ -57,7 +57,7 @@
 
                         $diff = $date->diffForHumans($now);
                     @endphp
-                    <span style="font-weight: 600; margin-block-end: 10px; display: flex; gap: 50px;">{{ $diff }}.
+                    <span style="font-weight: 600; margin-block-end: 10px; display: flex; gap: 50px;">{{ $diff }}.</span>
                 </td>
                 <td></td>
                 <td></td>

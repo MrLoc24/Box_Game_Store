@@ -1124,6 +1124,10 @@ body:has(input[class="cdc"]:checked) .btn-po{
   color: var(--text-silver);
 }
 
+.filter-hide-item:first-child {
+  margin-block-start: 15px;
+}
+
 .filter-hide-item {
   padding: 12px;
   font-size: var(--fs-7);
@@ -1131,7 +1135,13 @@ body:has(input[class="cdc"]:checked) .btn-po{
   margin-block-end: 5px;
 }
 
-.filter-hide-item a:hover{
+.filter-hide-item:focus-within {
+  border: .1px solid var(--text-white);
+  background: var(--bg-silver);
+  border-radius: 5px;
+}
+
+.filter-hide-item a:is(:hover, :focus){
   color: var(--text-white);
 }
 
@@ -1209,6 +1219,16 @@ body:has(input[class="cdc"]:checked) .btn-po{
       
       .genre-hide {
         display: none;
+      }
+
+      :is(.genre-hide, .platform-hide) .filter-hide-item.active {
+        border: .1px solid var(--text-white);
+        background: var(--bg-silver);
+        border-radius: 5px;
+      }
+
+      :is(.genre-hide, .platform-hide) .filter-hide-item a.active {
+        color: var(--text-white);
       }
       
       .genre-hide.active {

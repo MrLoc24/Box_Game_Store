@@ -9,9 +9,76 @@ use Illuminate\Support\Facades\Auth;
 
 class BrowseAddCart extends Component
 {
+    public $search = '';
+    public $sortField = 'gameId';
+    public $sortDirection = 'asc';
+    public $gametypelist;
+    public $gameIds = array();
+    public $gameoslist;
+    public $gameosIds = array();
+    public $title = "Games List";
+
+    public function mount() {
+        $gameIds = array();
+        $games = DB::table('game')->get();
+        foreach ($games as $key => $game) {
+            array_push($gameIds, $game->gameId);
+        }
+        $this->gametypelist = $gameIds;
+        $this->gameoslist = $gameIds;
+    }
+
+    public function sortByType($type)
+    {
+        $categorys = DB::table('category')->where('type', $type)->get();
+        foreach ($categorys as $key => $category) {
+            $gameId = $category->gameId;
+            if (!in_array($gameId, $this->gameIds)) {
+                array_push($this->gameIds, $gameId);
+            }
+        }
+        $this->gametypelist = $this->gameIds;
+    }
+
+    public function sortByGenre($genre) 
+    {
+        $this->title = $genre;
+        $gameIds = array();
+        $games = DB::table('game')->join('category', 'game.gameId', '=', 'category.gameId')->where('category.type', $genre)->get();
+        foreach($games as $key => $game) {
+            array_push($gameIds, $game->gameId);
+        }
+        $this->gametypelist = $gameIds;
+    }
+
+    public function sortByOs($os)
+    {
+        $systems = DB::table('system_requirement')->where('os', $os)->get();
+        foreach ($systems as $key => $system) {
+            $gameId = $system->gameId;
+            if (!in_array($gameId, $this->gameosIds)) {
+                array_push($this->gameosIds, $gameId);
+            }
+        }
+        $this->gameoslist = $this->gameosIds;
+    }
+
+    public function sortBy($field, $direction) 
+    {
+        $this->sortField = $field;
+        $this->sortDirection = $direction;
+    }
+
     public function render()
     {
-        $game = DB::table('game')->get();
+        $game = DB::table('game')
+            ->whereIn('gameId', $this->gametypelist)
+            ->whereIn('gameId', $this->gameoslist)
+            ->where('gameId', 'like', '%'.$this->search.'%')
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->get();
+        $type = DB::table('type')->get();
+        $platform = DB::table('system_requirement')->groupBy('os')->get();
         $gameIds = array();
         if (Auth::check()) {
             $cartMs = DB::table('cart_master')->where('userID', Auth::user()->userID)->where('status', 1)->get();
@@ -22,7 +89,7 @@ class BrowseAddCart extends Component
                 } 
             }
         }    
-        return view('livewire.browse-add-cart', compact('game', 'gameIds'));
+        return view('livewire.browse-add-cart', compact('game', 'gameIds', 'type', 'platform'));
     }
 
     public function addToCart($gameId) 
