@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminGameRequest;
 use DB;
 use File;
 
@@ -29,7 +30,7 @@ class AdminGameController extends Controller
         $system_req = DB::table('system_requirement')->where('gameId', $id)->get();
         return view('admin.game.view', ['game' => $game, 'category' => $category, 'rating' => $rating, 'system_req' => $system_req, 'cate_all' => $cate_all]);
     }
-    public function store(Request $request)
+    public function store(AdminGameRequest $request)
     {
         //Add new game
         $name_game = str_replace(':', '__', str_replace(' ', '_', $request->input('gameName')));
@@ -44,11 +45,7 @@ class AdminGameController extends Controller
         $data_game['description'] = $request->input('gameDescription');
         $data_game['about'] = $request->input('gameAbout');
         $data_game['price'] = $request->input('gamePrice');
-        if ($request->input('sale') == null) {
-            $data_game['sale'] = 0;
-        } else {
-            $data_game['sale'] = $request->input('sale');
-        }
+        $data_game['sale'] = $request->input('sale');
         $data_game['release_date'] = $request->input('gameDate');
         $data_game['developer'] = $request->input('gameDeveloper');
         $data_game['developer_web'] = $request->input('developerWebsite');
@@ -114,7 +111,7 @@ class AdminGameController extends Controller
             }
             return redirect('admin/game/view/' . $name_game);
         } else {
-            return redirect('admin/game/create');
+            return redirect('admin/game/create')->with('error', 'Error');
         }
     }
     public function delete($id)

@@ -5,6 +5,20 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+            @if (count($errors) > 0)
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -41,40 +55,42 @@
                                         <div class="form-group">
                                             <label for="name">Game Name</label>
                                             <input type="text" class="form-control" name="gameName" id="name"
-                                                placeholder="Enter Name">
+                                                placeholder="Enter Name" required maxlength="45">
                                         </div>
                                         <div class="form-group">
                                             <label for="price">Price</label>
                                             <input type="number" step="0.01" min='0' class="form-control"
-                                                id="price" name="gamePrice" placeholder="Price">
+                                                id="price" name="gamePrice" placeholder="If free, input 0"
+                                                max="300" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="sale">Sale</label>
                                             <input type="number" min='0' class="form-control" id="sale"
-                                                name="sale" placeholder="Sale Percent">
+                                                name="sale" placeholder="Sale Percent" max="100" value="0">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
                                             <textarea rows="5" type="text" class="form-control" id="description" name="gameDescription"
-                                                placeholder="Description"></textarea>
+                                                placeholder="Description" maxlength="1000"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="about">About</label>
-                                            <textarea rows="5" type="text" class="form-control" id="about" name="gameAbout" placeholder="About"></textarea>
+                                            <textarea rows="5" type="text" class="form-control" id="about" name="gameAbout" placeholder="About"
+                                                maxlength="2000"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="date">Release Date</label>
                                             <input type="date" class="form-control" id="date" name="gameDate"
-                                                placeholder="">
+                                                placeholder="" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="developer">Developer</label>
                                             <input type="text" class="form-control" id="developer"
-                                                placeholder="Developer" name="gameDeveloper">
+                                                placeholder="Developer" name="gameDeveloper" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="developer_website">Developer Website</label>
-                                            <input type="text" class="form-control" id="developer_website"
+                                            <input type="url" class="form-control" id="developer_website"
                                                 placeholder="developer Website" name="developerWebsite">
                                         </div>
                                         <div class="form-group">
@@ -82,7 +98,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="icon"
-                                                        name="icon">
+                                                        name="icon" required>
                                                     <label class="custom-file-label" for="icon">Choose
                                                         file</label>
                                                 </div>
@@ -96,7 +112,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="banner"
-                                                        name="banner">
+                                                        name="banner" required>
                                                     <label class="custom-file-label" for="banner">Choose
                                                         file</label>
                                                 </div>
@@ -110,7 +126,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="gameplay"
-                                                        multiple name="gameplay[]">
+                                                        multiple name="gameplay[]" required>
                                                     <label class="custom-file-label" for="gameplay">Choose multiple
                                                         file</label>
                                                 </div>
@@ -159,14 +175,14 @@
                                                     <!-- /.tab-pane -->
                                                     <div class="form-group row">
                                                         <button type="button" name="add" id="dynamic-ar"
-                                                            class="btn btn-outline-primary">Add Platform</button>
+                                                            class="btn btn-outline-primary" required>Add Platform</button>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="os" class="col-sm-2 col-form-label">OS</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="os[0]"
                                                                 placeholder="window, mac, linux, xbox or ps"
-                                                                name="os[0]">
+                                                                name="os[0]" maxlength="45" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -174,7 +190,8 @@
                                                             class="col-sm-2 col-form-label">Version</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="version[0]"
-                                                                placeholder="Version" name="version[0]">
+                                                                placeholder="Version" name="version[0]" required
+                                                                maxlength="45">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -182,7 +199,8 @@
                                                             class="col-sm-2 col-form-label">Chipset</label>
                                                         <div class="col-sm-10">
                                                             <input type="test" class="form-control" id="chipset[0]"
-                                                                placeholder="Chipset Model" name="chipset[0]">
+                                                                placeholder="Chipset Model" name="chipset[0]" required
+                                                                maxlength="100">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -190,14 +208,15 @@
                                                             class="col-sm-2 col-form-label">Memory</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="ram[0]"
-                                                                placeholder="RAM" name="ram[0]">
+                                                                placeholder="RAM" name="ram[0]" required maxlength="45">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="vga" class="col-sm-2 col-form-label">VGA</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="vga[0]"
-                                                                placeholder="Graphic Card" name="vga[0]"></input>
+                                                                placeholder="Graphic Card" name="vga[0]" maxlength="200"
+                                                                required></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -205,7 +224,8 @@
                                                             class="col-sm-2 col-form-label">Storage</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="storage[0]"
-                                                                placeholder="Storage" name="storage[0]">
+                                                                placeholder="Storage" name="storage[0]" required
+                                                                maxlength="45">
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -219,7 +239,7 @@
 
                                 <div class="card card-secondary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Catelogy</h3>
+                                        <h3 class="card-title">Categories</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -253,11 +273,11 @@
                     <div class="form-row">
                         <div class="col-12" style="margin-bottom: 10px">
                             <button type="Submit" class="btn btn-success float-center"><i
-                                    class="far fa-credit-card"></i>
+                                    class="fas fa-cloud-upload-alt"></i>
                                 Submit
                             </button>
                             <button type="reset" class="btn btn-danger float-center" style="margin-right: 5px;">
-                                <i class="fas fa-download"></i> Reset All
+                                <i class="fas fa-window-close"></i> Reset All
                             </button>
                         </div>
                     </div>
@@ -281,7 +301,7 @@
                         <label for="os" class="col-sm-2 col-form-label">OS</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="os[` + i + `]"
-                                placeholder="window, mac, linux, xbox or ps" name="os[` + i + `]">
+                                placeholder="window, mac, linux, xbox or ps" name="os[` + i + `] required maxlength="45">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -289,7 +309,7 @@
                             class="col-sm-2 col-form-label">Version</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="version[` + i + `]"
-                                placeholder="Version" name="version[` + i + `]">
+                                placeholder="Version" name="version[` + i + `]" required maxlength="45">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -297,7 +317,7 @@
                             class="col-sm-2 col-form-label">Chipset</label>
                         <div class="col-sm-10">
                             <input type="test" class="form-control" id="chipset[` + i + `]"
-                                placeholder="Chipset Model" name="chipset[` + i + `]">
+                                placeholder="Chipset Model" name="chipset[` + i + `]" required maxlength="100">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -305,14 +325,14 @@
                             class="col-sm-2 col-form-label">Memory</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="ram[` + i + `]"
-                                placeholder="RAM" name="ram[` + i + `]">
+                                placeholder="RAM" name="ram[` + i + `]" required maxlength="45">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="vga" class="col-sm-2 col-form-label">VGA</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="vga[` + i + `]"
-                                placeholder="Graphic Card" name="vga[` + i + `]"></input>
+                                placeholder="Graphic Card" name="vga[` + i + `]" required maxlength="200"></input>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -320,11 +340,11 @@
                             class="col-sm-2 col-form-label">Storage</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="storage[` + i + `]"
-                                placeholder="Storage" name="storage[` + i + `]">
+                                placeholder="Storage" name="storage[` + i + `]" required maxlength="45">
                         </div>
                     </div>
                     <button type="button" class="btn btn-outline-danger" id="remove-input-field">Delete</button>
-                </form>`
+                </div>`
             );
         });
         $(document).on('click', '#remove-input-field', function() {

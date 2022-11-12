@@ -153,7 +153,12 @@ INSERT INTO `category` (`category`, `type`, `gameId`) VALUES
 (106, 'Adventure', 'Titanfall_2'),
 (107, 'FPS-Shooter', 'Titanfall_2'),
 (108, 'Racing', 'Titanfall_2'),
-(109, 'PvP', 'Titanfall_2');
+(109, 'PvP', 'Titanfall_2'),
+(110, 'Adventure', 'The_Day_Before'),
+(111, 'FPS-Shooter', 'The_Day_Before'),
+(112, 'Horror', 'The_Day_Before'),
+(113, 'Strategy', 'The_Day_Before'),
+(114, 'Survivals', 'The_Day_Before');
 
 -- --------------------------------------------------------
 
@@ -196,7 +201,8 @@ INSERT INTO `game` (`gameId`, `price`, `description`, `about`, `icon`, `banner`,
 ('Titanfall_2', 49.99, 'Respawn Entertainment gives you the most advanced titan technology in its new, single player campaign & multiplayer experience. Combine & conquer with new titans & pilots, deadlier weapons, & customization and progression systems that help you and your titan flow as one unstoppable killing force.', 'Call down your Titan and get ready for an exhilarating first-person shooter experience in Titanfall® 2! The sequel introduces a new single player campaign that explores the bond between Pilot and Titan. Or blast your way through an even more innovative and intense multiplayer experience - featuring 6 new Titans, deadly new Pilot abilities, expanded customization, new maps, modes, and much more.', 'img/game/Titanfall_2/icon/icon.jpg', 'img/game/Titanfall_2/banner/banner.jpg', 'img/game/Titanfall_2/gameplay/', '2016-10-28 00:00:00', 'Respawn Entertainment', 'https://store.steampowered.com/app/1237970/Titanfall_2/', '2022-11-04 04:34:41', NULL, NULL, b'1', b'0'),
 ('Uncharted___Legacy_of_Thieves', 59.99, 'Play as Nathan Drake and Chloe Frazer in their own standalone adventures as they confront their pasts and forge their own legacies. This game includes the critically acclaimed single-player stories from both UNCHARTED 4: A Thief’s End and UNCHARTED: The Lost Legacy.', '', 'img/game/Uncharted___Legacy_of_Thieves/icon/icon.jpg', 'img/game/Uncharted___Legacy_of_Thieves/banner/banner.jpg', 'img/game/Uncharted___Legacy_of_Thieves/gameplay/', '2022-10-19 00:00:00', 'Naghty Dog', 'https://www.naughtydog.com/', '2022-10-23 15:44:36', 0, NULL, b'1', b'1'),
 ('Unrail', 19.99, 'Unrailed! is a co-op multiplayer game where you have to work together with your friends to build a train track across endless procedurally generated worlds. Master random encounters with its inhabitants, upgrade your train and keep it from derailing!', 'Gather resources and craft tracks to extend your railroad to prevent your train from reaching the end. But watch out - there is only one tool of each type. Co-operation and co-ordination of your team is essential to survive this increasingly challenging journey!\r\nEvery world is unique! You and your team will have to master ever new challenges to stay on track!', 'img/game/Unrail/icon/icon.jpg', 'img/game/Unrail/banner/banner.jpg', 'img/game/Unrail/gameplay/', '2020-09-24 00:00:00', 'Daedalic Entertainment', 'https://store.steampowered.com/franchise/daedalic?snr=1_5_9__408', '2022-10-26 07:59:58', 20, 45, b'0', b'1'),
-('War_Thunder', 0, 'War Thunder is the most comprehensive free-to-play, cross-platform, MMO military game dedicated to aviation, armoured vehicles, and naval craft, from the early 20th century to the most advanced modern combat units. Join now and take part in major battles on land, in the air, and at sea.', NULL, 'img/game/War_Thunder/icon/icon.jpg', 'img/game/War_Thunder/banner/banner.jpg', 'img/game/War_Thunder/gameplay/', '2013-08-15 00:00:00', 'Gaijin Entertaiment', 'https://gaijin.net/', '2022-10-23 15:56:06', 0, 12, b'1', b'1');
+('War_Thunder', 0, 'War Thunder is the most comprehensive free-to-play, cross-platform, MMO military game dedicated to aviation, armoured vehicles, and naval craft, from the early 20th century to the most advanced modern combat units. Join now and take part in major battles on land, in the air, and at sea.', NULL, 'img/game/War_Thunder/icon/icon.jpg', 'img/game/War_Thunder/banner/banner.jpg', 'img/game/War_Thunder/gameplay/', '2013-08-15 00:00:00', 'Gaijin Entertaiment', 'https://gaijin.net/', '2022-10-23 15:56:06', 0, 12, b'1', b'1'),
+('The_Day_Before', 49.99, 'The Day Before is an open-world MMO survival set in a deadly, post-pandemic America overrun by flesh-hungry infected and survivors killing each other for food, weapons, and cars.', 'SURVIVE AT ALL COSTS\r\nSearch abandoned vehicles, houses, and skyscrapers as you scavenge for resources.\r\nENTER PLACES NO ONE ELSE DARES\r\nCrush the infected and other players with realistic weapons, becoming a legend of the new world.\r\nDISCOVER THE VAST POST-PANDEMIC WORLD\r\nExplore beautiful yet dangerous places with stunningly detailed vehicles.\r\nFIND A COLONY OF SURVIVORS\r\nTake part in the restoration of the former society before it is too late. In the survivor colony, you can sell your loot and communicate safely with other players.', 'img/game/The_Day_Before/icon/icon.jpg', 'img/game/The_Day_Before/banner/banner.jpg', 'img/game/The_Day_Before/gameplay/', '2023-03-01 00:00:00', 'FNTASTIC', 'https://store.steampowered.com/app/1372880/The_Day_Before/', '2022-11-12 09:38:38', NULL, NULL, b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -276,7 +282,9 @@ INSERT INTO `system_requirement` (`sysId`, `gameId`, `version`, `os`, `storage`,
 (23, 'Goat_Simulator_3', '10', 'window', '50GB', '12GB', 'i5 9400F', '1070Ti 8GB'),
 (24, 'Titanfall_2', 'Win 7/8/8.1/10 64bit', 'window', '45GB', '16GB', 'Intel Core i5-6600 or equivalent', 'NVIDIA Geforce GTX 1060 6GB or AMD Radeon RX 480 8GB'),
 (25, 'Titanfall_2', 'Apple OS 16', 'mac', '45GB', '16GB', 'M1', '1060Ti or higher'),
-(26, 'Titanfall_2', 'S, 360, One', 'xbox', '45GB', '16GB', 'N/A', 'N/A');
+(26, 'Titanfall_2', 'S, 360, One', 'xbox', '45GB', '16GB', 'N/A', 'N/A'),
+(27, 'The_Day_Before', '64-bit Windows 7, Windows 8.1, Windows 10', 'window', '75GB', '16GB', 'Intel Core i5-6600K / AMD Ryzen 5 1600', 'NVIDIA GeForce GTX 1060 6GB / AMD Radeon RX 580 4GB');
+
 
 -- --------------------------------------------------------
 
