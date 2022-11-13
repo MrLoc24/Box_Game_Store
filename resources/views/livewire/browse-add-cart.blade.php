@@ -137,9 +137,9 @@
                                     </div>
 
                                 </div>
-
+                            @endforeach
                         </div>
-                    @endforeach
+                    @endif
                 </div>
 
                 <div class="filter-list" wire:ignore>
