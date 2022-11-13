@@ -139,6 +139,8 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        <div>{{ $game->links('pagination-links') }}</div>
                     @endif
                 </div>
 
