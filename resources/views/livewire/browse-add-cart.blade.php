@@ -37,15 +37,15 @@
     </section>
 
 
-    
+
     <section class="section game-list">
 
         <div class="container">
-    
+
             <div class="list-game-container">
-    
+
                 <div>
-    
+
                     <div class="game-list-title">
                         <h3 class="h3">{{ $title }}</h3>
                         <button class="nav-open-btn" aria-label="open menu" data-filter-toggler
@@ -54,190 +54,197 @@
                             <span class="line line-2"></span>
                             <span class="line line-3"></span>
                         </button>
-    
+
                     </div>
                     @if ($game->count() == 0)
-                    <div style="text-align: center; margin-block-start: 50px">
-                        <h2 class="h2-large">No results found</h2>
-                        <span style="color: var(--text-silver)">Unfortunately I could not find any results matching your search.</span>
-                    </div>
+                        <div style="text-align: center; margin-block-start: 50px">
+                            <h2 class="h2-large">No results found</h2>
+                            <span style="color: var(--text-silver)">Unfortunately I could not find any results matching
+                                your search.</span>
+                        </div>
                     @else
-                    <div class="list-game">
-                        @foreach ($game as $key => $value)
-                            <div class="shop-card">
-                    
-                                <div class="card-banner">
-                                    <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}" class="img-cover"
-                                            style="height: 282px"></a>
-                                    @if ($value->sale != 0)
-                                        <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
-                                    @endif
-                    
-                    
-                                    <div class="card-actions">
-                                        <div class="tooltip">
-                                            @if (Auth::check())
-                                                @if (in_array($value->gameId, $gameIds))
-                                                    <button class="action-btn" type="button">
-                                                        <i class="fa-sharp fa-solid fa-check"></i>
-                                                    </button>
-                                                    <span class="tooltiptext">Purchased</span>
-                                                @else
-                                                    @if (Cart::content()->where('id', $value->gameId)->count())
-                                                        <button class="action-btn" type="button"
-                                                            wire:click.prevent="removeCart('{{ $value->gameId }}')">
-                                                            -
+                        <div class="list-game">
+                            @foreach ($game as $key => $value)
+                                <div class="shop-card">
+
+                                    <div class="card-banner">
+                                        <a href="/game/{{ $value->gameId }}"><img src="{{ asset("$value->icon") }}"
+                                                class="img-cover" style="height: 282px"></a>
+                                        @if ($value->sale != 0)
+                                            <span class="badge" aria-label="20% off">-{{ $value->sale }}%</span>
+                                        @endif
+
+
+                                        <div class="card-actions">
+                                            <div class="tooltip">
+                                                @if (Auth::check())
+                                                    @if (in_array($value->gameId, $gameIds))
+                                                        <button class="action-btn" type="button">
+                                                            <i class="fa-sharp fa-solid fa-check"></i>
                                                         </button>
-                                                        <span class="tooltiptext">Remove</span>
+                                                        <span class="tooltiptext">Purchased</span>
                                                     @else
-                                                        <button class="action-btn" type="button"
-                                                            wire:click.prevent="addToCart('{{ $value->gameId }}')">
-                                                            +
-                                                        </button>
-                                                        <span class="tooltiptext">Add to Cart</span>
+                                                        @if (Cart::content()->where('id', $value->gameId)->count())
+                                                            <button class="action-btn" type="button"
+                                                                wire:click.prevent="removeCart('{{ $value->gameId }}')">
+                                                                -
+                                                            </button>
+                                                            <span class="tooltiptext">Remove</span>
+                                                        @else
+                                                            <button class="action-btn" type="button"
+                                                                wire:click.prevent="addToCart('{{ $value->gameId }}')">
+                                                                +
+                                                            </button>
+                                                            <span class="tooltiptext">Add to Cart</span>
+                                                        @endif
                                                     @endif
+                                                @else
+                                                    <a href="{{ route('login') }}" class="action-btn-login"
+                                                        type="button">
+                                                        +
+                                                    </a>
+                                                    <span class="tooltiptext">Add to Cart</span>
+                                                @endif
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card-content">
+
+                                        <span class="card-type">BASE GAME</span>
+
+                                        <h3>
+                                            <a href="/game/{{ $value->gameId }}"
+                                                class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
+                                        </h3>
+
+                                        <div class="price">
+                                            @if ($value->price)
+                                                @if ($value->sale)
+                                                    <del class="del">${{ $value->price }}</del>
+
+                                                    <span
+                                                        class="span">${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}</span>
+                                                @else
+                                                    <span class="span">${{ $value->price }}</span>
                                                 @endif
                                             @else
-                                                <a href="{{ route('login') }}" class="action-btn-login" type="button">
-                                                    +
-                                                </a>
-                                                <span class="tooltiptext">Add to Cart</span>
+                                                <span class="span">FREE</span>
                                             @endif
                                         </div>
-                    
+
                                     </div>
+
                                 </div>
-                    
-                                <div class="card-content">
-                    
-                                    <span class="card-type">BASE GAME</span>
-                    
-                                    <h3>
-                                        <a href="/game/{{ $value->gameId }}"
-                                            class="card-title">{{ str_replace('_', ' ', str_replace('__', ': ', $value->gameId)) }}</a>
-                                    </h3>
-                    
-                                    <div class="price">
-                                        @if ($value->price)
-                                            @if ($value->sale)
-                                                <del class="del">${{ $value->price }}</del>
-                    
-                                                <span
-                                                    class="span">${{ number_format($value->price * (1 - $value->sale / 100), 2, '.', '') }}</span>
-                                            @else
-                                                <span class="span">${{ $value->price }}</span>
-                                            @endif
-                                        @else
-                                            <span class="span">FREE</span>
-                                        @endif
-                                    </div>
-                    
-                                </div>
-                    
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
                     @endif
                 </div>
-    
+
                 <div class="filter-list" wire:ignore>
-    
+
                     <div class="filter-search">
                         <div class="filter-title">
                             <h3 class="h4">Filters</h3>
                             <a href="{{ URL::to('/browse') }}" class="reset">RESET</a>
                         </div>
-    
+
                         <form class="input-wrapper-sidebar">
                             <input type="search" name="search" placeholder="Search a game ..."
                                 class="search-field-sidebar" id="search" wire:model="search">
-    
+
                             <button class="search-submit-sidebar" aria-label="search">
                                 <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
                             </button>
                         </form>
                     </div>
-    
+
                     <div class="filter">
                         <div class="custom-show" data-filter-show onclick="showfilter()">
                             <span class="filter-name">CUSTOM</span>
-    
+
                             <span class="btn-show">
                                 <ion-icon name="chevron-down-outline" data-arrow class="arrow-custom"></ion-icon>
                             </span>
                         </div>
-    
+
                         <div class="custom-hide" data-filter-hide>
                             <ul>
                                 <li class="filter-hide-item">
                                     <a href="#" wire:click.prevent="sortBy('gameId', 'asc')">Alphabetical</a>
                                 </li>
                                 <li class="filter-hide-item">
-                                    <a href="#" wire:click.prevent="sortBy('price', 'desc')">Price: High to Low</a>
+                                    <a href="#" wire:click.prevent="sortBy('price', 'desc')">Price: High to
+                                        Low</a>
                                 </li>
                                 <li class="filter-hide-item">
-                                    <a href="" wire:click.prevent="sortBy('price', 'asc')">Price: Low to High</a>
+                                    <a href="" wire:click.prevent="sortBy('price', 'asc')">Price: Low to
+                                        High</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-    
+
                     <div class="filter">
                         <div class="genre-show" data-filter-show1 onclick="showfilter1()">
                             <span class="filter-name">GENRE</span>
-    
+
                             <span class="btn-show">
                                 <ion-icon name="chevron-down-outline" data-arrow1 class="arrow-genre"></ion-icon>
                             </span>
                         </div>
-    
+
                         <div class="genre-hide" data-filter-hide1>
                             <ul>
                                 @foreach ($type as $genre)
                                     <li class="filter-hide-item" data-genre-{{ $genre->type }}>
-                                        <a href="" data-link-{{ $genre->type }} wire:click.prevent="sortByType('{{ $genre->type }}')" onclick="activeFilter(document.querySelector('[data-genre-{{ $genre->type }}]'), document.querySelector('[data-link-{{ $genre->type }}]'))">{{ str_replace('_', ' ', $genre->type) }}</a>
+                                        <a href="" data-link-{{ $genre->type }}
+                                            wire:click.prevent="sortByType('{{ $genre->type }}')"
+                                            onclick="activeFilter(document.querySelector('[data-genre-{{ $genre->type }}]'), document.querySelector('[data-link-{{ $genre->type }}]'))">{{ str_replace('_', ' ', $genre->type) }}</a>
                                     </li>
                                 @endforeach
-    
+
                             </ul>
                         </div>
                     </div>
-    
+
                     <div class="filter">
                         <div class="platform-show" data-filter-show2 onclick="showfilter2()">
                             <span class="filter-name">FLATFORM</span>
-    
+
                             <span class="btn-show">
                                 <ion-icon name="chevron-down-outline" data-arrow2 class="arrow-platform"></ion-icon>
                             </span>
                         </div>
-    
+
                         <div class="platform-hide" data-filter-hide2>
                             <ul>
                                 @foreach ($platform as $value)
                                     <li class="filter-hide-item" data-genre-{{ $value->os }}>
-                                        <a href="" data-link-{{ $value->os }} wire:click.prevent="sortByOs('{{ $value->os }}')" onclick="activeFilter(document.querySelector('[data-genre-{{ $value->os }}]'), document.querySelector('[data-link-{{ $value->os }}]'))">{{ strtoupper($value->os) }}</a>
+                                        <a href="" data-link-{{ $value->os }}
+                                            wire:click.prevent="sortByOs('{{ $value->os }}')"
+                                            onclick="activeFilter(document.querySelector('[data-genre-{{ $value->os }}]'), document.querySelector('[data-link-{{ $value->os }}]'))">{{ strtoupper($value->os) }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
-    
+
                 </div>
-    
+
             </div>
-    
+
         </div>
         <script>
-            const activeFilter = function (genre, link) {
+            const activeFilter = function(genre, link) {
                 genre.classList.toggle("active");
                 link.classList.toggle("active");
             }
         </script>
-    </section>            
+    </section>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
+    {{-- <-- #FILTER-SIDEBAR --> --}}
 
     <div class="filterbar">
 
@@ -298,7 +305,8 @@
                     <ul>
                         @foreach ($type as $genre)
                             <li class="filter-hide-item">
-                                <a href="" wire:click.prevent="sortByType('{{ $genre->type }}')">{{ str_replace('_', ' ', $genre->type) }}</a>
+                                <a href=""
+                                    wire:click.prevent="sortByType('{{ $genre->type }}')">{{ str_replace('_', ' ', $genre->type) }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -318,7 +326,8 @@
                     <ul>
                         @foreach ($platform as $value)
                             <li class="filter-hide-item">
-                                <a href="" wire:click.prevent="sortByOs('{{ $value->os }}')">{{ strtoupper("$value->os") }}</a>
+                                <a href=""
+                                    wire:click.prevent="sortByOs('{{ $value->os }}')">{{ strtoupper("$value->os") }}</a>
                             </li>
                         @endforeach
                     </ul>

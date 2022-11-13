@@ -12,8 +12,7 @@ class AdminGameDetailController extends Controller
     public function update($id, Request $request)
     {
         $data_game = array();
-        $name_game = str_replace(':', '__', str_replace(' ', '_', $request->input('detailID')));
-        $data_game['gameId'] = $name_game;
+        $data_game['gameId'] = $id;
         $data_game['description'] = $request->input('detailDesc');
         $data_game['price'] = $request->input('detailPrice');
         $data_game['sale'] = $request->input('detailSale');
@@ -24,9 +23,9 @@ class AdminGameDetailController extends Controller
 
         DB::table('game')->where('gameId', $id)->update($data_game);
         if ($request->all()) {
-            return redirect('admin/game/view/' . $id);
+            return redirect('admin/game/view/' . $id)->with('success', 'Update game successfully!');
         } else {
-            return redirect('admin/game/editDetail/' . $id);
+            return redirect('admin/game/editDetail/' . $id)->with('error', 'Update game failed!');
         }
     }
     public function updateType($id, Request $request)
@@ -39,6 +38,6 @@ class AdminGameDetailController extends Controller
             $data['type'] = $value;
             DB::table('category')->insert($data);
         }
-        return redirect('admin/game/view/' . $id);
+        return redirect('admin/game/view/' . $id)->with('success', 'Update category successfully');
     }
 }

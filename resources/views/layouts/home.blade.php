@@ -29,15 +29,13 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
 
+
+
     <!--
     - livewire
     -->
     @livewireStyles
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- jQuery UI 1.11.4 -->
 
-    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 </head>
 
 <body id="top">
@@ -141,9 +139,9 @@
                 <nav class="navbar">
                     <ul class="navbar-list">
                         <li>
-                            <form class="input-wrapper">
+                            <form class="input-wrapper" action="/topSearch">
                                 <input type="search" name="search" placeholder="Search a game ..."
-                                    class="search-field">
+                                    class="search-field" id="search">
 
                                 <button class="search-submit" aria-label="search">
                                     <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
@@ -235,14 +233,14 @@
                 </li>
 
                 <li class="search-form">
-                    <form class="input-wrapper-sidebar">
+                    <div class="input-wrapper-sidebar">
                         <input type="search" name="search" placeholder="Search a game ..."
                             class="search-field-sidebar">
 
                         <button class="search-submit-sidebar" aria-label="search">
                             <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
                         </button>
-                    </form>
+                    </div>
                 </li>
 
             </ul>
@@ -284,7 +282,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Browse</a>
+                        <a href="/browse" class="footer-link">Browse</a>
                     </li>
 
                     <li>
@@ -425,8 +423,6 @@
     {{-- jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!--
     - sweet alert
      -->

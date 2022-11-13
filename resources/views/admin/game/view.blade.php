@@ -104,8 +104,10 @@
                                 <hr>
                                 <h4>Developer</h4>
                                 <a href="{{ $game->developer_web }}">{{ $game->developer }}</a>
-
-
+                                <hr>
+                                <h4>Release Date</h4>
+                                <p>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $game->release_date)->format('d-m-Y') }}
+                                </p>
                                 <div class="bg-gray py-2 px-3 mt-4">
                                     <h2 class="mb-0">
                                         @if ($game->price > 0)
@@ -185,7 +187,8 @@
                                                                 class="col-sm-2 col-form-label">Price</label>
                                                             <div class="col-sm-10">
                                                                 <input type="test" class="form-control"
-                                                                    id="detailPrice" name="detailPrice"
+                                                                    id="detailPrice" name="detailPrice" required
+                                                                    max="300" step="0.1" min="0"
                                                                     value="{{ $game->price }}">
                                                             </div>
                                                         </div>
@@ -194,8 +197,8 @@
                                                                 class="col-sm-2 col-form-label">Sale</label>
                                                             <div class="col-sm-10">
                                                                 <input type="number" class="form-control"
-                                                                    id="detailSale" name="detailSale"
-                                                                    value="{{ $game->sale }}">
+                                                                    id="detailSale" name="detailSale" max="100"
+                                                                    min="0" value="{{ $game->sale }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -461,15 +464,84 @@
                                     </div>
                                     <div class="tab-pane fade" id="product-rating" role="tabpanel"
                                         aria-labelledby="product-rating-tab">
-                                        @foreach ($rating as $rates)
-                                            @if ($rates != null)
-                                                {{ $rates->star }}
-                                            @else
-                                                @php
-                                                    echo 'No Rating';
-                                                @endphp
-                                            @endif
-                                        @endforeach
+                                        <div class="tab-content">
+                                            <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User Name</th>
+                                                        <th>Star</th>
+                                                        <th>Comment</th>
+                                                        <th>Function</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($rating as $key => $value)
+                                                        <tr>
+                                                            <td>{{ $value->userID }}</td>
+                                                            <td>
+                                                                @php $star =  $value->star @endphp
+                                                                @foreach (range(1, 5) as $i)
+                                                                    <span class="fa-stack" style="width:1em">
+                                                                        <i class="far fa-star fa-stack-1x"></i>
+                                                                        @if ($star > 0)
+                                                                            @if ($star > 0.5)
+                                                                                <i class="fas fa-star fa-stack-1x"></i>
+                                                                            @else
+                                                                                <i
+                                                                                    class="fas fa-star-half fa-stack-1x"></i>
+                                                                            @endif
+                                                                        @endif
+                                                                        @php $star--; @endphp
+                                                                    </span>
+                                                                @endforeach
+                                                                <span style="margin-left: 1px">{{ $value->star }}</span>
+                                                            </td>
+                                                            <td>{{ $value->message }}</td>
+                                                            <td>
+                                                                {{-- <a href="/admin/game/editReq/{{ $game->gameId }}/{{ $value->os }}"
+                                                                        class="btn btn-primary">Edit</a> --}}
+
+
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-toggle="modal"
+                                                                    data-target="#delete{{ $value->userID }}">Delete</button>
+                                                            </td>
+                                                        </tr>
+
+                                                        {{-- Popup Delete Message --}}
+                                                        <div class="modal fade" id="delete{{ $value->userID }}"
+                                                            tabindex="-1" role="dialog"
+                                                            aria-labelledby="demoModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h3 class="text-center" style="color: red">WARNING
+                                                                            !!!!!</h3>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h4>Sure to delete this rating ? I
+                                                                            give you 5 seconds to think again</h4>
+                                                                        <img src="{{ asset('img/rock-bald-head.gif') }}"
+                                                                            class="fixed-ratio-resize" alt="...">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="/admin/game/deleteRating/{{ $game->gameId }}/{{ $value->userID }}"
+                                                                            class="btn btn-danger">I hate it!!</a>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Maybe later</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
