@@ -137,6 +137,8 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <div>{{ $game->links('pagination-links') }}</div>
                     @endif
                 </div>
     
@@ -228,6 +230,7 @@
             </div>
     
         </div>
+
         <script>
             const activeFilter = function (genre, link) {
                 genre.classList.toggle("active");
@@ -236,8 +239,6 @@
         </script>
     </section>            
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - #FILTER-SIDEBAR
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -->
 
     <div class="filterbar">
 

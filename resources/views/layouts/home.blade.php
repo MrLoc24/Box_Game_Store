@@ -38,6 +38,8 @@
 
     <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </head>
 
 <body id="top">
