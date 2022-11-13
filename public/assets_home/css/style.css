@@ -147,6 +147,10 @@ body:has(input[class="cdc"]:checked) .btn-po{
   background: var(--blue);
 }
 
+body:has(input[class="cdc"]:checked) .tooltip:hover .tooltiptext{
+  visibility: hidden;
+}
+
 :focus-visible { outline-offset: 4px; }
 
 ::-webkit-scrollbar {
