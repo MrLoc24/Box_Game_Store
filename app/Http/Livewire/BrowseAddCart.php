@@ -31,6 +31,11 @@ class BrowseAddCart extends Component
         $this->gameoslist = $gameIds;
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function sortByType($type)
     {
         $categorys = DB::table('category')->where('type', $type)->get();
