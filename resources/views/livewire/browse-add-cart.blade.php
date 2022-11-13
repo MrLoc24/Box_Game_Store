@@ -137,9 +137,9 @@
                                     </div>
 
                                 </div>
-                            @endforeach
+
                         </div>
-                    @endif
+                    @endforeach
                 </div>
 
                 <div class="filter-list" wire:ignore>
@@ -230,12 +230,14 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
 
             </div>
 
         </div>
+
+        </div>
+
         <script>
             const activeFilter = function(genre, link) {
                 genre.classList.toggle("active");
@@ -244,7 +246,8 @@
         </script>
     </section>
 
-    {{-- <-- #FILTER-SIDEBAR --> --}}
+    {{-- <-- #FILTER-SIDEBAR
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        --> --}}
 
     <div class="filterbar">
 

@@ -147,6 +147,10 @@ body:has(input[class="cdc"]:checked) .btn-po{
   background: var(--blue);
 }
 
+body:has(input[class="cdc"]:checked) .tooltip:hover .tooltiptext{
+  visibility: hidden;
+}
+
 :focus-visible { outline-offset: 4px; }
 
 ::-webkit-scrollbar {
@@ -4458,6 +4462,33 @@ body:has(input[class="cdc"]:checked) .btn-po{
   color: rgb(20, 202, 0);
   padding-top: .5rem;
   margin-bottom: 1rem;
+}
+
+.pagination {
+  display: flex; 
+  justify-content: center; 
+  gap: 20px;
+  align-items: center;
+  padding-inline: 35%;
+}
+
+.pagination .number {
+  color: var(--text-silver2);
+  font-size: var(--fs-7);
+  font-weight: 700;
+}
+
+.pagination .number:hover {
+  color: var(--text-white); 
+}
+
+.pagination button i {
+  color: var(--text-silver2);
+  font-size: var(--fs-9);
+}
+
+.pagination button:hover i {
+  color: var(--text-white);
 }
 
 

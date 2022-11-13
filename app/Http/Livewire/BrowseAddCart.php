@@ -6,9 +6,12 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithPagination;
 
 class BrowseAddCart extends Component
 {
+    use WithPagination;
+
     public $search = '';
     public $sortField = 'gameId';
     public $sortDirection = 'asc';
@@ -76,7 +79,7 @@ class BrowseAddCart extends Component
             ->whereIn('gameId', $this->gameoslist)
             ->where('gameId', 'like', '%'.$this->search.'%')
             ->orderBy($this->sortField, $this->sortDirection)
-            ->get();
+            ->paginate(12);
         $type = DB::table('type')->get();
         $platform = DB::table('system_requirement')->groupBy('os')->get();
         $gameIds = array();
