@@ -28,14 +28,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
-
-
-
+    <link rel="stylesheet" href="{{ asset('assets_home/css/search.css') }}">
     <!--
     - livewire
     -->
     @livewireStyles
-
 
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </head>
@@ -141,14 +138,17 @@
                 <nav class="navbar">
                     <ul class="navbar-list">
                         <li>
-                            <form class="input-wrapper" action="/topSearch">
+                            <form class="input-wrapper">
+
                                 <input type="search" name="search" placeholder="Search a game ..."
                                     class="search-field" id="search">
-
                                 <button class="search-submit" aria-label="search">
                                     <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
                                 </button>
+                                <fieldset class="popoverResult" hidden>
+                                </fieldset>
                             </form>
+
                         </li>
                         <li>
                             <a href="#discover" class="navbar-link">Discover</a>
@@ -172,6 +172,11 @@
                         @livewire('cart-counter')
                         {{-- </li> --}}
                     </ul>
+                    {{-- <div class="col-md-8">
+                        <div class="card mycard m-2 p-2" style="width: 18rem;">
+
+                        </div>
+                    </div> --}}
                 </nav>
 
             </div>
@@ -424,11 +429,58 @@
 
     {{-- jquery --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
     <!--
     - sweet alert
      -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'csrftoken': '{{ csrf_token() }}'
+            }
+        });
+    </script>
+
+    {{-- Script for top search bar --}}
+    <script>
+        $(document).ready(function() {
+            if ($('.popoverResult:active')) {
+                $('.popoverResult').hide();
+            }
+            $('#search').on('keyup', function() {
+                var value = $(this).val();
+                $.ajax({
+                    type: "get",
+                    url: "/search",
+                    data: {
+                        'search': value
+                    },
+                    success: function(data) {
+                        if (data != "") {
+                            $('.popoverResult').html(data).show();
+                            console.log(data);
+                        } else {
+                            $('.popoverResult').hide();
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data.message);
+                    }
+                });
+
+            });
+            $(document).mouseup(e => {
+                if (!$('#search').is(e.target) // if the target of the click isn't the container...
+                    &&
+                    !$('.popoverResult').is(e.target)) // ... nor a descendant of the container
+                {
+                    $('.popoverResult').hide();
+                }
+            });
+        });
+    </script>
+
+
 
     @yield('footer-script')
 
