@@ -16,19 +16,19 @@ class BrowseAddCart extends Component
     public $sortField = 'gameId';
     public $sortDirection = 'asc';
     public $gametypelist;
-    public $gameIds = array();
+    public $gametypeIds = array();
     public $gameoslist;
     public $gameosIds = array();
     public $title = "Games List";
 
     public function mount() {
-        $gameIds = array();
+        $gamelistIds = array();
         $games = DB::table('game')->get();
         foreach ($games as $key => $game) {
-            array_push($gameIds, $game->gameId);
+            array_push($gamelistIds, $game->gameId);
         }
-        $this->gametypelist = $gameIds;
-        $this->gameoslist = $gameIds;
+        $this->gametypelist = $gamelistIds;
+        $this->gameoslist = $gamelistIds;
     }
 
     public function updatingSearch()
@@ -41,22 +41,22 @@ class BrowseAddCart extends Component
         $categorys = DB::table('category')->where('type', $type)->get();
         foreach ($categorys as $key => $category) {
             $gameId = $category->gameId;
-            if (!in_array($gameId, $this->gameIds)) {
-                array_push($this->gameIds, $gameId);
+            if (!in_array($gameId, $this->gametypeIds)) {
+                array_push($this->gametypeIds, $gameId);
             }
         }
-        $this->gametypelist = $this->gameIds;
+        $this->gametypelist = $this->gametypeIds;
     }
 
     public function sortByGenre($genre) 
     {
         $this->title = $genre;
-        $gameIds = array();
+        $gamelistIds = array();
         $games = DB::table('game')->join('category', 'game.gameId', '=', 'category.gameId')->where('category.type', $genre)->get();
         foreach($games as $key => $game) {
-            array_push($gameIds, $game->gameId);
+            array_push($gamelistIds, $game->gameId);
         }
-        $this->gametypelist = $gameIds;
+        $this->gametypelist = $gamelistIds;
     }
 
     public function sortByOs($os)
@@ -82,7 +82,7 @@ class BrowseAddCart extends Component
         $game = DB::table('game')
             ->whereIn('gameId', $this->gametypelist)
             ->whereIn('gameId', $this->gameoslist)
-            ->where('gameId', 'like', '%'.$this->search.'%')
+            ->where('gameId', 'like', '%'.str_replace(':', '__', str_replace(' ', '_', $this->search)).'%')
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(12);
         $type = DB::table('type')->get();
