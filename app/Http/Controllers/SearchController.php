@@ -23,10 +23,11 @@ class SearchController extends Controller
                         $output .=
                             '<div class="result">
                                 <a href="/game/' . $product->gameId . '">
-                                <img class="card-img-top" src="' . $product->icon . '"  alt="Card image cap">
+                                <img class="card-img-top" src="' . asset("$product->icon ") . '"  alt="Card image cap">
                                 <h5 class="card-title">' . str_replace('_', ' ', str_replace('__', ': ', $product->gameId)) . '</h5>
                                 </a>
                             </div>
+
                   ';
                     }
                     return response()->json($output);
