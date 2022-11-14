@@ -87,10 +87,39 @@
                                                     <td>
                                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                                             data-target="#demoModal{{ $key }}">Edit</button>
-                                                        <a href="/admin/category/delete/{{ $value->type }}"
-                                                            class="btn btn-danger" float="left">Delete</a>
+
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                            data-target="#delete{{ $value->type }}">Delete</button>
                                                     </td>
                                                 </tr>
+                                                <!-- Delete Warning -->
+                                                <div class="modal fade" id="delete{{ $value->type }}" tabindex="-1"
+                                                    role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 class="text-center" style="color: red">WARNING !!!!!
+                                                                </h3>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h4>There is no turning back from here !!!!</h4>
+                                                                <img src="{{ asset('img/please.gif') }}"
+                                                                    class="fixed-ratio-resize" alt="...">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a href="/admin/category/delete/{{ $value->type }}"
+                                                                    class="btn btn-danger" float="left">DELETE</a>
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">CANCEL</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                                 <!-- Modal Form Popup Start-->
                                                 <div class="modal fade" id="demoModal{{ $key }}" tabindex="-1"
                                                     role="dialog" aria- labelledby="demoModalLabel" aria-hidden="true">
@@ -231,7 +260,6 @@
         </div><!-- /.container-fluid -->
 
         <!-- /.content-wrapper -->
-        {{-- Use to add more form in one session, but still not fingure out how to post to databse --}}
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript">
@@ -244,7 +272,7 @@
                         <label for="type[` + i + `]" class="col-sm-2 col-form-label">Type</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="type[` + i + `]"
-                                placeholder="Type of Game" name="type[` + i + `]">
+                                placeholder="Type of Game" name="type[` + i + `]" required maxlength="45">
                         </div>
                     </div>
                     <div class="form-group row">

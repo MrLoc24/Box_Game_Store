@@ -136,11 +136,6 @@
                                             </div>
                                         </div>
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="mostPlayed" value=1
-                                                name="mostPlayed">
-                                            <label for="mostPlayed" class="custom-control-label">Most Played</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" type="checkbox" id="topPage" value=1
                                                 name="topPage">
                                             <label for="topPage" class="custom-control-label">Top Page</label>

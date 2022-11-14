@@ -55,11 +55,6 @@ class AdminGameController extends Controller
         } else {
             $data_game['top_page'] = 1;
         }
-        if ($request->input('mostPlayed') == null) {
-            $data_game['most_played'] = 0;
-        } else {
-            $data_game['most_played'] = 1;
-        }
         // if ($request->input('comingSoon') == null) {
         //     $data_game['coming_soon'] = 0;
         // } else {
@@ -109,7 +104,7 @@ class AdminGameController extends Controller
                 $data_sys_req['storage'] = $request->input('storage')[$key];
                 DB::table('system_requirement')->insert($data_sys_req);
             }
-            return redirect('admin/game/view/' . $name_game);
+            return redirect('admin/game/view/' . $name_game)->with('success', 'Add game success');
         } else {
             return redirect('admin/game/create')->with('error', 'Error');
         }

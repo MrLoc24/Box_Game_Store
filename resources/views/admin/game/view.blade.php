@@ -125,7 +125,7 @@
                                     {{-- Edit Details Game --}}
                                     <button type="button" class="btn btn-primary btn-lg btn-flat" data-toggle="modal"
                                         data-target="#detailModal">
-                                        Edit Details
+                                        <i class="fas fa-edit">Edit Details</i>
                                     </button>
                                     <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-
                                         labelledby="demoModalLabel" aria-hidden="true">
@@ -235,7 +235,7 @@
                                         <h2 class="mb-0">
                                             @foreach ($category as $item => $cate)
                                                 <span
-                                                    class="badge badge-primary">{{ str_replace('_', ' ', $cate->type) }}</span>
+                                                    class="badge badge-success">{{ str_replace('_', ' ', $cate->type) }}</span>
                                             @endforeach
                                         </h2>
                                     </div>
@@ -326,16 +326,14 @@
                                                                         <h4>Sure to delete {{ $value->os }}
                                                                             platform!!!! I
                                                                             give you 5 seconds to think again</h4>
-                                                                        <img src="{{ asset('img/rock-bald-head.gif') }}"
+                                                                        <img src="{{ asset('img/bongo-cat.gif') }}"
                                                                             class="fixed-ratio-resize" alt="...">
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="/admin/game/deleteReq/{{ $game->gameId }}/{{ $value->os }}"
-                                                                            class="btn btn-danger">Sure sure why
-                                                                            not</a>
+                                                                            class="btn btn-danger">Delete</a>
                                                                         <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Maybe not
-                                                                            today</button>
+                                                                            data-dismiss="modal">Cancel</button>
                                                                     </div>
                                                                 </div>
 
@@ -530,9 +528,9 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="/admin/game/deleteRating/{{ $game->gameId }}/{{ $value->userID }}"
-                                                                            class="btn btn-danger">I hate it!!</a>
+                                                                            class="btn btn-danger">Delete</a>
                                                                         <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Maybe later</button>
+                                                                            data-dismiss="modal">Cancel</button>
                                                                     </div>
                                                                 </div>
 

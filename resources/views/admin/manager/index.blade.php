@@ -97,8 +97,7 @@
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h3 class="text-center" style="color: red">WAIT A MINUTE
-                                                                    !!!!!
+                                                                <h3 class="text-center" style="color: red">WARNING!!!!!
                                                                 </h3>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -106,17 +105,15 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <h4>I know you a boss, but can you give
-                                                                    {{ $admin->adminId }} another
-                                                                    chance :< </h4>
-                                                                        <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
-                                                                            class="rounded mx-auto d-block" alt="...">
+                                                                <h4>Sure you want to fired ? </h4>
+                                                                <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
+                                                                    class="fixed-ratio-resize" alt="...">
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <a href="/admin/manager/delete/{{ $admin->adminId }}"
                                                                     class="btn btn-danger">FIRED</a>
                                                                 <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Why not</button>
+                                                                    data-dismiss="modal">CANCEL</button>
                                                             </div>
                                                         </div>
 

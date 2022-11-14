@@ -11,9 +11,9 @@ class UserHomeController extends Controller
     public function index()
     {
         $mostSold = DB::table('game')->orderBy('number_sold', 'desc')->take(5)->get();
+        $most_rated = DB::table('rating')->groupBy('gameId')->orderBy(DB::raw('avg(star)'), 'desc')->take(5)->get();
         $game = DB::table('game')->get();
-
-        return view('home.index', compact('game', 'mostSold'));
+        return view('home.index', compact('game', 'mostSold', 'most_rated'));
     }
     public function browse()
     {

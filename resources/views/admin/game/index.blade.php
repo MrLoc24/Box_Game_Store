@@ -58,13 +58,13 @@
                                                         href="/admin/game/view/{{ $game->gameId }}">{{ str_replace('_', ' ', str_replace('__', ': ', $game->gameId)) }}</a>
                                                 </td>
                                                 {{-- $game->column name!!!!!! --}}
-                                                <td>{{ $game->price }}</td>
+                                                <td>{{ $game->price }}$</td>
                                                 <td>
                                                     @if (isset($category))
                                                         @foreach ($category as $key => $value)
                                                             @if ($value->gameId === $game->gameId)
-                                                                <button aria-disabled="true"
-                                                                    class="btn btn-primary">{{ str_replace('_', ' ', $value->type) }}</button>
+                                                                <div aria-disabled="true" class="badge badge-success">
+                                                                    {{ str_replace('_', ' ', $value->type) }}</div>
                                                             @endif
                                                         @endforeach
                                                     @else
@@ -100,9 +100,9 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="/admin/user/delete/{{ $game->gameId }}"
-                                                                class="btn btn-danger">I'm the boss</a>
+                                                                class="btn btn-danger">DELETE</a>
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">No, I'm scared</button>
+                                                                data-dismiss="modal">CANCEL</button>
                                                         </div>
                                                     </div>
 

@@ -2,8 +2,8 @@
 @section('title', 'Box Game Store | Download & Play PC Games, Mods, DLC & More - Box Game')
 @section('content')
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #HERO
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #HERO
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          -->
 
     <section class="section hero" id="home" aria-label="hero" data-section>
         <div class="container">
@@ -145,8 +145,8 @@
 
 
     <!--
-                                                            - #BLOG
-                                                            -->
+                                                                        - #BLOG
+                                                                        -->
     <section class="section blog" data-section>
         <div class="container">
 
@@ -222,8 +222,8 @@
 
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #TOP LIST
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #TOP LIST
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          -->
 
     <section class="section top-list">
 
@@ -289,7 +289,7 @@
                 <div class="product-showcase flex-item">
 
                     <div class="product-tag">
-                        <h3 class="h3 tag">Most Played</h3>
+                        <h3 class="h3 tag">Highest Rating</h3>
                         <button class="tag-btn">VIEW MORE</button>
                     </div>
                     <div class="showcase-wrapper">
@@ -300,7 +300,7 @@
                                 <?php if ($count == 5) {
                                     break;
                                 } ?>
-                                @if ($value->most_played == 1)
+                                @if ($most_rated->contains('gameId', $value->gameId))
                                     <div class="showcase">
 
                                         <a href="/game/{{ $value->gameId }}" class="showcase-img-box">
@@ -401,8 +401,8 @@
     </section>
 
     <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - #CATALOG
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            - #CATALOG
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          -->
 
     <section class="section banner" data-section>
         <div class="container">

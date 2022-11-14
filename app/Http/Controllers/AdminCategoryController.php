@@ -61,6 +61,6 @@ class AdminCategoryController extends Controller
         $imageName = 'type_' . str_replace(' ', '_', $id) . '.jpg';
         File::delete('img/type/' . $imageName);
         DB::table('type')->where('type', $id)->delete();
-        return redirect('admin/category/view');
+        return redirect('admin/category/view')->with('success', 'Delete successfully!');
     }
 }

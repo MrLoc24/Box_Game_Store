@@ -79,6 +79,7 @@
             <input type="submit" name="submit" value="{{ __('log in') }}" class="btn">
 
             <p><a href="#">{{ __('Privacy Policy') }}</a></p>
+            <p><a href="/admin">{{ __('For Manager Only') }}</a></p>
 
             <p>
                 {{ __('Don\'t have a Box Game Account ? ') }}<a href="register">{{ __('Sign Up') }}</a><br>

@@ -132,7 +132,8 @@
                                                 <label for="inputName" class="col-sm-2 col-form-label">Login Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="loginName" class="form-control"
-                                                        id="inputLoginName" placeholder="Login Name">
+                                                        id="inputLoginName" placeholder="Login Name"
+                                                        value="{{ $admin->adminId }}">
                                                 </div>
                                                 @error('loginName')
                                                     <p class="text-danger"><strong>{{ $message }}</strong></p>
@@ -142,7 +143,7 @@
                                                 <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
                                                     <input type="email" name="adminEmail" class="form-control"
-                                                        id="inputEmail" placeholder="Email">
+                                                        id="inputEmail" placeholder="Email" value="{{ $admin->email }}">
                                                 </div>
                                                 @error('adminEmail')
                                                     <p class="text-danger"><strong>{{ $message }}</strong></p>
@@ -152,7 +153,8 @@
                                                 <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="adminName" class="form-control"
-                                                        id="inputName" placeholder="Display Name">
+                                                        id="inputName" placeholder="Display Name"
+                                                        value="{{ $admin->name }}">
                                                 </div>
                                                 @error('adminName')
                                                     <p class="text-danger"><strong>{{ $message }}</strong></p>
