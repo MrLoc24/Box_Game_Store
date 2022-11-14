@@ -151,7 +151,7 @@
 
                         </li>
                         <li>
-                            <a href="#discover" class="navbar-link">Discover</a>
+                            <a href="/home" class="navbar-link">Discover</a>
                         </li>
 
                         <li>
@@ -216,7 +216,7 @@
 
                     <ul class="store-list" data-store-hide>
                         <li>
-                            <a href="#discover" class="store-list-link" data-nav-link>Discover</a>
+                            <a href="/home" class="store-list-link" data-nav-link>Discover</a>
                         </li>
                         <li>
                             <a href="/browse" class="store-list-link" data-nav-link>Browse</a>

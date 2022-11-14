@@ -211,7 +211,8 @@
                                                         <label for="type[0]" class="col-sm-2 col-form-label">Type</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="type[0]"
-                                                                placeholder="Type of Game" name="type[0]">
+                                                                placeholder="Type of Game" name="type[0]" required
+                                                                maxlength="45">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -224,7 +225,7 @@
 
                                                         <div class="col-sm-10">
                                                             <input type="file" class="form-control" id="image[0]"
-                                                                placeholder="Type's Image" name="image[0]">
+                                                                placeholder="Type's Image" name="image[0]" required>
                                                         </div>
                                                     </div>
                                                     <hr>
