@@ -14,8 +14,8 @@ Documentation can be found here BoxGame_Group04_MidtermSubmit.pdf
    `MAIL_MAILER=smtp`
    `MAIL_HOST=smtp.gmail.com`
    `MAIL_PORT=465`
-   `MAIL_USERNAME= "your email"`
-   `MAIL_PASSWORD= "your application password"`
+   `MAIL_USERNAME= xboxgamert12112e0@gmail.com`
+   `MAIL_PASSWORD= pibnsbkuzrgyvqbx`
    `MAIL_ENCRYPTION=null`
    `MAIL_FROM_ADDRESS="your email"`
    `MAIL_FROM_NAME="${APP_NAME}"`
@@ -41,19 +41,20 @@ Documentation can be found here BoxGame_Group04_MidtermSubmit.pdf
     `MOMO_PARTNER_CODE=MOMOBKUN20180529`
     `MOMO_ACCESS_KEY=klm05TvNBzhg7h7j`
     `MOMO_SECRET_KEY=at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa`
+
 15. Paypal account and password to use
     `customerboxgame@personal.example.com`
     `12345678`
-15. VNPay 
+16. VNPay
     bank: `NCB`
     card number: `9704198526191432198`
     card holder: `NGUYEN VAN A`
     issuing date: `07/15`
     otp password: `123456`
-15. Momo 
+17. Momo
     card number: `9704 0000 0000 0018`
     card holder: `NGUYEN VAN A`
     issuing date: `03/07`
     otp password: `OTP`
-16. Finally, run `php artisan serve`.
+18. Finally, run `php artisan serve`.
     Warning: Don't click the link in footer :))))
