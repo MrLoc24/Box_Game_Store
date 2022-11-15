@@ -16,7 +16,7 @@ class AdminHomeController extends Controller
     }
     public function update(AdminRequestForm $request, $id)
     {
-        $previousPic = $request->input('pre_pic');
+        $previousPic = $request->input('prev_pic');
         $data = array();
         $data['adminId'] = $request->input('loginName');
         $data['email'] = $request->input('adminEmail');

@@ -38,7 +38,7 @@ class AdminCategoryController extends Controller
     //Edit game type
     public function edit(Request $request, $id)
     {
-        $previousPic = $request->input('pre_pic');
+        $previousPic = $request->input('prev_pic');
         $data_edit = array();
         $data_edit['type'] = str_replace(' ', '_', $request->input('typeEdit'));
         $getImage = $request->file("typeEditImage");

@@ -99,7 +99,7 @@
                                                                 class="rounded mx-auto d-block" alt="...">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="/admin/user/delete/{{ $game->gameId }}"
+                                                            <a href="/admin/game/delete/{{ $game->gameId }}"
                                                                 class="btn btn-danger">DELETE</a>
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">CANCEL</button>
