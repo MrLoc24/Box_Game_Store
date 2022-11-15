@@ -99,7 +99,7 @@
 
             <div class="checkbox">
 
-                <input type="checkbox" name="receive_news" class="@error('receive_news') is-invalid @enderror" id="receive-news">
+                <input type="checkbox" name="receive_news" class="@error('receive_news') is-invalid @enderror" id="receive-news" checked>
                 <label for="receive-news">{{ __('I would like to receive news, surveys and special offers from Box Game.') }}</label>
 
             </div>
@@ -113,7 +113,7 @@
             <div>
                 <div class="checkbox">
                     
-                    <input type="checkbox" name="terms_of_service" class="@error('terms_of_service') is-invalid @enderror" id="termsofservice">
+                    <input type="checkbox" name="terms_of_service" class="@error('terms_of_service') is-invalid @enderror" id="termsofservice" checked>
                     <label for="termsofservice">{{ __('I have read and agree to the ') }}<a href="#">{{ __('terms of service') }}</a></label>
 
                 </div>
