@@ -297,7 +297,7 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Top Sellers</a>
+                        <a href="#top_sold" class="footer-link">Top Sellers</a>
                     </li>
 
                     <li>

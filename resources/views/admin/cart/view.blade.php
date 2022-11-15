@@ -55,15 +55,18 @@
                                             <tr>
                                                 <td>{{ $cartD->cart_details_id }}</td>
                                                 <td>{{ $cartD->cartId }}</td>
-                                                <td>{{ $cartD->gameId }}</td>
-                                                <td><img src="{{ asset("$cartD->gameIcon") }}" width="50px" height="50px"></td>
+                                                <td>{{ str_replace('_', ' ', str_replace('__', ': ', $cartD->gameId)) }}
+                                                </td>
+                                                <td><img src="{{ asset("$cartD->gameIcon") }}" width="50px"
+                                                        height="50px"></td>
                                                 <td>{{ $cartD->gamePrice }}$</td>
                                                 <td>
                                                     <button aria-disabled="true" class="btn btn-primary">
                                                         -{{ $cartD->gameSale }}%
                                                     </button>
                                                 </td>
-                                                <td>{{ round($cartD->gamePrice * (100 - $cartD->gameSale) / 100, 2) }}$</td>
+                                                <td>{{ round(($cartD->gamePrice * (100 - $cartD->gameSale)) / 100, 2) }}$
+                                                </td>
                                             </tr>
                                             {{-- Popup delete message --}}
                                             {{-- <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"

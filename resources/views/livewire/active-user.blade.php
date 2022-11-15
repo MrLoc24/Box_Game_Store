@@ -9,7 +9,7 @@
             {{-- $game->column name!!!!!! --}}
             <td>{{ $user->email }}</td>
             <td>
-                @if ($user->status == 1)
+                @if ($user->blocked_at == null)
                     <span class="btn btn-success">Active</span>
                 @else
                     <span class="btn btn-danger">Inactive</span>
@@ -39,7 +39,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4>Confirm delete one of our customers</h4>
+                        <h4>Confirm delete one of our customers ?</h4>
                         <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
                             class="rounded mx-auto d-block" alt="...">
                     </div>

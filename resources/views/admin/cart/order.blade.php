@@ -55,21 +55,22 @@
                                                 <td>{{ $cart->userID }}</td>
                                                 <td>{{ round($cart->cartTotal, 2) }}$</td>
                                                 @if ($cart->status != 0)
-                                                <td>Purchased</td>
+                                                    <td>Purchased</td>
                                                 @else
-                                                <td>Processing</td>
+                                                    <td>Processing</td>
                                                 @endif
                                                 <td>
                                                     <a href="/admin/cart/view/{{ $cart->cartId }}"
                                                         class="btn btn-primary">View</a>
                                                     {{-- <a href="/admin/game/delete/{{ $game->gameId }}"
                                                         class="btn btn-danger">Delete</a> --}}
-                                                    <a href="/admin/cart/delete/{{ $cart->cartId }}" class="btn btn-danger"
-                                                        >Delete</a>
+
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#delete{{ $cart->cartId }}">Delete</button>
                                                 </td>
                                             </tr>
                                             {{-- Popup delete message --}}
-                                            {{-- <div class="modal fade" id="delete{{ $game->gameId }}" tabindex="-1"
+                                            <div class="modal fade" id="delete{{ $cart->cartId }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -81,21 +82,20 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h4>Wanna delete this game? There is no
-                                                                turning back from here !!!!</h4>
+                                                            <h4>Are you sure about that ???</h4>
                                                             <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
-                                                                class="rounded mx-auto d-block" alt="...">
+                                                                class="fixed-ratio-resize" alt="...">
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="/admin/game/delete/{{ $game->gameId }}"
-                                                                class="btn btn-danger">I'm the boss</a>
+                                                            <a href="/admin/cart/delete/{{ $cart->cartId }}"
+                                                                class="btn btn-danger">DELETE</a>
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">No, I'm scared</button>
+                                                                data-dismiss="modal">CANCEL</button>
                                                         </div>
                                                     </div>
 
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
