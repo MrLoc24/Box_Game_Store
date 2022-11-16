@@ -445,6 +445,11 @@ body:has(input[class="cdc"]:checked) .tooltip:hover .tooltiptext{
   letter-spacing: 1px;
 }
 
+.header-actions .btn-user-login img {
+  width: 2rem;
+  height: 2rem;
+}
+
 .header-actions .btn-user-login .user-list {
   display: none;
 }

@@ -129,20 +129,21 @@ function previewFile(input) {
 $(document).ready(function() {
 
   $('#evaluationFormEdit').click(function() {
-      $('#evaluationForm').find(':input[type=text]').each(function(i, elem) {
+    $('#evaluationForm').find(':input[type=text]').each(function(i, elem) {
       $(this).data("previous-value", $(this).val());
-      });
+    });
   });
 
   function restore() {
 
-      $('#evaluationForm').find(':input[type=text]').each(function(i, elem) {
-              $(this).val($(this).data("previous-value"));
-          });
-      }
+    $('#evaluationForm').find(':input[type=text]').each(function(i, elem) {
+      $(this).val($(this).data("previous-value"));
+    });
+  }
 
-      $('#evaluationFormEditCancel').click(function() {
+  $('#evaluationFormEditCancel').click(function() {
 
-          restore();
-      });
+      restore();
   });
+  
+});

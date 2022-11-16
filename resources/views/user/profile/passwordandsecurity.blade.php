@@ -129,33 +129,6 @@
 
 </div>
 
-<script>
-    $(document).ready(function() {
+<script src="{{ asset('assets_home/js/scriptsecurity.js') }}" defer></script>
 
-    $('#evaluationFormEdit').click(function() {
-        $('#evaluationForm').find(':input[type=password]').each(function(i, elem, p) {
-        $(this).data("previous-value", $(this).val());
-        });
-    });
-
-    function restore() {
-
-        $('#evaluationForm').find(':input[type=password]').each(function(i, elem, p) {
-                $(this).val($(this).data("previous-value"));
-            });
-        }
-
-        $('#evaluationFormEditCancel').click(function() {
-
-            restore();
-        });
-    });
-
-    let signoutForm = document.querySelector('[data-signout]');
-
-    const showsignoutForm = function () {
-        signoutForm.classList.toggle("active");
-    }
-
-</script>
 @endsection

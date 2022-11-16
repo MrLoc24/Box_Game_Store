@@ -104,6 +104,7 @@
                             <button class="header-action-btn btn-user-login">
                                 <ion-icon style="color: var(--text-white);" name="person"></ion-icon>
                                 <span style="color: var(--text-white);">{{ Auth::user()->userID }}</span>
+                                <img class="" src="{{ asset(Auth::user()->image) }}" alt="">
                                 <ul class="user-list">
                                     <li>
                                         <a href="{{ route('accountsettings') }}" class="user-list-link first">account</a>
