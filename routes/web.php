@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Auth;
 */
 //MAIN PAGE
 Route::get('/', 'UserHomeController@index')->name('homeuser');
-Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail')->name('details');
 Route::get('/browse', 'UserHomeController@browse');
 Route::get('/search', 'SearchController@search')->name('search');
@@ -100,8 +99,10 @@ Route::middleware('guest')->group(function () {
 
     // Route::middleware('active_user')->group(function () {
     //start login
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
+    Route::middleware('active_user')->group(function () {
+        Route::get('/login', [LoginController::class, 'login'])->name('login');
+        Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
+    });
     //end login
 
     //start forgot password

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class DeleteUserController extends Controller
 {

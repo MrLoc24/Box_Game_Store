@@ -61,6 +61,9 @@ class AdminHomeController extends Controller
         $admin = DB::table('account_admin')->where(['adminId' => $id])->first();
         if ($request->input('adminPassword') == $admin->password) {
             // Check password new
+            if ($data['password'] == $admin->password){
+                return back()->with('error', "Its your old password.`");
+            }
             if ($request->input('adminPasswordRetype') == $data['password']) {
                 DB::table('account_admin')->where(['adminId' => $id])->update(
                     $data

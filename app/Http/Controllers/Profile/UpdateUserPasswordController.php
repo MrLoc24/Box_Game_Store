@@ -18,6 +18,9 @@ class UpdateUserPasswordController extends Controller
         if (! Hash::check($request->current_password, Auth::user()->password)) {
             return redirect()->route('passwordandsecurity')->with('error', 'The provided password does not match your current password.');
         }
+        if (Hash::check($request->password, Auth::user()->password)) {
+            return redirect()->route('passwordandsecurity')->with('error', 'Its your old password.');
+        }
         Auth::user()->forceFill([
                     'password' => Hash::make($request->password),
                     'remember_token' => Str::random(60),
