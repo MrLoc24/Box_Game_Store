@@ -83,8 +83,6 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <h4>Are you sure about that ???</h4>
-                                                            <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
-                                                                class="fixed-ratio-resize" alt="...">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="/admin/cart/delete/{{ $cart->cartId }}"

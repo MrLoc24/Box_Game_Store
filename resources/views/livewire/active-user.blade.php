@@ -40,8 +40,6 @@
                     </div>
                     <div class="modal-body">
                         <h4>Confirm delete one of our customers ?</h4>
-                        <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
-                            class="rounded mx-auto d-block" alt="...">
                     </div>
                     <div class="modal-footer">
                         <a href="/admin/user/delete/{{ $user->userID }}" class="btn btn-danger">DELETE</a>

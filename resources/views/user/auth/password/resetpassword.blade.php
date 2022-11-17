@@ -48,13 +48,13 @@
                 <label for="password">{{ __('New Password') }}</label>
                 <input id="password" type="password" name="password" class="@error('password') is-invalid @enderror" autocomplete="new-password">
                 
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>            
-                @enderror
-                
             </div>
+
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>            
+            @enderror
 
             <div class="box">
 

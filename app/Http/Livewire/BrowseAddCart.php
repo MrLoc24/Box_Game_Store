@@ -13,7 +13,7 @@ class BrowseAddCart extends Component
     use WithPagination;
 
     public $search = '';
-    public $sortField = 'gameId';
+    public $sortField = 'created_at';
     public $sortDirection = 'asc';
     public $gametypelist;
     public $gametypeIds = array();

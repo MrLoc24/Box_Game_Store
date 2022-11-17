@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ActiveUser extends Component
 {
@@ -17,6 +18,8 @@ class ActiveUser extends Component
         $user = User::where('userID', $id)->update([
             'blocked_at' => now(),
         ]);
+
+        Cart::destroy();
     }
 
     public function activateUser($id) {
