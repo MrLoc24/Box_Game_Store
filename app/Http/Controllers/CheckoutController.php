@@ -35,6 +35,6 @@ class CheckoutController extends Controller
         Cart::destroy();
         $userID = Auth::user()->userID;
         DB::table('store_cart')->where('userID', $userID)->delete();
-        return redirect('cart');
+        return redirect('cart')->with('success', 'Transaction complete.');
     }
 }
