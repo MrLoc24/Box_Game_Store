@@ -193,7 +193,7 @@
                                                         <label for="chipset"
                                                             class="col-sm-2 col-form-label">Chipset</label>
                                                         <div class="col-sm-10">
-                                                            <input type="test" class="form-control" id="chipset[0]"
+                                                            <input type="text" class="form-control" id="chipset[0]"
                                                                 placeholder="Chipset Model" name="chipset[0]" required
                                                                 maxlength="100">
                                                         </div>
