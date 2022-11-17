@@ -25,9 +25,9 @@ class AdminRequestForm extends FormRequest
     {
         return [
             'loginName' => 'required|bail',
-            'adminEmail' => 'required|bail',
+            'adminEmail' => 'required|bail|email',
             'adminName' => 'required|bail',
-            // 'picture'=> 'required|bail',
+            'adminPicture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
     public function messages()
@@ -36,6 +36,9 @@ class AdminRequestForm extends FormRequest
             'loginName.required' => '* Login name cannot blank',
             'adminName.required' => '* Display name cannot blank',
             'adminEmail.required' => '* Email cannot blank',
+            'adminEmail.email' => '* Email is not valid',
+            'adminPicture.image' => '* Picture must be image',
+            'adminPicture.mimes' => '* Picture must be jpeg,png,jpg,gif,svg',
         ];
     }
 }

@@ -65,10 +65,14 @@ class AdminHomeController extends Controller
                 DB::table('account_admin')->where(['adminId' => $id])->update(
                     $data
                 );
+                $request->session()->forget('admin');
+                $request->session()->forget('boss');
+                $request->session()->forget('adminImg');
                 $request->session()->invalidate();
-                return redirect('/admin');
+                return redirect("/admin")->with(['message' => "Change password successfully!"]);
             }
-            return redirect()->route('home')->with('error', "Retype password incorrect!");
+            return back()->with('error', "Retype password incorrect!");
         }
+        return back()->with('error', "Old password incorrect!");
     }
 }

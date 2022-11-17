@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminManagerRequest;
 use DB;
 
 class AdminAccountController extends Controller
@@ -14,8 +15,9 @@ class AdminAccountController extends Controller
         return view('admin.manager.index')->with('admins', $admin);
     }
     //ADD NEW MANAGER
-    public function store(Request $request)
+    public function store(AdminManagerRequest $request)
     {
+        $check = DB::table('account_admin')->get('email');
         $data = array();
         $data['adminId'] = $request->adminId;
         $data['name'] = $request->name;
@@ -25,14 +27,17 @@ class AdminAccountController extends Controller
         $data['role'] = $request->role;
         $data['status'] = 1;
         $data['created_at'] = now();
-        DB::table('account_admin')->insert($data);
-        return redirect('admin/manager')->with('message', "Add successfully!");
+        if ($request->all()) {
+            DB::table('account_admin')->insert($data);
+            return redirect('admin/manager')->with('success', 'Add new manager successfully');
+        }
+        return redirect('admin/manager')->with('errors', "Something went wrong, please try again");
     }
     //DELETE MANAGER
     public function delete($id)
     {
         DB::table('account_admin')->where(['adminId' => $id])->delete();
-        return redirect('admin/manager')->with('message', "Delete successfully!");
+        return redirect('admin/manager')->with('success', "Delete successfully!");
     }
     // public function resetPassword(Request $request, $id)
     // {
@@ -48,6 +53,6 @@ class AdminAccountController extends Controller
     public function resetPassword($id)
     {
         DB::table('account_admin')->where(['adminId' => $id])->update(['password' => '12345678']);
-        return redirect('admin/manager')->with('message', "Reset password successfully!");
+        return redirect('admin/manager')->with('success', "Reset password to default successfully!");
     }
 }

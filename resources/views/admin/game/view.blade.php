@@ -361,15 +361,7 @@
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <div class="form-group row">
-                                                                                <p>If you need to add more
-                                                                                    platforms, add it
-                                                                                    later, don't expect
-                                                                                    anything good from this shit
-                                                                                    website!!!
-                                                                                    Cyka
-                                                                                    Blyat !!!</p>
-                                                                            </div>
+
                                                                             <div class="form-group row">
                                                                                 <label for="os"
                                                                                     class="col-sm-2 col-form-label">OS</label>
@@ -379,7 +371,8 @@
                                                                                         id="os"
                                                                                         placeholder="Type of Os"
                                                                                         name="os"
-                                                                                        value="{{ $value->os }}">
+                                                                                        value="{{ $value->os }}"
+                                                                                        required maxlength="45">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -391,7 +384,8 @@
                                                                                         id="version"
                                                                                         placeholder="Version"
                                                                                         name="version"
-                                                                                        value="{{ $value->version }}">
+                                                                                        value="{{ $value->version }}"
+                                                                                        required maxlength="45">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -403,7 +397,8 @@
                                                                                         id="chipset"
                                                                                         placeholder="Chipset Model"
                                                                                         name="chipset"
-                                                                                        value="{{ $value->chip }}">
+                                                                                        value="{{ $value->chip }}"
+                                                                                        required maxlength="100">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -414,7 +409,8 @@
                                                                                         class="form-control"
                                                                                         id="ram" placeholder="RAM"
                                                                                         name="ram"
-                                                                                        value="{{ $value->ram }}">
+                                                                                        value="{{ $value->ram }}"
+                                                                                        required maxlength="45">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -426,7 +422,8 @@
                                                                                         id="vga"
                                                                                         placeholder="Graphic Card"
                                                                                         name="vga"
-                                                                                        value="{{ $value->graphic }}">
+                                                                                        value="{{ $value->graphic }}"
+                                                                                        required maxlength="200">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group row">
@@ -438,7 +435,8 @@
                                                                                         id="storage"
                                                                                         placeholder="Storage"
                                                                                         name="storage"
-                                                                                        value="{{ $value->storage }}">
+                                                                                        value="{{ $value->storage }}"
+                                                                                        required maxlength="45">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -571,42 +569,42 @@
                             <label for="os" class="col-sm-2 col-form-label">OS</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="os"
-                                    placeholder="window, mac, linux, xbox or ps" name="os">
+                                    placeholder="window, mac, linux, xbox or ps" name="os" required maxlength="45">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="version" class="col-sm-2 col-form-label">Version</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="version" placeholder="Version"
-                                    name="version">
+                                    name="version" required maxlength="45">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="chipset" class="col-sm-2 col-form-label">Chipset</label>
                             <div class="col-sm-10">
                                 <input type="test" class="form-control" id="chipset" placeholder="Chipset Model"
-                                    name="chipset">
+                                    name="chipset" required maxlength="100">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="memory" class="col-sm-2 col-form-label">Memory</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="ram" placeholder="RAM"
-                                    name="ram">
+                                    name="ram" required maxlength="45">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="vga" class="col-sm-2 col-form-label">VGA</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="vga" placeholder="Graphic Card"
-                                    name="vga">
+                                    name="vga" required maxlength="200">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputSkills" class="col-sm-2 col-form-label">Storage</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="storage" placeholder="Storage"
-                                    name="storage">
+                                    name="storage" required maxlength="45">
                             </div>
                         </div>
                     </div>

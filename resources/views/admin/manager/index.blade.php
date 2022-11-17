@@ -8,15 +8,36 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
+        {{-- Message if success --}}
+        @if ($message = Session::get('success'))
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <span>{{ $message }}</span>
+            </div>
+        @endif
+        {{-- Message if error --}}
+        @if (count($errors) > 0)
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    @if (isset($message))
-                        <script>
-                            alert("{{ $message }}");
-                        </script>
-                    @endif
+
                     <div class="col-sm-6">
                         <h1>Manager</h1>
                     </div>
@@ -106,7 +127,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <h4>Sure you want to fired ? </h4>
-                                                                <img src="{{ asset('img/john-cena-are-you-sure-about-that.gif') }}"
+                                                                <img src="{{ asset('img/please.gif') }}"
                                                                     class="fixed-ratio-resize" alt="...">
                                                             </div>
                                                             <div class="modal-footer">
@@ -204,35 +225,35 @@
                                 <div class="modal-body">
                                     <div class="form-group row">
                                         <div class="col">
-                                            <input type="text" class="form-control" id="adminId" placeholder="Admin ID"
-                                                name="adminId">
+                                            <input type="text" class="form-control" id="adminId"
+                                                placeholder="Admin ID" name="adminId">
                                         </div>
                                     </div>
                                     <div class="form-group row">
 
                                         <div class="col">
                                             <input type="text" class="form-control" id="Name" placeholder="Name"
-                                                name="name">
+                                                name="name" required maxlength="45">
                                         </div>
                                     </div>
                                     <div class="form-group row">
 
                                         <div class="col">
                                             <input type="email" class="form-control" placeholder="Email"
-                                                name="email">
+                                                name="email" maxlength="45" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
 
                                         <div class="col">
                                             <input type="number" class="form-control" placeholder="Phone"
-                                                name="phone">
+                                                name="phone" min="9" max="10" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Role"
-                                                name="role">
+                                            <input type="text" class="form-control" placeholder="Role" name="role"
+                                                value="manager" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
