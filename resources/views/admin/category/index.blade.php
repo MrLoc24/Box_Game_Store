@@ -143,7 +143,7 @@
                                                                             class="col-sm-2 col-form-label">Type</label>
                                                                         <div class="col-sm-10">
                                                                             <input type="text" class="form-control"
-                                                                                id="typeEdit{{ $key }}"
+                                                                                id="typeEdit{{ $key }}" required maxlength="45"
                                                                                 placeholder="Type of Game" name="typeEdit"
                                                                                 value="{{ str_replace('_', ' ', $value->type) }}">
                                                                         </div>
