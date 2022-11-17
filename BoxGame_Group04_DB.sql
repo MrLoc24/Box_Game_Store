@@ -397,7 +397,14 @@ INSERT INTO `users` (`userID`, `username`, `email`, `password`, `remember_token`
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+-- Cấu trúc bảng cho bảng `users`
+--
 
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Chỉ mục cho bảng `account_admin`
 --
