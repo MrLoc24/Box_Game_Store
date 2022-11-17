@@ -233,27 +233,27 @@
 
                                         <div class="col">
                                             <input type="text" class="form-control" id="Name" placeholder="Name"
-                                                name="name">
+                                                name="name" required maxlength="45">
                                         </div>
                                     </div>
                                     <div class="form-group row">
 
                                         <div class="col">
                                             <input type="email" class="form-control" placeholder="Email"
-                                                name="email">
+                                                name="email" maxlength="45" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
 
                                         <div class="col">
                                             <input type="number" class="form-control" placeholder="Phone"
-                                                name="phone">
+                                                name="phone" min="9" max="10" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Role"
-                                                name="role">
+                                            <input type="text" class="form-control" placeholder="Role" name="role"
+                                                value="manager" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">

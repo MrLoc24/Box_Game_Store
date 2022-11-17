@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use DB;
 
 class AdminManagerRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class AdminManagerRequest extends FormRequest
         return [
             'adminId' => 'required|bail',
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:account_admin,email',
             'password' => 'required',
             'phone' => 'numeric',
             'role' => 'required|in:manager,employee',
@@ -38,6 +39,7 @@ class AdminManagerRequest extends FormRequest
             'adminId.required' => '* Login name cannot blank',
             'name.required' => '* Display name cannot blank',
             'email.required' => '* Email cannot blank',
+            'email.unique' => '* Email already exists',
             'password.required' => '* Password cannot blank',
             'phone.numeric' => '* Phone must be number',
             'role.required' => '* Role cannot blank',

@@ -17,6 +17,7 @@ class AdminAccountController extends Controller
     //ADD NEW MANAGER
     public function store(AdminManagerRequest $request)
     {
+        $check = DB::table('account_admin')->get('email');
         $data = array();
         $data['adminId'] = $request->adminId;
         $data['name'] = $request->name;
@@ -28,7 +29,7 @@ class AdminAccountController extends Controller
         $data['created_at'] = now();
         if ($request->all()) {
             DB::table('account_admin')->insert($data);
-            return redirect()->route('admin.manager.index')->with('success', 'Add new manager successfully');
+            return redirect('admin/manager')->with('success', 'Add new manager successfully');
         }
         return redirect('admin/manager')->with('errors', "Something went wrong, please try again");
     }

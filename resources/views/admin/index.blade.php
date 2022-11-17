@@ -4,6 +4,27 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        {{-- Message if error --}}
+        @if (Session::get('error'))
+            <script>
+                alert("{{ Session::get('error') }}");
+                console.log("error");
+            </script>
+        @endif
+        @if (count($errors) > 0)
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -189,7 +210,7 @@
                                                     Password</label>
                                                 <div class="col-sm-10">
                                                     <input type="password" name="adminPassword" class="form-control"
-                                                        id="inputPasswordOld" placeholder="Old Password">
+                                                        id="inputPasswordOld" placeholder="Old Password" required>
                                                 </div>
                                                 @error('adminPassword')
                                                     <p class="text-danger"><strong>{{ $message }}</strong></p>
@@ -200,9 +221,10 @@
                                                     Password</label>
                                                 <div class="col-sm-10">
                                                     <input type="password" name="adminPasswordNew" class="form-control"
-                                                        id="inputPasswordNew" placeholder="New Password">
+                                                        id="inputPasswordNew" placeholder="New Password" required
+                                                        minlength="8">
                                                 </div>
-                                                @error('adminPassword')
+                                                @error('adminPasswordNew')
                                                     <p class="text-danger"><strong>{{ $message }}</strong></p>
                                                 @enderror
                                             </div>
@@ -212,9 +234,9 @@
                                                 <div class="col-sm-10">
                                                     <input type="password" name="adminPasswordRetype"
                                                         class="form-control" id="adminPasswordRetype"
-                                                        placeholder="Retype Password">
+                                                        placeholder="Retype Password" minlength="1" r>
                                                 </div>
-                                                @error('adminPassword')
+                                                @error('adminPasswordRetype')
                                                     <p class="text-danger"><strong>{{ $message }}</strong></p>
                                                 @enderror
                                             </div>
