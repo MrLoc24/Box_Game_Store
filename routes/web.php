@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Auth;
 */
 //MAIN PAGE
 Route::get('/', 'UserHomeController@index')->name('homeuser');
+Route::get('/home', 'UserHomeController@index');
 Route::get('/game/{id}', 'UserHomeController@detail')->name('details');
 Route::get('/browse', 'UserHomeController@browse');
 Route::get('/search', 'SearchController@search')->name('search');
