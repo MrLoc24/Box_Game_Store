@@ -36,14 +36,14 @@
                 
                 <label for="email">{{ __('Email Address *') }}</label>
                 <input id="email" type="email" name="email" class="@error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email">
-                
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
             
             </div>
+
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
 
             <input type="submit" name="submit" value="{{ __('send mail') }}" class="btn">
 
