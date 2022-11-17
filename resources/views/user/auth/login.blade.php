@@ -16,7 +16,7 @@
 <body>
 
     <div class="form-container">
-        <form action="{{ route('login') }}" method="post">
+        <form action="{{ route('handlelogin') }}" method="post">
 
             @csrf
             <img src=" {{ asset('assets_home/images/boxlogo.png') }} " alt="">

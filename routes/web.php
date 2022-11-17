@@ -99,10 +99,8 @@ Route::middleware('guest')->group(function () {
 
     // Route::middleware('active_user')->group(function () {
     //start login
-    Route::middleware('active_user')->group(function () {
-        Route::get('/login', [LoginController::class, 'login'])->name('login');
-        Route::post('/login', [LoginController::class, 'authenticate'])->middleware('checklogin');
-    });
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('handlelogin')->middleware('checklogin');
     //end login
 
     //start forgot password
